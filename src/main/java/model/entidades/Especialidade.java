@@ -6,7 +6,6 @@ public class Especialidade {
 	private Long rqe;
 	
 	public Especialidade(String especializacao, Long rqe) {
-		super();
 		this.especializacao = especializacao;
 		this.rqe = rqe;
 	}

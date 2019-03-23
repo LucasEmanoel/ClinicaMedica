@@ -10,6 +10,7 @@ public class Consulta {
 	private Medico medico;
 	private Date data;
 	private Time horario;
+	private Pagamento pagamento;
 
 	public Consulta(Cliente cliente, Medico medico, Date data, Time horario) {
 		super();
@@ -57,6 +58,14 @@ public class Consulta {
 
 	public void setHorario(Time horario) {
 		this.horario = horario;
+	}
+
+	public Pagamento getPagamento() {
+		return pagamento;
+	}
+
+	public void setPagamento(Pagamento pagamento) {
+		this.pagamento = pagamento;
 	}
 	
 

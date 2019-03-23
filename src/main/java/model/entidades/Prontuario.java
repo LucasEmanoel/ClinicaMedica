@@ -1,30 +1,25 @@
 package model.entidades;
 
 public class Prontuario {
-	private Long id;
 	private String diagnostico;
 	private Medicamento medicamento;
 	private Encaminhamento encaminhamento;
+	private Medico medico;
+	private Cliente cliente;
 	
-	public Prontuario(String diagnostico, Medicamento medicamento) {
-		super();
+	public Prontuario(Medico medico, Cliente cliente, String diagnostico, Medicamento medicamento) {
+		this.medico = medico;
+		this.cliente = cliente;
 		this.diagnostico = diagnostico;
 		this.medicamento = medicamento;
 	}
 
-	public Prontuario(String diagnostico, Medicamento medicamento, Encaminhamento encaminhamento) {
-		super();
+	public Prontuario(Medico medico, Cliente cliente, String diagnostico, Medicamento medicamento, Encaminhamento encaminhamento) {
+		this.medico = medico;
+		this.cliente = cliente;
 		this.diagnostico = diagnostico;
 		this.medicamento = medicamento;
 		this.encaminhamento = encaminhamento;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getDiagnostico() {
@@ -50,12 +45,20 @@ public class Prontuario {
 	public void setEncaminhamento(Encaminhamento encaminhamento) {
 		this.encaminhamento = encaminhamento;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
+	public Medico getMedico() {
+		return medico;
+	}
+
+	public void setMedico(Medico medico) {
+		this.medico = medico;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}	
 }

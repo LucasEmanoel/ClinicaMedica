@@ -7,19 +7,16 @@ public class Cliente extends Pessoa {
 	
 	private String login;
 	private String senha;
-	private Convenio convenio;
 	
-	public Cliente(String login, String senha) {
-		super();
+	public Cliente(String nome, String cpf, String rg, Integer idade, Telefone telefone, Endereco endereco, String login, String senha) {
+		this.setNome(nome);
+		this.setCpf(cpf);
+		this.setRg(rg);
+		this.setIdade(idade);
+		this.setTelefone(telefone);
+		this.setEndereco(endereco);
 		this.login = login;
 		this.senha = senha;
-	}
-	
-	public Cliente(String login, String senha, Convenio convenio) {
-		super();
-		this.login = login;
-		this.senha = senha;
-		this.convenio = convenio;
 	}
 
 	public String getLogin() {
@@ -33,15 +30,5 @@ public class Cliente extends Pessoa {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-
-	public Convenio getConvenio() {
-		return convenio;
-	}
-
-	public void setConvenio(Convenio convenio) {
-		this.convenio = convenio;
-	}
-	
-	
+	}	
 }
