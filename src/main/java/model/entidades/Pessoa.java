@@ -14,9 +14,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name="PESSOA")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "PESSOA")
+@DiscriminatorColumn(name = "TIPO_PESSOA")
 public abstract class Pessoa {
 	
 	@Id
@@ -35,9 +35,11 @@ public abstract class Pessoa {
 	@Column(nullable=false)
 	private Integer idade;
 	
-	@OneToOne
-	@JoinColumn(name="pessoa_id")
-	private Telefone telefone;
+	@Column(length=32)
+	private String telefone1;
+	
+	@Column(length=32)
+	private String telefone2;
 	
 	@OneToOne
 	@JoinColumn(name="pessoa_id")
@@ -72,6 +74,18 @@ public abstract class Pessoa {
 	}
 	public void setIdade(int idade) {
 		this.idade = idade;
+	}
+	public String getTelefone1() {
+		return telefone1;
+	}
+	public void setTelefone1(String telefone1) {
+		this.telefone1 = telefone1;
+	}
+	public String getTelefone2() {
+		return telefone2;
+	}
+	public void setTelefone2(String telefone2) {
+		this.telefone2 = telefone2;
 	}
 	public Endereco getEndereco() {
 		return endereco;

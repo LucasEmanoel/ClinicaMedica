@@ -1,9 +1,20 @@
 package model.entidades;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "MEDICAMENTO")
 public class Medicamento {
 	private Long id;
 	private String descricao;
 	private Integer quantidade;
+	
+	@ManyToOne
+	@JoinColumn(name="prontuario_id", nullable=false)
+	private Prontuario prontuario;
 	
 	public Medicamento(String descricao, Integer quantidade) {
 		super();

@@ -1,14 +1,28 @@
 package model.entidades;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "FUNCIONARIO")
 @DiscriminatorValue( value="FUNCIONARIO" )
 public abstract class Funcionario extends Pessoa {
+	
+	@Column(unique=true, nullable=false, length=64)
 	private String login;
+	
+	@Column(unique=true, nullable=false, length=64)
 	private String senha;
+	
+	@Column(nullable=false)
 	private Double salario;
+	
+	@ManyToOne
+	@JoinColumn(name="clinica_id", nullable=false)
 	private Clinica clinica;
 	
 	public String getLogin() {

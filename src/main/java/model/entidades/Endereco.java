@@ -1,6 +1,5 @@
 package model.entidades;
 
-
 public class Endereco {
 	private Long id;
 	private String rua;
@@ -14,6 +13,7 @@ public class Endereco {
 		this.bairro = bairro;
 		this.cep = cep;
 	}
+	
 
 	public Long getId() {
 		return id;

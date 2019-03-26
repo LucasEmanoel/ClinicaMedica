@@ -12,21 +12,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "CONSULTA")
 public class Consulta {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	
-	@ManyToOne()
-	@JoinColumn(name="cliente_id")
-	private Cliente cliente;
-	
-	@ManyToOne()
-	@JoinColumn(name="medico_id")
-	private Medico medico;
 	
 	@Column(nullable=false)
 	private Date data;
@@ -34,7 +28,15 @@ public class Consulta {
 	@Column(nullable=false)
 	private Time horario;
 	
-	@OneToMany(mappedBy="pagamento")
+	@ManyToOne
+	@JoinColumn(name="cliente_id", nullable=false)
+	private Cliente cliente;
+	
+	@ManyToOne
+	@JoinColumn(name="medico_id", nullable=false)
+	private Medico medico;
+	
+	@OneToMany(mappedBy="consulta")
 	private List<Pagamento> pagamento;
 
 	public Consulta(Cliente cliente, Medico medico, Date data, Time horario) {

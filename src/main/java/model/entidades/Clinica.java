@@ -1,15 +1,20 @@
 package model.entidades;
 
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "CLINICA")
 public class Clinica {
 	
 	@Id
@@ -22,19 +27,24 @@ public class Clinica {
 	@Column(nullable=false, length=64)
 	private String email;
 	
-	@OneToOne
-	@JoinColumn(name="clinica_id")
-	private Telefone telefone;
+	@Column(length=32)
+	private String telefone1;
+	
+	@Column(length=32)
+	private String telefone2;
 	
 	@OneToOne
 	@JoinColumn(name="clinica_id")
 	private Endereco endereco;
 	
+	@OneToMany(mappedBy="clinica")
+	private List<Funcionario> funcionarios;
 	
-	public Clinica(String email,String cnpj, Telefone telefone, Endereco endereco) {
+	
+	public Clinica(String email,String cnpj, String telefone, Endereco endereco) {
 		this.email = email;
 		this.cnpj = cnpj;
-		this.telefone = telefone;
+		this.telefone1 = telefone;
 		this.endereco = endereco;
 	}
 	
@@ -55,12 +65,6 @@ public class Clinica {
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	public Telefone getTelefone() {
-		return telefone;
-	}
-	public void setTelefone(Telefone telefone) {
-		this.telefone = telefone;
 	}
 	public Endereco getEndereco() {
 		return endereco;

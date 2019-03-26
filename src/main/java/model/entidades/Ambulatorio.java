@@ -1,12 +1,18 @@
 package model.entidades;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "AMBULATORIO")
 public class Ambulatorio {
 	
 	@Id
@@ -19,8 +25,22 @@ public class Ambulatorio {
 	@Column(nullable=false)
 	private Integer andar;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinTable(name = "secretaria_ambulatorio",
+		joinColumns = { @JoinColumn(name="secretaria_id", referencedColumnName="id") },
+		inverseJoinColumns = { @JoinColumn(name="ambulatorio_id", referencedColumnName="id") })
 	private Secretaria secretaria;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinTable(name = "medico_ambulatorio",
+	joinColumns = { @JoinColumn(name="medico_id", referencedColumnName="id") },
+	inverseJoinColumns = { @JoinColumn(name="ambulatorio_id", referencedColumnName="id") })
 	private Medico medico;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinTable(name = "cliente_ambulatorio",
+	joinColumns = { @JoinColumn(name="cliente_id", referencedColumnName="id") },
+	inverseJoinColumns = { @JoinColumn(name="ambulatorio_id", referencedColumnName="id") })
 	private Cliente cliente;
 	
 	public Ambulatorio(Integer numero, Integer andar) {
