@@ -1,19 +1,27 @@
 package model.entidades;
 
+
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "PESSOA")
 public abstract class Pessoa {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	
 	@Column(nullable=false, length=64)
 	private String nome;
@@ -21,26 +29,24 @@ public abstract class Pessoa {
 	@Column(nullable=false, unique=true, length=32)
 	private String cpf;
 	
-	@Column(nullable=false, unique=true, length=16)
+	@Column(nullable=false, unique=true, length=32)
 	private String rg;
 	
 	@Column(nullable=false)
 	private Integer idade;
 	
-	@OneToMany()
+	@OneToOne
+	@JoinColumn(name="pessoa_id")
 	private Telefone telefone;
 	
 	@OneToOne
+	@JoinColumn(name="pessoa_id")
 	private Endereco endereco;
 	
-	/* 
-	 * 
-	 */
-	
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getNome() {
@@ -66,12 +72,6 @@ public abstract class Pessoa {
 	}
 	public void setIdade(int idade) {
 		this.idade = idade;
-	}
-	public Telefone getTelefone() {
-		return telefone;
-	}
-	public void setTelefone(Telefone telefone) {
-		this.telefone = telefone;
 	}
 	public Endereco getEndereco() {
 		return endereco;

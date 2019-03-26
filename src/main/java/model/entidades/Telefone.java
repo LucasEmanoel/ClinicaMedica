@@ -1,8 +1,10 @@
 package model.entidades;
 
+
 public class Telefone {
 	private Long id;
 	private Integer numero;
+	
 	
 	public Telefone(Integer numero) {
 		super();

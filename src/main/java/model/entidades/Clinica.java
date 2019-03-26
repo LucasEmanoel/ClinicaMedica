@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Clinica {
@@ -20,8 +22,14 @@ public class Clinica {
 	@Column(nullable=false, length=64)
 	private String email;
 	
+	@OneToOne
+	@JoinColumn(name="clinica_id")
 	private Telefone telefone;
+	
+	@OneToOne
+	@JoinColumn(name="clinica_id")
 	private Endereco endereco;
+	
 	
 	public Clinica(String email,String cnpj, Telefone telefone, Endereco endereco) {
 		this.email = email;

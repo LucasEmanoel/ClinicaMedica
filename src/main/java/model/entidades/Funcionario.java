@@ -1,5 +1,10 @@
 package model.entidades;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue( value="FUNCIONARIO" )
 public abstract class Funcionario extends Pessoa {
 	private String login;
 	private String senha;

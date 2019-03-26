@@ -1,29 +1,43 @@
 package model.entidades;
 
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+@Entity
+@DiscriminatorValue(value = "MEDICO")
 public class Medico extends Funcionario {
+	
+	@Column(unique=true, nullable=false)
 	private Long crm;
-	private Especialidade especialidade;
+	
+	@OneToMany(mappedBy="especilidade")
+	private List<Especialidade> especialidades;
+	
+	@OneToMany(mappedBy="consulta")
+	private List<Consulta> consultas; 
+	
 	
 	public Medico(String nome, String cpf, String rg, Integer idade, Telefone telefone, Endereco endereco, String login, Double salario, String senha, Long crm,Clinica clinica,  Especialidade especialidade) {
 		this.setNome(nome);
 		this.setCpf(cpf);
 		this.setRg(rg);
 		this.setIdade(idade);
-		this.setTelefone(telefone);
 		this.setEndereco(endereco);
 		this.setLogin(login);
 		this.setSenha(senha);
 		this.setSalario(salario);
 		this.setClinica(clinica);
 		this.crm = crm;
-		this.especialidade = especialidade;
 	}
 	public Medico(String nome, String cpf, String rg, Integer idade, Telefone telefone, Endereco endereco, String login, String senha,Double salario,Clinica clinica, Long crm) {
 		this.setNome(nome);
 		this.setCpf(cpf);
 		this.setRg(rg);
 		this.setIdade(idade);
-		this.setTelefone(telefone);
 		this.setEndereco(endereco);
 		this.setLogin(login);
 		this.setSenha(senha);
@@ -38,13 +52,5 @@ public class Medico extends Funcionario {
 
 	public void setCrm(Long crm) {
 		this.crm = crm;
-	}
-
-	public Especialidade getEspecialidade() {
-		return especialidade;
-	}
-
-	public void setEspecialidade(Especialidade especialidade) {
-		this.especialidade = especialidade;
 	}
 }

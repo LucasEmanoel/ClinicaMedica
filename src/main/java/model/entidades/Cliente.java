@@ -1,19 +1,34 @@
 package model.entidades;
 
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 @Entity
+@DiscriminatorValue(value = "CLIENTE")
 public class Cliente extends Pessoa {
 	
+	@Column(unique=true, nullable=false)
+	private String email;
+	
+	@Column(unique=true, nullable=false)
 	private String login;
+	
+	@Column(unique=true, nullable=false)
 	private String senha;
+	
+	@OneToMany(mappedBy="consulta")
+	private List<Consulta> consultas; 
+	
 	
 	public Cliente(String nome, String cpf, String rg, Integer idade, Telefone telefone, Endereco endereco, String login, String senha) {
 		this.setNome(nome);
 		this.setCpf(cpf);
 		this.setRg(rg);
 		this.setIdade(idade);
-		this.setTelefone(telefone);
 		this.setEndereco(endereco);
 		this.login = login;
 		this.senha = senha;

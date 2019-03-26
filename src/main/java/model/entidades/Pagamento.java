@@ -1,8 +1,15 @@
 package model.entidades;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 public class Pagamento {
 	private Long id;
 	private Double valor;
+	
+	@ManyToOne
+	@JoinColumn(name="consulta_id")
+	private Consulta consulta;
 	
 	public Pagamento(Double valor) {
 		super();

@@ -1,9 +1,17 @@
 package model.entidades;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 public class Especialidade {
 	private Long id;
 	private String especializacao;
 	private Long rqe;
+	
+	@ManyToOne()
+	@JoinColumn(name="medico_id")
+	private Medico medico;
+	
 	
 	public Especialidade(String especializacao, Long rqe) {
 		this.especializacao = especializacao;

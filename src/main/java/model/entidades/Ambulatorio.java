@@ -1,9 +1,24 @@
 package model.entidades;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Ambulatorio {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(nullable=false)
 	private Integer numero;
+
+	@Column(nullable=false)
 	private Integer andar;
+	
 	private Secretaria secretaria;
 	private Medico medico;
 	private Cliente cliente;

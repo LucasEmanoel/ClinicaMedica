@@ -1,5 +1,8 @@
 package model.entidades;
 
+import javax.persistence.DiscriminatorValue;
+
+@DiscriminatorValue(value = "SECRETARIA")
 public class Secretaria extends Funcionario {
 	
 	private String qualificacao;
@@ -9,7 +12,6 @@ public class Secretaria extends Funcionario {
 		this.setCpf(cpf);
 		this.setRg(rg);
 		this.setIdade(idade);
-		this.setTelefone(telefone);
 		this.setEndereco(endereco);
 		this.setClinica(clinica);
 		this.qualificacao = qualificacao;

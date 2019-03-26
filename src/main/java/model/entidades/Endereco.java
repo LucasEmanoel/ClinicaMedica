@@ -1,10 +1,12 @@
 package model.entidades;
 
+
 public class Endereco {
 	private Long id;
 	private String rua;
 	private String bairro;
 	private String cep;
+	
 	
 	public Endereco(String rua, String bairro, String cep) {
 		super();

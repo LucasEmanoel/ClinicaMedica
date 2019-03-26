@@ -2,15 +2,40 @@ package model.entidades;
 
 import java.sql.Time;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Consulta {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	
+	@ManyToOne()
+	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
+	
+	@ManyToOne()
+	@JoinColumn(name="medico_id")
 	private Medico medico;
+	
+	@Column(nullable=false)
 	private Date data;
+	
+	@Column(nullable=false)
 	private Time horario;
-	private Pagamento pagamento;
+	
+	@OneToMany(mappedBy="pagamento")
+	private List<Pagamento> pagamento;
 
 	public Consulta(Cliente cliente, Medico medico, Date data, Time horario) {
 		super();
@@ -59,19 +84,4 @@ public class Consulta {
 	public void setHorario(Time horario) {
 		this.horario = horario;
 	}
-
-	public Pagamento getPagamento() {
-		return pagamento;
-	}
-
-	public void setPagamento(Pagamento pagamento) {
-		this.pagamento = pagamento;
-	}
-	
-
-	
-	
-	
-	
-	
 }
