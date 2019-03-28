@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -17,30 +16,25 @@ public class Ambulatorio {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="ambulatorio_id", nullable=false)
 	private Long id;
 	
-	@Column(nullable=false)
+	@Column(name="ambulatorio_numero", nullable=false)
 	private Integer numero;
 
-	@Column(nullable=false)
+	@Column(name="ambulatorio_andar", nullable=false)
 	private Integer andar;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinTable(name = "secretaria_ambulatorio",
-		joinColumns = { @JoinColumn(name="secretaria_id", referencedColumnName="id") },
-		inverseJoinColumns = { @JoinColumn(name="ambulatorio_id", referencedColumnName="id") })
+	@JoinColumn(name = "secretaria_id_secretaria",  referencedColumnName = "secretaria_id")
 	private Secretaria secretaria;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinTable(name = "medico_ambulatorio",
-	joinColumns = { @JoinColumn(name="medico_id", referencedColumnName="id") },
-	inverseJoinColumns = { @JoinColumn(name="ambulatorio_id", referencedColumnName="id") })
+	@JoinColumn(name = "medico_id_medico",  referencedColumnName = "medico_id")
 	private Medico medico;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinTable(name = "cliente_ambulatorio",
-	joinColumns = { @JoinColumn(name="cliente_id", referencedColumnName="id") },
-	inverseJoinColumns = { @JoinColumn(name="ambulatorio_id", referencedColumnName="id") })
+	@JoinColumn(name = "cliente_id_cliente",  referencedColumnName = "cliente_id")
 	private Cliente cliente;
 	
 	public Ambulatorio(Integer numero, Integer andar) {

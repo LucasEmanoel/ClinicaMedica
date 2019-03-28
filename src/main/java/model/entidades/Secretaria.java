@@ -12,10 +12,10 @@ import javax.persistence.Table;
 @DiscriminatorValue(value = "SECRETARIA")
 public class Secretaria extends Funcionario {
 	
-	@Column(nullable=false, length=128)
+	@Column(name="secretaria_qualificacao", length=128)
 	private String qualificacao;
 	
-	@OneToOne(mappedBy = "secretaria")
+	@OneToOne(mappedBy = "secretaria_id_secretaria")
 	private Ambulatorio ambulatorio;
 	
 	public Secretaria(String nome, String cpf, String rg, Integer idade, String telefone, Endereco endereco, Long coren,Clinica clinica, String qualificacao) {

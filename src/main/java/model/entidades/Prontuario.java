@@ -14,22 +14,22 @@ import javax.persistence.Table;
 @Table(name="PRONTUARIO")
 public class Prontuario {
 	
-	@Column(length=128, nullable=false)
+	@Column(name="prontuario_diag", length=128, nullable=false)
 	private String diagnostico;
 	
-	@OneToMany(mappedBy="prontuario")
+	@OneToMany(mappedBy="prontuario_id")
 	private List<Medicamento> medicamento;
 	
 	@OneToOne
-	@JoinColumn(name="encaminhamento_id", referencedColumnName="id")
+	@JoinColumn(name="encaminhamento_id_encaminhamento", referencedColumnName="encaminhamento_id")
 	private Encaminhamento encaminhamento;
 	
 	@ManyToOne
-	@JoinColumn(name="medico_id")
+	@JoinColumn(name="medico_id", nullable=false)
 	private Medico medico;
 	
 	@ManyToOne
-	@JoinColumn(name="cliente_id")
+	@JoinColumn(name="cliente_id", nullable=false)
 	private Cliente cliente;
 	
 	public Prontuario(Medico medico, Cliente cliente, String diagnostico, Medicamento medicamento) {

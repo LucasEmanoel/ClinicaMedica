@@ -21,24 +21,25 @@ public abstract class Pessoa {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="pessoa_id", nullable=false)
 	private Integer id;
 	
-	@Column(nullable=false, length=64)
+	@Column(name="pessoa_nome", nullable=false, length=64)
 	private String nome;
 	
-	@Column(nullable=false, unique=true, length=32)
+	@Column(name="pessoa_cpf", nullable=false, unique=true, length=32)
 	private String cpf;
 	
-	@Column(nullable=false, unique=true, length=32)
+	@Column(name="pessoa_rg", nullable=false, unique=true, length=32)
 	private String rg;
 	
-	@Column(nullable=false)
+	@Column(name="pessoa_idade", nullable=false)
 	private Integer idade;
 	
-	@Column(length=32)
+	@Column(name="pessoa_tel1", length=32)
 	private String telefone1;
 	
-	@Column(length=32)
+	@Column(name="pessoa_tel2", length=32)
 	private String telefone2;
 	
 	@OneToOne

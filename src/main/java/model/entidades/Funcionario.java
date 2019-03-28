@@ -12,13 +12,13 @@ import javax.persistence.Table;
 @DiscriminatorValue( value="FUNCIONARIO" )
 public abstract class Funcionario extends Pessoa {
 	
-	@Column(unique=true, nullable=false, length=64)
+	@Column(name="funcionario_id", unique=true, nullable=false, length=64)
 	private String login;
 	
-	@Column(unique=true, nullable=false, length=64)
+	@Column(name="funcionario_senha", unique=true, nullable=false, length=64)
 	private String senha;
 	
-	@Column(nullable=false)
+	@Column(name="funcionario_salario", nullable=false)
 	private Double salario;
 	
 	@ManyToOne

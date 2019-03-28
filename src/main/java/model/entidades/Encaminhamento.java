@@ -14,12 +14,13 @@ public class Encaminhamento {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="encaminhamento_id", nullable=false)
 	private Long id;
 	
-	@Column(nullable=false, length=128)
+	@Column(name="encaminhamento_descricao", nullable=false, length=128)
 	private String descricao;
 	
-	@OneToOne(mappedBy="encaminhamento_id")
+	@OneToOne(mappedBy="encaminhamento_id_encaminhamento")
 	private Prontuario protuario;
 	
 	public Encaminhamento(String descricao) {

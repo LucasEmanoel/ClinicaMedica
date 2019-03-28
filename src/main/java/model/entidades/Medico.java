@@ -14,19 +14,19 @@ import javax.persistence.Table;
 @DiscriminatorValue(value = "MEDICO")
 public class Medico extends Funcionario {
 	
-	@Column(unique=true, nullable=false)
+	@Column(name="medico_crm", unique=true, nullable=false)
 	private Long crm;
 	
-	@OneToMany(mappedBy="medico")
+	@OneToMany(mappedBy="medico_id")
 	private List<Especialidade> especialidades;
 	
-	@OneToMany(mappedBy="medico")
+	@OneToMany(mappedBy="medico_id")
 	private List<Consulta> consultas;
 	
-	@OneToOne(mappedBy = "medico")
+	@OneToOne(mappedBy = "medico_id_medico")
 	private Ambulatorio ambulatorio;
 	
-	@OneToMany(mappedBy="medico")
+	@OneToMany(mappedBy="medico_id")
 	private List<Prontuario> prontuarios;
 	
 	

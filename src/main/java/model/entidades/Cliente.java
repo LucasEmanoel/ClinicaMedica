@@ -14,22 +14,22 @@ import javax.persistence.Table;
 @DiscriminatorValue(value = "CLIENTE")
 public class Cliente extends Pessoa {
 	
-	@Column(unique=true, nullable=false)
+	@Column(name="cliente_email" ,unique=true, nullable=false)
 	private String email;
 	
-	@Column(unique=true, nullable=false)
+	@Column(name="cliente_login" ,unique=true, nullable=false)
 	private String login;
 	
-	@Column(unique=true, nullable=false)
+	@Column(name="cliente_senha" ,unique=true, nullable=false)
 	private String senha;
 	
-	@OneToMany(mappedBy="cliente")
+	@OneToMany(mappedBy="cliente_id")
 	private List<Consulta> consultas; 
 	
-	@OneToOne(mappedBy = "cliente")
+	@OneToOne(mappedBy = "cliente_id_cliente")
 	private Ambulatorio ambulatorio;
 	
-	@OneToMany(mappedBy="cliente")
+	@OneToMany(mappedBy="cliente_id")
 	private List<Prontuario> prontuarios;
 	
 	

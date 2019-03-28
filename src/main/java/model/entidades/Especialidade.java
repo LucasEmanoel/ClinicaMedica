@@ -15,18 +15,18 @@ public class Especialidade {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="especialidade_id", nullable=false)
 	private Long id;
 	
-	@Column(length=128, nullable=false)
+	@Column(name="especialidade_especializacao", length=128, nullable=false)
 	private String especializacao;
 	
-	@Column(nullable=false)
+	@Column(name="especialidade_rqe", nullable=false)
 	private Long rqe;
 	
 	@ManyToOne
 	@JoinColumn(name="medico_id")
 	private Medico medico;
-	
 	
 	public Especialidade(String especializacao, Long rqe) {
 		this.especializacao = especializacao;

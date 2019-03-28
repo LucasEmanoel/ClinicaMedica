@@ -14,9 +14,10 @@ import javax.persistence.Table;
 public class Pagamento {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="pagamento_id", nullable=false)
 	private Long id;
 	
-	@Column(nullable=false)
+	@Column(name="pagamento_valor", nullable=false)
 	private Double valor;
 	
 	@ManyToOne

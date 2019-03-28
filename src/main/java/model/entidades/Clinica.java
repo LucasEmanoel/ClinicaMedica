@@ -19,25 +19,26 @@ public class Clinica {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="clinica_id", nullable=false)
 	private Long id;
 	
-	@Column(nullable=false, length=32)
+	@Column(name="clinica_cnpj",nullable=false, length=32)
 	private String cnpj;
 	
-	@Column(nullable=false, length=64)
+	@Column(name="clinica_email",nullable=false, length=64)
 	private String email;
 	
-	@Column(length=32)
+	@Column(name="clinica_tel1",length=32)
 	private String telefone1;
 	
-	@Column(length=32)
+	@Column(name="clinica_tel2",length=32)
 	private String telefone2;
 	
 	@OneToOne
 	@JoinColumn(name="clinica_id")
 	private Endereco endereco;
 	
-	@OneToMany(mappedBy="clinica")
+	@OneToMany(mappedBy="clinica_id")
 	private List<Funcionario> funcionarios;
 	
 	
