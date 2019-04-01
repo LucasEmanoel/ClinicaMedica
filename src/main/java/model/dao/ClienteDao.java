@@ -56,9 +56,20 @@ public class ClienteDao extends DaoImpl<Cliente> implements ClienteDaoInterface{
 
 	@Override
 	public Cliente find(Long id) {
-		// TODO Auto-generated method stub
-		return super.find(id);
+		EntityManager manager = JPAManager.getInstance().getEntityManager();
+		
+		try  {
+			manager.getTransaction().begin();		
+			Cliente cli = manager.find(Cliente.class, id);
+			manager.getTransaction().commit();
+			return cli;
+			
+		} catch (Exception e) {
+			manager.getTransaction().rollback();
+		} finally {
+			manager.close();
+		}
+		
+		return null;
 	}
-
-	
 }

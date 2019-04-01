@@ -56,7 +56,6 @@ public class ClinicaDao extends DaoImpl<Clinica> implements ClinicaDaoInterface{
 
 	@Override
 	public Clinica find(Long id) {
-		// TODO Auto-generated method stub
 		return super.find(id);
 	}
 
