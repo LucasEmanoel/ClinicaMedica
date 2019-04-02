@@ -1,11 +1,11 @@
 package model;
 
 import model.dao.Dao;
-import model.dao.EncaminhamentoDao;
+import model.dao.DaoImpl;
 import model.entidades.Encaminhamento;
 
 public class EncaminhamentoModel {
-	Dao<Encaminhamento> dao = new EncaminhamentoDao();  
+	Dao<Encaminhamento> dao = new DaoImpl<Encaminhamento>();  
 	
 	public void registrarEncaminhamento(Encaminhamento obj) throws Exception{
 		if (obj != null) {

@@ -1,4 +1,4 @@
-package model;
+  package model;
 
 import java.util.Date;
 import java.util.List;
@@ -35,29 +35,32 @@ public class ConsultaModel {
 		}
 	}
 	public void pagarConsulta(Pagamento pag) throws Exception{
+		ConsultaDao newDao = (ConsultaDao) dao;
 		if (pag != null) {
-			dao.pagar(pag);
+			newDao.pagar(pag);
 		}else {
 			throw new Exception("Erro!!");
 		}
 	}
 	public Consulta findConsulta(Long id) throws Exception{
 		if(id != null) {
-			return null;
+			return dao.find(id);
 		}else {
 			throw new Exception("Erro!!");
 		}
 	}
 	public List<Consulta> findConsultaPorCpf(String cpf) throws Exception{
+		ConsultaDao newDao = (ConsultaDao) dao;
 		if(cpf != null) {
-			return null;
+			return newDao.findConsultaPorCpf(cpf);
 		}else {
 			throw new Exception("Erro!!");
 		}
 	}
 	public List<Consulta> findConsultaPorData(Date data) throws Exception {
+		ConsultaDao newDao = (ConsultaDao) dao;
 		if(data != null) {
-			return null;
+			return newDao.findConsultaPorData(data);
 		}else {
 			throw new Exception("Erro!!");
 		}

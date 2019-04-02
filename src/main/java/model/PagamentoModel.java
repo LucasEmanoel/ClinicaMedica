@@ -1,11 +1,11 @@
 package model;
 
 import model.dao.Dao;
-import model.dao.EspecialidadeDao;
+import model.dao.DaoImpl;
 import model.entidades.Pagamento;
 
 public class PagamentoModel {
-	Dao<Pagamento> dao = new PagamentoDao();  
+	Dao<Pagamento> dao = new DaoImpl<Pagamento>();  
 	
 	public void registrarPagamento(Pagamento obj) throws Exception{
 		if (obj != null) {

@@ -41,6 +41,7 @@ public class ProntuarioModel {
 		}
 	}
 	public List<Prontuario> findProntuarioPorCpf(String cpf) throws Exception{
+		ProntuarioDao newDao = (ProntuarioDao) dao;
 		if(cpf != null) {
 			return null;
 		}else {

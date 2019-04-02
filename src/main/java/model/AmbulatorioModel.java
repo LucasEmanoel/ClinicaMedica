@@ -1,12 +1,12 @@
 package model;
 
-import model.dao.AmbulatorioDao;
 import model.dao.Dao;
+import model.dao.DaoImpl;
 import model.entidades.Ambulatorio;
 
 public class AmbulatorioModel {
 	
-	Dao<Ambulatorio> dao = new AmbulatorioDao();  
+	Dao<Ambulatorio> dao = new DaoImpl<Ambulatorio>();  
 	
 	public void registrarAmbulatorio(Ambulatorio obj) throws Exception{
 		if (obj != null) {

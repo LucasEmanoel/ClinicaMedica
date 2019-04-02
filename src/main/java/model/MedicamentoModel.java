@@ -1,11 +1,11 @@
 package model;
 
 import model.dao.Dao;
-import model.dao.EspecialidadeDao;
+import model.dao.DaoImpl;
 import model.entidades.Medicamento;
 
 public class MedicamentoModel {
-	Dao<Medicamento> dao = new MedicamentoDao();  
+	Dao<Medicamento> dao = new DaoImpl<Medicamento>();  
 	
 	public void registrarMedicamento(Medicamento obj) throws Exception{
 		if (obj != null) {

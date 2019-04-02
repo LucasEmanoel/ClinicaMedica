@@ -17,16 +17,16 @@ public class Medico extends Funcionario {
 	@Column(name="medico_crm", unique=true, nullable=false)
 	private Long crm;
 	
-	@OneToMany(mappedBy="medico_id")
+	@OneToMany(mappedBy="pessoa_id")
 	private List<Especialidade> especialidades;
 	
-	@OneToMany(mappedBy="medico_id")
+	@OneToMany(mappedBy="pessoa_id")
 	private List<Consulta> consultas;
 	
-	@OneToOne(mappedBy = "medico_id_medico")
+	@OneToOne(mappedBy = "pessoa_id")
 	private Ambulatorio ambulatorio;
 	
-	@OneToMany(mappedBy="medico_id")
+	@OneToMany(mappedBy="pessoa_id")
 	private List<Prontuario> prontuarios;
 	
 	

@@ -23,13 +23,13 @@ public class Cliente extends Pessoa {
 	@Column(name="cliente_senha" ,unique=true, nullable=false)
 	private String senha;
 	
-	@OneToMany(mappedBy="cliente_id")
+	@OneToMany(mappedBy="pessoa_id")
 	private List<Consulta> consultas; 
 	
 	@OneToOne(mappedBy = "cliente_id_cliente")
 	private Ambulatorio ambulatorio;
 	
-	@OneToMany(mappedBy="cliente_id")
+	@OneToMany(mappedBy="pessoa_id")
 	private List<Prontuario> prontuarios;
 	
 	

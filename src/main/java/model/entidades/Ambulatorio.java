@@ -26,15 +26,15 @@ public class Ambulatorio {
 	private Integer andar;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "secretaria_id_secretaria",  referencedColumnName = "secretaria_id")
+	@JoinColumn(name = "secretaria_id_secretaria",  referencedColumnName = "pessoa_id")
 	private Secretaria secretaria;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "medico_id_medico",  referencedColumnName = "medico_id")
+	@JoinColumn(name = "medico_id_medico",  referencedColumnName = "pessoa_id")
 	private Medico medico;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "cliente_id_cliente",  referencedColumnName = "cliente_id")
+	@JoinColumn(name = "cliente_id_cliente",  referencedColumnName = "pessoa_id")
 	private Cliente cliente;
 	
 	public Ambulatorio(Integer numero, Integer andar) {
