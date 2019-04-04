@@ -2,6 +2,7 @@ package model.entidades;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -9,25 +10,25 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "MEDICAMENTO")
+@Entity(name = "Medicamento")
+@Table(name = "medicamento")
 public class Medicamento {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="medicamento_id", nullable=false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "medicamento_id", nullable = false)
 	private Long id;
-	
-	@Column(name="medicamento_descricao", nullable=false)
+
+	@Column(name = "medicamento_descricao", nullable = false)
 	private String descricao;
-	
-	@Column(name="medicamento_quantidade", nullable=false)
+
+	@Column(name = "medicamento_quantidade", nullable = false)
 	private Integer quantidade;
-	
-	@ManyToOne
-	@JoinColumn(name="prontuario_id", nullable=false)
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "prontuario_id", nullable = false)
 	private Prontuario prontuario;
-	
+
 	public Medicamento(String descricao, Integer quantidade) {
 		super();
 		this.descricao = descricao;
@@ -57,7 +58,5 @@ public class Medicamento {
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}
-	
-	
-	
+
 }

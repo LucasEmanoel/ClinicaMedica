@@ -11,7 +11,7 @@ public class JPAManager {
 	private SessionFactory sessionFactory;
 	
 	private JPAManager() {
-		sessionFactory = (SessionFactory) Persistence.createEntityManagerFactory( "ClinicaMedica" );
+		sessionFactory = (SessionFactory) Persistence.createEntityManagerFactory( "clinicaMedica" );
 	}
 	
 	public static JPAManager getInstance() {

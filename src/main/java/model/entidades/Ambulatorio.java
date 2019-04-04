@@ -1,46 +1,50 @@
 package model.entidades;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "AMBULATORIO")
+@Entity(name = "Ambulatorio")
+@Table(name = "ambulatorio")
 public class Ambulatorio {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ambulatorio_id", nullable=false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ambulatorio_id", nullable = false)
 	private Long id;
-	
-	@Column(name="ambulatorio_numero", nullable=false)
+
+	@Column(name = "ambulatorio_numero", nullable = false)
 	private Integer numero;
 
-	@Column(name="ambulatorio_andar", nullable=false)
+	@Column(name = "ambulatorio_andar", nullable = false)
 	private Integer andar;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "secretaria_id_secretaria",  referencedColumnName = "pessoa_id")
+
+	@OneToOne(fetch = FetchType.EAGER)
+	@MapsId
 	private Secretaria secretaria;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "medico_id_medico",  referencedColumnName = "pessoa_id")
+
+	@OneToOne(fetch = FetchType.EAGER)
+	@MapsId
 	private Medico medico;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "cliente_id_cliente",  referencedColumnName = "pessoa_id")
+
+	@OneToOne(fetch = FetchType.EAGER)
+	@MapsId
 	private Cliente cliente;
-	
+
 	public Ambulatorio(Integer numero, Integer andar) {
 		super();
 		this.numero = numero;
 		this.andar = andar;
+	}
+
+	public Ambulatorio() {
+
 	}
 
 	public Long getId() {
@@ -90,7 +94,4 @@ public class Ambulatorio {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	
-	
-	
 }

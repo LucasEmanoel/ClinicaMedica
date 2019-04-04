@@ -5,24 +5,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "ENCAMINHAMENTO")
+@Entity(name = "Encaminhamento")
+@Table(name = "encaminhamento")
 public class Encaminhamento {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="encaminhamento_id", nullable=false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "encaminhamento_id", nullable = false)
 	private Long id;
-	
-	@Column(name="encaminhamento_descricao", nullable=false, length=128)
+
+	@Column(name = "encaminhamento_descricao", nullable = false, length = 128)
 	private String descricao;
-	
-	@OneToOne(mappedBy="encaminhamento_id_encaminhamento")
-	private Prontuario protuario;
-	
+
 	public Encaminhamento(String descricao) {
 		this.descricao = descricao;
 	}
@@ -42,6 +38,4 @@ public class Encaminhamento {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
-	
 }

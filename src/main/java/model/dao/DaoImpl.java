@@ -2,11 +2,16 @@ package model.dao;
 
 import javax.persistence.EntityManager;
 
-import model.entidades.Consulta;
 import model.util.JPAManager;
 
 public class DaoImpl<T> implements Dao<T> {
 
+	private Class<T> persisted;
+	
+	public DaoImpl(Class<T> persistedClass) {
+	    this.persisted = persistedClass;
+	}
+	
 	public void salvar(T obj) {
 		EntityManager manager = JPAManager.getInstance().getEntityManager();
 		
@@ -38,6 +43,7 @@ public class DaoImpl<T> implements Dao<T> {
 	}
 
 	public void deletar(T obj) {
+
 		EntityManager manager = JPAManager.getInstance().getEntityManager();
 		
 		try  {
@@ -52,22 +58,19 @@ public class DaoImpl<T> implements Dao<T> {
 		}
 	}
 
-	public T find(Long id) {
+	public T encontrar(Long id) {
 		EntityManager manager = JPAManager.getInstance().getEntityManager();
 		
 		try  {
-			manager.getTransaction().begin();		
-			T obj = manager.find(obj, id);
-			manager.getTransaction().commit();
-			return obj;
+			
+			return manager.find(persisted, id);
 			
 		} catch (Exception e) {
 			manager.getTransaction().rollback();
 		} finally {
 			manager.close();
 		}
-		
 		return null;
+	
 	}
-
 }

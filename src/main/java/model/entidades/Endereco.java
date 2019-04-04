@@ -1,19 +1,36 @@
 package model.entidades;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity(name = "Endereco")
+@Table(name = "endereco")
 public class Endereco {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "endereco_id", nullable = false)
 	private Long id;
+
+	@Column(name = "rua", length = 128)
 	private String rua;
+
+	@Column(name = "bairro", length = 128)
 	private String bairro;
+
+	@Column(name = "cep", length = 128)
 	private String cep;
-	
-	
+
 	public Endereco(String rua, String bairro, String cep) {
 		super();
 		this.rua = rua;
 		this.bairro = bairro;
 		this.cep = cep;
 	}
-	
 
 	public Long getId() {
 		return id;
@@ -46,7 +63,4 @@ public class Endereco {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
-	
-	
-	
 }

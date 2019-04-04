@@ -11,48 +11,62 @@ public class ProntuarioModel {
 	Dao<Prontuario> dao = new ProntuarioDao();  
 	
 	public void registrarProntuario(Prontuario obj) throws Exception{
-		if (obj != null) {
+		
+		Prontuario aux = (Prontuario) dao.encontrar(obj.getId());
+		
+		if (obj != aux) {
 			dao.salvar(obj);
 		}else{
-			throw new Exception("Erro!!");
+			throw new Exception("Erro ao registrar prontuario.");
 		}
 	}
 	
 	public void removerProntuario(Prontuario obj) throws Exception{
-		if (obj != null) {
+		
+		Prontuario aux = (Prontuario) dao.encontrar(obj.getId());
+		
+		if (obj == aux) {
 			dao.deletar(obj);
 		}else {
-			throw new Exception("Erro!!");
+			throw new Exception("Erro ao deletar prontuario.");
 		}
 	}
 	
 	public void atualizarProntuario(Prontuario obj) throws Exception{
-		if (obj != null) {
+		
+		Prontuario aux = (Prontuario) dao.encontrar(obj.getId());
+		
+		if (obj == aux) {
 			dao.atualizar(obj);
 		}else {
-			throw new Exception("Erro!!");
+			throw new Exception("Erro ao atualizar prontuario.");
 		}
 	}
-	public Prontuario findProntuario(Long id) throws Exception{
-		if(id != null) {
-			dao.find(id);
+	public void encontrarProntuarioPorId(Long id) throws Exception {
+		if (id != null) {
+			dao.encontrar(id);
 		}else {
-			throw new Exception("Erro!!");
+			throw new Exception("Erro ao encontrar prontuario.");
 		}
 	}
-	public List<Prontuario> findProntuarioPorCpf(String cpf) throws Exception{
+	public List<Prontuario> findProntuariosPorId(Long id) throws Exception{
+		
 		ProntuarioDao newDao = (ProntuarioDao) dao;
-		if(cpf != null) {
-			return null;
+		
+		if(id != null) { 
+			return newDao.findProntuarioPorIdCliente(id);
 		}else {
-			throw new Exception("Erro!!");
+			throw new Exception("Erro ao listar prontuarios por ID Cliente.");
 		}
 	}
-	public List<Prontuario> findProntuarioPorData(Date data) throws Exception{
+	public List<Prontuario> findProntuariosPorData(Date data) throws Exception{
+		
+		ProntuarioDao newDao = (ProntuarioDao) dao;
+		
 		if(data != null) {
-			return null;
+			return newDao.findProntuarioPorData(data);
 		}else {
-			throw new Exception("Erro!!");
+			throw new Exception("Erro ao listar prontuarios por Data.");
 		}
 	}
 }
