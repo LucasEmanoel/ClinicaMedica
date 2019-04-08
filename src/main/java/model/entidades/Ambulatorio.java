@@ -6,7 +6,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -26,15 +25,12 @@ public class Ambulatorio {
 	private Integer andar;
 
 	@OneToOne(fetch = FetchType.EAGER)
-	@MapsId
 	private Secretaria secretaria;
 
 	@OneToOne(fetch = FetchType.EAGER)
-	@MapsId
 	private Medico medico;
 
 	@OneToOne(fetch = FetchType.EAGER)
-	@MapsId
 	private Cliente cliente;
 
 	public Ambulatorio(Integer numero, Integer andar) {

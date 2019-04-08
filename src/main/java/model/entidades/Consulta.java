@@ -27,6 +27,9 @@ public class Consulta {
 	@Column(name = "consulta_id", nullable = false)
 	private Long id;
 
+	@Column(name = "consulta_descricao", length=128)
+	private String descricao;
+	
 	@Column(name = "consulta_data", nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date data;
@@ -45,13 +48,14 @@ public class Consulta {
 	@OneToMany(mappedBy = "consulta", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Pagamento> pagamento;
 
-	public Consulta(Date data, Time horario, Cliente cliente, Medico medico, List<Pagamento> pagamento) {
+	public Consulta(String descricao, Date data, Time horario) {
 		super();
+		this.descricao = descricao;
 		this.data = data;
 		this.horario = horario;
-		this.cliente = cliente;
-		this.medico = medico;
-		this.pagamento = pagamento;
+	}
+	public Consulta() {
+		
 	}
 
 	public Long getId() {

@@ -12,10 +12,12 @@ public class ConsultaModel {
 	Dao<Consulta> dao = new ConsultaDao();
 
 	public void registrarConsulta(Consulta obj) throws Exception {
-
-		Consulta aux = (Consulta) dao.encontrar(obj.getId());
+		ConsultaDao newDao = (ConsultaDao) dao;
 		
-		if (obj != aux) {
+		Consulta aux = (Consulta) newDao.encontrar(obj.getId());
+		boolean consultaDisponivel = newDao.verificarConsulta(obj.getMedico(), obj.getData());
+		
+		if (obj != aux && consultaDisponivel==true) {
 			dao.salvar(obj);
 		} else {
 			throw new Exception("Erro ao realizar consulta.");

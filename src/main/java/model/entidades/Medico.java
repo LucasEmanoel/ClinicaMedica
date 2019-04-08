@@ -14,10 +14,10 @@ import javax.persistence.Table;
 @DiscriminatorValue(value = "MEDICO")
 public class Medico extends Funcionario {
 
-	@Column(name = "medico_crm", unique = true, nullable = false)
+	@Column(name = "medico_crm", unique = true)
 	private Long crm;
 
-	@Column(name = "medico_meta_diaria", nullable = false)
+	@Column(name = "medico_meta_diaria")
 	private Integer meta;
 
 	@OneToMany(mappedBy = "medico", cascade = CascadeType.ALL, orphanRemoval = true)

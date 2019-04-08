@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import model.entidades.Consulta;
 import model.entidades.Prontuario;
 import model.util.JPAManager;
 
@@ -21,16 +20,18 @@ public class ProntuarioDao extends DaoImpl<Prontuario> implements ProntuarioDaoI
 		
 		try {
 			
-			Query query = manager.createQuery("SELECT * FROM Prontuario AS P WHERE P.cliente_id = :id");
-			query.setParameter("id", id);
-			return query.getResultList();
+			Query query = manager.createQuery("SELECT * FROM Prontuario AS P WHERE P.cliente_id = :id")
+			.setParameter("id", id);
+			
+			List<Prontuario> resultList = (List<Prontuario>) query.getResultList();
+			return resultList;
 			
 		} catch (Exception e) {
-			manager.getTransaction().rollback();
+			return null;
 		} finally {
 			manager.close();
 		}
-		return null;
+		
 	}	
 	
 	public List<Prontuario> findProntuarioPorData(Date data) {
@@ -38,16 +39,17 @@ public class ProntuarioDao extends DaoImpl<Prontuario> implements ProntuarioDaoI
 		
 		try {
 			
-			Query query = manager.createQuery("SELECT * FROM Prontuario AS P WHERE P.prontuario_data = :data");
-			query.setParameter("data", data);
-			return query.getResultList();
+			Query query = manager.createQuery("SELECT * FROM Prontuario AS P WHERE P.prontuario_data = :data")
+			.setParameter("data", data);
+			List<Prontuario> resultList = (List<Prontuario>) query.getResultList();
+			return resultList;
 			
 		} catch (Exception e) {
-			manager.getTransaction().rollback();
+			return null;
 		} finally {
 			manager.close();
 		}
-		return null;
+	
 	}
 
 

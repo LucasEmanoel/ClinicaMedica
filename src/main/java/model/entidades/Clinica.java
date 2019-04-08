@@ -9,7 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -36,7 +35,6 @@ public class Clinica {
 	private String telefone2;
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@MapsId
 	private Endereco endereco;
 
 	@OneToMany(mappedBy = "clinica", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -46,12 +44,6 @@ public class Clinica {
 		this.email = email;
 		this.cnpj = cnpj;
 		this.telefone1 = telefone;
-		this.endereco = endereco;
-	}
-
-	public Clinica(String email, String cnpj, Endereco endereco) {
-		this.email = email;
-		this.cnpj = cnpj;
 		this.endereco = endereco;
 	}
 

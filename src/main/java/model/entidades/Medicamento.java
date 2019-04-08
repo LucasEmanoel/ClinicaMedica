@@ -34,6 +34,9 @@ public class Medicamento {
 		this.descricao = descricao;
 		this.quantidade = quantidade;
 	}
+	public Medicamento() {
+		
+	}
 
 	public Long getId() {
 		return id;

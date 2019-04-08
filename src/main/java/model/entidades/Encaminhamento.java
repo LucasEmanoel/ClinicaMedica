@@ -22,6 +22,9 @@ public class Encaminhamento {
 	public Encaminhamento(String descricao) {
 		this.descricao = descricao;
 	}
+	public Encaminhamento() {
+		
+	}
 
 	public Long getId() {
 		return id;

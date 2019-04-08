@@ -12,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -36,7 +35,6 @@ public class Prontuario {
 	private List<Medicamento> medicamento;
 
 	@OneToOne(fetch = FetchType.EAGER)
-	@MapsId
 	private Encaminhamento encaminhamento;
 
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -61,6 +59,9 @@ public class Prontuario {
 		this.diagnostico = diagnostico;
 		this.medicamento.add(medicamento);
 		this.encaminhamento = encaminhamento;
+	}
+	public Prontuario() {
+		
 	}
 
 	public Long getId() {

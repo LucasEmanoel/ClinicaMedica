@@ -30,6 +30,9 @@ public class Pagamento {
 		super();
 		this.valor = valor;
 	}
+	public Pagamento() {
+		
+	}
 
 	public Long getId() {
 		return id;

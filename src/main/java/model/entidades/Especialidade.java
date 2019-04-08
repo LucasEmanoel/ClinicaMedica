@@ -33,6 +33,9 @@ public class Especialidade {
 		this.especializacao = especializacao;
 		this.rqe = rqe;
 	}
+	public Especialidade() {
+		
+	}
 
 	public Long getId() {
 		return id;

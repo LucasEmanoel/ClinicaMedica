@@ -31,6 +31,9 @@ public class Endereco {
 		this.bairro = bairro;
 		this.cep = cep;
 	}
+	public Endereco() {
+		
+	}
 
 	public Long getId() {
 		return id;

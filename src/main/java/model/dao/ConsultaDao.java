@@ -21,16 +21,16 @@ public class ConsultaDao extends DaoImpl<Consulta> implements ConsultaDaoInterfa
 		
 		try {
 			
-			Query query = manager.createQuery("SELECT * FROM Consulta AS C WHERE C.cliente_id = :id");
-			query.setParameter( "id", id );
-			return query.getResultList();
+			Query query = manager.createQuery("SELECT * FROM Consulta AS C WHERE C.cliente_id = :id").setParameter( "id", id );
+			List<Consulta> resultList = (List<Consulta>) query.getResultList();
+			return resultList;
 			
 		} catch (Exception e) {
-			manager.getTransaction().rollback();
+			return null;
 		} finally {
 			manager.close();
 		}
-		return null;
+		
 	}
 
 	public List<Consulta> findConsultaPorData(Date data) {
@@ -38,16 +38,15 @@ public class ConsultaDao extends DaoImpl<Consulta> implements ConsultaDaoInterfa
 		
 		try {
 			
-			Query query = manager.createQuery("SELECT * FROM Consulta AS C WHERE C.consulta_data = :data");
-			query.setParameter( "data", data );
-			return query.getResultList();
+			Query query = manager.createQuery("SELECT * FROM Consulta AS C WHERE C.consulta_data = :data").setParameter( "data", data );
+			List<Consulta> resultList = (List<Consulta>) query.getResultList();
+			return resultList;
 			
 		} catch (Exception e) {
-			manager.getTransaction().rollback();
+			return null;
 		} finally {
 			manager.close();
 		}
-		return null;
 	}
 
 	public boolean verificarConsulta(Medico m, Date d) {
@@ -55,21 +54,21 @@ public class ConsultaDao extends DaoImpl<Consulta> implements ConsultaDaoInterfa
 		
 		try {
 			
-			Query query = manager.createQuery("SELECT * FROM Consulta AS C WHERE C.consulta_data = :data && C.medico_id = :id ");
-			query.setParameter("data", d);
-			query.setParameter("medico_id", m.getId());
+			Query query = manager.createQuery("SELECT * FROM Consulta AS C WHERE C.consulta_data = :data && C.medico_id = :id ")
+			.setParameter("data", d)
+			.setParameter("medico_id", m.getId());
 			
 			if(query.getResultList().size() < m.getMeta()) {
 				return true;
 			}
 			
 		} catch (Exception e) {
-			manager.getTransaction().rollback();
 		} finally {
 			manager.close();
 		}
-		
 		return false;
+		
+	
 	}
 
 }

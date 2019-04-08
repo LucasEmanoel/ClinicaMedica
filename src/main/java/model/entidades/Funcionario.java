@@ -12,18 +12,18 @@ import javax.persistence.Table;
 @Table(name = "funcionario")
 @DiscriminatorValue(value = "FUNCIONARIO")
 public abstract class Funcionario extends Pessoa {
-
-	@Column(name = "funcionario_id", unique = true, nullable = false, length = 64)
+		
+	@Column(name = "funcionario_login", unique = true, length = 64)
 	private String login;
 
-	@Column(name = "funcionario_senha", unique = true, nullable = false, length = 64)
+	@Column(name = "funcionario_senha", unique = true, length = 64)
 	private String senha;
 
-	@Column(name = "funcionario_salario", nullable = false)
+	@Column(name = "funcionario_salario")
 	private Double salario;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "clinica_id", nullable = false)
+	@JoinColumn(name = "clinica_id")
 	private Clinica clinica;
 
 	public String getLogin() {

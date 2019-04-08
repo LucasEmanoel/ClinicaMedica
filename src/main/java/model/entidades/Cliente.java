@@ -14,13 +14,13 @@ import javax.persistence.Table;
 @DiscriminatorValue(value = "CLIENTE")
 public class Cliente extends Pessoa {
 
-	@Column(name = "cliente_email", unique = true, nullable = false)
+	@Column(name = "cliente_email", unique = true)
 	private String email;
 
-	@Column(name = "cliente_login", unique = true, nullable = false)
+	@Column(name = "cliente_login", unique = true)
 	private String login;
 
-	@Column(name = "cliente_senha", unique = true, nullable = false)
+	@Column(name = "cliente_senha", unique = true)
 	private String senha;
 
 	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
@@ -29,8 +29,7 @@ public class Cliente extends Pessoa {
 	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Prontuario> prontuarios;
 
-	public Cliente(String nome, String cpf, String rg, Integer idade, String telefone, Endereco endereco, String email,
-			String login, String senha) {
+	public Cliente(String nome, String cpf, String rg, Integer idade, String telefone, Endereco endereco, String email, String login, String senha) {
 		this.setNome(nome);
 		this.setCpf(cpf);
 		this.setRg(rg);
@@ -41,7 +40,10 @@ public class Cliente extends Pessoa {
 		this.login = login;
 		this.senha = senha;
 	}
-
+	public Cliente() {
+		
+	}
+	
 	public String getEmail() {
 		return email;
 	}
