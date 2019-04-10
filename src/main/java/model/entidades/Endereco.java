@@ -1,5 +1,7 @@
 package model.entidades;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,11 +11,13 @@ import javax.persistence.Table;
 
 @Entity(name = "Endereco")
 @Table(name = "endereco")
-public class Endereco {
+public class Endereco implements Serializable{
+
+	private static final long serialVersionUID = -6760847364964303770L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "endereco_id", nullable = false)
+	@Column(name = "endereco_id")
 	private Long id;
 
 	@Column(name = "rua", length = 128)

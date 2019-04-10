@@ -1,5 +1,6 @@
 package model.entidades;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,17 +16,19 @@ import javax.persistence.Table;
 
 @Entity(name = "Clinica")
 @Table(name = "clinica")
-public class Clinica {
+public class Clinica implements Serializable{
+
+	private static final long serialVersionUID = -6682936365279176191L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "clinica_id", nullable = false)
+	@Column(name = "clinica_id")
 	private Long id;
 
-	@Column(name = "clinica_cnpj", nullable = false, length = 32)
+	@Column(name = "clinica_cnpj", unique=true, nullable = false, length = 32)
 	private String cnpj;
 
-	@Column(name = "clinica_email", nullable = false, length = 64)
+	@Column(name = "clinica_email",unique=true, nullable = false, length = 64)
 	private String email;
 
 	@Column(name = "clinica_tel1", length = 32)
@@ -107,4 +110,35 @@ public class Clinica {
 		this.funcionarios = funcionarios;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cnpj == null) ? 0 : cnpj.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		Clinica other = (Clinica) obj;
+		if (cnpj == null) {
+			if (other.cnpj != null) {
+				return false;
+			}
+		} else if (!cnpj.equals(other.cnpj)) {
+			return false;
+		}
+		return true;
+	}
+
+	
 }

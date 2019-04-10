@@ -1,49 +1,58 @@
 package model;
 
 import model.dao.Dao;
-import model.dao.DaoImpl;
+import model.dao.PessoaDao;
 import model.entidades.Cliente;
+import model.entidades.Pessoa;
+import model.exceptions.ClinicaMedicaException;
 
 public class ClienteModel {
 	
-	Dao<Cliente> dao = new DaoImpl<Cliente>(Cliente.class);  
+	Dao<Pessoa> dao = new PessoaDao();  
 	
 	public void registrarCliente(Cliente obj) throws Exception{
 		
-		Cliente aux = (Cliente) dao.encontrar(obj.getId());
+		PessoaDao newDao = (PessoaDao) dao;
+		Cliente cli = (Cliente) newDao.encontrarPorCpf(obj.getCpf());
 		
-		if (obj != aux) {
+		if (
+			obj.getNome() != null && obj.getCpf() != null && obj.getRg() != null && obj.getIdade() > 0 &&
+			obj.getEmail() != null && obj.getSenha() != null && !(obj.equals(cli)) 
+			) {
 			dao.salvar(obj);
 		}else{
-			throw new Exception("Erro ao registrar cliente.");
+			throw new ClinicaMedicaException("Erro ao registrar cliente.");
 		}
 	}
 	
 	public void removerCliente(Cliente obj) throws Exception{
 		
-		Cliente aux = (Cliente) dao.encontrar(obj.getId());
+		PessoaDao newDao = (PessoaDao) dao;
+		Cliente aux = (Cliente) newDao.encontrarPorCpf(obj.getCpf());
 		
-		if (obj == aux) {
-			dao.deletar(obj);
+		if (obj.equals(aux)){
+			newDao.deletar(obj);
 		}else {
-			throw new Exception("Erro ao remover cliente.");
+			throw new ClinicaMedicaException("Erro ao remover cliente.");
 		}
 	}
 	
 	public void atualizarCliente(Cliente obj) throws Exception{
-		Cliente aux = (Cliente) dao.encontrar(obj.getId());
 		
-		if (obj == aux) {
-			dao.atualizar(obj);
+		PessoaDao newDao = (PessoaDao) dao;
+		Cliente aux = (Cliente) newDao.encontrarPorCpf(obj.getCpf());
+		
+		if (obj.equals(aux)) {
+			newDao.atualizar(obj);
 		}else {
-			throw new Exception("Erro ao atualizar cliente.");
+			throw new ClinicaMedicaException("Erro ao atualizar cliente.");
 		}
 	}
-	public void encontrarClientePorId(Long id) throws Exception {
+	public Cliente encontrarClientePorId(Long id) throws Exception {
 		if (id != null) {
-			dao.encontrar(id);
+			return (Cliente) dao.encontrar(Pessoa.class, id);
 		}else {
-			throw new Exception("Erro ao encontrar cliente.");
+			throw new ClinicaMedicaException("Erro ao encontrar cliente.");
 		}
 	}
 }

@@ -1,49 +1,59 @@
 package model;
 
 import model.dao.Dao;
-import model.dao.DaoImpl;
+import model.dao.PessoaDao;
 import model.entidades.Medico;
+import model.entidades.Pessoa;
+import model.exceptions.ClinicaMedicaException;
 
 public class MedicoModel {
-	Dao<Medico> dao = new DaoImpl<Medico>(Medico.class);  
+	Dao<Pessoa> dao = new PessoaDao();  
 	
 	public void registrarMedico(Medico obj) throws Exception{
 		
-		Medico aux = (Medico) dao.encontrar(obj.getId());
-		
-		if (obj != aux) {
+		PessoaDao newDao = (PessoaDao) dao;
+		Medico aux = (Medico) newDao.encontrarPorCpf(obj.getCpf());
+
+		if (
+			obj.getNome() != null && obj.getCpf() != null && obj.getRg() != null && 
+			obj.getIdade() > 0 && obj.getEmail() != null && obj.getSenha() != null && obj.getSalario() != null &&
+			obj.getCrm() != null && obj.getMeta() > 0 && obj.getClinica() != null && !(obj.equals(aux))
+			) {
 			dao.salvar(obj);
 		}else{
-			throw new Exception("Erro ao registrar medico.");
+			throw new ClinicaMedicaException("Erro ao registrar medico.");
 		}
 	}
 	
 	public void removerMedico(Medico obj) throws Exception{
 		
-		Medico aux = (Medico) dao.encontrar(obj.getId());
+		PessoaDao newDao = (PessoaDao) dao;
+		Medico aux = (Medico) newDao.encontrarPorCpf(obj.getCpf());
 		
-		if (obj == aux) {
+		if (obj.getCrm() == aux.getCrm()) {
 			dao.deletar(obj);
 		}else {
-			throw new Exception("Erro ao remover medico.");
+			throw new ClinicaMedicaException("Erro ao remover medico.");
 		}
 	}
 	
 	public void atualizarMedico(Medico obj) throws Exception{
 		
-		Medico aux = (Medico) dao.encontrar(obj.getId());
+		PessoaDao newDao = (PessoaDao) dao;
+		Medico aux = (Medico) newDao.encontrarPorCpf(obj.getCpf());
 		
-		if (obj == aux) {
+		if (obj.getCrm() == aux.getCrm()) {
 			dao.atualizar(obj);
 		}else {
-			throw new Exception("Erro ao atualizar medico.");
+			throw new ClinicaMedicaException("Erro ao atualizar medico.");
 		}
 	}
-	public void encontrarMedicoPorId(Long id) throws Exception {
+	public Medico encontrarMedicoPorId(Long id) throws Exception {
 		if (id != null) {
-			dao.encontrar(id);
+			Medico med = (Medico) dao.encontrar(Pessoa.class, id);
+			return med;
 		}else {
-			throw new Exception("Erro ao encontrar medico.");
+			throw new ClinicaMedicaException("Erro ao encontrar medico.");
 		}
 	}
 }

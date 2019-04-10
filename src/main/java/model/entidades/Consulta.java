@@ -1,5 +1,6 @@
 package model.entidades;
 
+import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
 import java.util.List;
@@ -20,11 +21,13 @@ import javax.persistence.TemporalType;
 
 @Entity(name = "Consulta")
 @Table(name = "consulta")
-public class Consulta {
+public class Consulta implements Serializable{
+
+	private static final long serialVersionUID = 3479343146492919231L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "consulta_id", nullable = false)
+	@Column(name = "consulta_id")
 	private Long id;
 
 	@Column(name = "consulta_descricao", length=128)
@@ -105,4 +108,5 @@ public class Consulta {
 	public void setPagamento(List<Pagamento> pagamento) {
 		this.pagamento = pagamento;
 	}
+	
 }

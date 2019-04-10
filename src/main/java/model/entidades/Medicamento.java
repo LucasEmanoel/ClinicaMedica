@@ -1,5 +1,7 @@
 package model.entidades;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,11 +14,13 @@ import javax.persistence.Table;
 
 @Entity(name = "Medicamento")
 @Table(name = "medicamento")
-public class Medicamento {
+public class Medicamento implements Serializable{
+
+	private static final long serialVersionUID = 353178706384886254L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "medicamento_id", nullable = false)
+	@Column(name = "medicamento_id")
 	private Long id;
 
 	@Column(name = "medicamento_descricao", nullable = false)
@@ -61,5 +65,12 @@ public class Medicamento {
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}
+	public Prontuario getProntuario() {
+		return prontuario;
+	}
+	public void setProntuario(Prontuario prontuario) {
+		this.prontuario = prontuario;
+	}
+	
 
 }

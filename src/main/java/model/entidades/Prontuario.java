@@ -1,5 +1,6 @@
 package model.entidades;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
@@ -18,11 +19,13 @@ import javax.persistence.Table;
 
 @Entity(name = "Prontuario")
 @Table(name = "prontuario")
-public class Prontuario {
+public class Prontuario implements Serializable{
+
+	private static final long serialVersionUID = -4638390367196707366L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "prontuario_id", nullable = false)
+	@Column(name = "prontuario_id")
 	private Long id;
 
 	@Column(name = "prontuario_diag", length = 128, nullable = false)
@@ -78,6 +81,22 @@ public class Prontuario {
 
 	public void setDiagnostico(String diagnostico) {
 		this.diagnostico = diagnostico;
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+	public List<Medicamento> getMedicamento() {
+		return medicamento;
+	}
+
+	public void setMedicamento(List<Medicamento> medicamento) {
+		this.medicamento = medicamento;
 	}
 
 	public Encaminhamento getEncaminhamento() {

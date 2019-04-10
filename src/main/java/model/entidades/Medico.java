@@ -1,5 +1,6 @@
 package model.entidades;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -7,12 +8,12 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 @Entity(name = "Medico")
-@Table(name = "medico")
 @DiscriminatorValue(value = "MEDICO")
-public class Medico extends Funcionario {
+public class Medico extends Funcionario implements Serializable{
+
+	private static final long serialVersionUID = 7613514159588447175L;
 
 	@Column(name = "medico_crm", unique = true)
 	private Long crm;
@@ -23,21 +24,20 @@ public class Medico extends Funcionario {
 	@OneToMany(mappedBy = "medico", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Especialidade> especialidades;
 
-	@OneToMany(mappedBy = "medico", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "medico")
 	private List<Consulta> consultas;
 
-
-	@OneToMany(mappedBy = "medico", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "medico", orphanRemoval = true)
 	private List<Prontuario> prontuarios;
 
-	public Medico(String nome, String cpf, String rg, Integer idade, String telefone, Endereco endereco, String login,
+	public Medico(String nome, String cpf, String rg, Integer idade, String telefone, Endereco endereco, String email,
 			Double salario, String senha, Clinica clinica, Long crm, Integer meta) {
 		this.setNome(nome);
 		this.setCpf(cpf);
 		this.setRg(rg);
 		this.setIdade(idade);
 		this.setEndereco(endereco);
-		this.setLogin(login);
+		this.setEmail(email);
 		this.setSenha(senha);
 		this.setSalario(salario);
 		this.setClinica(clinica);

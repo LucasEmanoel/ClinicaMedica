@@ -6,12 +6,6 @@ import model.util.JPAManager;
 
 public class DaoImpl<T> implements Dao<T> {
 
-	private Class<T> persisted;
-	
-	public DaoImpl(Class<T> persistedClass) {
-	    this.persisted = persistedClass;
-	}
-	
 	public void salvar(T obj) {
 		EntityManager manager = JPAManager.getInstance().getEntityManager();
 		
@@ -58,12 +52,12 @@ public class DaoImpl<T> implements Dao<T> {
 		}
 	}
 
-	public T encontrar(Long id) {
+	public T encontrar(Class<T> clazz, Long id) {
 		EntityManager manager = JPAManager.getInstance().getEntityManager();
 		
 		try  {
-			
-			return manager.find(persisted, id);
+		
+			return manager.find(clazz, id);
 			
 		} catch (Exception e) {
 			manager.getTransaction().rollback();

@@ -1,20 +1,23 @@
 package model.entidades;
 
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 @Entity(name = "Funcionario")
-@Table(name = "funcionario")
 @DiscriminatorValue(value = "FUNCIONARIO")
-public abstract class Funcionario extends Pessoa {
-		
-	@Column(name = "funcionario_login", unique = true, length = 64)
-	private String login;
+public abstract class Funcionario extends Pessoa implements Serializable{
+
+	private static final long serialVersionUID = -731396741330887156L;
+
+	@Column(name = "funcionario_email", unique = true, length = 64)
+	private String email;
 
 	@Column(name = "funcionario_senha", unique = true, length = 64)
 	private String senha;
@@ -22,16 +25,16 @@ public abstract class Funcionario extends Pessoa {
 	@Column(name = "funcionario_salario")
 	private Double salario;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "clinica_id")
 	private Clinica clinica;
 
-	public String getLogin() {
-		return login;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getSenha() {

@@ -1,49 +1,54 @@
 package model;
 
+import model.dao.ClinicaDao;
 import model.dao.Dao;
-import model.dao.DaoImpl;
 import model.entidades.Clinica;
+import model.exceptions.ClinicaMedicaException;
 
 public class ClinicaModel {
-	Dao<Clinica> dao = new DaoImpl<Clinica>(Clinica.class);  
+	Dao<Clinica> dao = new ClinicaDao();
 	
 	public void registrarClinica(Clinica obj) throws Exception{
 		
-		Clinica aux = (Clinica) dao.encontrar(obj.getId());
+		ClinicaDao newDao = (ClinicaDao) dao;
+		Clinica aux = (Clinica) newDao.encontrarPorCnpj(obj.getCnpj());
 		
-		if (obj != aux) {
-			dao.salvar(obj);
+		if (obj.getCnpj() != null && obj.getEmail() != null &&
+			obj.getEndereco() != null && !(obj.equals(aux)) )  {
+			newDao.salvar(obj);
 		}else{
-			throw new Exception("Erro ao cadastrar clinica.");
+			throw new ClinicaMedicaException("Erro ao cadastrar clinica.");
 		}
 	}
 	
 	public void removerClinica(Clinica obj) throws Exception{
 		
-		Clinica aux = (Clinica) dao.encontrar(obj.getId());
+		ClinicaDao newDao = (ClinicaDao) dao;
+		Clinica aux = (Clinica) newDao.encontrarPorCnpj(obj.getCnpj());
 		
-		if (obj == aux) {
-			dao.deletar(obj);
+		if (obj.equals(aux)) {
+			newDao.deletar(obj);
 		}else {
-			throw new Exception("Erro ao remover clinica.");
+			throw new ClinicaMedicaException("Erro ao remover clinica.");
 		}
 	}
 	
 	public void atualizarClinica(Clinica obj) throws Exception{
 		
-		Clinica aux = (Clinica) dao.encontrar(obj.getId());
+		ClinicaDao newDao = (ClinicaDao) dao;
+		Clinica aux = (Clinica) newDao.encontrarPorCnpj(obj.getCnpj());
 		
-		if (obj == aux) {
-			dao.atualizar(obj);
+		if (obj.equals(aux)) {
+			newDao.atualizar(obj);
 		}else {
-			throw new Exception("Erro ao atualizar clinica.");
+			throw new ClinicaMedicaException("Erro ao atualizar clinica.");
 		}
 	}
-	public void encontrarClinicaPorId(Long id) throws Exception {
+	public Clinica encontrarClinicaPorId(Long id) throws Exception {
 		if (id != null) {
-			dao.encontrar(id);
+			return dao.encontrar(Clinica.class, id);
 		}else {
-			throw new Exception("Erro ao encontrar clinica.");
+			throw new ClinicaMedicaException("Erro ao encontrar clinica.");
 		}
 	}
 }

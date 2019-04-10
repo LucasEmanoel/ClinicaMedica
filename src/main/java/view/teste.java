@@ -28,34 +28,29 @@ import model.entidades.Secretaria;
 public class teste {
 
 	public static void main(String[] args) throws Exception {
-		Endereco endeMedico = new Endereco("rua dos rico", "centro", "251515");
-		Endereco endeClinica = new Endereco("tatu", "dsads", "5151");
 		Endereco endeCliente = new Endereco("sei la", "centro", "251515");
-		Endereco endeSecretaria = new Endereco("subSolo", "centro", "251515");
+		Cliente c = new Cliente("Lucas", "dsafasg", "15416faf", 15, "42153", endeCliente, "aldsahujas", "fkjashsajfk");		
+		testeCliente(c);
 		
-		Clinica clinica = new Clinica("WEb@gmail", "dsasd", "ddsdasdas", endeClinica);
-		Medico medico = new Medico("ze do cachao", "dsadsafd", "dfagsd", 89, "dsadsada", endeMedico, "d", 50000.0, "morte",clinica, 841815L, 1000);
-		Secretaria secretaria = new Secretaria("joana", "dasfas", "asfaf", 30, "5561", endeSecretaria, "maria", "12515", 5000.0, 15661L, clinica, "faz tudo");
-		Cliente cliente = new Cliente("Lucas", "1575", "dsddafas", 19, "41515", endeCliente, "Lucas@gmail", "lucaz","12345");
+		Clinica clinica = new Clinica("ClinicaBoa@gmail", "215635.020", "1575-48148", endeCliente);
 		
-		Ambulatorio ambu = new Ambulatorio(156, 3);
-		ambu.setCliente(cliente);
-		ambu.setMedico(medico);
-		ambu.setSecretaria(secretaria);
-
-		//testeClinica(clinica);
-		
-		testeSecretaria(secretaria);
-		testeCliente(cliente);
+		Medico medico = new Medico("Dr. joao", "261361", "2651", 50, "15153-151", endeCliente, "clinicaJoao@", 30000.0, "nothing", clinica, 1575L, 10);
 		testeMedico(medico);
 		
+		Secretaria secretaria = new Secretaria("maria", "1553", "153843",25 , "15748-48", endeCliente, "maria@", "1597", 5000.0, 51651L, clinica, "faaztudo");
+		testeSecretaria(secretaria);
+		
+		Ambulatorio ambu = new Ambulatorio(10, 2);
+		ambu.setCliente(c);
+		ambu.setMedico(medico);
+		ambu.setSecretaria(secretaria);
+		
 		testeAmbulatorio(ambu);
-
 	}
 
 	public static void testeEndereco(Endereco endereco) {
 
-		DaoImpl<Endereco> DaoEn = new DaoImpl<Endereco>(Endereco.class);
+		DaoImpl<Endereco> DaoEn = new DaoImpl<Endereco>();
 		DaoEn.salvar(endereco);
 
 	}

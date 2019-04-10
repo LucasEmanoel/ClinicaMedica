@@ -1,5 +1,7 @@
 package model.entidades;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -17,11 +19,13 @@ import javax.persistence.Table;
 @Table(name = "pessoa")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "TIPO_PESSOA")
-public abstract class Pessoa {
+public abstract class Pessoa implements Serializable{
+
+	private static final long serialVersionUID = -8300946906751557719L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "pessoa_id", nullable = false)
+	@Column(name = "pessoa_id")
 	private Long id;
 
 	@Column(name = "pessoa_nome", nullable = false, length = 64)
@@ -109,4 +113,35 @@ public abstract class Pessoa {
 		this.endereco = endereco;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		Pessoa other = (Pessoa) obj;
+		if (cpf == null) {
+			if (other.cpf != null) {
+				return false;
+			}
+		} else if (!cpf.equals(other.cpf)) {
+			return false;
+		}
+		return true;
+	}
+
+	
 }

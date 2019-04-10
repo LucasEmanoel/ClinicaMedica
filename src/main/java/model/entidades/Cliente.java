@@ -1,5 +1,6 @@
 package model.entidades;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -7,18 +8,15 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 @Entity(name = "Cliente")
-@Table(name = "cliente")
 @DiscriminatorValue(value = "CLIENTE")
-public class Cliente extends Pessoa {
+public class Cliente extends Pessoa implements Serializable{
+
+	private static final long serialVersionUID = -9113760811424501108L;
 
 	@Column(name = "cliente_email", unique = true)
 	private String email;
-
-	@Column(name = "cliente_login", unique = true)
-	private String login;
 
 	@Column(name = "cliente_senha", unique = true)
 	private String senha;
@@ -29,7 +27,7 @@ public class Cliente extends Pessoa {
 	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Prontuario> prontuarios;
 
-	public Cliente(String nome, String cpf, String rg, Integer idade, String telefone, Endereco endereco, String email, String login, String senha) {
+	public Cliente(String nome, String cpf, String rg, Integer idade, String telefone, Endereco endereco, String email, String senha) {
 		this.setNome(nome);
 		this.setCpf(cpf);
 		this.setRg(rg);
@@ -37,7 +35,6 @@ public class Cliente extends Pessoa {
 		this.setTelefone1(telefone);
 		this.setEndereco(endereco);
 		this.email = email;
-		this.login = login;
 		this.senha = senha;
 	}
 	public Cliente() {
@@ -50,14 +47,6 @@ public class Cliente extends Pessoa {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
 	}
 
 	public String getSenha() {
@@ -83,4 +72,6 @@ public class Cliente extends Pessoa {
 	public void setProntuarios(List<Prontuario> prontuarios) {
 		this.prontuarios = prontuarios;
 	}
+	
+	
 }

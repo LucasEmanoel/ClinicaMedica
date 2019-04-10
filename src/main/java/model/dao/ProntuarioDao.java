@@ -4,27 +4,25 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import model.entidades.Prontuario;
 import model.util.JPAManager;
 
 public class ProntuarioDao extends DaoImpl<Prontuario> implements ProntuarioDaoInterface{
 
-	public ProntuarioDao() {
-		super(Prontuario.class);
-	}
 
 	public List<Prontuario> findProntuarioPorIdCliente(Long id) {
 		EntityManager manager = JPAManager.getInstance().getEntityManager();
 		
+		String consulta = "SELECT P FROM Prontuario AS P WHERE P.cliente_id = :id";
+		
+		TypedQuery<Prontuario> query = 
+				manager.createQuery(consulta, Prontuario.class);
+		query.setParameter("id", id);
 		try {
 			
-			Query query = manager.createQuery("SELECT * FROM Prontuario AS P WHERE P.cliente_id = :id")
-			.setParameter("id", id);
-			
-			List<Prontuario> resultList = (List<Prontuario>) query.getResultList();
-			return resultList;
+			return query.getResultList();
 			
 		} catch (Exception e) {
 			return null;
@@ -36,13 +34,16 @@ public class ProntuarioDao extends DaoImpl<Prontuario> implements ProntuarioDaoI
 	
 	public List<Prontuario> findProntuarioPorData(Date data) {
 		EntityManager manager = JPAManager.getInstance().getEntityManager();
+	
+		String consulta = "SELECT * FROM Prontuario AS P WHERE P.prontuario_data = :data";
+		
+		TypedQuery<Prontuario> query = 
+				manager.createQuery(consulta, Prontuario.class);
+		query.setParameter("data", data);
 		
 		try {
 			
-			Query query = manager.createQuery("SELECT * FROM Prontuario AS P WHERE P.prontuario_data = :data")
-			.setParameter("data", data);
-			List<Prontuario> resultList = (List<Prontuario>) query.getResultList();
-			return resultList;
+			return query.getResultList();
 			
 		} catch (Exception e) {
 			return null;

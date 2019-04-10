@@ -1,5 +1,7 @@
 package model.entidades;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,17 +14,19 @@ import javax.persistence.Table;
 
 @Entity(name = "Especialidade")
 @Table(name = "especialidade")
-public class Especialidade {
+public class Especialidade implements Serializable{
+
+	private static final long serialVersionUID = 8851939078743070463L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "especialidade_id", nullable = false)
+	@Column(name = "especialidade_id")
 	private Long id;
 
 	@Column(name = "especialidade_especializacao", length = 128, nullable = false)
 	private String especializacao;
 
-	@Column(name = "especialidade_rqe", nullable = false)
+	@Column(name = "especialidade_rqe", nullable = false, unique=true)
 	private Long rqe;
 
 	@ManyToOne(fetch = FetchType.EAGER)

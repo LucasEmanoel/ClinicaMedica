@@ -1,5 +1,7 @@
 package model.entidades;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,11 +14,13 @@ import javax.persistence.Table;
 
 @Entity(name = "Pagamento")
 @Table(name = "pagamento")
-public class Pagamento {
+public class Pagamento implements Serializable{
+
+	private static final long serialVersionUID = -1640816264192336507L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "pagamento_id", nullable = false)
+	@Column(name = "pagamento_id")
 	private Long id;
 
 	@Column(name = "pagamento_valor", nullable = false)
@@ -48,6 +52,12 @@ public class Pagamento {
 
 	public void setValor(Double valor) {
 		this.valor = valor;
+	}
+	public Consulta getConsulta() {
+		return consulta;
+	}
+	public void setConsulta(Consulta consulta) {
+		this.consulta = consulta;
 	}
 
 }
