@@ -1,19 +1,20 @@
 package model.entidades;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity(name = "Ambulatorio")
 @Table(name = "ambulatorio")
-
 public class Ambulatorio implements Serializable{
 
 	private static final long serialVersionUID = -8625558677877133470L;
@@ -28,15 +29,9 @@ public class Ambulatorio implements Serializable{
 
 	@Column(name = "ambulatorio_andar", nullable = false)
 	private Integer andar;
-
-	@OneToOne(fetch = FetchType.EAGER)
-	private Secretaria secretaria;
-
-	@OneToOne(fetch = FetchType.EAGER)
-	private Medico medico;
-
-	@OneToOne(fetch = FetchType.EAGER)
-	private Cliente cliente;
+	
+	@OneToMany(mappedBy="ambulatorio", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	private List<Consulta> consultas;
 
 	public Ambulatorio(Integer numero, Integer andar) {
 		super();
@@ -72,28 +67,12 @@ public class Ambulatorio implements Serializable{
 		this.andar = andar;
 	}
 
-	public Secretaria getSecretaria() {
-		return secretaria;
+	public List<Consulta> getConsultas() {
+		return consultas;
 	}
 
-	public void setSecretaria(Secretaria secretaria) {
-		this.secretaria = secretaria;
-	}
-
-	public Medico getMedico() {
-		return medico;
-	}
-
-	public void setMedico(Medico medico) {
-		this.medico = medico;
-	}
-
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setConsultas(List<Consulta> consultas) {
+		this.consultas = consultas;
 	}
 
 	@Override

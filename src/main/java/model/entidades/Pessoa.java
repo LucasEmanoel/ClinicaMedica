@@ -39,7 +39,13 @@ public abstract class Pessoa implements Serializable{
 
 	@Column(name = "pessoa_idade", nullable = false)
 	private Integer idade;
+	
+	@Column(name = "pessoa_email", unique = true)
+	private String email;
 
+	@Column(name = "pessoa_senha", unique = true)
+	private String senha;
+	
 	@Column(name = "pessoa_tel1", length = 32)
 	private String telefone1;
 
@@ -83,6 +89,26 @@ public abstract class Pessoa implements Serializable{
 
 	public int getIdade() {
 		return idade;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public void setIdade(Integer idade) {
+		this.idade = idade;
 	}
 
 	public void setIdade(int idade) {

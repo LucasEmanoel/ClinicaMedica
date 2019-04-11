@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -14,12 +13,6 @@ import javax.persistence.OneToMany;
 public class Cliente extends Pessoa implements Serializable{
 
 	private static final long serialVersionUID = -9113760811424501108L;
-
-	@Column(name = "cliente_email", unique = true)
-	private String email;
-
-	@Column(name = "cliente_senha", unique = true)
-	private String senha;
 
 	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
 	private List<Consulta> consultas;
@@ -34,27 +27,11 @@ public class Cliente extends Pessoa implements Serializable{
 		this.setIdade(idade);
 		this.setTelefone1(telefone);
 		this.setEndereco(endereco);
-		this.email = email;
-		this.senha = senha;
+		this.setEmail(email);
+		this.setSenha(senha);
 	}
 	public Cliente() {
 		
-	}
-	
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
 	}
 
 	public List<Consulta> getConsultas() {

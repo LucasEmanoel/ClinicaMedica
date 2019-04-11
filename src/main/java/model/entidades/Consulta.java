@@ -9,9 +9,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -24,11 +21,6 @@ import javax.persistence.TemporalType;
 public class Consulta implements Serializable{
 
 	private static final long serialVersionUID = 3479343146492919231L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "consulta_id")
-	private Long id;
 
 	@Column(name = "consulta_descricao", length=128)
 	private String descricao;
@@ -50,6 +42,10 @@ public class Consulta implements Serializable{
 
 	@OneToMany(mappedBy = "consulta", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Pagamento> pagamento;
+	
+	@ManyToOne
+	@JoinColumn(name="ambulatorio_id")
+	private Ambulatorio ambulatorio;
 
 	public Consulta(String descricao, Date data, Time horario) {
 		super();
@@ -59,14 +55,6 @@ public class Consulta implements Serializable{
 	}
 	public Consulta() {
 		
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public Date getData() {

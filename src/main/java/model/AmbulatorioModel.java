@@ -14,8 +14,7 @@ public class AmbulatorioModel {
 		AmbulatorioDao newDao = (AmbulatorioDao) dao;
 		Ambulatorio aux = (Ambulatorio) newDao.encontrarByNumero(obj.getNumero());
 		
-		if (
-			obj.getCliente() != null && obj.getMedico() != null && obj.getSecretaria() != null &&	
+		if (	
 			obj.getNumero() != null && obj.getAndar() != null && !(obj.equals(aux))
 			) {
 			newDao.salvar(obj);
