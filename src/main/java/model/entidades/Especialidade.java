@@ -1,15 +1,15 @@
 package model.entidades;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity(name = "Especialidade")
@@ -29,9 +29,11 @@ public class Especialidade implements Serializable{
 	@Column(name = "especialidade_rqe", nullable = false, unique=true)
 	private Long rqe;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "medico_id")
-	private Medico medico;
+	@ManyToMany(
+			cascade= {CascadeType.PERSIST, CascadeType.MERGE},
+			mappedBy="especialidades",
+			targetEntity=Medico.class)
+	private List<Medico> medicos;
 
 	public Especialidade(String especializacao, Long rqe) {
 		this.especializacao = especializacao;
@@ -64,12 +66,12 @@ public class Especialidade implements Serializable{
 	public void setRqe(Long rqe) {
 		this.rqe = rqe;
 	}
-
-	public Medico getMedico() {
-		return medico;
+	public List<Medico> getMedico() {
+		return medicos;
+	}
+	public void setMedico(List<Medico> medicos) {
+		this.medicos = medicos;
 	}
 
-	public void setMedico(Medico medico) {
-		this.medico = medico;
-	}
+	
 }

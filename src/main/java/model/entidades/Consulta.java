@@ -3,15 +3,15 @@ package model.entidades;
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,6 +22,24 @@ public class Consulta implements Serializable{
 
 	private static final long serialVersionUID = 3479343146492919231L;
 
+	@EmbeddedId
+	private ConsultaPK id;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "cliente_id")
+	private Cliente cliente;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "medico_id")
+	private Medico medico;
+
+	@ManyToOne
+	@JoinColumn(name="ambulatorio_id")
+	private Ambulatorio ambulatorio;
+	
+	@OneToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	private Pagamento pagamento;
+	
 	@Column(name = "consulta_descricao", length=128)
 	private String descricao;
 	
@@ -31,21 +49,6 @@ public class Consulta implements Serializable{
 
 	@Column(name = "consulta_horario", nullable = false)
 	private Time horario;
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "cliente_id", nullable = false)
-	private Cliente cliente;
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "medico_id", nullable = false)
-	private Medico medico;
-
-	@OneToMany(mappedBy = "consulta", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Pagamento> pagamento;
-	
-	@ManyToOne
-	@JoinColumn(name="ambulatorio_id")
-	private Ambulatorio ambulatorio;
 
 	public Consulta(String descricao, Date data, Time horario) {
 		super();
@@ -89,11 +92,11 @@ public class Consulta implements Serializable{
 		this.medico = medico;
 	}
 
-	public List<Pagamento> getPagamento() {
+	public Pagamento getPagamento() {
 		return pagamento;
 	}
 
-	public void setPagamento(List<Pagamento> pagamento) {
+	public void setPagamento(Pagamento pagamento) {
 		this.pagamento = pagamento;
 	}
 	

@@ -8,9 +8,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -19,40 +18,40 @@ import javax.persistence.Table;
 
 @Entity(name = "Prontuario")
 @Table(name = "prontuario")
+@IdClass(ProntuarioPK.class)
 public class Prontuario implements Serializable{
 
 	private static final long serialVersionUID = -4638390367196707366L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "prontuario_id")
-	private Long id;
 
 	@Column(name = "prontuario_diag", length = 128, nullable = false)
 	private String diagnostico;
 
 	@Column(name = "prontuario_data", nullable = false)
 	private Date data;
-
-	@OneToMany(mappedBy = "prontuario", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Medicamento> medicamento;
-
+	
+//	@Id
+//	@OneToMany(mappedBy = "prontuario", cascade = CascadeType.ALL, orphanRemoval = true)
+//	private List<Medicamento> medicamento;
+	
+	@Id
 	@OneToOne(fetch = FetchType.EAGER)
 	private Encaminhamento encaminhamento;
 
+	@Id
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "medico_id", nullable = false)
+	@JoinColumn(name = "medico_id")
 	private Medico medico;
 
+	@Id
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "cliente_id", nullable = false)
+	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 
 	public Prontuario(Medico medico, Cliente cliente, String diagnostico, Medicamento medicamento) {
 		this.medico = medico;
 		this.cliente = cliente;
 		this.diagnostico = diagnostico;
-		this.medicamento.add(medicamento);
+//		this.medicamento.add(medicamento);
 	}
 
 	public Prontuario(Medico medico, Cliente cliente, String diagnostico, Medicamento medicamento,
@@ -60,19 +59,11 @@ public class Prontuario implements Serializable{
 		this.medico = medico;
 		this.cliente = cliente;
 		this.diagnostico = diagnostico;
-		this.medicamento.add(medicamento);
+//		this.medicamento.add(medicamento);
 		this.encaminhamento = encaminhamento;
 	}
 	public Prontuario() {
 		
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getDiagnostico() {
@@ -91,13 +82,13 @@ public class Prontuario implements Serializable{
 		this.data = data;
 	}
 
-	public List<Medicamento> getMedicamento() {
-		return medicamento;
-	}
-
-	public void setMedicamento(List<Medicamento> medicamento) {
-		this.medicamento = medicamento;
-	}
+//	public List<Medicamento> getMedicamento() {
+//		return medicamento;
+//	}
+//
+//	public void setMedicamento(List<Medicamento> medicamento) {
+//		this.medicamento = medicamento;
+//	}
 
 	public Encaminhamento getEncaminhamento() {
 		return encaminhamento;

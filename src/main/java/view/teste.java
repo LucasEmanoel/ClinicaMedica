@@ -32,20 +32,14 @@ public class teste {
 		Cliente c = new Cliente("Lucas", "dsafasg", "15416faf", 15, "42153", endeCliente, "aldsahujas", "fkjashsajfk");		
 		testeCliente(c);
 		
-		Clinica clinica = new Clinica("ClinicaBoa@gmail", "215635.020", "1575-48148", endeCliente);
-		
-		Medico medico = new Medico("Dr. joao", "261361", "2651", 50, "15153-151", endeCliente, "clinicaJoao@", 30000.0, "nothing", clinica, 1575L, 10);
-		testeMedico(medico);
-		
-		Secretaria secretaria = new Secretaria("maria", "1553", "153843",25 , "15748-48", endeCliente, "maria@", "1597", 5000.0, 51651L, clinica, "faaztudo");
-		testeSecretaria(secretaria);
-		
-		Ambulatorio ambu = new Ambulatorio(10, 2);
-		ambu.setCliente(c);
-		ambu.setMedico(medico);
-		ambu.setSecretaria(secretaria);
-		
-		testeAmbulatorio(ambu);
+//		Clinica clinica = new Clinica("ClinicaBoa@gmail", "215635.020", "1575-48148", endeCliente);
+//		
+//		Medico medico = new Medico("Dr. joao", "261361", "2651", 50, "15153-151", endeCliente, "clinicaJoao@", 30000.0, "nothing", clinica, 1575L, 10);
+//		testeMedico(medico);
+//		
+//		Secretaria secretaria = new Secretaria("maria", "1553", "153843",25 , "15748-48", endeCliente, "maria@", "1597", 5000.0, 51651L, clinica, "faaztudo");
+//		testeSecretaria(secretaria);
+//		
 	}
 
 	public static void testeEndereco(Endereco endereco) {

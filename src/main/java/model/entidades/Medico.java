@@ -7,6 +7,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity(name = "Medico")
@@ -21,7 +24,11 @@ public class Medico extends Funcionario implements Serializable{
 	@Column(name = "medico_meta_diaria")
 	private Integer meta;
 
-	@OneToMany(mappedBy = "medico", cascade = CascadeType.ALL, orphanRemoval = true)
+	@ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE}, targetEntity=Especialidade.class)
+	@JoinTable(
+			name="medico_especialidade",
+			joinColumns=@JoinColumn(name="pessoa_id", referencedColumnName="pessoa_id"),
+			inverseJoinColumns=@JoinColumn(name="especialidade_id", referencedColumnName="especialidade_id"))
 	private List<Especialidade> especialidades;
 
 	@OneToMany(mappedBy = "medico")

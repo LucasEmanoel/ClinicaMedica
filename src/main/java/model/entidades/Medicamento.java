@@ -29,9 +29,9 @@ public class Medicamento implements Serializable{
 	@Column(name = "medicamento_quantidade", nullable = false)
 	private Integer quantidade;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "prontuario_id", nullable = false)
-	private Prontuario prontuario;
+//	@ManyToOne(fetch = FetchType.EAGER)
+//	@JoinColumn(name = "prontuario_id", nullable = false)
+//	private Prontuario prontuario;
 
 	public Medicamento(String descricao, Integer quantidade) {
 		super();
@@ -65,12 +65,12 @@ public class Medicamento implements Serializable{
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}
-	public Prontuario getProntuario() {
-		return prontuario;
-	}
-	public void setProntuario(Prontuario prontuario) {
-		this.prontuario = prontuario;
-	}
+//	public Prontuario getProntuario() {
+//		return prontuario;
+//	}
+//	public void setProntuario(Prontuario prontuario) {
+//		this.prontuario = prontuario;
+//	}
 	
 
 }
