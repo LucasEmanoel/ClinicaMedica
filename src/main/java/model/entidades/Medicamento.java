@@ -1,20 +1,20 @@
 package model.entidades;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity(name = "Medicamento")
 @Table(name = "medicamento")
-public class Medicamento implements Serializable{
+public class Medicamento implements Serializable {
 
 	private static final long serialVersionUID = 353178706384886254L;
 
@@ -23,23 +23,27 @@ public class Medicamento implements Serializable{
 	@Column(name = "medicamento_id")
 	private Long id;
 
+	@Column(name = "medicamento_cod", nullable = false, unique = true)
+	private Long cod;
+
 	@Column(name = "medicamento_descricao", nullable = false)
 	private String descricao;
 
-	@Column(name = "medicamento_quantidade", nullable = false)
+	@Column(name = "medicamento_quantidade")
 	private Integer quantidade;
 
-//	@ManyToOne(fetch = FetchType.EAGER)
-//	@JoinColumn(name = "prontuario_id", nullable = false)
-//	private Prontuario prontuario;
+	@ManyToMany(cascade = { CascadeType.PERSIST,
+			CascadeType.MERGE }, mappedBy = "medicamentos", targetEntity = Consulta.class)
+	private List<Consulta> prontuarios;
 
-	public Medicamento(String descricao, Integer quantidade) {
+	public Medicamento(Long cod, String descricao) {
 		super();
+		this.cod = cod;
 		this.descricao = descricao;
-		this.quantidade = quantidade;
 	}
+
 	public Medicamento() {
-		
+
 	}
 
 	public Long getId() {
@@ -48,6 +52,22 @@ public class Medicamento implements Serializable{
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Long getCode() {
+		return cod;
+	}
+
+	public void setCode(Long cod) {
+		this.cod = cod;
+	}
+
+	public List<Consulta> getProntuarios() {
+		return prontuarios;
+	}
+
+	public void setProntuarios(List<Consulta> prontuarios) {
+		this.prontuarios = prontuarios;
 	}
 
 	public String getDescricao() {
@@ -65,12 +85,30 @@ public class Medicamento implements Serializable{
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}
-//	public Prontuario getProntuario() {
-//		return prontuario;
-//	}
-//	public void setProntuario(Prontuario prontuario) {
-//		this.prontuario = prontuario;
-//	}
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cod == null) ? 0 : cod.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Medicamento other = (Medicamento) obj;
+		if (cod == null) {
+			if (other.cod != null)
+				return false;
+		} else if (!cod.equals(other.cod))
+			return false;
+		return true;
+	}
 
 }

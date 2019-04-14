@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity(name = "Clinica")
 @Table(name = "clinica")
-public class Clinica implements Serializable{
+public class Clinica implements Serializable {
 
 	private static final long serialVersionUID = -6682936365279176191L;
 
@@ -25,11 +25,14 @@ public class Clinica implements Serializable{
 	@Column(name = "clinica_id")
 	private Long id;
 
-	@Column(name = "clinica_cnpj", unique=true, nullable = false, length = 32)
+	@Column(name = "clinica_cnpj", unique = true, nullable = false, length = 32)
 	private String cnpj;
 
-	@Column(name = "clinica_email",unique=true, nullable = false, length = 64)
+	@Column(name = "clinica_email", unique = true, nullable = false, length = 64)
 	private String email;
+
+	@Column(name = "clinica_senha", nullable = false, length = 64)
+	private String senha;
 
 	@Column(name = "clinica_tel1", length = 32)
 	private String telefone1;
@@ -43,8 +46,9 @@ public class Clinica implements Serializable{
 	@OneToMany(mappedBy = "clinica", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Funcionario> funcionarios;
 
-	public Clinica(String email, String cnpj, String telefone, Endereco endereco) {
+	public Clinica(String email,String senha,  String cnpj, String telefone, Endereco endereco) {
 		this.email = email;
+		this.senha = senha;
 		this.cnpj = cnpj;
 		this.telefone1 = telefone;
 		this.endereco = endereco;
@@ -76,6 +80,14 @@ public class Clinica implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public String getTelefone1() {
@@ -115,30 +127,30 @@ public class Clinica implements Serializable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((cnpj == null) ? 0 : cnpj.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
+		if (this == obj)
 			return true;
-		}
-		if (obj == null) {
+		if (obj == null)
 			return false;
-		}
-		if (getClass() != obj.getClass()) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
 		Clinica other = (Clinica) obj;
 		if (cnpj == null) {
-			if (other.cnpj != null) {
+			if (other.cnpj != null)
 				return false;
-			}
-		} else if (!cnpj.equals(other.cnpj)) {
+		} else if (!cnpj.equals(other.cnpj))
 			return false;
-		}
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
 		return true;
 	}
 
-	
 }

@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity(name = "Endereco")
 @Table(name = "endereco")
-public class Endereco implements Serializable{
+public class Endereco implements Serializable {
 
 	private static final long serialVersionUID = -6760847364964303770L;
 
@@ -35,8 +35,9 @@ public class Endereco implements Serializable{
 		this.bairro = bairro;
 		this.cep = cep;
 	}
+
 	public Endereco() {
-		
+
 	}
 
 	public Long getId() {

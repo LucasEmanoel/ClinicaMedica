@@ -12,14 +12,14 @@ import javax.persistence.ManyToOne;
 
 @Entity(name = "Funcionario")
 @DiscriminatorValue(value = "FUNCIONARIO")
-public abstract class Funcionario extends Pessoa implements Serializable{
+public abstract class Funcionario extends Pessoa implements Serializable {
 
 	private static final long serialVersionUID = -731396741330887156L;
 
 	@Column(name = "funcionario_salario")
 	private Double salario;
 
-	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "clinica_id")
 	private Clinica clinica;
 

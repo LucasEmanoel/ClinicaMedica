@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity(name = "Ambulatorio")
 @Table(name = "ambulatorio")
-public class Ambulatorio implements Serializable{
+public class Ambulatorio implements Serializable {
 
 	private static final long serialVersionUID = -8625558677877133470L;
 
@@ -24,13 +24,13 @@ public class Ambulatorio implements Serializable{
 	@Column(name = "ambulatorio_id")
 	private Long id;
 
-	@Column(name = "ambulatorio_numero", nullable = false, unique=true)
+	@Column(name = "ambulatorio_numero", nullable = false, unique = true)
 	private Integer numero;
 
 	@Column(name = "ambulatorio_andar", nullable = false)
 	private Integer andar;
-	
-	@OneToMany(mappedBy="ambulatorio", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+
+	@OneToMany(mappedBy = "ambulatorio", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Consulta> consultas;
 
 	public Ambulatorio(Integer numero, Integer andar) {
@@ -104,5 +104,5 @@ public class Ambulatorio implements Serializable{
 		}
 		return true;
 	}
-	
+
 }

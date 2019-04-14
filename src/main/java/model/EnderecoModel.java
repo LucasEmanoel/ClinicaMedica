@@ -7,38 +7,39 @@ import model.exceptions.ClinicaMedicaException;
 
 public class EnderecoModel {
 
-	Dao<Endereco> dao = new DaoImpl<Endereco>();  
-	
-	public void registrarEndereco(Endereco obj) throws Exception{
-		
+	Dao<Endereco> dao = new DaoImpl<Endereco>();
+
+	public void registrarEndereco(Endereco obj) throws Exception {
+
 		if (obj != null) {
 			dao.salvar(obj);
-		}else{
+		} else {
 			throw new ClinicaMedicaException("Erro ao registrar Endereco.");
 		}
 	}
-	
-	public void removerEndereco(Endereco obj) throws Exception{
-		
+
+	public void removerEndereco(Endereco obj) throws Exception {
+
 		if (obj != null) {
 			dao.deletar(obj);
-		}else {
+		} else {
 			throw new ClinicaMedicaException("Erro ao deletar Endereco.");
 		}
 	}
-	
-	public void atualizarEndereco(Endereco obj) throws Exception{
-		
+
+	public void atualizarEndereco(Endereco obj) throws Exception {
+
 		if (obj != null) {
 			dao.atualizar(obj);
-		}else {
+		} else {
 			throw new ClinicaMedicaException("Erro ao atualizar Endereco.");
 		}
 	}
+
 	public void encontrarEnderecoPorId(Long id) throws Exception {
 		if (id != null) {
 			dao.encontrar(Endereco.class, id);
-		}else {
+		} else {
 			throw new ClinicaMedicaException("Erro ao encotrar Endereco.");
 		}
 	}

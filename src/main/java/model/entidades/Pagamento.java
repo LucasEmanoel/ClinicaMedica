@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity(name = "Pagamento")
 @Table(name = "pagamento")
-public class Pagamento implements Serializable{
+public class Pagamento implements Serializable {
 
 	private static final long serialVersionUID = -1640816264192336507L;
 
@@ -27,8 +27,9 @@ public class Pagamento implements Serializable{
 		super();
 		this.valor = valor;
 	}
+
 	public Pagamento() {
-		
+
 	}
 
 	public Long getId() {
@@ -46,11 +47,5 @@ public class Pagamento implements Serializable{
 	public void setValor(Double valor) {
 		this.valor = valor;
 	}
-//	public Consulta getConsulta() {
-//		return consulta;
-//	}
-//	public void setConsulta(Consulta consulta) {
-//		this.consulta = consulta;
-//	}
 
 }

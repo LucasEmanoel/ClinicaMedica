@@ -19,7 +19,7 @@ import javax.persistence.Table;
 @Table(name = "pessoa")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "TIPO_PESSOA")
-public abstract class Pessoa implements Serializable{
+public abstract class Pessoa implements Serializable {
 
 	private static final long serialVersionUID = -8300946906751557719L;
 
@@ -39,13 +39,13 @@ public abstract class Pessoa implements Serializable{
 
 	@Column(name = "pessoa_idade", nullable = false)
 	private Integer idade;
-	
-	@Column(name = "pessoa_email", unique = true)
+
+	@Column(name = "pessoa_email", nullable = false, unique = true)
 	private String email;
 
-	@Column(name = "pessoa_senha", unique = true)
+	@Column(name = "pessoa_senha", nullable = false)
 	private String senha;
-	
+
 	@Column(name = "pessoa_tel1", length = 32)
 	private String telefone1;
 
@@ -144,30 +144,36 @@ public abstract class Pessoa implements Serializable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((rg == null) ? 0 : rg.hashCode());
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
+		if (this == obj)
 			return true;
-		}
-		if (obj == null) {
+		if (obj == null)
 			return false;
-		}
-		if (getClass() != obj.getClass()) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
 		Pessoa other = (Pessoa) obj;
 		if (cpf == null) {
-			if (other.cpf != null) {
+			if (other.cpf != null)
 				return false;
-			}
-		} else if (!cpf.equals(other.cpf)) {
+		} else if (!cpf.equals(other.cpf))
 			return false;
-		}
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (rg == null) {
+			if (other.rg != null)
+				return false;
+		} else if (!rg.equals(other.rg))
+			return false;
 		return true;
 	}
 
-	
 }

@@ -6,51 +6,48 @@ import model.entidades.Especialidade;
 import model.exceptions.ClinicaMedicaException;
 
 public class EspecialidadeModel {
-	Dao<Especialidade> dao = new EspecialidadeDao();  
-	
-	public void registrarEspecialidade(Especialidade obj) throws Exception{
-		
+	Dao<Especialidade> dao = new EspecialidadeDao();
+
+	public void registrarEspecialidade(Especialidade obj) throws Exception {
+
 		EspecialidadeDao newDao = (EspecialidadeDao) dao;
 		Especialidade aux = (Especialidade) newDao.encontarPorRqe(obj.getRqe());
-		
-		
-		if (
-			obj.getEspecializacao() != null && obj.getRqe() != null &&
-			obj.getMedico() != null && obj.getRqe() != aux.getRqe()
-			) {
+
+		if (obj.getEspecializacao() != null && obj.getRqe() != null && obj.getMedico() != null && !(obj.equals(aux))) {
 			dao.salvar(obj);
-		}else{
+		} else {
 			throw new ClinicaMedicaException("Erro ao registrar especialidade.");
 		}
 	}
-	
-	public void removerEspecialidade(Especialidade obj) throws Exception{
-		
+
+	public void removerEspecialidade(Especialidade obj) throws Exception {
+
 		EspecialidadeDao newDao = (EspecialidadeDao) dao;
 		Especialidade aux = (Especialidade) newDao.encontarPorRqe(obj.getRqe());
-		
-		if (obj.getRqe() == aux.getRqe()) {
+
+		if (obj.equals(aux)) {
 			dao.deletar(obj);
-		}else {
+		} else {
 			throw new ClinicaMedicaException("Erro ao deletar especialidade.");
 		}
 	}
-	
-	public void atualizarEspecialidade(Especialidade obj) throws Exception{
-		
+
+	public void atualizarEspecialidade(Especialidade obj) throws Exception {
+
 		EspecialidadeDao newDao = (EspecialidadeDao) dao;
 		Especialidade aux = (Especialidade) newDao.encontarPorRqe(obj.getRqe());
-		
-		if (obj.getRqe() == aux.getRqe()) {
+
+		if (obj.equals(aux)) {
 			dao.atualizar(obj);
-		}else {
+		} else {
 			throw new ClinicaMedicaException("Erro ao atualizar especialidade.");
 		}
 	}
+
 	public void encontrarEspecialidadePorId(Long id) throws Exception {
 		if (id != null) {
 			dao.encontrar(Especialidade.class, id);
-		}else {
+		} else {
 			throw new ClinicaMedicaException("Erro ao encotrar especialidade.");
 		}
 	}

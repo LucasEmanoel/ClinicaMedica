@@ -7,7 +7,7 @@ import model.entidades.Consulta;
 
 public interface ConsultaDaoInterface {
 	
-	public List<Consulta> findConsultaPorIdCliente(Integer id);
+	public List<Consulta> findConsultaPorCpfCliente(String cpf);
 	public List<Consulta> findConsultaPorData(Date data);
 	
 }

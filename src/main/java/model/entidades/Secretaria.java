@@ -9,15 +9,15 @@ import javax.persistence.Entity;
 
 @Entity(name = "Secretaria")
 @DiscriminatorValue(value = "SECRETARIA")
-public class Secretaria extends Funcionario implements Serializable{
+public class Secretaria extends Funcionario implements Serializable {
 
 	private static final long serialVersionUID = -4298092151407776552L;
-	
+
 	@Column(name = "secretaria_qualificacao", length = 128)
 	private String qualificacao;
 
-	public Secretaria(String nome, String cpf, String rg, Integer idade, String telefone, Endereco endereco,String email, String senha, Double salario,
-			Long coren, Clinica clinica, String qualificacao) {
+	public Secretaria(String nome, String cpf, String rg, Integer idade, String telefone, Endereco endereco,
+			String email, String senha, Double salario, Long coren, Clinica clinica, String qualificacao) {
 		this.setNome(nome);
 		this.setCpf(cpf);
 		this.setRg(rg);
@@ -29,8 +29,9 @@ public class Secretaria extends Funcionario implements Serializable{
 		this.setClinica(clinica);
 		this.qualificacao = qualificacao;
 	}
+
 	public Secretaria() {
-		
+
 	}
 
 	public String getQualificacao() {

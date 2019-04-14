@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 
 @Entity(name = "Medico")
 @DiscriminatorValue(value = "MEDICO")
-public class Medico extends Funcionario implements Serializable{
+public class Medico extends Funcionario implements Serializable {
 
 	private static final long serialVersionUID = 7613514159588447175L;
 
@@ -24,18 +24,13 @@ public class Medico extends Funcionario implements Serializable{
 	@Column(name = "medico_meta_diaria")
 	private Integer meta;
 
-	@ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.MERGE}, targetEntity=Especialidade.class)
-	@JoinTable(
-			name="medico_especialidade",
-			joinColumns=@JoinColumn(name="pessoa_id", referencedColumnName="pessoa_id"),
-			inverseJoinColumns=@JoinColumn(name="especialidade_id", referencedColumnName="especialidade_id"))
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, targetEntity = Especialidade.class)
+	@JoinTable(name = "medico_especialidade", joinColumns = @JoinColumn(name = "pessoa_id", referencedColumnName = "pessoa_id"),
+				inverseJoinColumns = @JoinColumn(name = "especialidade_id", referencedColumnName = "especialidade_id"))
 	private List<Especialidade> especialidades;
 
 	@OneToMany(mappedBy = "medico")
 	private List<Consulta> consultas;
-
-	@OneToMany(mappedBy = "medico", orphanRemoval = true)
-	private List<Prontuario> prontuarios;
 
 	public Medico(String nome, String cpf, String rg, Integer idade, String telefone, Endereco endereco, String email,
 			Double salario, String senha, Clinica clinica, Long crm, Integer meta) {
@@ -88,13 +83,29 @@ public class Medico extends Funcionario implements Serializable{
 		this.consultas = consultas;
 	}
 
-
-	public List<Prontuario> getProntuarios() {
-		return prontuarios;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((crm == null) ? 0 : crm.hashCode());
+		return result;
 	}
 
-	public void setProntuarios(List<Prontuario> prontuarios) {
-		this.prontuarios = prontuarios;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Medico other = (Medico) obj;
+		if (crm == null) {
+			if (other.crm != null)
+				return false;
+		} else if (!crm.equals(other.crm))
+			return false;
+		return true;
 	}
 
 }

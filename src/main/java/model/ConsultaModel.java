@@ -13,14 +13,14 @@ public class ConsultaModel {
 	Dao<Consulta> dao = new ConsultaDao();
 
 	public void registrarConsulta(Consulta obj) throws Exception {
+		
 		ConsultaDao newDao = (ConsultaDao) dao;
-		
+		Consulta aux = (Consulta) newDao.findConsultaPorCpfCliente(obj.getCliente().getCpf());
 		boolean consultaDisponivel = newDao.verificarConsulta(obj.getMedico(), obj.getData());
-		
-		if (
-			obj.getData() != null && obj.getHorario() != null && obj.getCliente() != null &&
-			obj.getMedico() != null && obj.getPagamento() != null && consultaDisponivel==true
-			) {
+
+		if (obj.getData() != null && obj.getHorario() != null && obj.getCliente() != null && obj.getMedico() != null
+				&& obj.getPagamento() != null && obj.getDescricao() != null && consultaDisponivel == true
+				&& !(obj.equals(aux))) {
 			dao.salvar(obj);
 		} else {
 			throw new ClinicaMedicaException("Erro ao realizar consulta.");
@@ -29,9 +29,10 @@ public class ConsultaModel {
 
 	public void removerConsulta(Consulta obj) throws Exception {
 
-		Consulta aux = (Consulta) dao.encontrar(Consulta.class, obj.getId());
+		ConsultaDao newDao = (ConsultaDao) dao;
+		Consulta aux = (Consulta) newDao.findConsultaPorCpfCliente(obj.getCliente().getCpf());
 
-		if (obj == aux) {
+		if (obj.equals(aux)) {
 			dao.deletar(obj);
 		} else {
 			throw new ClinicaMedicaException("Erro ao deletar consulta.");
@@ -40,9 +41,11 @@ public class ConsultaModel {
 
 	public void atualizarConsulta(Consulta obj) throws Exception {
 
-		Consulta aux = (Consulta) dao.encontrar(Consulta.class, obj.getId());
+		ConsultaDao newDao = (ConsultaDao) dao;
+		Consulta aux = (Consulta) newDao.findConsultaPorCpfCliente(obj.getCliente().getCpf());
 
-		if (obj == aux) {
+
+		if (obj.equals(aux)) {
 			dao.atualizar(obj);
 		} else {
 			throw new ClinicaMedicaException("Erro ao atualizar consulta.");
@@ -57,12 +60,12 @@ public class ConsultaModel {
 		}
 	}
 
-	public List<Consulta> findConsultaPorIdCliente(Integer id) throws Exception {
+	public List<Consulta> findConsultaPorCpfCliente(String cpf) throws Exception {
 		ConsultaDao newDao = (ConsultaDao) dao;
-		if (id != null) {
-			return newDao.findConsultaPorIdCliente( id);
+		if (cpf != null) {
+			return newDao.findConsultaPorCpfCliente(cpf);
 		} else {
-			throw new ClinicaMedicaException("Erro!!");
+			throw new ClinicaMedicaException("Erro ao encontrar consultas por cliente!!");
 		}
 	}
 
@@ -71,7 +74,7 @@ public class ConsultaModel {
 		if (data != null) {
 			return newDao.findConsultaPorData(data);
 		} else {
-			throw new ClinicaMedicaException("Erro!!");
+			throw new ClinicaMedicaException("Erro listar consultas por data!!");
 		}
 	}
 
@@ -80,7 +83,7 @@ public class ConsultaModel {
 		if (med != null && data != null) {
 			return newDao.verificarConsulta(med, data);
 		} else {
-			throw new ClinicaMedicaException("Erro!!");
+			throw new ClinicaMedicaException("Erro ao verificar disponibilidade!!");
 		}
 
 	}

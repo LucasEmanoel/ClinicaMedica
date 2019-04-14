@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity(name = "Especialidade")
 @Table(name = "especialidade")
-public class Especialidade implements Serializable{
+public class Especialidade implements Serializable {
 
 	private static final long serialVersionUID = 8851939078743070463L;
 
@@ -26,21 +26,20 @@ public class Especialidade implements Serializable{
 	@Column(name = "especialidade_especializacao", length = 128, nullable = false)
 	private String especializacao;
 
-	@Column(name = "especialidade_rqe", nullable = false, unique=true)
+	@Column(name = "especialidade_rqe", nullable = false, unique = true)
 	private Long rqe;
 
-	@ManyToMany(
-			cascade= {CascadeType.PERSIST, CascadeType.MERGE},
-			mappedBy="especialidades",
-			targetEntity=Medico.class)
+	@ManyToMany(cascade = { CascadeType.PERSIST,
+			CascadeType.MERGE }, mappedBy = "especialidades", targetEntity = Medico.class)
 	private List<Medico> medicos;
 
 	public Especialidade(String especializacao, Long rqe) {
 		this.especializacao = especializacao;
 		this.rqe = rqe;
 	}
+
 	public Especialidade() {
-		
+
 	}
 
 	public Long getId() {
@@ -66,12 +65,38 @@ public class Especialidade implements Serializable{
 	public void setRqe(Long rqe) {
 		this.rqe = rqe;
 	}
+
 	public List<Medico> getMedico() {
 		return medicos;
 	}
+
 	public void setMedico(List<Medico> medicos) {
 		this.medicos = medicos;
 	}
 
-	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((rqe == null) ? 0 : rqe.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Especialidade other = (Especialidade) obj;
+		if (rqe == null) {
+			if (other.rqe != null)
+				return false;
+		} else if (!rqe.equals(other.rqe))
+			return false;
+		return true;
+	}
+
 }
