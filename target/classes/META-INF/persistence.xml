@@ -8,20 +8,18 @@
     
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		
-		<class>model.entidadades.Ambulatorio</class>
-		<class>model.entidadades.Endereco</class>
-		<class>model.entidadades.Pessoa</class>
-		<class>model.entidadades.Funcionario</class>
-		<class>model.entidadades.Cliente</class>
-		<class>model.entidadades.Clinica</class>
-		<class>model.entidadades.Consulta</class>
-		<class>model.entidadades.Encaminhamento</class>
-		<class>model.entidadades.Especialidade</class>
-		<class>model.entidadades.Medicamento</class>
-		<class>model.entidadades.Medico</class>
-		<class>model.entidadades.Pagamento</class>
-		<class>model.entidadades.Prontuario</class>
-		<class>model.entidadades.Secretaria</class>
+		<class>model.entidades.Ambulatorio</class>
+		<class>model.entidades.Endereco</class>
+		<class>model.entidades.Pessoa</class>
+		<class>model.entidades.Funcionario</class>
+		<class>model.entidades.Cliente</class>
+		<class>model.entidades.Clinica</class>
+		<class>model.entidades.Consulta</class>
+		<class>model.entidades.Especialidade</class>
+		<class>model.entidades.Medicamento</class>
+		<class>model.entidades.Medico</class>
+		<class>model.entidades.Pagamento</class>
+		<class>model.entidades.Secretaria</class>
 		
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" /> <!-- DB Driver -->
