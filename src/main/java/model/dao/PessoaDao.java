@@ -27,4 +27,24 @@ public class PessoaDao extends DaoImpl<Pessoa> implements PessoaDaoInterface {
 			manager.close();
 		}
 	}
+	public Pessoa getUsuario(String email, String senha) {
+		EntityManager manager = JPAManager.getInstance().getEntityManager();
+
+		String consulta = "SELECT P FROM Pessoa AS P WHERE P. email = :email AND P.senha = :senha";
+
+		TypedQuery<Pessoa> query = manager.createQuery(consulta, Pessoa.class);
+		query.setParameter("email", email);
+		query.setParameter("senha", senha);
+
+		try {
+
+			return query.getSingleResult();
+
+		} catch (Exception e) {
+			return null;
+		} finally {
+
+			manager.close();
+		}
+	}
 }

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>Cadastro Cliente</title>
+
+<style type="text/css">
+	.label {
+		width: 20%;
+		padding: 4px;
+	}
+	
+	.value {
+		width: 80%;
+		padding: 4px;
+	}
+	
+	.grid {
+		width: 100%;
+	}
+	
+	.error {
+		color: red;
+	}
+	
+	.outputLabel {
+		font-weight: bold;
+	}
+	
+	.grid {
+		width: 33%;
+		padding: 4px;
+	}
+</style>
+</h:head>
+<h:body>
+
+	<h:form>
+		<p:growl id="growl" sticky="true" showDetail="true" />
+
+		<p:wizard flowListener="#{clienteBean.onFlowProcess}">
+			<p:tab id="personal" title="Dados Pessoais">
+				<p:panel header="Detalhes Pessoais">
+					<p:messages />
+					<h:panelGrid columns="2" columnClasses="label, value">
+						<h:outputText value="Nome: " />
+						<p:inputText value="#{clienteBean.user.nome}"
+							required="true" label="name" />
+
+						<h:outputText value="CPF: " />
+						<p:inputText value="#{clienteBean.user.cpf}"
+							required="true" label="cpf" />
+
+						<h:outputText value="RG: " />
+						<p:inputText value="#{clienteBean.user.rg}"
+							required="true" label="rg" />
+
+						<h:outputText value="Idade: " />
+						<p:inputText value="#{clienteBean.user.idade}" required="true"/>
+
+					</h:panelGrid>
+				</p:panel>
+			</p:tab>
+
+			<p:tab id="address" title="Endereço">
+				<p:panel header="Detalhes do Endereco">
+					<p:messages />
+					<h:panelGrid columns="2" columnClasses="label, value">
+						<h:outputText value="Rua: " />
+						<p:inputText
+							value="#{clienteBean.user.endereco.rua}" />
+
+						<h:outputText value="Bairro: " />
+						<p:inputText
+							value="#{clienteBean.user.endereco.bairro}" />
+
+						<h:outputText value="CEP: " />
+						<p:inputText
+							value="#{clienteBean.user.endereco.cep}" />
+
+					</h:panelGrid>
+				</p:panel>
+			</p:tab>
+
+			<p:tab id="contact" title="Contato">
+				<p:panel header="Informaçoes de contato">
+					<p:messages />
+					<h:panelGrid columns="2" columnClasses="label, value">
+						<h:outputText value="Telefone - 1: " />
+						<p:inputText value="#{clienteBean.user.telefone1}" />
+
+						<h:outputText value="Telefone - 2: " />
+						<p:inputText value="#{clienteBean.user.telefone2}" />
+					</h:panelGrid>
+				</p:panel>
+			</p:tab>
+
+			<p:tab id="user" title="Usuario">
+				<p:panel header="Informaçoes de Usuario">
+					<p:messages />
+					<h:panelGrid columns="2" columnClasses="label, value">
+						<h:outputText value="Email: " />
+						<p:inputText value="#{clienteBean.user.email}"
+							required="true" label="email" />
+
+						<h:outputText value="Senha: " />
+						<p:password value="#{clienteBean.user.senha}"
+							required="true" label="senha" />
+					</h:panelGrid>
+				</p:panel>
+			</p:tab>
+
+			<p:tab id="confirm" title="Confirmation">
+				<p:panel header="Confirmation">
+					<h:panelGrid id="confirmation" columns="4"
+						columnClasses="grid,grid,grid,grid">
+						<h:panelGrid columns="2" columnClasses="label, value">
+							<h:outputText value="Nome: " />
+							<h:outputText value="#{clienteBean.user.nome}"
+								styleClass="outputLabel" />
+
+							<h:outputText value="CPF: " />
+							<h:outputText value="#{clienteBean.user.cpf}"
+								styleClass="outputLabel" />
+
+							<h:outputText value="RG: " />
+							<h:outputText value="#{clienteBean.user.rg}"
+								styleClass="outputLabel" />
+
+							<h:outputText value="Idade: " />
+							<h:outputText value="#{clienteBean.user.idade}"
+								styleClass="outputLabel" />
+						</h:panelGrid>
+
+						<h:panelGrid columns="2" columnClasses="label, value">
+							<h:outputText value="Rua: " />
+							<h:outputText
+								value="#{clienteBean.user.endereco.rua}"
+								styleClass="outputLabel" />
+
+							<h:outputText value="Bairro: " />
+							<h:outputText
+								value="#{clienteBean.user.endereco.bairro}"
+								styleClass="outputLabel" />
+
+							<h:outputText value="CEP: " />
+							<h:outputText
+								value="#{clienteBean.user.endereco.cep}"
+								styleClass="outputLabel" />
+						</h:panelGrid>
+
+						<h:panelGrid columns="2" columnClasses="label, value">
+							<h:outputText value="Telefone 1: " />
+							<h:outputText value="#{clienteBean.user.telefone1}"
+								styleClass="outputLabel" />
+
+							<h:outputText value="Telefone 2 " />
+							<h:outputText value="#{clienteBean.user.telefone2}"
+								styleClass="outputLabel" />
+
+							<h:outputText />
+							<h:outputText />
+						</h:panelGrid>
+
+						<h:panelGrid columns="2" columnClasses="label, value">
+							<h:outputText value="Email: " />
+							<h:outputText value="#{clienteBean.user.email}"
+								styleClass="outputLabel" />
+
+							<h:outputText value="Senha: " />
+							<h:outputText value="#{clienteBean.user.senha}"
+								styleClass="outputLabel" />
+						</h:panelGrid>
+
+					</h:panelGrid>
+
+					<p:commandButton value="Salvar"
+						action="#{clienteBean.save}" update="growl"
+						process="@this" />
+				</p:panel>
+			</p:tab>
+		</p:wizard>
+
+	</h:form>
+</h:body>
+</html>

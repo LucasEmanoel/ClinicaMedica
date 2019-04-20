@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<h:body
+	style="
+	font-family: sans-serif;
+	background: url(./resources/img/fundo-login.jpg) no-repeat;
+	background-size: cover;">
+
+	<h:form>
+		<p:messages id="messages"/>
+		<p:panel
+			style="
+				 position: absolute;
+				 width:300px;
+				 background: #d1d8e0;
+				 text-align: center ;
+				 left: 50%;
+				 top: 50%;
+				 transform: translate(-50%, -50%)">
+				 
+				 <h1>LOGIN</h1>
+
+			<h:panelGrid columns="1" style="margin-left:8.5%" cellpadding="3">
+				<h:outputLabel value="Email address" for="email" />
+				<p:inputText id="email" value="#{loginBean.user.email}" style="border-radius:22px;"/>
+				<h:outputLabel value="Senha" for="senha" />
+				<p:password id="senha" value="#{loginBean.user.senha}" style="border-radius:22px;"/>
+			</h:panelGrid>
+
+			<h:panelGrid columns="2" style="margin-left:8.5%" cellpadding="3">
+				<p:commandButton value="Entrar" action="#{loginBean.logar()}" />
+				<p:commandButton value="Cancelar" action="inicio.xhtml?faces-redirect=true"/>
+			</h:panelGrid>
+
+		</p:panel>
+
+		<p:panel
+			style="
+				position: absolute;
+			 	font-size: 12px;
+			 	text-align: center;
+			 	width: 300px;
+			  	background: #d1d8e0;
+			 	left: 50%;
+				top: 78%;
+				transform: translate(-50%, -50%)" >
+			<h:commandLink>Cadastre-se.</h:commandLink>
+		</p:panel>
+
+	</h:form>
+</h:body>
+</html>

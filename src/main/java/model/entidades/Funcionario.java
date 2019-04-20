@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 
 @Entity(name = "Funcionario")
 @DiscriminatorValue(value = "FUNCIONARIO")
-public abstract class Funcionario extends Pessoa implements Serializable {
+public class Funcionario extends Pessoa implements Serializable {
 
 	private static final long serialVersionUID = -731396741330887156L;
 
