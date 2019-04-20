@@ -1,21 +1,21 @@
 package controller;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 import model.entidades.Pessoa;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class LoginBean {
 
 	private Pessoa user;
-
+	
 	public LoginBean() {
 		user = new Pessoa();
 	}
 	public String logar() {
-		return "paginaUser";
+		return "";
 	}
 	public Pessoa getUser() {
 		return user;

@@ -6,51 +6,67 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style type="text/css">
+	body {
+		font-family: sans-serif;
+		background: url(/resources/img/fundo-login.jpg) no-repeat;
+		background-size: cover;
+	}
+	
+	#panel-login {
+		position: absolute;
+		width: 300px;
+		background: #d1d8e0;
+		text-align: center;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%)
+	}
+	
+	#panel-register {
+		position: absolute;
+		font-size: 12px;
+		text-align: center;
+		width: 300px;
+		background: #d1d8e0;
+		left: 50%;
+		top: 78%;
+		transform: translate(-50%, -50%)
+		
+	}
+	
+	.input {
+		margin-left: 8.5%
+	}
+	
+	#login, #senha {
+		border-radius: 22px;
+	}
+</style>
 </h:head>
-<h:body
-	style="
-	font-family: sans-serif;
-	background: url(./resources/img/fundo-login.jpg) no-repeat;
-	background-size: cover;">
-
+<h:body>
 	<h:form>
-		<p:messages id="messages"/>
-		<p:panel
-			style="
-				 position: absolute;
-				 width:300px;
-				 background: #d1d8e0;
-				 text-align: center ;
-				 left: 50%;
-				 top: 50%;
-				 transform: translate(-50%, -50%)">
-				 
-				 <h1>LOGIN</h1>
+		<p:messages id="messages" />
+		<p:panel id="panel-login">
 
-			<h:panelGrid columns="1" style="margin-left:8.5%" cellpadding="3">
+			<h1>LOGIN</h1>
+
+			<h:panelGrid class="input" columns="1" cellpadding="3">
 				<h:outputLabel value="Email address" for="email" />
-				<p:inputText id="email" value="#{loginBean.user.email}" style="border-radius:22px;"/>
+				<p:inputText id="email" value="#{loginBean.user.email}" />
 				<h:outputLabel value="Senha" for="senha" />
-				<p:password id="senha" value="#{loginBean.user.senha}" style="border-radius:22px;"/>
+				<p:password id="senha" value="#{loginBean.user.senha}" />
 			</h:panelGrid>
 
-			<h:panelGrid columns="2" style="margin-left:8.5%" cellpadding="3">
+			<h:panelGrid class="input" columns="2" cellpadding="3">
 				<p:commandButton value="Entrar" action="#{loginBean.logar()}" />
-				<p:commandButton value="Cancelar" action="inicio.xhtml?faces-redirect=true"/>
+				<p:commandButton value="Cancelar"
+					action="inicio.xhtml?faces-redirect=true" />
 			</h:panelGrid>
 
 		</p:panel>
 
-		<p:panel
-			style="
-				position: absolute;
-			 	font-size: 12px;
-			 	text-align: center;
-			 	width: 300px;
-			  	background: #d1d8e0;
-			 	left: 50%;
-				top: 78%;
-				transform: translate(-50%, -50%)" >
+		<p:panel id="panel-register">
 			<h:commandLink>Cadastre-se.</h:commandLink>
 		</p:panel>
 
