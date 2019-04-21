@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -7,7 +9,7 @@ import model.entidades.Pessoa;
 
 @ManagedBean
 @ViewScoped
-public class LoginBean {
+public class LoginBean  implements Serializable{
 
 	private Pessoa user;
 	

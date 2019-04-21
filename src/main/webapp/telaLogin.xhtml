@@ -8,14 +8,15 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </h:head>
 <h:body style="font-family: sans-serif;
-		background: url(/resources/img/fundo-login.jpg) no-repeat;
+		background: url(resources/img/fundo-login.jpg) no-repeat;
 		background-size: cover;">
 	<h:form>
 		<p:messages id="messages" />
 		<p:panel id="panel-login" style="position: absolute;
 		width: 300px;
-		background: #d1d8e0;
+		background: #f1f2f6;
 		text-align: center;
+		border-color: #74b9ff;
 		left: 50%;
 		top: 50%;
 		transform: translate(-50%, -50%)">
@@ -29,10 +30,8 @@
 				<p:password id="senha" value="#{loginBean.user.senha}" style="border-radius: 22px;" />
 			</h:panelGrid>
 
-			<h:panelGrid class="input" columns="2" cellpadding="3" style="margin-left: 8.5%">
-				<p:commandButton value="Entrar" action="#{loginBean.logar()}" />
-				<p:commandButton value="Cancelar"
-					action="inicio.xhtml?faces-redirect=true" />
+			<h:panelGrid class="input" columns="1" cellpadding="3" style="margin-left: 8.5%">
+				<p:commandButton style="background:green;border-radius: 22px;color:white;margin-top:10px;width:210px" value="Entrar" action="#{loginBean.logar()}" />
 			</h:panelGrid>
 
 		</p:panel>
@@ -41,11 +40,15 @@
 		font-size: 12px;
 		text-align: center;
 		width: 300px;
-		background: #d1d8e0;
+		background: #f1f2f6;
 		left: 50%;
-		top: 78%;
+		top: 80%;
+		border-color: #74b9ff;
 		transform: translate(-50%, -50%)">
-			<h:commandLink>Cadastre-se.</h:commandLink>
+			<p>Nova conta?
+				<h:commandLink>Cadastre-se.</h:commandLink>
+			</p>
+			
 		</p:panel>
 
 	</h:form>

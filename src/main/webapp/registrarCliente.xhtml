@@ -1,112 +1,61 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/resources/templates/template.xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-	<title>Cadastro Cliente</title>
+	<ui:define name="top">
+	</ui:define>
 
-	<style type="text/css">
-.label {
-	width: 20%;
-	padding: 4px;
-}
-
-.value {
-	width: 80%;
-	padding: 4px;
-}
-
-.grid {
-	width: 100%;
-}
-
-.error {
-	color: red;
-}
-
-.outputLabel {
-	font-weight: bold;
-}
-
-.grid {
-	width: 33%;
-	padding: 4px;
-}
-</style>
-</h:head>
-<h:body>
-
-	<h:form>
-		<p:tab id="personal" title="Dados Pessoais">
-			<p:panel header="Detalhes Pessoais">
+	<ui:define name="content">
+		<h:form style="margin-left:70%;">
+			<p:panel style="background:none; border:none; align-items:center;">
+				<h1>Abra sua conta</h1>
+				<h3>É de graça.</h3>
 				<p:messages />
-				<h:panelGrid columns="2" columnClasses="label, value">
-					<h:outputText value="Nome: " />
-					<p:inputText value="#{clienteBean.user.nome}" required="true" label="name" />
+				<h:panelGrid columns="1">
+					<p:inputText value="#{clienteBean.user.nome}" required="true"
+						placeholder="Nome" />
 
-					<h:outputText value="CPF: " />
-					<p:inputText value="#{clienteBean.user.cpf}" required="true" label="cpf" />
+					<p:inputText value="#{clienteBean.user.cpf}" required="true"
+						placeholder="Cpf" />
 
-					<h:outputText value="RG: " />
-					<p:inputText value="#{clienteBean.user.rg}" required="true" label="rg" />
+					<p:inputText value="#{clienteBean.user.rg}" required="true"
+						placeholder="Rg" />
 
-					<h:outputText value="Idade: " />
-					<p:inputText value="#{clienteBean.user.idade}" required="true" />
+					<p:inputText value="#{clienteBean.user.idade}" required="true"
+						placeholder="Idade" />
 
+					<p:inputText value="#{clienteBean.user.endereco.rua}"
+						placeholder="Rua" />
+
+					<p:inputText value="#{clienteBean.user.endereco.bairro}"
+						placeholder="Bairro" />
+
+					<p:inputText value="#{clienteBean.user.endereco.cep}"
+						placeholder="Cep" />
+
+					<p:inputText value="#{clienteBean.user.telefone1}"
+						placeholder="Telefone" />
+
+					<p:inputText value="#{clienteBean.user.telefone2}"
+						placeholder="Telefone(Optional)" />
+
+					<p:inputText value="#{clienteBean.user.email}" required="true"
+						placeholder="Email" />
+
+					<p:password value="#{clienteBean.user.senha}" required="true"
+						placeholder="Senha" />
 				</h:panelGrid>
 			</p:panel>
-		</p:tab>
 
-		<p:tab id="address" title="Endereço">
-			<p:panel header="Detalhes do Endereco">
-				<p:messages />
-				<h:panelGrid columns="2" columnClasses="label, value">
-					<h:outputText value="Rua: " />
-					<p:inputText value="#{clienteBean.user.endereco.rua}" />
+			<p:commandButton
+				style="margin-left:19px;background:green; color:white;"
+				value="Inscreva-se" action="#{clienteBean.salvar()}" />
 
-					<h:outputText value="Bairro: " />
-					<p:inputText value="#{clienteBean.user.endereco.bairro}" />
+		</h:form>
+	</ui:define>
 
-					<h:outputText value="CEP: " />
-					<p:inputText value="#{clienteBean.user.endereco.cep}" />
-
-				</h:panelGrid>
-			</p:panel>
-		</p:tab>
-
-		<p:tab id="contact" title="Contato">
-			<p:panel header="Informaçoes de contato">
-				<p:messages />
-				<h:panelGrid columns="2" columnClasses="label, value">
-					<h:outputText value="Telefone - 1: " />
-					<p:inputText value="#{clienteBean.user.telefone1}" />
-
-					<h:outputText value="Telefone - 2: " />
-					<p:inputText value="#{clienteBean.user.telefone2}" />
-				</h:panelGrid>
-			</p:panel>
-		</p:tab>
-
-		<p:tab id="user" title="Usuario">
-			<p:panel header="Informaçoes de Usuario">
-				<p:messages />
-				<h:panelGrid columns="2" columnClasses="label, value">
-					<h:outputText value="Email: " />
-					<p:inputText value="#{clienteBean.user.email}" required="true" label="email" />
-
-					<h:outputText value="Senha: " />
-					<p:password value="#{clienteBean.user.senha}" required="true" label="senha" />
-				</h:panelGrid>
-			</p:panel>
-		</p:tab>
-
-		<p:commandButton value="Salvar" action="#{clienteBean.salvar()}" />
-
-
-	</h:form>
-</h:body>
-</html>
+</ui:composition>

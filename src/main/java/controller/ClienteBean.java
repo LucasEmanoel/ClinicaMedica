@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -7,12 +9,12 @@ import model.entidades.Cliente;
 
 @ManagedBean
 @ViewScoped
-public class ClienteBean {
+public class ClienteBean implements Serializable{
 	
 	private Cliente user;
 	
 	public ClienteBean() {
-		
+		user = new Cliente();
 	}
 	
 	
