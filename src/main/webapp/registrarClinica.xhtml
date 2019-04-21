@@ -13,7 +13,6 @@
 		<h:form style="margin-left:70%;">
 			<p:panel style="background:none; border:none; align-items:center;">
 				<h1>Cadastre sua empresa</h1>
-				<h3>É de graça.</h3>
 				<p:messages />
 				<h:panelGrid columns="1">
 					<p:inputText value="#{clinicaBean.user.cnpj}" required="true"
@@ -44,7 +43,7 @@
 
 			<p:commandButton
 				style="margin-left:19px;background:green; color:white;"
-				value="Inscreva-se" action="#{clinicaBean.salvar()}" />
+				value="Inscreva-se" action="#{clinicaBean.salvar}" />
 
 		</h:form>
 	</ui:define>

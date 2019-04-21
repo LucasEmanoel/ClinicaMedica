@@ -16,7 +16,9 @@ public class MedicoBean  implements Serializable{
 	public MedicoBean() {
 		medico = new Medico();
 	}
-
+	public String salvar() {
+		return "inicio.xhtml?faces-redirect=true";
+	}
 	public Medico getMedico() {
 		return medico;
 	}

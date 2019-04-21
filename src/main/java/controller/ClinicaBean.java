@@ -18,7 +18,7 @@ public class ClinicaBean  implements Serializable{
 	}
 
 	public String salvar() {
-		return "inicio.xhtml";
+		return "inicio.xhtml?faces-redirect=true";
 	}
 
 	public Clinica getUser() {

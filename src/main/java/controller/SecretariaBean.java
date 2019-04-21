@@ -18,7 +18,7 @@ public class SecretariaBean  implements Serializable{
 	}
 
 	public String salvar() {
-		return "inicio";
+		return "inicio.xhtml?faces-redirect=true";
 	}
 	public Secretaria getSecretaria() {
 		return secretaria;

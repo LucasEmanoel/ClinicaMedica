@@ -31,7 +31,7 @@
 			</h:panelGrid>
 
 			<h:panelGrid class="input" columns="1" cellpadding="3" style="margin-left: 8.5%">
-				<p:commandButton style="background:green;border-radius: 22px;color:white;margin-top:10px;width:210px" value="Entrar" action="#{loginBean.logar()}" />
+				<p:commandButton style="background:green;border-radius: 22px;color:white;margin-top:10px;width:210px" value="Entrar" action="#{loginBean.logar}" />
 			</h:panelGrid>
 
 		</p:panel>
@@ -46,11 +46,10 @@
 		border-color: #74b9ff;
 		transform: translate(-50%, -50%)">
 			<p>Nova conta?
-				<h:commandLink>Cadastre-se.</h:commandLink>
+				<h:commandLink action="inicio.xhtml?faces-redirect=true">Cadastre-se.</h:commandLink>
 			</p>
 			
 		</p:panel>
-
 	</h:form>
 </h:body>
 </html>

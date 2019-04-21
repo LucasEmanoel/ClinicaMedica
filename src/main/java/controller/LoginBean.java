@@ -17,7 +17,7 @@ public class LoginBean  implements Serializable{
 		user = new Pessoa();
 	}
 	public String logar() {
-		return "";
+		return "inicio.xhtml?faces-redirect=true";
 	}
 	public Pessoa getUser() {
 		return user;

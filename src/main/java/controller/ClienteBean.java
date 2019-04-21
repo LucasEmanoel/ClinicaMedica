@@ -19,7 +19,7 @@ public class ClienteBean implements Serializable{
 	
 	
 	public String salvar(){
-		return "inicio.xhtml";
+		return "inicio.xhtml?faces-redirect=true";
 	}
 
 	public Cliente getUser() {

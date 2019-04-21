@@ -55,14 +55,7 @@ public class Pessoa implements Serializable {
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Endereco endereco;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
+	
 	public String getNome() {
 		return nome;
 	}
@@ -87,8 +80,12 @@ public class Pessoa implements Serializable {
 		this.rg = rg;
 	}
 
-	public int getIdade() {
+	public Integer getIdade() {
 		return idade;
+	}
+
+	public void setIdade(Integer idade) {
+		this.idade = idade;
 	}
 
 	public String getEmail() {
@@ -105,14 +102,6 @@ public class Pessoa implements Serializable {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-
-	public void setIdade(Integer idade) {
-		this.idade = idade;
-	}
-
-	public void setIdade(int idade) {
-		this.idade = idade;
 	}
 
 	public String getTelefone1() {

@@ -10,9 +10,7 @@ public class PagamentoModel {
 
 	public void registrarPagamento(Pagamento obj) throws Exception {
 
-		Pagamento aux = (Pagamento) dao.encontrar(Pagamento.class, obj.getId());
-
-		if (obj.getValor() != null && obj != aux) {
+		if (obj.getValor() != null && obj.getValor() > 0) {
 			dao.salvar(obj);
 		} else {
 			throw new ClinicaMedicaException("Erro ao realizar pagamento.");
