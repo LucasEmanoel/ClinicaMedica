@@ -25,5 +25,25 @@ public class ClinicaDao extends DaoImpl<Clinica> implements ClinicaDaoInterface 
 			manager.close();
 		}
 	}
+	public Clinica getUsuario(String email, String senha) {
+		EntityManager manager = JPAManager.getInstance().getEntityManager();
+
+		String consulta = "SELECT C FROM Clinica AS C WHERE C.email = :email AND C.senha = :senha";
+
+		TypedQuery<Clinica> query = manager.createQuery(consulta, Clinica.class);
+		query.setParameter("email", email);
+		query.setParameter("senha", senha);
+
+		try {
+
+			return query.getSingleResult();
+
+		} catch (Exception e) {
+			return null;
+		} finally {
+
+			manager.close();
+		}
+	}
 
 }

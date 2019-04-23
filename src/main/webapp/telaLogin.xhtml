@@ -6,49 +6,33 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet library="css" name="cssTelaLogin.css"/>
 </h:head>
-<h:body style="font-family: sans-serif;
-		background: url(resources/img/fundo-login.jpg) no-repeat;
-		background-size: cover;">
+<h:body>
 	<h:form>
 		<p:messages id="messages" />
-		<p:panel id="panel-login" style="position: absolute;
-		width: 300px;
-		background: #f1f2f6;
-		text-align: center;
-		border-color: #74b9ff;
-		left: 50%;
-		top: 50%;
-		transform: translate(-50%, -50%)">
-
+		<p:panel class="panel">
 			<h1>LOGIN</h1>
-
-			<h:panelGrid class="input" columns="1" cellpadding="3" style="margin-left: 8.5%">
+			<h:panelGrid class="box-dados" columns="1" cellpadding="3">
 				<h:outputLabel value="Email address" for="email" />
-				<p:inputText id="email" value="#{loginBean.user.email}" style="border-radius: 22px;" />
+				<p:inputText class="input" value="#{loginBean.user.email}" />
 				<h:outputLabel value="Senha" for="senha" />
-				<p:password id="senha" value="#{loginBean.user.senha}" style="border-radius: 22px;" />
+				<p:password class="input" value="#{loginBean.user.senha}" />
 			</h:panelGrid>
 
-			<h:panelGrid class="input" columns="1" cellpadding="3" style="margin-left: 8.5%">
-				<p:commandButton style="background:green;border-radius: 22px;color:white;margin-top:10px;width:210px" value="Entrar" action="#{loginBean.logar}" />
+			<h:panelGrid class="box-dados" columns="1" cellpadding="3">
+				<p:commandButton class="bt-salvar" value="Entrar"
+					action="telaCliente.xhtml?faces-redirect=true" />
 			</h:panelGrid>
 
 		</p:panel>
 
-		<p:panel id="panel-register" style="	position: absolute;
-		font-size: 12px;
-		text-align: center;
-		width: 300px;
-		background: #f1f2f6;
-		left: 50%;
-		top: 80%;
-		border-color: #74b9ff;
-		transform: translate(-50%, -50%)">
-			<p>Nova conta?
+		<p:panel class="panel-register">
+			<p>
+				Nova conta?
 				<h:commandLink action="inicio.xhtml?faces-redirect=true">Cadastre-se.</h:commandLink>
 			</p>
-			
+
 		</p:panel>
 	</h:form>
 </h:body>

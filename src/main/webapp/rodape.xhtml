@@ -8,14 +8,18 @@
 </h:head>
 <h:body>
 	<h:form>
-		<p:panel style="background:none; border:none; text-align:center;">
-			<h:commandLink value="pagina 1 "
-				action="telaLogin.xhtml?faces-redirect=true" />
-			<h:commandLink value="pagina 2"
-				action="telaLogin.xhtml?faces-redirect=true" />
-		</p:panel>
+		<div id="logo" style="height: 100px; width: 150px;">
+			<img src="resources/img/logo.jpg" alt="logo" style="width:150px; height:100px;float: left;"/>
+		</div>
+		<div id="links" style="position:relative; margin-left: 80%;  float: right;">
+			<p:panel style="background:none; border:none; text-align:center; ">
+				<h:commandLink value="Sobre" style="margin:25px;"
+					action="inicio.xhtml?faces-redirect=true" />
+				<h:commandLink value="Parcerias"
+					action="inicio.xhtml?faces-redirect=true" />
+			</p:panel>
+		</div>
 	</h:form>
 
 </h:body>
 </html>
-

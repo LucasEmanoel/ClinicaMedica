@@ -4,25 +4,29 @@
 	template="/resources/templates/template.xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	>
+	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="top">
-	<p:panel style="background:none; border:none; margin-left:85%;">
-		<p:commandButton value="Logar" action="telaLogin?faces-redirect=true"
-			style="margin-right:20px;" />
+		<p:panel style="background:none; border:none; margin-left:80%;">
+			<p:commandLink value="Logar" action="telaLogin?faces-redirect=true"
+				style="margin-right:20px;" />
 
-		<p:commandButton value="Registrar" onclick="PF('opcoesCadastro').show();"
-			type="button" />
-	</p:panel>
-	
+			<p:commandLink value="Registrar"
+				onclick="PF('opcoesCadastro').show();" type="button" />
+		</p:panel>
 
-		<p:dialog header="Registrar como : " widgetVar="opcoesCadastro" modal="true"
-			 width="400" resizable="false" style="item-aling:center;">
-			 <p:commandButton action="registrarCliente.xhtml?faces-redirect=true" style="margin-right:20px;"  title="Cliente" />
-			 <p:commandButton action="registrarClinica.xhtml?faces-redirect=true" style="margin-right:20px;"  title="Clinica" />
-			 <p:commandButton action="registrarMedico.xhtml?faces-redirect=true" style="margin-right:20px;"  title="Medico" />
-			 <p:commandButton action="registrarSecretaria.xhtml?faces-redirect=true" style="margin-right:20px;"  title="Secretaria" />
+
+		<p:dialog header="Registrar como : " widgetVar="opcoesCadastro"
+			modal="true" width="400" resizable="false" >
+			<p:commandButton action="registrarCliente.xhtml?faces-redirect=true"
+				style="margin-right:20px;" title="Cliente" />
+			<p:commandButton action="registrarClinica.xhtml?faces-redirect=true"
+				style="margin-right:20px;" title="Clinica" />
+			<p:commandButton action="registrarMedico.xhtml?faces-redirect=true"
+				style="margin-right:20px;" title="Medico" />
+			<p:commandButton
+				action="registrarSecretaria.xhtml?faces-redirect=true"
+				style="margin-right:20px;" title="Secretaria" />
 		</p:dialog>
 	</ui:define>
 

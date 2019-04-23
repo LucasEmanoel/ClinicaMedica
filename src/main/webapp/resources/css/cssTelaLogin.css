@@ -1,0 +1,41 @@
+body {
+	font-family: sans-serif;
+	background: url(resources/img/login.jpg) no-repeat;
+	background-color: #a29bfe;
+	background-size: cover;
+}
+.panel {
+	position: absolute;
+	width: 300px;
+	background: #f1f2f6;
+	text-align: center;
+	border-color: #74b9ff;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%)
+}
+.panel-register {
+	position: absolute;
+	font-size: 12px;
+	text-align: center;
+	width: 300px;
+	background: #f1f2f6;
+	left: 50%;
+	top: 80%;
+	border-color: #74b9ff;
+	transform: translate(-50%, -50%)
+}
+.box-dados {
+	margin-left: 8.5%
+}
+
+.input {
+	border-radius: 22px;
+}
+.box-dados .bt-salvar {
+	background: green;
+	border-radius: 22px;
+	color: white;
+	margin-top: 10px;
+	width: 210px
+}
