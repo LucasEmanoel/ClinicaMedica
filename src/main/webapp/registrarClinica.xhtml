@@ -5,46 +5,87 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-
+	<ui:define name="css">
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			#content {
+				background-color: rgb(15,199,211);
+			}
+			
+			.center_content h2, h3 {
+				color: black;
+				font: bold;
+			}
+			.container-img img{
+				float: left;
+				margin: 100px;
+				
+			}
+			
+			.dados {
+				position:absolute;
+				margin-left: 65%;
+				padding: 50px;
+				float: right; 
+			}
+			.dados div{
+				background:none;
+				border:none;
+				align-items:center;
+				margin-top: 25px; 
+			}
+			.dados button{
+				margin-left:19px;
+				background:green;
+				color:white;
+			}
+		</style>
+	</ui:define>
+	
 	<ui:define name="top">
 	</ui:define>
 
 	<ui:define name="content">
-		<h:form style="margin-left:70%;">
-			<p:panel style="background:none; border:none; align-items:center;">
-				<h3>Cadastre sua empresa</h3>
-				<p:messages />
-				<h:panelGrid columns="1">
-					<p:inputText value="#{clinicaBean.user.cnpj}" required="true"
-						placeholder="Cnpj" />
+		<h:form>
+			<div class="container-img">
+				<img src="resources/img/registros.jpg" alt="fundo"/>
+			</div>
+			<div class="dados">
+				<p:panel>
+					<h3>Cadastre sua empresa</h3>
+					<p:messages />
+					<h:panelGrid columns="1">
+						<p:inputText value="#{clinicaBean.user.cnpj}" required="true"
+							placeholder="Cnpj" />
 
-					<p:inputText value="#{clienteBean.user.endereco.rua}"
-						placeholder="Rua" />
+						<p:inputText value="#{clienteBean.user.endereco.rua}"
+							placeholder="Rua" />
 
-					<p:inputText value="#{clinicaBean.user.endereco.bairro}"
-						placeholder="Bairro" />
+						<p:inputText value="#{clinicaBean.user.endereco.bairro}"
+							placeholder="Bairro" />
 
-					<p:inputText value="#{clinicaBean.user.endereco.cep}"
-						placeholder="Cep" />
+						<p:inputText value="#{clinicaBean.user.endereco.cep}"
+							placeholder="Cep" />
 
-					<p:inputText value="#{clinicaBean.user.telefone1}"
-						placeholder="Telefone" />
+						<p:inputText value="#{clinicaBean.user.telefone1}"
+							placeholder="Telefone" />
 
-					<p:inputText value="#{clinicaBean.user.telefone2}"
-						placeholder="Telefone(Optional)" />
+						<p:inputText value="#{clinicaBean.user.telefone2}"
+							placeholder="Telefone(Optional)" />
 
-					<p:inputText value="#{clinicaBean.user.email}" required="true"
-						placeholder="Email" />
+						<p:inputText value="#{clinicaBean.user.email}" required="true"
+							placeholder="Email" />
 
-					<p:password value="#{clinicaBean.user.senha}" required="true"
-						placeholder="Senha" />
-				</h:panelGrid>
-			</p:panel>
+						<p:password value="#{clinicaBean.user.senha}" required="true"
+							placeholder="Senha" />
+					</h:panelGrid>
+				</p:panel>
 
-			<p:commandButton
-				style="margin-left:19px;background:green; color:white;"
-				value="Inscreva-se" action="#{clinicaBean.salvar}" />
-
+				<p:commandButton value="Inscreva-se" action="#{clinicaBean.salvar}" />
+			</div>
 		</h:form>
 	</ui:define>
 

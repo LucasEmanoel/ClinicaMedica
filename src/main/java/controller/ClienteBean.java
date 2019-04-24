@@ -2,13 +2,13 @@ package controller;
 
 import java.io.Serializable;
 
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 
 import model.entidades.Cliente;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class ClienteBean implements Serializable{
 	
 	private Cliente user;

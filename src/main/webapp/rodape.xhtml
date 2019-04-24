@@ -5,18 +5,54 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Facelet Title</title>
+	<style>
+		.logo {
+			position:absolute;
+			float: left;
+			padding: 20px;
+		}
+		
+		.links {
+			position: relative;
+			margin-right: 70%;
+			float: right;
+			padding: 20px;
+		}
+		
+		.links div {
+			position: absolute;
+			background: none;
+			border: none;
+			padding-top: 40px;
+		}
+		
+		.links a {
+			margin: 25px;
+		}
+	</style>
 </h:head>
 <h:body>
 	<h:form>
-		<div id="logo" style="height: 100px; width: 150px;">
-			<img src="resources/img/logo.jpg" alt="logo" style="width:150px; height:100px;float: left;"/>
+		<div class="logo">
+			<img src="resources/img/Logo.png" alt="logo" width="150	px" height="100px"/>
 		</div>
-		<div id="links" style="position:relative; margin-left: 80%;  float: right;">
-			<p:panel style="background:none; border:none; text-align:center; ">
-				<h:commandLink value="Sobre" style="margin:25px;"
+		<div class="links">
+			<p:panel id="panel">
+				<h:commandLink value="Sobre"
 					action="inicio.xhtml?faces-redirect=true" />
 				<h:commandLink value="Parcerias"
 					action="inicio.xhtml?faces-redirect=true" />
+				<h:commandLink value="Ajuda?"
+					action="inicio.xhtml?faces-redirect=true" />
+				<h:commandLink value="Cliente"
+					action="ClienteView.xhtml?faces-redirect=true" />
+				<h:commandLink value="Clinica"
+					action="ClinicaView.xhtml?faces-redirect=true" />
+				<h:commandLink value="Medico"
+					action="MedicoView.xhtml?faces-redirect=true" />
+				<h:commandLink value="Secretaria"
+					action="SecretariaView.xhtml?faces-redirect=true" />
+
 			</p:panel>
 		</div>
 	</h:form>

@@ -1,7 +1,7 @@
 body {
 	font-family: sans-serif;
-	background: url(resources/img/login.jpg) no-repeat;
-	background-color: #a29bfe;
+	background-color: #74b9ff;
+	background-image: url('./img/login.jpg') no-repeat;
 	background-size: cover;
 }
 .panel {

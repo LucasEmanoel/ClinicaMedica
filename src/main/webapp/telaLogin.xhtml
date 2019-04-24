@@ -14,17 +14,17 @@
 		<p:panel class="panel">
 			<h1>LOGIN</h1>
 			<h:panelGrid class="box-dados" columns="1" cellpadding="3">
-				<h:outputLabel value="Email address" for="email" />
+				<h:outputLabel id="email" value="Email address" for="email" />
 				<p:inputText class="input" value="#{loginBean.user.email}" />
-				<h:outputLabel value="Senha" for="senha" />
+				<h:outputLabel id="senha" value="Senha" for="senha" />
 				<p:password class="input" value="#{loginBean.user.senha}" />
 			</h:panelGrid>
 
 			<h:panelGrid class="box-dados" columns="1" cellpadding="3">
 				<p:commandButton class="bt-salvar" value="Entrar"
-					action="telaCliente.xhtml?faces-redirect=true" />
+					action="#{loginBean.logar}" />
 			</h:panelGrid>
-
+			
 		</p:panel>
 
 		<p:panel class="panel-register">

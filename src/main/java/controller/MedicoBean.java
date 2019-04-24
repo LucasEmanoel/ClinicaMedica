@@ -2,13 +2,14 @@ package controller;
 
 import java.io.Serializable;
 
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import model.entidades.Medico;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class MedicoBean  implements Serializable{
 	
 	private Medico medico;
