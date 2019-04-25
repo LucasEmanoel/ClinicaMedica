@@ -10,7 +10,7 @@ public class ClienteModel {
 
 	Dao<Pessoa> dao = new PessoaDao();
 
-	public void registrarCliente(Cliente obj) throws Exception {
+	public boolean registrarCliente(Cliente obj) throws Exception {
 
 		PessoaDao newDao = (PessoaDao) dao;
 		Cliente cli = (Cliente) newDao.encontrarPorCpf(obj.getCpf());
@@ -19,6 +19,7 @@ public class ClienteModel {
 				&& obj.getEmail() != null && obj.getSenha() != null && obj.getEndereco() != null
 				&& !(obj.equals(cli))) {
 			dao.salvar(obj);
+			return true;
 		} else {
 			throw new ClinicaMedicaException("Erro ao registrar cliente.");
 		}

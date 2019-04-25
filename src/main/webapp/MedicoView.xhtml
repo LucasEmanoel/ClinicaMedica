@@ -7,23 +7,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="css">
-		<style>
-.links-top {
-	background: none;
-	margin-left: 73%;
-}
-
-.links-top div {
-	position: relative;
-	background: none;
-	border: none;
-	padding-top: 28px;
-}
-
-.links-top a {
-	margin: 20px;
-}
-</style>
+		<h:outputStylesheet library="css" name="cssMedicoView.css"/>
 	</ui:define>
 
 	<ui:define name="top">
@@ -31,7 +15,7 @@
 			<div class="links-top">
 				<p:panel>
 					<h:commandLink value="Atender" />
-					<h:commandLink value="Visulizar Históricos" />
+					<h:commandLink value="Visulizar Históricos" action="telaHistorico.xhtml?faces-redirect=true" />
 					<h:commandLink value="Perfil" />
 				</p:panel>
 			</div>

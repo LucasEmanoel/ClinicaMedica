@@ -1,0 +1,13 @@
+.container-historico {
+	position:absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%)
+}
+.container-historico div{
+	width: 600px;
+	height: 500px;
+}
+h1{
+	text-align: center;
+}

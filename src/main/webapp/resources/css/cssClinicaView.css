@@ -1,0 +1,17 @@
+.links-top {
+	background: none;
+	width: 300px;
+	margin-left: 58%;
+}
+
+.links-top div {
+	position: relative;
+	background: none;
+	border: none;
+	width: 530px;
+	padding-top: 28px;
+}
+
+.links-top a {
+	margin: 20px;
+}

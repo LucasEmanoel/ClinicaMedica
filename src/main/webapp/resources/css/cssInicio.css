@@ -1,0 +1,41 @@
+.input {
+	margin-right: 20px;
+}
+
+.logo{
+	margin:15px;
+	float: left;
+}
+
+.top-links{
+	float: right;
+	margin-left: 10%;
+	height:100px;
+}
+
+.top-links div {
+	background: none;
+	border: none;
+	margin-top: 16px;
+}
+
+.top-links a {
+	margin:20px;
+}
+
+.top-links a:hover {
+	font-size: 17px;
+}
+
+.top-dialog div{
+	border-radius: 20px;
+}
+.dialog img{
+	margin: 20px;
+	width: 75px;
+	height: 75px;
+}
+.dialog img:hover{
+	width: 100px;
+	height: 100px;
+}

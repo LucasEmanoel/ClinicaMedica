@@ -5,55 +5,25 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
+
 	<ui:define name="css">
-		<style>
-			*{
-				padding: 0;
-				margin: 0;
-			}
-			#content {
-				background-color: rgb(15,199,211);
-			}
-			
-			.center_content h2, h3 {
-				color: black;
-				font: bold;
-			}
-			.container-img img{
-				float: left;
-				margin: 100px;
-				
-			}
-			
-			.dados {
-				position:absolute;
-				margin-left: 65%;
-				padding: 50px;
-				float: right; 
-			}
-			.dados div{
-				background:none;
-				border:none;
-				align-items:center;
-				margin-top: 25px; 
-			}
-			.dados button{
-				margin-left:19px;
-				background:green;
-				color:white;
-			}
-		</style>
+		<h:outputStylesheet library="css" name="cssRegistros.css" />
 	</ui:define>
-	
+
 	<ui:define name="top">
+		<div class="logo">
+			<img src="resources/img/Logo.png" alt="logo" width="110px"
+				height="70px" />
+		</div>
 	</ui:define>
 
 	<ui:define name="content">
 		<h:form>
 			<div class="container-img">
-				<img src="resources/img/registros.jpg" alt="fundo"/>
+				<img src="resources/img/registros.jpg" alt="fundo" />
 			</div>
 			<div class="dados">
+				<h1>Clinica</h1>
 				<p:panel>
 					<h3>Cadastre sua empresa</h3>
 					<p:messages />

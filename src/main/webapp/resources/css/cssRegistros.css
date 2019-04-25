@@ -1,0 +1,35 @@
+#content {
+	background-color: rgb(15, 199, 211);
+}
+h1 {
+	text-align: center;
+	font-size: 20px;
+}
+.center_content h2, h3 {
+	color: black;
+	font: bold;
+}
+
+.dados {
+	position: absolute;
+	margin-left: 65%;
+	padding: 50px;
+	float: right;
+}
+
+.dados div {
+	background: none;
+	border: none;
+	padding-top: 15px;
+}
+
+.container-img img {
+	float: left;
+	margin: 100px;
+}
+
+.dados button {
+	margin-left: 19px;
+	background: green;
+	color: white;
+}
