@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+        <a href="https://fonts.googleapis.com/css?family=Montserrat:400,700|
+           Open+Sans|Roboto" rel="stylesheet"></a>
+        <h:outputStylesheet library="css" name="cssContato.css"/>
+
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="1"> 
+                <div id="msg01">
+                    <h4>ENTRE EM CONTATO</h4>
+                    <h:inputText  value="NOME" style="height: 30px; width: 500px;"/>
+                    <h:inputText value="EMAIL" style="height: 30px; width: 500px;"/>
+                    <h:inputText value="TELEFONE" style="height: 30px; width: 500px;"/>
+                    <h:inputText  value="DIGITE SUA MENSAGEM" style="height: 100px; width: 500px;"/>
+                    <h:commandButton value="Enviar" action="mensagem" style="background-color: aqua;
+                                     border: 2px solid aqua; border-radius:3px;height: 40px;width:70px "/>
+                </div>
+            </h:panelGrid>
+        </h:form> 
+    </h:body>
+</html>
+

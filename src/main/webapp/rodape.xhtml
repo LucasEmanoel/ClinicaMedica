@@ -5,47 +5,39 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Facelet Title</title>
-	<style>
-		.links {
-			position: relative;
-			margin-right: 70%;
-			float: right;
-			padding: 20px;
-		}
-		
-		.links div {
-			position: absolute;
-			background: none;
-			border: none;
-			padding-top: 40px;
-		}
-		
-		.links a {
-			margin: 25px;
-		}
-	</style>
+	<h:outputStylesheet library="css" name="cssRodape.css"/>
 </h:head>
 <h:body>
 	<h:form>
-		<div class="links">
-			<p:panel id="panel">
-				<h:commandLink value="Sobre"
-					action="inicio.xhtml?faces-redirect=true" />
-				<h:commandLink value="Parcerias"
-					action="inicio.xhtml?faces-redirect=true" />
-				<h:commandLink value="Ajuda?"
-					action="inicio.xhtml?faces-redirect=true" />
-				<h:commandLink value="Cliente"
-					action="ClienteView.xhtml?faces-redirect=true" />
-				<h:commandLink value="Clinica"
-					action="ClinicaView.xhtml?faces-redirect=true" />
-				<h:commandLink value="Medico"
-					action="MedicoView.xhtml?faces-redirect=true" />
-				<h:commandLink value="Secretaria"
-					action="SecretariaView.xhtml?faces-redirect=true" />
+		<div class="container-footer">
+			<div class="endereco">
+				<h2>CONTATOS</h2>
+				<br></br>
+				<p id="endereco">
+					Av. Santo Antônio, 385 - Santo Antônio<br /> Garanhuns - PE,
+					55293-000<br /> TELEFONE: (87) 3025-0098 | (87) 98107-3280
+				</p>
+			</div>
 
-			</p:panel>
+			<div class="links">
+				<p:panel class="panel">
+					<h:commandLink value="Sobre"
+						action="inicio.xhtml?faces-redirect=true" />
+					<h:commandLink value="Parcerias"
+						action="inicio.xhtml?faces-redirect=true" />
+					<h:commandLink value="Ajuda?"
+						action="inicio.xhtml?faces-redirect=true" />
+				</p:panel>
+				<h5>Web Clinicas Copyright 2019.</h5>
+			</div>
+
+			<div class="contato">
+				<a href="Contato.xhtml">ENTRE EM CONTATO CONOSCO,<br /> ENVIE
+					UMA CRÍTICA OU SUGESTÃO
+				</a>
+			</div>
 		</div>
+
 	</h:form>
 
 </h:body>

@@ -1,0 +1,64 @@
+.container-footer {
+	position:absolute;
+	left: 0;
+	background-color: darkslateblue;
+	height: 200px;
+	width: 100%;
+}
+.endereco {
+	position: absolute;
+	float: left;
+	padding: 30px 0px 0px 10px;
+	font-size: 17px;
+	color: aquamarine;
+	height: 170px;
+	width: 300px;
+}
+
+.links {
+	position: relative;
+	margin-left: 330px;
+	float: left;
+	padding: 30px;
+	width: 500px;
+	height: 130px;
+	float: left;
+}
+
+.links div {
+	position: absolute;
+	background: none;
+	border: none;
+	padding-top: 50px;
+	text-align: center;
+}
+
+.links h5 {
+	bottom: 0px;
+	padding: 150px 0px 0px 5px;
+}
+
+.links .panel {
+	left: 50%;
+	margin-left: -100px;
+	position: absolute;
+	width: 300px;
+}
+
+.links .panel a {
+	margin: 15px;
+	color: black;
+}
+
+.contato {
+	position: absolute;
+	float: right;
+	padding: 20px;
+	margin: 30px 0px 0px 80%;
+}
+
+.contato a {
+	font-size: 17px;
+	text-decoration: none;
+	color: aquamarine;
+}

@@ -4,9 +4,18 @@
     color: white;
     width: 100%;
     height: 100px;
-    box-shadow: 1px 1px 1px 1px #dfe6e9;
+    z-index: 999;
 }
-
+.container-img {
+	position: absolute;
+	float: left;
+	width: 20%;
+}
+.container-img img{
+	padding:15px 0px 0px 10px;
+	width: 150px;
+	height: 80px;
+}
 .center_content {
     position: relative;
     background-color: #dfe6e9;
@@ -19,7 +28,7 @@
     background-color: white;
     margin: 0px 0px 0px 0px;
     width: 100%;
-    height: 100px;
+    height: 200px;
     bottom: 0;
 }
 

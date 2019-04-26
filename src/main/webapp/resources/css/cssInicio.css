@@ -1,41 +1,224 @@
-.input {
-	margin-right: 20px;
-}
-
-.logo{
-	margin:15px;
+/* top */
+.container-menu {
+	position: absolute;
 	float: left;
-}
-
-.top-links{
-	float: right;
-	margin-left: 10%;
-	height:100px;
-}
-
-.top-links div {
+	margin-left: 20%;
 	background: none;
-	border: none;
-	margin-top: 16px;
+	height: 100px;
+	width: 60%;
 }
 
-.top-links a {
-	margin:20px;
+.container-menu li {
+	float: left;
+	font-size: 18px;
 }
 
-.top-links a:hover {
-	font-size: 17px;
+.container-menu li a {
+	display: block;
+	padding:40px 0px 0px 25px;
+	text-decoration: none;
+	text-align: center;
+	color: aqua;
 }
 
-.top-dialog div{
-	border-radius: 20px;
+.container-menu ul {
+	overflow: hidden;
+	margin-left:150px;
+	display: inline-block;
+	list-style-type: none;
 }
-.dialog img{
+
+.container-bt {
+	position: absolute;
+	float: right;
+	margin-left: 80%;
+	padding-top: 40px;
+	width: auto;
+	height: 60px;
+}
+
+.container-bt a:Link {
+	margin-left: 17px;
+	background-color: aquamarine;
+	border: 12px solid aquamarine;
+	border-radius: 5px;
+	color: white;
+	font-weight: bold;
+	background-color: aquamarine;
+}
+
+.container-bt a:Link:hover, .container-links a:visited:hover {
+	text-decoration: none;
+	background-color: #D20005;
+	border: 12px solid #D20005;
+	border-radius: 5px;
+	color: white;
+	font-weight: bold;
+}
+
+.dialog img {
 	margin: 20px;
 	width: 75px;
 	height: 75px;
 }
-.dialog img:hover{
-	width: 100px;
-	height: 100px;
+
+.dialog img:hover {
+	width: 85px;
+	height: 85px;
+}
+/* top */
+body {
+	height: 2320px;
+}
+
+.container-conteudo {
+	width:100%;
+	height:100%;
+	background-color: activeborder;
+	font-family: Montserrat, Roboto, 'Open Sans', sans-serif;
+}
+
+.container-conteudo h2, h4 {
+	font-weight: lighter;
+	text-align: center;
+	font-size: 30px;
+	color: aqua;
+	font-family: Montserrat, Roboto, 'Open Sans', sans-serif;
+	padding-bottom: 50px;
+}
+
+.container-cliente {
+	height: 500px;
+	position: static;
+}
+.container-cliente img{
+	margin-top: -40px;
+}
+
+.container-cliente #animacao {
+	position: absolute;
+	display: flex;
+	height: 40px;
+	width: 1200px;
+	line-height: 40px;
+	margin-top: -15%;
+	left: 25px;
+	overflow: hidden;
+	font-size: 30px;
+	color: aqua;
+}
+
+.container-cliente #animacao ul {
+	list-style-type: none;
+	margin-left: 10px;
+	animation: animacao 10s infinite;
+}
+
+@keyframes animacao { 
+	0%{margin-top: 0px;}
+	20%{margin-top:0px;}
+	25%{margin-top:-40px;}
+	50%{margin-top:-40px;}
+	70%{margin-top:-10px;}
+	90%{margin-top: 0px;}
+	100%{margin-top:0px;}
+}
+/* especialidades */
+#container-esp {
+	height: 500px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-left: 20px;
+}
+
+#container-esp ul {
+	-webkit-column-count: 3;
+	-moz-column-count: 3;
+	column-count: 4;
+	list-style-type: none;
+}
+
+#container-esp ul li {
+	padding: 10px;
+	margin-left: 10px;
+}
+
+#container-esp ul li a {
+	text-decoration: none;
+	color: darkolivegreen;
+	font-size: 20px;
+}
+/* especialidades */
+/* conveniados */
+#container-conveniados {
+	padding-top: 40px;
+	height: 500px;
+}
+
+#container-conveniados li {
+	float: left;
+	padding: 10px;
+}
+
+#container-conveniados ul {
+	overflow: hidden;
+	display: inline-block;
+	float: left;
+	list-style-type: none;
+}
+
+#container-conveniados img {
+	padding-top:30px;
+	width: 200px;
+	height: 200px;
+}
+/* conveniados */
+/*Conteudo Empresa*/
+.container-emp {
+	height: 25%;
+	position: absolute;
+}
+.container-emp img{
+	height: 100%;
+	width: 100%;
+}
+
+.container-emp #animacao02 {
+	display: flex;
+	height: 120px;
+	width: 1200px;
+	left: 25px;
+	position: absolute;
+	margin-top: -25%;
+	overflow: hidden;
+}
+
+.container-emp #animacao02 ul {
+	list-style-type: none;
+	color: aqua;
+	margin-top: 200px;
+	margin-left: 17%;
+	font-size: 30px;
+	padding-left: 10px;
+	animation: animacao 10s infinite;
+}
+
+.container-emp #animacao02 p {
+	color: aqua;
+	font-size: 30px;
+}
+
+.container-emp #animacao02 ul, p {
+	margin: 0;
+}
+
+@keyframes animacao {
+	0%{margin-top: 0px;}
+	20%{margin-top:0px;}
+	25%{margin-top:-40px;}
+	50%{margin-top:-40px;}
+	70%{margin-top:-10px;}
+	90%{margin-top: 0px;}
+	100%{margin-top:0px;}
+}
 }

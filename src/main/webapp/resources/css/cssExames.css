@@ -1,0 +1,65 @@
+/*Exames*/
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    color: black;
+    font-family: Roboto,Montserrat,'Open Sans', sans-serif;
+}
+h2{
+    font-weight: lighter;
+    text-align: center;
+    color: #D20005;
+    padding-bottom: 5px; 
+}
+#cab img{
+    margin-left: 30px;
+    heigth: 50px;
+    width: 150px;
+}
+#cab{
+    height: 80px;
+    padding: 0;
+    margin: 0;
+    background-color: aqua;
+}
+span{
+    position: relative;
+}
+#im{
+    width: 100px;
+    height: 100px;
+    opacity: 0.4;
+    position: absolute;
+}
+#im:after{
+    content:'';
+    position:absolute;
+    top:100px;
+    bottom:0;
+    left:0;
+    right:0;
+    background-color:rgba(0,0,0,.2);
+}
+#im img{
+    width: 1364px;
+    height: 200px;
+}
+
+#exames{
+    height: 1000px;
+
+    margin-top:0;
+    background-color: gainsboro;
+   
+
+}
+#exames ul{
+    position: absolute;
+    margin-top: 200px;
+list-style-type: none;
+}
+#exames ul li{
+    padding: 10px;
+    margin: 10px;
+}
