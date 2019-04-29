@@ -4,8 +4,10 @@ import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 
+import model.SecretariaModel;
+import model.entidades.Clinica;
+import model.entidades.Endereco;
 import model.entidades.Secretaria;
 
 @ManagedBean
@@ -16,10 +18,21 @@ public class SecretariaBean  implements Serializable{
 	
 	public SecretariaBean() {
 		secretaria = new Secretaria();
+		secretaria.setClinica(new Clinica());
+		secretaria.setEndereco(new Endereco());
 	}
 
 	public String salvar() {
-		return "inicio.xhtml?faces-redirect=true";
+		SecretariaModel sm = new SecretariaModel();
+		
+		try {
+			if(sm.registrarSecretaria(this.secretaria)){
+				return "SecretariaView?faces-redirect=true";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	public Secretaria getSecretaria() {
 		return secretaria;

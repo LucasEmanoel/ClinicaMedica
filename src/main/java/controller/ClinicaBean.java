@@ -4,9 +4,11 @@ import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 
+import model.ClienteModel;
+import model.ClinicaModel;
 import model.entidades.Clinica;
+import model.entidades.Endereco;
 
 @ManagedBean
 @SessionScoped
@@ -15,11 +17,22 @@ public class ClinicaBean  implements Serializable{
 	private Clinica clinica;
 
 	public ClinicaBean() {
+		clinica = new Clinica();
+		clinica.setEndereco(new Endereco());
 
 	}
 
 	public String salvar() {
-		return "inicio.xhtml?faces-redirect=true";
+		ClinicaModel cm = new ClinicaModel();
+		
+		try {
+			if(cm.registrarClinica(this.clinica)) {
+				return "ClinicaView?faces-redirect=true";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public Clinica getUser() {

@@ -7,28 +7,32 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="css">
-		<h:outputStylesheet library="css" name="cssClienteView.css"/>
+		<h:outputStylesheet library="css" name="cssTelasUsuarios.css" />
 	</ui:define>
 
 	<ui:define name="top">
 		<h:form>
-			<div class="links-top">
-				<p:panel>
-				
-					<h:commandLink value="Procurar Serviços" action="telaServicos.xhtml?faces-redirect=true" />
-					
-					<h:commandLink value="Marcar Consulta" />
-					
-					<h:commandLink value="Visulizar Históricos" />
-						
-					<h:commandLink value="Perfil" />
-					
-				</p:panel>
-			</div>
+
 		</h:form>
 	</ui:define>
 
 	<ui:define name="content">
+		<h:form>
+			<div class="links-top">
+				<p:panel class="panel">
+
+					<h:commandLink value="Procurar Serviços"
+						action="ServicosView?faces-redirect=true" />
+
+					<h:commandLink value="Marcar Consulta" />
+
+					<h:commandLink value="Visulizar Históricos" /> <!-- pretendo fazer com dialog -->
+
+					<h:commandLink value="Perfil" />
+
+				</p:panel>
+			</div>
+		</h:form>
 	</ui:define>
 
 </ui:composition>

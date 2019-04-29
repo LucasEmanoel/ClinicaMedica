@@ -12,108 +12,103 @@
 
 	<ui:define name="top">
 		<h:form>
-			<div class="cabecalho">
-				<div class="container-menu">
-					<ul>
-						<li><a href="#container-esp">Especialidades</a></li>
-						<li><a href="exames.xhtml">Exames</a></li>
-						<li><a href="#container-conveniados">Conveniados</a></li>
-					</ul>
-				</div>
-
-				<div class="container-bt">
-					<h:commandLink value="Entrar"
-						action="telaLogin.xhtml?faces-redirect=true" />
-					<h:commandLink value="Cadastrar"
-						onclick="PF('opcoesCadastro').show();" />
-				</div>
-
-				<div class="container-dialog">
-					<p:dialog styleClass="dialog" width="525" height="150"
-						header="Registrar como : " widgetVar="opcoesCadastro" modal="true"
-						resizable="false">
-						<a href="registrarCliente.xhtml"> <img
-							src="resources/img/logo-user.png" alt="cliente" />
-						</a>
-
-						<a href="registrarMedico.xhtml"> <img
-							src="resources/img/logo-medico.png" alt="medico" />
-						</a>
-
-						<a href="registrarSecretaria.xhtml"> <img
-							src="resources/img/logo-secretaria2.png" alt="secretaria" />
-						</a>
-
-						<a href="registrarClinica.xhtml"> <img
-							src="resources/img/logo-clinica.png" alt="clinica" />
-						</a>
-					</p:dialog>
-				</div>
+			<div class="container-menu">
+				<ul>
+					<li><a href="#container-esp">Especialidades</a></li>
+					<li><a href="ExamesView.xhtml">Exames</a></li>
+					<li><a href="#container-conveniados">Conveniados</a></li>
+				</ul>
 			</div>
+
+			<div class="container-bt">
+				<h:commandLink value="Entrar" action="LoginView?faces-redirect=true" />
+				<h:commandLink value="Cadastrar"
+					onclick="PF('opcoesCadastro').show();" />
+			</div>
+
+			<p:dialog styleClass="dialog" width="525" height="150"
+				draggable="false" header="Registrar como : "
+				widgetVar="opcoesCadastro" modal="true" resizable="false">
+				<a href="registrarClienteView.xhtml"> <img
+					src="resources/img/logo-user.png" alt="cliente" />
+				</a>
+
+				<a href="registrarMedicoView.xhtml"> <img
+					src="resources/img/logo-medico.png" alt="medico" />
+				</a>
+
+				<a href="registrarSecretariaView.xhtml"> <img
+					src="resources/img/logo-secretaria2.png" alt="secretaria" />
+				</a>
+
+				<a href="registrarClinicaView.xhtml"> <img
+					src="resources/img/logo-clinica.png" alt="clinica" />
+				</a>
+			</p:dialog>
 		</h:form>
 	</ui:define>
+
 	<ui:define name="content">
 		<h:form>
-			<br></br>
-			<br></br>
-			<div class="container-conteudo">
-				<div class="container-cliente">
-					<img src="resources/img/familiafeliz.jpg" alt="fundo-medicos" width="100%" height="100%"/>
-					<div id="animacao">
-						<p>PARA VOCÊ CLIENTE</p>
-						<ul>
-							<li>VITAL CLÍNICAS</li>
-							<li>UM SISTEMA SIMPLES, PRÁTICO E ÁGIL</li>
-						</ul>
-					</div>
 
-				</div>
-				<section id="container-esp">
-				<h2>ESPECIALIDADES</h2>
-				<ul>
-					<li><a href="cardiologia">CARDIOLOGIA</a></li>
-					<li><a href="cirugiageral">CIRUGIA GERAL</a></li>
-					<li><a href="clinicamedica">ClÍNICA MÉDICA</a></li>
-					<li><a href="dermatologia">DERMATOLOGIA</a></li>
-					<li><a href="endocrinologia">ENDOCRINOLOGIA</a></li>
-					<li><a href="geriatria">GERIATRIA</a></li>
-					<li><a href="hepatologia">HEPATOLOGIA</a></li>
-					<li><a href="nutricao">NUTRIÇÃO</a></li>
-					<li><a href="ortopedia">ORTOPEDIA</a></li>
-					<li><a href="pediatria">PEDIATRIA</a></li>
-					<li><a href="psicologia">PSICOLOGIA</a></li>
-					<li><a href="psiquiatria">PSIQUIATRIA</a></li>
-					<li><a href="obstetricia">OBSTETRICIA</a></li>
-					<li><a href="reumatologia">REUMATOLOGIA</a></li>
-					<li><a href="fisioterapia">FISIOTERAPIA</a></li>
-					<li><a href="gastroenterologia">GASTROENTEROLOGIA</a></li>
-					<li><a href="radiologia">RADIOLOGIA</a></li>
-					<li><a href="medicinadoesporte">MEDICINA DO ESPORTE</a></li>
-					<li><a href="nefrologia">NEFROLOGIA</a></li>
-					<li><a href="laboratorio">LABORATORIO</a></li>
-				</ul>
-				</section>
-				<div id="container-conveniados">
-					<h2>CONVENIADOS</h2>
+			<div class="container-cliente">
+				<img src="resources/img/familiafeliz.jpg" alt="fundo-medicos"
+					width="100%" height="100%" />
+				<div id="animacao">
+					<p>PARA VOCÊ CLIENTE</p>
 					<ul>
-						<li><img src="resources/img/clesan.jpg" alt="clesan" /></li>
-						<li><img src="resources/img/clinicaDrJose.jpg"
-							alt="clinicaDrJose" /></li>
-						<li><img src="resources/img/gastroMed.jpg" alt="gastroMed" />
-						</li>
+						<li>VITAL CLÍNICAS</li>
+						<li>UM SISTEMA SIMPLES, PRÁTICO E ÁGIL</li>
 					</ul>
 				</div>
-				<div class="container-emp">
-					<div id="fundo">
-						<img src="resources/img/medicos05.jpg" alt="fundo-medicos" width="100%" height="100%"/>
-						<div id="animacao02">
-							<p>PARA SUA EMPRESA</p>
-							<ul>
-								<li>VITAL CLÍNICAS</li>
-								<li>UM SISTEMA MÉDICO ONLINE QUE VEIO PARA ORGANIZAR</li>
-								<li>A SUA CLÍNICA E FACILITAR O SEU DIA A DIA</li>
-							</ul>
-						</div>
+
+			</div>
+			<section id="container-esp">
+			<h2>ESPECIALIDADES</h2>
+			<ul>
+				<li><a href="cardiologia">CARDIOLOGIA</a></li>
+				<li><a href="cirugiageral">CIRUGIA GERAL</a></li>
+				<li><a href="clinicamedica">ClÍNICA MÉDICA</a></li>
+				<li><a href="dermatologia">DERMATOLOGIA</a></li>
+				<li><a href="endocrinologia">ENDOCRINOLOGIA</a></li>
+				<li><a href="geriatria">GERIATRIA</a></li>
+				<li><a href="hepatologia">HEPATOLOGIA</a></li>
+				<li><a href="nutricao">NUTRIÇÃO</a></li>
+				<li><a href="ortopedia">ORTOPEDIA</a></li>
+				<li><a href="pediatria">PEDIATRIA</a></li>
+				<li><a href="psicologia">PSICOLOGIA</a></li>
+				<li><a href="psiquiatria">PSIQUIATRIA</a></li>
+				<li><a href="obstetricia">OBSTETRICIA</a></li>
+				<li><a href="reumatologia">REUMATOLOGIA</a></li>
+				<li><a href="fisioterapia">FISIOTERAPIA</a></li>
+				<li><a href="gastroenterologia">GASTROENTEROLOGIA</a></li>
+				<li><a href="radiologia">RADIOLOGIA</a></li>
+				<li><a href="medicinadoesporte">MEDICINA DO ESPORTE</a></li>
+				<li><a href="nefrologia">NEFROLOGIA</a></li>
+				<li><a href="laboratorio">LABORATORIO</a></li>
+			</ul>
+			</section>
+			<div id="container-conveniados">
+				<h2>CONVENIADOS</h2>
+				<ul>
+					<li><img src="resources/img/clesan.jpg" alt="clesan" /></li>
+					<li><img src="resources/img/clinicaDrJose.jpg"
+						alt="clinicaDrJose" /></li>
+					<li><img src="resources/img/gastroMed.jpg" alt="gastroMed" />
+					</li>
+				</ul>
+			</div>
+			<div class="container-emp">
+				<div id="fundo">
+					<img src="resources/img/medicos05.jpg" alt="fundo-medicos"
+						width="100%" height="100%" />
+					<div id="animacao02">
+						<p>PARA SUA EMPRESA</p>
+						<ul>
+							<li>VITAL CLÍNICAS</li>
+							<li>UM SISTEMA MÉDICO ONLINE QUE VEIO PARA ORGANIZAR</li>
+							<li>A SUA CLÍNICA E FACILITAR O SEU DIA A DIA</li>
+						</ul>
 					</div>
 				</div>
 			</div>

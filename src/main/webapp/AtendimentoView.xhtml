@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/resources/templates/template.xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="css">
+		<h:outputStylesheet library="css" name="cssAtendimento.css"/>
+	</ui:define>
+
+	<ui:define name="content">
+		<script type="text/javascript">
+			function handleDrop(event, ui) {
+				var droppedConsulta = ui.draggable;
+				droppedConsulta.fadeOut('fast');
+			}
+		</script>
+		<h:form id="consulta-form">
+
+			<div class="container-toDo">
+				<p:fieldset id="consultas" legend="Consultas" style="margin-top:20px;">
+					<p:dataTable id="table-consultas" var="consulta"
+						value="#{consultaView.consultas}">
+
+						<p:column style="width:20px">
+							<h:outputText id="dragIcon" styleClass="ui-icon pi pi-plus" />
+							<p:draggable for="dragIcon" revert="true" helper="clone" />
+						</p:column>
+
+						<p:column headerText="Nome">
+							<h:outputText value="#{consulta.cliente.nome}" />
+						</p:column>
+
+						<p:column headerText="Idade">
+							<h:outputText value="#{consulta.cliente.idade}" />
+						</p:column>
+					</p:dataTable>
+				</p:fieldset>
+			</div>
+
+			<div class="container-inProgress">
+				<p:fieldset id="progressConsultas" legend="Atendendo" style="margin-top:20px">
+					<p:outputPanel id="dropArea">
+						<h:outputText value="!!!Arraste aqui para atender!!!"
+							rendered="#{empty consultaView.consultasEmAtendimento}"
+							style="font-size:24px;" />
+						<p:dataTable id="table-consultas2" var="consulta"
+							value="#{consultaView.consultasEmAtendimento}"
+							rendered="#{not empty consultaView.consultasEmAtendimento}">
+
+							<p:column style="width:20px">
+								<h:outputText id="dragIcon" styleClass="ui-icon pi pi-plus" />
+								<p:draggable for="dragIcon" revert="true" helper="clone" />
+							</p:column>
+
+							<p:column headerText="Nome">
+								<h:outputText value="#{consulta.cliente.nome}" />
+							</p:column>
+							
+							<p:column style="width:32px" headerText="Prescrever">
+								<p:commandButton update=":consulta-form:display"
+									oncomplete="PF('consultaDialog').show()" icon="pi pi-search">
+									<f:setPropertyActionListener value="#{consulta}"
+										target="#{consultaView.selecionada}" />
+								</p:commandButton>
+							</p:column>
+							
+							<p:column style="width:32px">
+								<p:commandButton update=":consulta-form:display"
+									oncomplete="PF('consultaDialog').show()" icon="pi pi-search">
+									<f:setPropertyActionListener value="#{consulta}"
+										target="#{consultaView.selecionada}" />
+								</p:commandButton>
+							</p:column>
+
+						</p:dataTable>
+					</p:outputPanel>
+				</p:fieldset>
+			</div>
+
+			<p:droppable for="progressConsultas" tolerance="touch"
+				activeStyleClass="ui-state-highlight" datasource="table-consultas"
+				onDrop="handleDrop">
+				<p:ajax listener="#{consultaView.onConsultaAtendimento}"
+					update="dropArea table-consultas" />
+			</p:droppable>
+
+			<div class="container-done">
+				<p:fieldset id="doneConsultas" legend="Consultas Concluidas"
+					style="margin-top:20px">
+					<p:outputPanel id="dropArea2">
+						<h:outputText value="!!!Arraste aqui para concluir!!!"
+							rendered="#{empty consultaView.consultasConcluidas}"
+							style="font-size:24px;" />
+						<p:dataTable id="table-consultas3" var="consulta"
+							value="#{consultaView.consultasConcluidas}"
+							rendered="#{not empty consultaView.consultasConcluidas}">
+
+							<p:column headerText="Nome">
+								<h:outputText value="#{consulta.cliente.nome}" />
+							</p:column>
+							
+							<p:column style="width:32px">
+								<p:commandButton update=":consulta-form:display"
+									oncomplete="PF('consultaDialog').show()" icon="pi pi-search">
+									<f:setPropertyActionListener value="#{consulta}"
+										target="#{consultaView.selecionada}" />
+								</p:commandButton>
+							</p:column>
+
+						</p:dataTable>
+					</p:outputPanel>
+				</p:fieldset>
+			</div>
+
+			<p:droppable for="doneConsultas" tolerance="touch"
+				activeStyleClass="ui-state-highlight" datasource="table-consultas2"
+				onDrop="handleDrop">
+				<p:ajax listener="#{consultaView.onConsultaConcluida}"
+					update="dropArea2 dropArea" />
+			</p:droppable>
+
+
+			<p:dialog header="Consulta Detalhes" widgetVar="consultaDialog"
+				resizable="false" draggable="false" showEffect="fade"
+				hideEffect="fade" modal="true">
+
+				<p:outputPanel id="display">
+					<h:panelGrid columns="2" cellpadding="4" rendered="#{not empty consultaView.selecionada}">
+						<f:facet name="header">
+							<h:outputText value="Consultado : " />
+							<h:outputText value="#{consultaView.selecionada.cliente.nome}"
+								style="font-weight:bold" />
+						</f:facet>
+
+						<h:outputText value="Descricao:" />
+						<h:outputText value="#{consultaView.selecionada.descricao}"
+							style="font-weight:bold" />
+
+						<h:outputText value="Data:" />
+						<h:outputText value="#{consultaView.selecionada.data}"
+							style="font-weight:bold" />
+
+						<h:outputText value="Local:" />
+						<h:outputText value="#{consultaView.selecionada.ambulatorio}"
+							style="font-weight:bold" />
+
+						<h:outputText value="Medico:" />
+						<h:outputText value="#{consultaView.selecionada.medico}"
+							style="font-weight:bold" />
+							
+						<h:outputText value="Medicamento:" />
+						<h:outputText value="#{consultaView.selecionada.medicamentos}"
+							style="font-weight:bold" />
+						
+					</h:panelGrid>
+				</p:outputPanel>
+			</p:dialog>
+
+		</h:form>
+	</ui:define>
+
+
+</ui:composition>

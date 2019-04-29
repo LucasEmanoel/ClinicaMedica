@@ -9,7 +9,7 @@ import model.exceptions.ClinicaMedicaException;
 public class SecretariaModel {
 	Dao<Pessoa> dao = new PessoaDao();
 
-	public void registrarSecretaria(Secretaria obj) throws Exception {
+	public boolean registrarSecretaria(Secretaria obj) throws Exception {
 
 		PessoaDao newDao = (PessoaDao) dao;
 		Secretaria aux = (Secretaria) newDao.encontrarPorCpf(obj.getCpf());
@@ -18,6 +18,7 @@ public class SecretariaModel {
 				&& obj.getSenha() != null && obj.getSalario() != null && obj.getIdade() > 0
 				&& obj.getQualificacao() != null && obj.getClinica() != null && !(obj.equals(aux))) {
 			dao.salvar(obj);
+			return true;
 		} else {
 			throw new ClinicaMedicaException("Erro ao registrar secretaria.");
 		}

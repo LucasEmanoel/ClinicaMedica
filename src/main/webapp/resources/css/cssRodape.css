@@ -1,9 +1,10 @@
-.container-footer {
-	position:absolute;
-	left: 0;
+#bottom  {
+	position:relative;
 	background-color: darkslateblue;
-	height: 200px;
 	width: 100%;
+	bottom: 0px;
+	top:60px;
+	height: 200px;
 }
 .endereco {
 	position: absolute;

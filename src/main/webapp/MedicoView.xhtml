@@ -7,22 +7,20 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="css">
-		<h:outputStylesheet library="css" name="cssMedicoView.css"/>
+		<h:outputStylesheet library="css" name="cssTelasUsuarios.css" />
 	</ui:define>
 
-	<ui:define name="top">
+	<ui:define name="content">
 		<h:form>
 			<div class="links-top">
-				<p:panel>
-					<h:commandLink value="Atender" />
-					<h:commandLink value="Visulizar Históricos" action="telaHistorico.xhtml?faces-redirect=true" />
+				<p:panel class="panel">
+					<h:commandLink value="Atender" 
+						action="AtendimentoView" />
+					<h:commandLink value="Visulizar Históricos" /> <!-- pretendo fazer com dialog -->
 					<h:commandLink value="Perfil" />
 				</p:panel>
 			</div>
 		</h:form>
-	</ui:define>
-
-	<ui:define name="content">
 	</ui:define>
 
 </ui:composition>

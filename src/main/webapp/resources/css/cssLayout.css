@@ -6,12 +6,12 @@
     height: 100px;
     z-index: 999;
 }
-.container-img {
+.container-logo {
 	position: absolute;
 	float: left;
 	width: 20%;
 }
-.container-img img{
+.container-logo img{
 	padding:15px 0px 0px 10px;
 	width: 150px;
 	height: 80px;
@@ -26,9 +26,8 @@
 #bottom {
     position: relative;
     background-color: white;
-    margin: 0px 0px 0px 0px;
     width: 100%;
-    height: 200px;
+    height: 10%;
     bottom: 0;
 }
 

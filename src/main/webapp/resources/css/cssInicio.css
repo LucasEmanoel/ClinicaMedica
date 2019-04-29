@@ -15,7 +15,7 @@
 
 .container-menu li a {
 	display: block;
-	padding:40px 0px 0px 25px;
+	padding: 40px 0px 0px 25px;
 	text-decoration: none;
 	text-align: center;
 	color: aqua;
@@ -23,7 +23,7 @@
 
 .container-menu ul {
 	overflow: hidden;
-	margin-left:150px;
+	margin-left: 150px;
 	display: inline-block;
 	list-style-type: none;
 }
@@ -42,9 +42,6 @@
 	background-color: aquamarine;
 	border: 12px solid aquamarine;
 	border-radius: 5px;
-	color: white;
-	font-weight: bold;
-	background-color: aquamarine;
 }
 
 .container-bt a:Link:hover, .container-links a:visited:hover {
@@ -68,17 +65,11 @@
 }
 /* top */
 body {
-	height: 2320px;
-}
-
-.container-conteudo {
-	width:100%;
-	height:100%;
+	height:2300px;
 	background-color: activeborder;
 	font-family: Montserrat, Roboto, 'Open Sans', sans-serif;
 }
-
-.container-conteudo h2, h4 {
+.center_content h2, h4{
 	font-weight: lighter;
 	text-align: center;
 	font-size: 30px;
@@ -90,9 +81,6 @@ body {
 .container-cliente {
 	height: 500px;
 	position: static;
-}
-.container-cliente img{
-	margin-top: -40px;
 }
 
 .container-cliente #animacao {
@@ -126,9 +114,6 @@ body {
 /* especialidades */
 #container-esp {
 	height: 500px;
-	margin-left: 20px;
-	margin-right: 20px;
-	margin-left: 20px;
 }
 
 #container-esp ul {
@@ -151,7 +136,6 @@ body {
 /* especialidades */
 /* conveniados */
 #container-conveniados {
-	padding-top: 40px;
 	height: 500px;
 }
 
@@ -168,19 +152,14 @@ body {
 }
 
 #container-conveniados img {
-	padding-top:30px;
+	padding-top: 30px;
 	width: 200px;
 	height: 200px;
 }
 /* conveniados */
 /*Conteudo Empresa*/
 .container-emp {
-	height: 25%;
-	position: absolute;
-}
-.container-emp img{
-	height: 100%;
-	width: 100%;
+	height: 500px;
 }
 
 .container-emp #animacao02 {
@@ -188,30 +167,23 @@ body {
 	height: 120px;
 	width: 1200px;
 	left: 25px;
+	top:85%;
 	position: absolute;
-	margin-top: -25%;
 	overflow: hidden;
 }
 
-.container-emp #animacao02 ul {
+.container-emp #animacao02 ul{
 	list-style-type: none;
 	color: aqua;
-	margin-top: 200px;
-	margin-left: 17%;
 	font-size: 30px;
 	padding-left: 10px;
 	animation: animacao 10s infinite;
 }
 
-.container-emp #animacao02 p {
+.container-emp #animacao02 p{
 	color: aqua;
 	font-size: 30px;
 }
-
-.container-emp #animacao02 ul, p {
-	margin: 0;
-}
-
 @keyframes animacao {
 	0%{margin-top: 0px;}
 	20%{margin-top:0px;}
@@ -220,5 +192,4 @@ body {
 	70%{margin-top:-10px;}
 	90%{margin-top: 0px;}
 	100%{margin-top:0px;}
-}
 }

@@ -26,7 +26,7 @@ public class ClienteBean implements Serializable{
 		
 		try {
 			if (cm.registrarCliente(this.user)) {
-				return "ClienteView.xhtml?faces-redirect=true";
+				return "ClienteView?faces-redirect=true";
 			}
 			
 		} catch (Exception e) {

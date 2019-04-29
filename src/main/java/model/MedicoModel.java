@@ -9,7 +9,7 @@ import model.exceptions.ClinicaMedicaException;
 public class MedicoModel {
 	Dao<Pessoa> dao = new PessoaDao();
 
-	public void registrarMedico(Medico obj) throws Exception {
+	public boolean registrarMedico(Medico obj) throws Exception {
 
 		PessoaDao newDao = (PessoaDao) dao;
 		Medico aux = (Medico) newDao.encontrarPorCpf(obj.getCpf());
@@ -18,6 +18,7 @@ public class MedicoModel {
 				&& obj.getEmail() != null && obj.getSenha() != null && obj.getSalario() != null && obj.getCrm() != null
 				&& obj.getMeta() > 0 && obj.getClinica() != null && !(obj.equals(aux))) {
 			newDao.salvar(obj);
+			return true;
 		} else {
 			throw new ClinicaMedicaException("Erro ao registrar medico.");
 		}

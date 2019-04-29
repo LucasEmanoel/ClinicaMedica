@@ -26,13 +26,11 @@ h2{
 span{
     position: relative;
 }
-#im{
-    width: 100px;
-    height: 100px;
+#exames img{
     opacity: 0.4;
     position: absolute;
 }
-#im:after{
+#exames img:after{
     content:'';
     position:absolute;
     top:100px;
@@ -41,23 +39,10 @@ span{
     right:0;
     background-color:rgba(0,0,0,.2);
 }
-#im img{
-    width: 1364px;
-    height: 200px;
-}
 
-#exames{
-    height: 1000px;
-
-    margin-top:0;
-    background-color: gainsboro;
-   
-
-}
 #exames ul{
     position: absolute;
-    margin-top: 200px;
-list-style-type: none;
+	list-style-type: none;
 }
 #exames ul li{
     padding: 10px;
