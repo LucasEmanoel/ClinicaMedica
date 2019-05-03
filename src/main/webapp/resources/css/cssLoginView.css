@@ -27,14 +27,19 @@
 .input {
 	border-radius: 22px;
 }
-.input:hover {
+.input:hover , .input:focus{
 	border-color: green;
+	transform: scaleX(1.3);
 }
-.box-dados .bt-salvar {
-	background: green;
+
+.bt-salvar {
 	border-radius: 22px;
 	color: white;
 	margin-top: 10px;
 	width: 150px;
 	margin-left: 40px;	
 }
+.bt-salvar:hover {
+	background: green;
+}
+

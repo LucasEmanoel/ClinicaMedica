@@ -2,8 +2,10 @@ package controller;
 
 import java.io.Serializable;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import model.UsuarioModel;
 import model.entidades.Cliente;
@@ -17,15 +19,15 @@ import model.exceptions.ClinicaMedicaException;
 @ViewScoped
 public class LoginBean  implements Serializable{
 
-	private Pessoa user;
+	private String email;
+	private String senha; 
 	
 	public LoginBean() {
-		user = new Pessoa();
 	}
 	public String logar() {
 		UsuarioModel um = new UsuarioModel();
 		try {
-			Object comparador = um.logar(user.getEmail(), user.getSenha());
+			Object comparador = um.logar(this.email, this.senha);
 			
 			if(comparador instanceof Cliente) {
 				return "telaCliente?faces-redirect=true";
@@ -35,20 +37,26 @@ public class LoginBean  implements Serializable{
 				return "telaSecretaria?faces-redirect=true";
 			}else if(comparador instanceof Clinica) {
 				return "telaClinica?faces-redirect=true";
+			}else {
+		       FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Email ou Senha Incorretos."));
 			}
 		} catch (ClinicaMedicaException e) {
 			e.printStackTrace();
 		}
-		return "Login / Senha Incorretos!!";
+		return null;
 	}
 	
-	public Pessoa getUser() {
-		return user;
+	public String getEmail() {
+		return email;
 	}
-
-	public void setUser(Pessoa user) {
-		this.user = user;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 	
-
 }

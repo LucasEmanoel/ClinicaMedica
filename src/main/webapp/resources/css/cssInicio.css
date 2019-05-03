@@ -52,16 +52,14 @@
 	color: white;
 	font-weight: bold;
 }
-
 .dialog img {
-	margin: 20px;
+	margin:20px;
 	width: 75px;
 	height: 75px;
 }
 
 .dialog img:hover {
-	width: 85px;
-	height: 85px;
+	transform:scale(1.2);
 }
 /* top */
 body {

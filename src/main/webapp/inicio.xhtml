@@ -21,27 +21,26 @@
 			</div>
 
 			<div class="container-bt">
-				<h:commandLink value="Entrar" action="LoginView?faces-redirect=true" />
-				<h:commandLink value="Cadastrar"
-					onclick="PF('opcoesCadastro').show();" />
+				<p:commandLink value="Entrar" action="LoginView?faces-redirect=true" />
+				<p:link value="Cadastrar" onclick="PF('opcoesCadastro').show(); return false;"/>
 			</div>
 
-			<p:dialog styleClass="dialog" width="525" height="150"
+			<p:dialog widgetVar="opcoesCadastro"  styleClass="dialog" width="525" height="150"
 				draggable="false" header="Registrar como : "
-				widgetVar="opcoesCadastro" modal="true" resizable="false">
-				<a href="registrarClienteView.xhtml"> <img
+				modal="false" resizable="false">
+				<a href="RegistrarClienteView.xhtml"> <img
 					src="resources/img/logo-user.png" alt="cliente" />
 				</a>
 
-				<a href="registrarMedicoView.xhtml"> <img
+				<a href="RegistrarMedicoView.xhtml"> <img
 					src="resources/img/logo-medico.png" alt="medico" />
 				</a>
 
-				<a href="registrarSecretariaView.xhtml"> <img
+				<a href="RegistrarSecretariaView.xhtml"> <img
 					src="resources/img/logo-secretaria2.png" alt="secretaria" />
 				</a>
 
-				<a href="registrarClinicaView.xhtml"> <img
+				<a href="RegistrarClinicaView.xhtml"> <img
 					src="resources/img/logo-clinica.png" alt="clinica" />
 				</a>
 			</p:dialog>
@@ -49,7 +48,6 @@
 	</ui:define>
 
 	<ui:define name="content">
-		<h:form>
 
 			<div class="container-cliente">
 				<img src="resources/img/familiafeliz.jpg" alt="fundo-medicos"
@@ -112,6 +110,5 @@
 					</div>
 				</div>
 			</div>
-		</h:form>
 	</ui:define>
 </ui:composition>

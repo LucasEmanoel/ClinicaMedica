@@ -17,6 +17,7 @@ public class UsuarioModel {
 		ClinicaDao newDao2 = (ClinicaDao) dao2;
 		
 		if (email != null && senha != null) {
+			
 			Pessoa pessoa = newDao.getUsuario(email, senha);
 			Clinica clinica = newDao2.getUsuario(email, senha);
 			
@@ -24,12 +25,11 @@ public class UsuarioModel {
 				return pessoa;
 			}else if(clinica != null){
 				return clinica;
+			}else {
+				return null;
 			}
 		} else {
 			throw new ClinicaMedicaException("erro ao logar.");
 		}
-		
-		return null;
 	}
-
 }

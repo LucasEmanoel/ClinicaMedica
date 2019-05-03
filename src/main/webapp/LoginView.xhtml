@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<h:outputStylesheet library="css" name="cssTelaLogin.css"/>
+	<h:outputStylesheet library="css" name="cssLoginView.css"/>
 </h:head>
 <h:body style="	
 font-family: sans-serif;
@@ -14,14 +14,21 @@ background: url('resources/img/fundo-login.jpg') no-repeat;
 background-size: cover;"
 >
 	<h:form>
-		<p:messages id="messages" />
+		<p:messages id="messages" showDetail="true" closable="true">
+        	<p:autoUpdate />
+    	</p:messages>
+	</h:form>
+	
+	<p:separator />
+	
+	<h:form>
 		<p:panel class="panel">
 			<h1>LOGIN</h1>
 			<h:panelGrid class="box-dados" columns="1" cellpadding="3">
 				<h:outputLabel id="email" value="Email address" for="email" />
-				<p:inputText class="input" value="#{loginBean.user.email}" />
+				<p:inputText class="input" value="#{loginBean.email}" />
 				<h:outputLabel id="senha" value="Senha" for="senha" />
-				<p:password class="input" value="#{loginBean.user.senha}" />
+				<p:password class="input" value="#{loginBean.senha}" />
 			</h:panelGrid>
 
 			<h:panelGrid class="box-dados" columns="1" cellpadding="3">

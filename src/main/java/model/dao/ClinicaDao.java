@@ -41,7 +41,6 @@ public class ClinicaDao extends DaoImpl<Clinica> implements ClinicaDaoInterface 
 		} catch (Exception e) {
 			return null;
 		} finally {
-
 			manager.close();
 		}
 	}

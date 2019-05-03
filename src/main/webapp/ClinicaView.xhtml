@@ -14,14 +14,48 @@
 		<h:form>
 			<div class="links-top">
 				<p:panel class="panel">
-					<h:commandLink value="Gerenciar Funcionarios" action="GerenciarFuncionariosView"/>
-					<h:commandLink value="Visulizar Históricos" /><!-- pretendo fazer com dialog -->
-					<h:commandLink value="Perfil" />	<!-- pretendo fazer com dialog -->
+					<h:commandLink value="Gerenciar Funcionarios"
+						onclick="PF('funcionarios').show(); return false;" />
+					<h:commandLink value="Perfil" />
 				</p:panel>
 			</div>
+
+			<p:dialog styleClass="dialog" width="525" height="150"
+				draggable="true" header="Funcionarios: " widgetVar="funcionarios"
+				modal="false" resizable="false" style="z-index:99;">
+				<p:dataTable id="table-funcionarios" var="fun"
+					value="#{clinicaBean.clinica.funcionarios}">
+
+					<p:column headerText="Nome">
+						<h:outputText value="#{fun.nome}" />
+					</p:column>
+
+					<p:column headerText="Cpf">
+						<h:outputText value="#{fun.cpf}" />
+					</p:column>
+
+					<p:column style="width:32px">
+						<p:commandButton oncomplete="PF('detalhesDialog').show()" icon="pi pi-search">
+						</p:commandButton>
+					</p:column>
+
+				</p:dataTable>
+			</p:dialog>
 			
-			
-			
+			<p:dialog header="Funcionario Detalhes" widgetVar="detalhesDialog"
+				resizable="false" draggable="false" showEffect="fade"
+				hideEffect="fade" modal="true">
+
+				<p:outputPanel id="display">
+					<h:panelGrid columns="2" cellpadding="4" rendered="#{not empty clinicaBean.selecionado}">
+						<f:facet name="header">
+							<h:outputText value="Funcionario : " />
+							<h:outputText value="#{clinicaBean.selecionado.nome}"
+								style="font-weight:bold" />
+						</f:facet>
+					</h:panelGrid>
+				</p:outputPanel>
+			</p:dialog>
 		</h:form>
 	</ui:define>
 
