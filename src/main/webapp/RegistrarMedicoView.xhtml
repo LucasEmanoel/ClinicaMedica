@@ -33,8 +33,9 @@
 						<p:inputText value="#{medicoBean.medico.crm}" required="true"
 							placeholder="Crm" />
 
-						<p:inputText value="#{medicoBean.medico.clinica.cnpj}"
-							required="true" placeholder="Clinica(cnpj)" />
+						<h:selectOneMenu value="#{medicoBean.medico.clinica}" converter="clinicaConverter" id="somClinica">
+                    		<f:selectItems value="#{medicoBean.clinicas}" var="c" itemLabel="#{c.nome}" itemValue="#{c}" />
+                		</h:selectOneMenu>
 
 						<p:inputText value="#{medicoBean.medico.idade}" required="true"
 							placeholder="Idade" />

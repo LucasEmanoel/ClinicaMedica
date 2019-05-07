@@ -1,5 +1,7 @@
 package model.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
@@ -37,6 +39,22 @@ public class ClinicaDao extends DaoImpl<Clinica> implements ClinicaDaoInterface 
 		try {
 
 			return query.getSingleResult();
+
+		} catch (Exception e) {
+			return null;
+		} finally {
+			manager.close();
+		}
+	}
+	public List<Clinica> encontrarTodos() {
+		EntityManager manager = JPAManager.getInstance().getEntityManager();
+
+		String consulta = "SELECT C FROM Clinica AS C";
+
+		TypedQuery<Clinica> query = manager.createQuery(consulta, Clinica.class);
+		try {
+
+			return query.getResultList();
 
 		} catch (Exception e) {
 			return null;

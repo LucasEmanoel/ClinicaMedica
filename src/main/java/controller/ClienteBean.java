@@ -14,16 +14,16 @@ import model.entidades.Endereco;
 public class ClienteBean implements Serializable{
 	
 	private Cliente user;
+	private ClienteModel cm;
 	
 	public ClienteBean() {
 		user = new Cliente();
 		user.setEndereco(new Endereco());
+		cm = new ClienteModel();
 	}
 	
 	
 	public String salvar(){
-		ClienteModel cm = new ClienteModel();
-		
 		try {
 			if (cm.registrarCliente(this.user)) {
 				return "ClienteView?faces-redirect=true";
@@ -33,7 +33,30 @@ public class ClienteBean implements Serializable{
 			e.printStackTrace();
 		}
 		return null;
-		
+	}
+	
+	public String atualizar() {
+		try {
+			if (cm.atualizarCliente(this.user)) {
+				return "ClienteView?faces-redirect=true";
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public String deletar() {
+		try {
+			if (cm.removerCliente(this.user)) {
+				return "inicio?faces-redirect=true";
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public Cliente getUser() {

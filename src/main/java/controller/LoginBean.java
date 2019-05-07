@@ -21,11 +21,12 @@ public class LoginBean  implements Serializable{
 
 	private String email;
 	private String senha; 
+	private UsuarioModel um;
 	
 	public LoginBean() {
+		um = new UsuarioModel();
 	}
 	public String logar() {
-		UsuarioModel um = new UsuarioModel();
 		try {
 			Object comparador = um.logar(this.email, this.senha);
 			

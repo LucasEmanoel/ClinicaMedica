@@ -27,6 +27,9 @@ public class Clinica implements Serializable {
 
 	@Column(name = "clinica_cnpj", unique = true, nullable = false, length = 32)
 	private String cnpj;
+	
+	@Column(name = "clinica_nome", nullable = false, length = 32)
+	private String nome;
 
 	@Column(name = "clinica_email", unique = true, nullable = false, length = 64)
 	private String email;
@@ -46,7 +49,8 @@ public class Clinica implements Serializable {
 	@OneToMany(mappedBy = "clinica", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Funcionario> funcionarios;
 
-	public Clinica(String email,String senha,  String cnpj, String telefone, Endereco endereco) {
+	public Clinica(String nome, String email,String senha,  String cnpj, String telefone, Endereco endereco) {
+		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
 		this.cnpj = cnpj;
@@ -72,6 +76,15 @@ public class Clinica implements Serializable {
 
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
+	}
+	
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getEmail() {

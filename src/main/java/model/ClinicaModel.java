@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 import model.dao.ClinicaDao;
 import model.dao.Dao;
 import model.entidades.Clinica;
@@ -22,25 +24,27 @@ public class ClinicaModel {
 		}
 	}
 
-	public void removerClinica(Clinica obj) throws Exception {
+	public boolean removerClinica(Clinica obj) throws Exception {
 
 		ClinicaDao newDao = (ClinicaDao) dao;
 		Clinica aux = (Clinica) newDao.encontrarPorCnpj(obj.getCnpj());
 
 		if (obj.equals(aux)) {
 			newDao.deletar(obj);
+			return true;
 		} else {
 			throw new ClinicaMedicaException("Erro ao remover clinica.");
 		}
 	}
 
-	public void atualizarClinica(Clinica obj) throws Exception {
+	public boolean atualizarClinica(Clinica obj) throws Exception {
 
 		ClinicaDao newDao = (ClinicaDao) dao;
 		Clinica aux = (Clinica) newDao.encontrarPorCnpj(obj.getCnpj());
 
 		if (obj.equals(aux)) {
 			newDao.atualizar(obj);
+			return true;
 		} else {
 			throw new ClinicaMedicaException("Erro ao atualizar clinica.");
 		}
@@ -52,5 +56,10 @@ public class ClinicaModel {
 		} else {
 			throw new ClinicaMedicaException("Erro ao encontrar clinica.");
 		}
+	}
+	public List<Clinica> encontrarTodos() throws Exception {
+		ClinicaDao newDao = (ClinicaDao) dao;
+		return newDao.encontrarTodos();
+		
 	}
 }

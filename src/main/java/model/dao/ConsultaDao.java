@@ -1,6 +1,6 @@
 package model.dao;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -32,13 +32,13 @@ public class ConsultaDao extends DaoImpl<Consulta> implements ConsultaDaoInterfa
 
 	}
 
-	public List<Consulta> findConsultaPorData(Date data) {
+	public List<Consulta> findConsultaPorData(String string) {
 		EntityManager manager = JPAManager.getInstance().getEntityManager();
 
-		String consulta = "SELECT * FROM Consulta AS C WHERE C.data = :data";
+		String consulta = "SELECT C FROM Consulta AS C WHERE C.data = :data";
 
 		TypedQuery<Consulta> query = manager.createQuery(consulta, Consulta.class);
-		query.setParameter("data", data);
+		query.setParameter("data", string);
 
 		try {
 
@@ -54,7 +54,7 @@ public class ConsultaDao extends DaoImpl<Consulta> implements ConsultaDaoInterfa
 	public boolean verificarConsulta(Medico m, Date d) {
 		EntityManager manager = JPAManager.getInstance().getEntityManager();
 
-		String consulta = "SELECT * FROM Consulta AS C WHERE C.data = :data && C.medico.getCpf() = :cpf";
+		String consulta = "SELECT C FROM Consulta AS C WHERE C.data = :data && C.medico.getCpf() = :cpf";
 
 		TypedQuery<Consulta> query = manager.createQuery(consulta, Consulta.class);
 		query.setParameter("data", d);

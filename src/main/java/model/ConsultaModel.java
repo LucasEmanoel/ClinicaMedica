@@ -1,6 +1,7 @@
 package model;
 
-import java.util.Date;
+
+import java.sql.Date;
 import java.util.List;
 
 import model.dao.ConsultaDao;
@@ -12,7 +13,7 @@ import model.exceptions.ClinicaMedicaException;
 public class ConsultaModel {
 	Dao<Consulta> dao = new ConsultaDao();
 
-	public void registrarConsulta(Consulta obj) throws Exception {
+	public boolean registrarConsulta(Consulta obj) throws Exception {
 		
 		ConsultaDao newDao = (ConsultaDao) dao;
 		Consulta aux = (Consulta) newDao.findConsultaPorCpfCliente(obj.getCliente().getCpf());
@@ -22,6 +23,7 @@ public class ConsultaModel {
 				&& obj.getPagamento() != null && obj.getDescricao() != null && consultaDisponivel == true
 				&& !(obj.equals(aux))) {
 			dao.salvar(obj);
+			return true;
 		} else {
 			throw new ClinicaMedicaException("Erro ao realizar consulta.");
 		}
@@ -69,10 +71,10 @@ public class ConsultaModel {
 		}
 	}
 
-	public List<Consulta> findConsultaPorData(Date data) throws Exception {
+	public List<Consulta> findConsultaPorData(String string) throws Exception {
 		ConsultaDao newDao = (ConsultaDao) dao;
-		if (data != null) {
-			return newDao.findConsultaPorData(data);
+		if (string != null) {
+			return newDao.findConsultaPorData(string);
 		} else {
 			throw new ClinicaMedicaException("Erro listar consultas por data!!");
 		}

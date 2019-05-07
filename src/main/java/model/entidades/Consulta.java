@@ -1,8 +1,8 @@
 package model.entidades;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.sql.Time;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -18,8 +18,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity(name = "Consulta")
 @Table(name = "consulta")
@@ -56,7 +54,6 @@ public class Consulta implements Serializable {
 	private String descricao;
 
 	@Column(name = "consulta_data", nullable = false)
-	@Temporal(TemporalType.DATE)
 	private Date data;
 
 	@Column(name = "consulta_horario", nullable = false)

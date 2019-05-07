@@ -25,25 +25,27 @@ public class ClienteModel {
 		}
 	}
 
-	public void removerCliente(Cliente obj) throws Exception {
+	public boolean removerCliente(Cliente obj) throws Exception {
 
 		PessoaDao newDao = (PessoaDao) dao;
 		Cliente aux = (Cliente) newDao.encontrarPorCpf(obj.getCpf());
 
 		if (obj.equals(aux)) {
 			newDao.deletar(obj);
+			return true;
 		} else {
 			throw new ClinicaMedicaException("Erro ao remover cliente.");
 		}
 	}
 
-	public void atualizarCliente(Cliente obj) throws Exception {
+	public boolean atualizarCliente(Cliente obj) throws Exception {
 
 		PessoaDao newDao = (PessoaDao) dao;
 		Cliente aux = (Cliente) newDao.encontrarPorCpf(obj.getCpf());
 
 		if (obj.equals(aux)) {
 			newDao.atualizar(obj);
+			return true;
 		} else {
 			throw new ClinicaMedicaException("Erro ao atualizar cliente.");
 		}
