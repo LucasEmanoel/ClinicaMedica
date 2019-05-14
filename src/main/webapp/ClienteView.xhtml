@@ -21,17 +21,53 @@
 			<div class="links-top">
 				<p:panel class="panel">
 
-					<h:commandLink value="Procurar Serviços"
-						action="ServicosView?faces-redirect=true" />
+					<h:commandLink value="Marcar Consulta" 
+					onclick="PF('marcar').show(); return false;"/>
 
-					<h:commandLink value="Marcar Consulta" />
-
-					<h:commandLink value="Visulizar Históricos" /> <!-- pretendo fazer com dialog -->
+					<h:commandLink value="Visulizar Históricos" action="HistoricoView" />
 
 					<h:commandLink value="Perfil" />
 
 				</p:panel>
+					
 			</div>
+			<p:dialog styleClass="dialog" width="525" height="150"
+				draggable="false" header="Clinicas: " widgetVar="marcar"
+				modal="false" resizable="false" style="z-index:99;">
+				<p:dataTable id="table-clinicas" var="cli"
+					value="#{clienteBean.clinicas}">
+
+					<p:column headerText="Nome">
+						<h:outputText value="#{cli.nome}" />
+					</p:column>
+
+					<p:column headerText="Endereco-CEP">
+						<h:outputText value="#{cli.endereco.cep}" />
+					</p:column>
+
+					<p:column style="width:32px">
+						<p:commandButton oncomplete="PF('detalhesDialog').show()" value="Marcar">
+						</p:commandButton>
+					</p:column>
+
+				</p:dataTable>
+			</p:dialog>
+			
+			<p:dialog header="Clinica Detalhes" widgetVar="detalhesDialog"
+				resizable="false" draggable="true" showEffect="fade"
+				hideEffect="fade" modal="true">
+				<h:panelGrid columns="2">
+				
+					<h:inputText>cliente</h:inputText>
+					<h:inputText>medico</h:inputText>
+					<h:inputText>ambulatorio</h:inputText>
+					<h:inputText>pagamento</h:inputText>
+					<h:inputText>descricao</h:inputText>
+					<h:inputText>data</h:inputText>
+					<h:inputText>horario</h:inputText>
+				
+				</h:panelGrid>				
+			</p:dialog>
 		</h:form>
 	</ui:define>
 

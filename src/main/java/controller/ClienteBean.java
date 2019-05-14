@@ -1,33 +1,35 @@
 package controller;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 
 import model.ClienteModel;
 import model.entidades.Cliente;
-import model.entidades.Endereco;
+import model.entidades.Clinica;
 
 @ManagedBean
 @SessionScoped
 public class ClienteBean implements Serializable{
-	
-	private Cliente user;
+
+	private static final long serialVersionUID = 1L;
+	private Cliente user = new Cliente();
 	private ClienteModel cm;
+	private List<Clinica> clinicas;
 	
 	public ClienteBean() {
-		user = new Cliente();
-		user.setEndereco(new Endereco());
-		cm = new ClienteModel();
+		this.cm = new ClienteModel();
+		this.clinicas = new ClinicaBean().retornaTodos();
 	}
 	
 	
 	public String salvar(){
 		try {
-			if (cm.registrarCliente(this.user)) {
-				return "ClienteView?faces-redirect=true";
-			}
+			
+			cm.registrarCliente(this.user);
+			return "ClienteView?faces-redirect=true";
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -66,6 +68,27 @@ public class ClienteBean implements Serializable{
 	public void setUser(Cliente user) {
 		this.user = user;
 	}
+
+
+	public ClienteModel getCm() {
+		return cm;
+	}
+
+
+	public void setCm(ClienteModel cm) {
+		this.cm = cm;
+	}
+
+
+	public List<Clinica> getClinicas() {
+		return clinicas;
+	}
+
+
+	public void setClinicas(List<Clinica> clinicas) {
+		this.clinicas = clinicas;
+	}
+	
 	
 		
 }

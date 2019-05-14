@@ -1,5 +1,7 @@
 package model.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
@@ -19,6 +21,25 @@ public class PessoaDao extends DaoImpl<Pessoa> implements PessoaDaoInterface {
 		try {
 
 			return query.getSingleResult();
+
+		} catch (Exception e) {
+			return null;
+		} finally {
+
+			manager.close();
+		}
+	}
+	public List<Pessoa> encontrarFuncionariosClinica(Long id) {
+		EntityManager manager = JPAManager.getInstance().getEntityManager();
+
+		String consulta = "SELECT F FROM Funcionario AS F WHERE F.clinica.id = :id";
+		
+		TypedQuery<Pessoa> query = manager.createQuery(consulta, Pessoa.class);
+		query.setParameter("id", id);
+
+		try {
+
+			return query.getResultList();
 
 		} catch (Exception e) {
 			return null;

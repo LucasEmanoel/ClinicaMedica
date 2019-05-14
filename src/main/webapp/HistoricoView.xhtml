@@ -7,20 +7,40 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="css">
-		<h:outputStylesheet library="css" name="cssTelaHistorico.css"/>
-	</ui:define>
-
-	<ui:define name="top">
+		<h:outputStylesheet library="css" name="cssTelaHistorico.css" />
+		<link rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
 	</ui:define>
 
 	<ui:define name="content">
-	<h1>Historicos</h1>
-	<div class="container-historico">
-		<p:panel>
-					
-		
-		</p:panel>
-	</div>
+		<h1>Historicos</h1>
+		<div class="container-historico">
+				
+				<p:dataTable id="table-consultas" var="consulta"
+					value="#{consultaView.consultas}">
+
+					<p:column headerText="Nome">
+						<h:outputText value="#{consulta.cliente.nome}" />
+					</p:column>
+
+					<p:column style="width:32px">
+						<p:commandButton update=":consulta-form:display"
+							oncomplete="PF('consultaDialog').show()" icon="fas fa-save">
+							<f:setPropertyActionListener value="#{consulta}"
+								target="#{consultaView.selecionada}" />
+						</p:commandButton>
+					</p:column>
+
+					<p:column style="width:32px">
+						<p:commandButton update=":consulta-form:display"
+							oncomplete="PF('consultaDialog').show()" icon="fas fa-trash">
+							<f:setPropertyActionListener value="#{consulta}"
+								target="#{consultaView.selecionada}" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+
+		</div>
 	</ui:define>
 
 </ui:composition>

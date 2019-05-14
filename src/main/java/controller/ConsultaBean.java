@@ -17,8 +17,9 @@ import model.entidades.Consulta;
 @ManagedBean(name = "consultaView")
 @ViewScoped
 public class ConsultaBean implements Serializable{
-	
-	private Consulta consulta;
+
+	private static final long serialVersionUID = 1L;
+	private Consulta consulta = new Consulta();
 	private SimpleDateFormat sdf;
 	private List<Consulta> consultas;
 	private List<Consulta> consultasEmAtendimento;
@@ -31,20 +32,21 @@ public class ConsultaBean implements Serializable{
 		consultasEmAtendimento = new ArrayList<Consulta>();
 		consultasConcluidas = new ArrayList<Consulta>();
 		cm = new ConsultaModel();
-		consultas = retornaTudo();
+		consultas = this.retornaTudoData();
 	}
 
 	public String salvar() {
 		try {
-			if(cm.registrarConsulta(this.consulta)) {
-				return "ClienteView?faces-redirect=true";
-			}
+			
+			cm.registrarConsulta(this.consulta);
+			return "ClienteView?faces-redirect=true";
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-	public List<Consulta> retornaTudo() {
+	public List<Consulta> retornaTudoData() {
 		try {
 			return cm.findConsultaPorData(sdf.format(new Date(System.currentTimeMillis())));
 		} catch (Exception e) {

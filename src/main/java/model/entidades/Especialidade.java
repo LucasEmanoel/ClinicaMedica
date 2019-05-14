@@ -39,7 +39,7 @@ public class Especialidade implements Serializable {
 	}
 
 	public Especialidade() {
-
+		this.medicos = null;
 	}
 
 	public Long getId() {

@@ -12,6 +12,21 @@
 
 	<ui:define name="top">
 		<h:form>
+			<p:growl id="messages" showDetail="true" />
+
+			<p:menuButton value="Navegar">
+				<p:menuitem value="Cliente" 
+				action="ClienteView?faces-redirect=true" icon="pi pi-save" />
+
+				<p:menuitem value="Secretaria"
+					action="SecretariaView?faces-redirect=true" icon="pi pi-refresh" />
+
+				<p:menuitem value="Medico" action="MedicoView?faces-redirect=true"
+					icon="pi pi-times" />
+				<p:menuitem value="Clinica" action="ClinicaView?faces-redirect=true"
+					icon="pi pi-home" />
+			</p:menuButton>
+
 			<div class="container-menu">
 				<ul>
 					<li><a href="#container-esp">Especialidades</a></li>
@@ -22,11 +37,12 @@
 
 			<div class="container-bt">
 				<p:commandLink value="Entrar" action="LoginView?faces-redirect=true" />
-				<p:link value="Cadastrar" onclick="PF('opcoesCadastro').show(); return false;"/>
+				<p:link value="Cadastrar"
+					onclick="PF('opcoesCadastro').show(); return false;" />
 			</div>
 
-			<p:dialog widgetVar="opcoesCadastro"  styleClass="dialog" width="525" height="150"
-				draggable="false" header="Registrar como : "
+			<p:dialog widgetVar="opcoesCadastro" styleClass="dialog" width="525"
+				height="150" draggable="false" header="Registrar como : "
 				modal="false" resizable="false">
 				<a href="RegistrarClienteView.xhtml"> <img
 					src="resources/img/logo-user.png" alt="cliente" />
@@ -49,19 +65,19 @@
 
 	<ui:define name="content">
 
-			<div class="container-cliente">
-				<img src="resources/img/familiafeliz.jpg" alt="fundo-medicos"
-					width="100%" height="100%" />
-				<div id="animacao">
-					<p>PARA VOCÊ CLIENTE</p>
-					<ul>
-						<li>VITAL CLÍNICAS</li>
-						<li>UM SISTEMA SIMPLES, PRÁTICO E ÁGIL</li>
-					</ul>
-				</div>
-
+		<div class="container-cliente">
+			<img src="resources/img/familiafeliz.jpg" alt="fundo-medicos"
+				width="100%" height="100%" />
+			<div id="animacao">
+				<p>PARA VOCÊ CLIENTE</p>
+				<ul>
+					<li>VITAL CLÍNICAS</li>
+					<li>UM SISTEMA SIMPLES, PRÁTICO E ÁGIL</li>
+				</ul>
 			</div>
-			<div id="container-esp">
+
+		</div>
+		<div id="container-esp">
 			<h2>ESPECIALIDADES</h2>
 			<ul>
 				<li><a href="cardiologia">CARDIOLOGIA</a></li>
@@ -85,33 +101,34 @@
 				<li><a href="nefrologia">NEFROLOGIA</a></li>
 				<li><a href="laboratorio">LABORATORIO</a></li>
 			</ul>
-			</div>
-			<div id="container-conveniados">
-				<h2>CONVENIADOS</h2>
-				<ul>
-					<li><img src="resources/img/clesan.jpg" alt="clesan" /></li>
-					<li><img src="resources/img/clinicaDrJose.jpg"
-						alt="clinicaDrJose" /></li>
-					<li><img src="resources/img/gastroMed.jpg" alt="gastroMed" />
-					</li>
-				</ul>
-			</div>
-			<div class="container-emp">
-				<div id="fundo">
-					<img src="resources/img/medicos05.jpg" alt="fundo-medicos"
-						width="100%" height="100%" />
-					<div id="animacao02">
-						<p>PARA SUA EMPRESA</p>
-						<ul>
-							<li>VITAL CLÍNICAS</li>
-							<li>UM SISTEMA MÉDICO ONLINE QUE VEIO PARA ORGANIZAR</li>
-							<li>A SUA CLÍNICA E FACILITAR O SEU DIA A DIA</li>
-						</ul>
-					</div>
+		</div>
+		<div id="container-conveniados">
+			<h2>CONVENIADOS</h2>
+			<ul>
+				<li><img src="resources/img/clesan.jpg" alt="clesan" /></li>
+				<li><img src="resources/img/clinicaDrJose.jpg"
+					alt="clinicaDrJose" /></li>
+				<li><img src="resources/img/gastroMed.jpg" alt="gastroMed" />
+				</li>
+			</ul>
+		</div>
+		<div class="container-emp">
+			<div id="fundo">
+				<img src="resources/img/medicos05.jpg" alt="fundo-medicos"
+					width="100%" height="100%" />
+				<div id="animacao02">
+					<p>PARA SUA EMPRESA</p>
+					<ul>
+						<li>VITAL CLÍNICAS</li>
+						<li>UM SISTEMA MÉDICO ONLINE QUE VEIO PARA ORGANIZAR</li>
+						<li>A SUA CLÍNICA E FACILITAR O SEU DIA A DIA</li>
+					</ul>
 				</div>
 			</div>
-			<div class="goTop">
-				<a href="#"> <img src="resources/img/up.png" alt="gototop" width="100%;" height="100%;"/></a>
-			</div>
+		</div>
+		<div class="goTop">
+			<a href="#"> <img src="resources/img/up.png" alt="gototop"
+				width="100%;" height="100%;" /></a>
+		</div>
 	</ui:define>
 </ui:composition>

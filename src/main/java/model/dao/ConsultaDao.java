@@ -15,7 +15,7 @@ public class ConsultaDao extends DaoImpl<Consulta> implements ConsultaDaoInterfa
 	public List<Consulta> findConsultaPorCpfCliente(String cpf) {
 		EntityManager manager = JPAManager.getInstance().getEntityManager();
 
-		String consulta = "SELECT C FROM Consulta AS C WHERE C.cliente.getCpf() = :cpf";
+		String consulta = "SELECT C FROM Consulta AS C WHERE C.cliente = :cpf";
 
 		TypedQuery<Consulta> query = manager.createQuery(consulta, Consulta.class);
 		query.setParameter("cpf", cpf);
@@ -54,7 +54,7 @@ public class ConsultaDao extends DaoImpl<Consulta> implements ConsultaDaoInterfa
 	public boolean verificarConsulta(Medico m, Date d) {
 		EntityManager manager = JPAManager.getInstance().getEntityManager();
 
-		String consulta = "SELECT C FROM Consulta AS C WHERE C.data = :data && C.medico.getCpf() = :cpf";
+		String consulta = "SELECT C FROM Consulta AS C WHERE C.data = :data && C.medico = :cpf";
 
 		TypedQuery<Consulta> query = manager.createQuery(consulta, Consulta.class);
 		query.setParameter("data", d);

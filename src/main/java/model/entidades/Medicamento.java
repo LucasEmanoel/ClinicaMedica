@@ -43,7 +43,7 @@ public class Medicamento implements Serializable {
 	}
 
 	public Medicamento() {
-
+		this.prontuarios = null;
 	}
 
 	public Long getId() {

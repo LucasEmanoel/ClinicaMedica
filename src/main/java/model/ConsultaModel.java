@@ -13,7 +13,7 @@ import model.exceptions.ClinicaMedicaException;
 public class ConsultaModel {
 	Dao<Consulta> dao = new ConsultaDao();
 
-	public boolean registrarConsulta(Consulta obj) throws Exception {
+	public void registrarConsulta(Consulta obj) throws Exception {
 		
 		ConsultaDao newDao = (ConsultaDao) dao;
 		Consulta aux = (Consulta) newDao.findConsultaPorCpfCliente(obj.getCliente().getCpf());
@@ -23,7 +23,6 @@ public class ConsultaModel {
 				&& obj.getPagamento() != null && obj.getDescricao() != null && consultaDisponivel == true
 				&& !(obj.equals(aux))) {
 			dao.salvar(obj);
-			return true;
 		} else {
 			throw new ClinicaMedicaException("Erro ao realizar consulta.");
 		}

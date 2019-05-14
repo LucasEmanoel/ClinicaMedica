@@ -17,40 +17,60 @@
 			</div>
 			<div class="dados">
 				<h1>Clinica</h1>
-				<p:panel>
+				<p:panel styleClass="panel">
 					<h3>Cadastre sua empresa</h3>
 					<p:messages />
-					<h:panelGrid columns="1">
-						<p:inputText value="#{clinicaBean.clinica.cnpj}" required="true"
-							placeholder="Cnpj" />
-							
-						<p:inputText value="#{clinicaBean.clinica.nome}"
-							placeholder="Nome" />
-							
-						<p:inputText value="#{clinicaBean.clinica.endereco.rua}"
-							placeholder="Rua" />
-
-						<p:inputText value="#{clinicaBean.clinica.endereco.bairro}"
-							placeholder="Bairro" />
-
-						<p:inputText value="#{clinicaBean.clinica.endereco.cep}"
-							placeholder="Cep" />
-
-						<p:inputText value="#{clinicaBean.clinica.telefone1}"
-							placeholder="Telefone" />
-
-						<p:inputText value="#{clinicaBean.clinica.telefone2}"
-							placeholder="Telefone(Optional)" />
-
-						<p:inputText value="#{clinicaBean.clinica.email}" required="true"
-							placeholder="Email" />
-
-						<p:password value="#{clinicaBean.clinica.senha}" required="true"
-							placeholder="Senha" />
+					<h:panelGrid id="grid" columns="2">
+						<p:message for="cnpj" />
+						<p:inputText id="cnpj" value="#{clinicaBean.clinica.cnpj}" placeholder="Cnpj" required="true">
+						
+						</p:inputText>
+						
+						<p:message for="nome" />
+						<p:inputText id="nome" value="#{clinicaBean.clinica.nome}" placeholder="Nome" required="true">
+						
+						</p:inputText>
+						
+						<p:message for="rua" />
+						<p:inputText id="rua" value="#{clinicaBean.clinica.endereco.rua}" placeholder="Rua" >
+						
+						</p:inputText>
+						
+						<p:message for="bairro" />
+						<p:inputText id="bairro" value="#{clinicaBean.clinica.endereco.bairro}" placeholder="Bairro" >
+						
+						</p:inputText>
+						
+						<p:message for="cep" />
+						<p:inputText id="cep" value="#{clinicaBean.clinica.endereco.cep}" placeholder="Cep" >
+						
+						</p:inputText>
+						
+						<p:message for="tel1" />
+						<p:inputText id="tel1" value="#{clinicaBean.clinica.telefone1}" placeholder="Telefone" >
+						
+						</p:inputText>
+						
+						<p:message for="tel2" />
+						<p:inputText id="tel2" value="#{clinicaBean.clinica.telefone2}" placeholder="Telefone(Optional)" >
+						
+						</p:inputText>
+						
+						<p:message for="email" />
+						<p:inputText id="email" value="#{clinicaBean.clinica.email}" placeholder="Email" required="true">
+						
+						</p:inputText>
+						
+						<p:message for="senha" />
+						<p:password id="senha" value="#{clinicaBean.clinica.senha}" placeholder="Senha" required="true">
+						
+						</p:password>
+						
+						<p:commandButton value="Inscreva-se" update="grid" validateClient="true" action="#{secretariaBean.salvar}" />
 					</h:panelGrid>
 				</p:panel>
 
-				<p:commandButton value="Inscreva-se" action="#{clinicaBean.salvar}" />
+				
 			</div>
 		</h:form>
 	</ui:define>

@@ -30,7 +30,8 @@ public class Cliente extends Pessoa implements Serializable {
 	}
 
 	public Cliente() {
-
+		this.setEndereco(new Endereco());
+		this.setConsultas(null);
 	}
 
 	public List<Consulta> getConsultas() {

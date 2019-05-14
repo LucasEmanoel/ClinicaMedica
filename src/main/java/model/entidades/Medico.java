@@ -48,7 +48,10 @@ public class Medico extends Funcionario implements Serializable {
 	}
 
 	public Medico() {
-
+		this.consultas = null;
+		this.especialidades = null;
+		this.setEndereco(new Endereco());
+		this.setClinica(new Clinica());
 	}
 
 	public Long getCrm() {

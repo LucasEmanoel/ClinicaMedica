@@ -9,16 +9,15 @@ import model.exceptions.ClinicaMedicaException;
 public class MedicoModel {
 	Dao<Pessoa> dao = new PessoaDao();
 
-	public boolean registrarMedico(Medico obj) throws Exception {
+	public void registrarMedico(Medico obj) throws Exception {
 
 		PessoaDao newDao = (PessoaDao) dao;
 		Medico aux = (Medico) newDao.encontrarPorCpf(obj.getCpf());
 
 		if (obj.getNome() != null && obj.getCpf() != null && obj.getRg() != null && obj.getIdade() > 0
 				&& obj.getEmail() != null && obj.getSenha() != null && obj.getSalario() != null && obj.getCrm() != null
-				&& obj.getMeta() > 0 && obj.getClinica() != null && !(obj.equals(aux))) {
+				&& obj.getClinica() != null && !(obj.equals(aux))) {
 			newDao.salvar(obj);
-			return true;
 		} else {
 			throw new ClinicaMedicaException("Erro ao registrar medico.");
 		}

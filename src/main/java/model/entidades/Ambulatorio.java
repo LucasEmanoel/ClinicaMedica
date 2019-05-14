@@ -33,15 +33,10 @@ public class Ambulatorio implements Serializable {
 	@OneToMany(mappedBy = "ambulatorio", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Consulta> consultas;
 
-	public Ambulatorio(Integer numero, Integer andar) {
-		super();
-		this.numero = numero;
-		this.andar = andar;
-	}
-
 	public Ambulatorio() {
-
+		this.consultas = null;
 	}
+
 
 	public Long getId() {
 		return id;

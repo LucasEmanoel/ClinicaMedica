@@ -40,10 +40,10 @@ public class Pessoa implements Serializable {
 	@Column(name = "pessoa_idade", nullable = false)
 	private Integer idade;
 
-	@Column(name = "pessoa_email", nullable = false, unique = true)
+	@Column(name = "pessoa_email", length = 64, nullable = false, unique = true)
 	private String email;
 
-	@Column(name = "pessoa_senha", nullable = false)
+	@Column(name = "pessoa_senha", length = 64, nullable = false)
 	private String senha;
 
 	@Column(name = "pessoa_tel1", length = 32)
@@ -55,7 +55,6 @@ public class Pessoa implements Serializable {
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Endereco endereco;
 
-	
 	public String getNome() {
 		return nome;
 	}

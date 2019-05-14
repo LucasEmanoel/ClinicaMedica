@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/resources/templates/template.xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="css">
+		<h:outputStylesheet library="css" name="cssGereciarFuncionario.css"/>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form id="form">
+			<p:dataView var="fun" value="#{clinicaBean.funcionarios}" rows="12"
+				paginator="true" rowsPerPageTemplate="6,12,16"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				gridIcon="pi pi-th-large" listIcon="pi pi-bars">
+
+				<p:dataViewGridItem>
+					<p:panel header="#{fun.id}" style="text-align:center">
+						<h:panelGrid columns="1" style="width:100%">
+
+							<h:outputText value="#{fun.nome}" />
+
+							<p:commandLink update=":form:carDetail"
+								oncomplete="PF('carDialog').show()" title="View Detail">
+								<h:outputText styleClass="ui-icon pi pi-search"
+									style="margin:0 auto;" />
+								<f:setPropertyActionListener value="#{fun}"
+									target="#{clinicaBean.selecionado}" />
+							</p:commandLink>
+						</h:panelGrid>
+					</p:panel>
+				</p:dataViewGridItem>
+
+				<p:dataViewListItem>
+					<h:panelGrid columns="3" style="width:100%"
+						columnClasses="logo,detail">
+						<p:outputPanel>
+							<h:panelGrid columns="2" cellpadding="5">
+								<h:outputText value="Cpf:" />
+								<h:outputText value="#{fun.cpf}" style="font-weight: bold" />
+
+								<h:outputText value="Year:" />
+								<h:outputText value="#{func.idade}" style="font-weight: bold" />
+
+								<h:outputText value="Color:" />
+								<h:outputText value="#{fun.salario}" style="font-weight: bold" />
+							</h:panelGrid>
+						</p:outputPanel>
+
+						<p:commandLink update=":form:carDetail"
+							oncomplete="PF('carDialog').show()" title="View Detail">
+							<h:outputText styleClass="ui-icon pi pi-search"
+								style="margin:0 auto;" />
+							<f:setPropertyActionListener value="#{fun}"
+								target="#{clinicaBean.selecionado}" />
+						</p:commandLink>
+					</h:panelGrid>
+				</p:dataViewListItem>
+			</p:dataView>
+
+			<p:dialog header="Car Info" widgetVar="carDialog" modal="true"
+				showEffect="fade" hideEffect="fade" resizable="false">
+				<p:outputPanel id="carDetail" style="text-align:center;">
+					<p:panelGrid columns="2"
+						rendered="#{not empty clinicaBean.selecionado}"
+						columnClasses="label,value">
+						<f:facet name="header">
+						</f:facet>
+
+						<h:outputText value="Cpf:" />
+						<h:outputText value="#{clinicaBean.selecionado.cpf}" />
+
+						<h:outputText value="Year" />
+						<h:outputText value="#{clinicaBean.selecionado.idade}" />
+
+						<h:outputText value="Salario:" />
+						<h:outputText value="#{clinicaBean.selecionado.salario}"/>
+
+						<h:outputText value="Price" />
+						<h:outputText value="#{clinicaBean.selecionado.email}" />
+					</p:panelGrid>
+				</p:outputPanel>
+			</p:dialog>
+		</h:form>
+	</ui:define>
+</ui:composition>

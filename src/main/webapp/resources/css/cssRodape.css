@@ -31,7 +31,15 @@
 .cop h5{
 	color: white;
 }
-
+.redes {
+	position: absolute;
+	text-align: center;
+    right: 0;
+    margin: 120px 50% 0px 0px;
+}
+.redes a {
+    margin: 4px;
+}
 .endereco {
 	position: absolute;
 	float: right;

@@ -18,43 +18,33 @@
 			
 			<div class="dados">
 				<h1>Cliente</h1>
-				<p:panel id="panel-pai">
+				<p:panel  styleClass="panel">
 					<h2>Abra sua conta</h2>
 					<h3>É de graça.</h3>
 					<p:messages />
 					<h:panelGrid columns="1">
-						<p:inputText value="#{clienteBean.user.nome}" required="true"
-							placeholder="Nome" />
+						<p:inputText value="#{clienteBean.user.nome}" placeholder="Nome" ></p:inputText>
 
-						<p:inputText value="#{clienteBean.user.cpf}" required="true"
-							placeholder="Cpf" />
+						<p:inputText value="#{clienteBean.user.cpf}" placeholder="Cpf" ></p:inputText>
 
-						<p:inputText value="#{clienteBean.user.rg}" required="true"
-							placeholder="Rg" />
+						<p:inputText value="#{clienteBean.user.rg}" placeholder="Rg" ></p:inputText>
 
-						<p:inputText value="#{clienteBean.user.idade}" required="true"
-							placeholder="Idade" />
+						<p:inputText value="#{clienteBean.user.idade}" placeholder="Idade" ></p:inputText>
 
-						<p:inputText value="#{clienteBean.user.endereco.rua}"
-							placeholder="Rua" />
+						<p:inputText value="#{clienteBean.user.endereco.rua}" placeholder="Rua" ></p:inputText>
 
-						<p:inputText value="#{clienteBean.user.endereco.bairro}"
-							placeholder="Bairro" />
+						<p:inputText value="#{clienteBean.user.endereco.bairro}" placeholder="Bairro" ></p:inputText>
 
-						<p:inputText value="#{clienteBean.user.endereco.cep}"
-							placeholder="Cep" />
+						<p:inputText value="#{clienteBean.user.endereco.cep}" placeholder="Cep" ></p:inputText>
 
-						<p:inputText value="#{clienteBean.user.telefone1}"
-							placeholder="Telefone" />
+						<p:inputText value="#{clienteBean.user.telefone1}" placeholder="Telefone" ></p:inputText>
 
-						<p:inputText value="#{clienteBean.user.telefone2}"
-							placeholder="Telefone(Optional)" />
+						<p:inputText value="#{clienteBean.user.telefone2}" placeholder="Telefone(Optional)" ></p:inputText>
 
-						<p:inputText value="#{clienteBean.user.email}" required="true"
-							placeholder="Email" />
+						<p:inputText value="#{clienteBean.user.email}" placeholder="Email" ></p:inputText>
 
-						<p:password value="#{clienteBean.user.senha}" required="true"
-							placeholder="Senha" />
+						<p:password value="#{clienteBean.user.senha}" placeholder="Senha" ></p:password>
+						
 					</h:panelGrid>
 				</p:panel>
 

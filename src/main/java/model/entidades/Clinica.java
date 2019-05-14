@@ -49,17 +49,9 @@ public class Clinica implements Serializable {
 	@OneToMany(mappedBy = "clinica", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Funcionario> funcionarios;
 
-	public Clinica(String nome, String email,String senha,  String cnpj, String telefone, Endereco endereco) {
-		this.nome = nome;
-		this.email = email;
-		this.senha = senha;
-		this.cnpj = cnpj;
-		this.telefone1 = telefone;
-		this.endereco = endereco;
-	}
-
 	public Clinica() {
-
+		this.endereco = new Endereco();
+		this.funcionarios = null;
 	}
 
 	public Long getId() {

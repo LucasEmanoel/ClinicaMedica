@@ -67,7 +67,13 @@ public class Consulta implements Serializable {
 	}
 
 	public Consulta() {
-
+		this.ambulatorio = null;
+		this.cliente = null;
+		this.data = null;
+		this.horario = null;
+		this.medicamentos = null;
+		this.medico = null;
+		this.pagamento = null;
 	}
 
 	public Long getId() {
