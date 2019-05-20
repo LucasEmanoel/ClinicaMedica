@@ -19,17 +19,14 @@
 				<h1>Medico</h1>
 
 				<p:panel styleClass="panel">
-					<h3>Abra sua conta e trabalhe na plataforma</h3>
-					<p:messages>
-						<p:autoUpdate />
-					</p:messages>
+					<h3 class="title">Abra sua conta e trabalhe na plataforma</h3>
 
-					<p:messages />
 					<h:panelGrid id="grid" columns="2">
 						<p:message for="nome" />
 						<p:inputText id="nome" value="#{medicoBean.medico.nome}" placeholder="Nome" required="true">
 							<f:validateLength maximum="64" />
 							<f:validateRegex pattern="^[a-zA-Z]+$" />
+						
 						</p:inputText>
 
 						<p:message for="cpf" />
@@ -44,6 +41,7 @@
 
 						<p:message for="crm" />
 						<p:inputText id="crm" value="#{medicoBean.medico.crm}" placeholder="Crm" required="true">
+							<!-- tem validação?? -->
 						</p:inputText>
 
 						<p:message for="sal" />
@@ -52,7 +50,7 @@
 						</p:inputText>
 
 						<p:outputLabel value="Clinica" />
-						<h:selectOneMenu value="#{medicoBean.medico.clinica}" converter="clinicaConverter" id="somClinica">
+						<h:selectOneMenu value="#{medicoBean.selecionada}" converter="clinicaConverter" id="somClinica">
 							<f:selectItems value="#{medicoBean.clinicas}" var="c" itemLabel="#{c.nome}" itemValue="#{c}" />
 						</h:selectOneMenu>
 
@@ -92,7 +90,8 @@
 						<p:message for="email" />
 						<p:inputText id="email" value="#{medicoBean.medico.email}" placeholder="Email" required="true">
 							<f:validateLength maximum="64" />
-							<!-- propria validação -->
+							<f:validateRegex
+								pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
 						</p:inputText>
 
 						<p:message for="senha" />
@@ -100,12 +99,12 @@
 							<f:validateLength maximum="64" />
 						</p:password>
 
-						<p:commandButton value="Inscreva-se" update="grid" validateClient="true" action="#{secretariaBean.salvar}" />
+						<p:commandButton value="Inscreva-se" update="grid" validateClient="true" action="#{medicoBean.salvar}" />
 					</h:panelGrid>
 				</p:panel>
 			</div>
 
 		</h:form>
+		<h:outputScript library="js" name="message.js" />
 	</ui:define>
-
 </ui:composition>

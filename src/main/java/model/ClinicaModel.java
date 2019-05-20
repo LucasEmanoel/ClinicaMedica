@@ -63,6 +63,6 @@ public class ClinicaModel {
 	}
 	public List<Pessoa> encontrarTodosFuncionarios(Clinica obj){
 		PessoaDao newDao = new PessoaDao();
-		return newDao.encontrarFuncionariosClinica(obj.getId());
+		return newDao.encontrarFuncionariosClinica(1L);
 	}
 }

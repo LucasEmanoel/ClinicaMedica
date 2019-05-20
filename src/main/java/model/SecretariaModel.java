@@ -15,8 +15,8 @@ public class SecretariaModel {
 		Secretaria aux = (Secretaria) newDao.encontrarPorCpf(obj.getCpf());
 
 		if (obj.getNome() != null && obj.getCpf() != null && obj.getRg() != null && obj.getEmail() != null && obj.getSenha() != null 
-				&& obj.getIdade() > 0 && obj.getQualificacao() != null && obj.getClinica() != null && !(obj.equals(aux))) {
-			dao.salvar(obj);
+				&& obj.getIdade() > 0 && obj.getQualificacao() != null && !(obj.equals(aux))) {
+			newDao.salvar(obj);
 		} else {
 			throw new ClinicaMedicaException("Erro ao registrar secretaria.");
 		}

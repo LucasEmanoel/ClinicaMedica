@@ -19,6 +19,7 @@ import model.entidades.Consulta;
 public class ConsultaBean implements Serializable{
 
 	private static final long serialVersionUID = 1L;
+	
 	private Consulta consulta = new Consulta();
 	private SimpleDateFormat sdf;
 	private List<Consulta> consultas;
@@ -39,6 +40,28 @@ public class ConsultaBean implements Serializable{
 		try {
 			
 			cm.registrarConsulta(this.consulta);
+			return "ClienteView?faces-redirect=true";
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public String atualizar() {
+		try {
+			
+			cm.atualizarConsulta(this.consulta);
+			return "ClienteView?faces-redirect=true";
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public String deletar() {
+		try {
+			
+			cm.removerConsulta(this.consulta);
 			return "ClienteView?faces-redirect=true";
 			
 		} catch (Exception e) {

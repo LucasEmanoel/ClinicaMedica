@@ -10,7 +10,7 @@ public class DaoImpl<T> implements Dao<T> {
 		EntityManager manager = JPAManager.getInstance().getEntityManager();
 		
 		try {
-			manager.getTransaction().begin();		
+			manager.getTransaction().begin();	
 			manager.persist(obj);
 			manager.getTransaction().commit();
 		} catch (Exception e) {

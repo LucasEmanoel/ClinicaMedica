@@ -52,6 +52,10 @@
 	color: white;
 	font-weight: bold;
 }
+
+.dialog {
+	top: 40% !important;
+}
 .dialog img {
 	margin:20px;
 	width: 75px;

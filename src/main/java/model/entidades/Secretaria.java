@@ -1,4 +1,3 @@
-
 package model.entidades;
 
 import java.io.Serializable;
@@ -16,22 +15,7 @@ public class Secretaria extends Funcionario implements Serializable {
 	@Column(name = "secretaria_qualificacao", length = 128)
 	private String qualificacao;
 
-	public Secretaria(String nome, String cpf, String rg, Integer idade, String telefone, Endereco endereco,
-			String email, String senha, Double salario, Long coren, Clinica clinica, String qualificacao) {
-		this.setNome(nome);
-		this.setCpf(cpf);
-		this.setRg(rg);
-		this.setIdade(idade);
-		this.setEndereco(endereco);
-		this.setEmail(email);
-		this.setSenha(senha);
-		this.setSalario(salario);
-		this.setClinica(clinica);
-		this.qualificacao = qualificacao;
-	}
-
 	public Secretaria() {
-		this.setClinica(new Clinica());
 		this.setEndereco(new Endereco());
 	}
 

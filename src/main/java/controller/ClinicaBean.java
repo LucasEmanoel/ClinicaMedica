@@ -25,7 +25,7 @@ public class ClinicaBean  implements Serializable{
 
 	public ClinicaBean() {
 		cm = new ClinicaModel();
-		funcionarios = cm.encontrarTodosFuncionarios(clinica);
+		funcionarios = cm.encontrarTodosFuncionarios(this.clinica);
 	}
 
 	public String salvar() {

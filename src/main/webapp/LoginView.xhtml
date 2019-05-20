@@ -6,31 +6,43 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<h:outputStylesheet library="css" name="cssLoginView.css"/>
+	<h:outputStylesheet library="css" name="cssLoginView.css" />
 </h:head>
-<h:body style="	
+<h:body
+	style="	
 font-family: sans-serif;
 background: url('resources/img/fundo-login.jpg') no-repeat; 
-background-size: cover;"
->
+background-size: cover;">
 	<h:form>
 		<p:messages id="messages" showDetail="true" closable="true">
 			<p:autoUpdate />
 		</p:messages>
 		<p:panel styleClass="panel">
+
 			<h1>LOGIN</h1>
-			<h:panelGrid class="box-dados" columns="1" cellpadding="3">
+			<h:panelGrid id="grid" class="box-dados" columns="1" cellpadding="3">
+
 				<h:outputLabel id="email" value="Email address" for="email" />
-				<p:inputText class="input" value="#{loginBean.email}" />
+				<p:inputText class="input" value="#{loginBean.email}">
+					<f:validateLength maximum="64" />
+					<f:validateRegex
+						pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+				</p:inputText>
+
 				<h:outputLabel id="senha" value="Senha" for="senha" />
-				<p:password class="input" value="#{loginBean.senha}" />
+				<p:password class="input" value="#{loginBean.senha}">
+					<f:validateLength maximum="64" />
+				</p:password>
+
 			</h:panelGrid>
 
 			<h:panelGrid class="box-dados" columns="1" cellpadding="3">
-				<p:commandButton class="bt-salvar" value="Entrar"
-					action="#{loginBean.logar}" />
+
+				<p:commandButton class="bt-salvar" value="Entrar" update="grid"
+					validateClient="true" action="#{loginBean.logar}" />
+
 			</h:panelGrid>
-			
+
 		</p:panel>
 
 		<p:panel class="panel-register">

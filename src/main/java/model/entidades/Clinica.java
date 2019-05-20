@@ -1,6 +1,7 @@
 package model.entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,6 +11,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -27,7 +30,7 @@ public class Clinica implements Serializable {
 
 	@Column(name = "clinica_cnpj", unique = true, nullable = false, length = 32)
 	private String cnpj;
-	
+
 	@Column(name = "clinica_nome", nullable = false, length = 32)
 	private String nome;
 
@@ -43,15 +46,18 @@ public class Clinica implements Serializable {
 	@Column(name = "clinica_tel2", length = 32)
 	private String telefone2;
 
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Endereco endereco;
 
-	@OneToMany(mappedBy = "clinica", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "clinica_funcionario", joinColumns = { 
+			@JoinColumn(name = "clinica_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "funcionario_id") })
 	private List<Funcionario> funcionarios;
 
 	public Clinica() {
 		this.endereco = new Endereco();
-		this.funcionarios = null;
+		this.funcionarios = new ArrayList<Funcionario>();
 	}
 
 	public Long getId() {
@@ -69,7 +75,6 @@ public class Clinica implements Serializable {
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
-	
 
 	public String getNome() {
 		return nome;

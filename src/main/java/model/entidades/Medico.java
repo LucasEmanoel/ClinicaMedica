@@ -32,26 +32,10 @@ public class Medico extends Funcionario implements Serializable {
 	@OneToMany(mappedBy = "medico")
 	private List<Consulta> consultas;
 
-	public Medico(String nome, String cpf, String rg, Integer idade, String telefone, Endereco endereco, String email,
-			Double salario, String senha, Clinica clinica, Long crm, Integer meta) {
-		this.setNome(nome);
-		this.setCpf(cpf);
-		this.setRg(rg);
-		this.setIdade(idade);
-		this.setEndereco(endereco);
-		this.setEmail(email);
-		this.setSenha(senha);
-		this.setSalario(salario);
-		this.setClinica(clinica);
-		this.crm = crm;
-		this.meta = meta;
-	}
-
 	public Medico() {
 		this.consultas = null;
 		this.especialidades = null;
 		this.setEndereco(new Endereco());
-		this.setClinica(new Clinica());
 	}
 
 	public Long getCrm() {

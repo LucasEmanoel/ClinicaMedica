@@ -18,61 +18,64 @@
 			<div class="dados">
 				<h1>Clinica</h1>
 				<p:panel styleClass="panel">
-					<h3>Cadastre sua empresa</h3>
-					<p:messages />
+					<h3 class="title">Cadastre sua empresa</h3>
+					
 					<h:panelGrid id="grid" columns="2">
 						<p:message for="cnpj" />
 						<p:inputText id="cnpj" value="#{clinicaBean.clinica.cnpj}" placeholder="Cnpj" required="true">
-						
+							<!-- criar validação -->
 						</p:inputText>
 						
 						<p:message for="nome" />
 						<p:inputText id="nome" value="#{clinicaBean.clinica.nome}" placeholder="Nome" required="true">
-						
+							<f:validateLength maximum="64" />
+							<f:validateRegex pattern="^[a-zA-Z]+$" />
 						</p:inputText>
 						
 						<p:message for="rua" />
 						<p:inputText id="rua" value="#{clinicaBean.clinica.endereco.rua}" placeholder="Rua" >
-						
+							<f:validateLength maximum="128" />
+							<f:validateRegex pattern="^[a-zA-Z0-9]+$" />
 						</p:inputText>
 						
 						<p:message for="bairro" />
 						<p:inputText id="bairro" value="#{clinicaBean.clinica.endereco.bairro}" placeholder="Bairro" >
-						
+							<f:validateLength maximum="128" />
+							<f:validateRegex pattern="^[a-zA-Z0-9]+$" />
 						</p:inputText>
 						
 						<p:message for="cep" />
 						<p:inputText id="cep" value="#{clinicaBean.clinica.endereco.cep}" placeholder="Cep" >
-						
+							<f:validateLength maximum="128" />
+							<f:validateRegex pattern="^[a-zA-Z0-9]+$" />
 						</p:inputText>
 						
 						<p:message for="tel1" />
 						<p:inputText id="tel1" value="#{clinicaBean.clinica.telefone1}" placeholder="Telefone" >
-						
+							<f:validateLength maximum="32" />
 						</p:inputText>
 						
 						<p:message for="tel2" />
 						<p:inputText id="tel2" value="#{clinicaBean.clinica.telefone2}" placeholder="Telefone(Optional)" >
-						
+							<f:validateLength maximum="32" />
 						</p:inputText>
 						
 						<p:message for="email" />
 						<p:inputText id="email" value="#{clinicaBean.clinica.email}" placeholder="Email" required="true">
-						
+							<f:validateLength maximum="64" />
+							<f:validateRegex
+								pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
 						</p:inputText>
 						
 						<p:message for="senha" />
 						<p:password id="senha" value="#{clinicaBean.clinica.senha}" placeholder="Senha" required="true">
-						
+							<f:validateLength maximum="64" />
 						</p:password>
 						
-						<p:commandButton value="Inscreva-se" update="grid" validateClient="true" action="#{secretariaBean.salvar}" />
+						<p:commandButton value="Inscreva-se" update="grid" validateClient="true" action="#{clinicaBean.salvar}" />
 					</h:panelGrid>
 				</p:panel>
-
-				
 			</div>
 		</h:form>
 	</ui:define>
-
 </ui:composition>

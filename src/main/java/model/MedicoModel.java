@@ -16,7 +16,7 @@ public class MedicoModel {
 
 		if (obj.getNome() != null && obj.getCpf() != null && obj.getRg() != null && obj.getIdade() > 0
 				&& obj.getEmail() != null && obj.getSenha() != null && obj.getSalario() != null && obj.getCrm() != null
-				&& obj.getClinica() != null && !(obj.equals(aux))) {
+				&& !(obj.equals(aux))) {
 			newDao.salvar(obj);
 		} else {
 			throw new ClinicaMedicaException("Erro ao registrar medico.");

@@ -9,16 +9,19 @@
 	margin: 100px;
 }
 
-h3 {
-	margin-right:70px;
+.title {
+	margin-right:-230px;
+	padding: 10px;
 	text-align: right;
+	right: 0;
+	
 }
 
 .dados {
 	position: absolute;
-	margin-left: 50%;
+	margin-left: 45%;
 	float: right;
-	width: 50%;
+	width: 55%;
 	height: 100%;
 }
 
