@@ -50,7 +50,7 @@
 						</p:inputText>
 
 						<p:outputLabel value="Clinica" />
-						<h:selectOneMenu value="#{medicoBean.selecionada}" converter="clinicaConverter" id="somClinica">
+						<h:selectOneMenu value="#{medicoBean.medico.clinica}" converter="clinicaConverter" id="somClinica">
 							<f:selectItems value="#{medicoBean.clinicas}" var="c" itemLabel="#{c.nome}" itemValue="#{c}" />
 						</h:selectOneMenu>
 

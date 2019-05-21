@@ -25,16 +25,13 @@ public class PessoaDao extends DaoImpl<Pessoa> implements PessoaDaoInterface {
 		} catch (Exception e) {
 			return null;
 		} finally {
-
 			manager.close();
 		}
 	}
 	public List<Pessoa> encontrarFuncionariosClinica(Long id) {
 		EntityManager manager = JPAManager.getInstance().getEntityManager();
 
-		String consulta = "SELECT F FROM Pessoa AS F "
-				+ "INNER JOIN Clinica.funcionarios AS CF"
-				+ "WHERE CF.clinica_id = :id";
+		String consulta = "SELECT F FROM Pessoa AS F WHERE F.clinica.id = :id";
 		
 		TypedQuery<Pessoa> query = manager.createQuery(consulta, Pessoa.class);
 		query.setParameter("id", id);

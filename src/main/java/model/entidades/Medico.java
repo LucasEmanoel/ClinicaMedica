@@ -1,6 +1,7 @@
 package model.entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,7 +11,6 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 
 @Entity(name = "Medico")
 @DiscriminatorValue(value = "MEDICO")
@@ -29,13 +29,10 @@ public class Medico extends Funcionario implements Serializable {
 				inverseJoinColumns = @JoinColumn(name = "especialidade_id", referencedColumnName = "especialidade_id"))
 	private List<Especialidade> especialidades;
 
-	@OneToMany(mappedBy = "medico")
-	private List<Consulta> consultas;
-
 	public Medico() {
-		this.consultas = null;
-		this.especialidades = null;
 		this.setEndereco(new Endereco());
+		this.especialidades = new ArrayList<Especialidade>();
+		this.setClinica(new Clinica());
 	}
 
 	public Long getCrm() {
@@ -60,14 +57,6 @@ public class Medico extends Funcionario implements Serializable {
 
 	public void setEspecialidades(List<Especialidade> especialidades) {
 		this.especialidades = especialidades;
-	}
-
-	public List<Consulta> getConsultas() {
-		return consultas;
-	}
-
-	public void setConsultas(List<Consulta> consultas) {
-		this.consultas = consultas;
 	}
 
 	@Override

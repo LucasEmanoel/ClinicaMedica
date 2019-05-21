@@ -31,15 +31,12 @@ public class Consulta implements Serializable {
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "medico_id")
 	private Medico medico;
 
 	@ManyToOne
-	@JoinColumn(name = "ambulatorio_id")
 	private Ambulatorio ambulatorio;
 
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

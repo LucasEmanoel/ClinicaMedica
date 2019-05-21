@@ -1,6 +1,7 @@
 package model.entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -33,13 +34,8 @@ public class Especialidade implements Serializable {
 			CascadeType.MERGE }, mappedBy = "especialidades", targetEntity = Medico.class)
 	private List<Medico> medicos;
 
-	public Especialidade(String especializacao, Long rqe) {
-		this.especializacao = especializacao;
-		this.rqe = rqe;
-	}
-
 	public Especialidade() {
-		this.medicos = null;
+		this.medicos=new ArrayList<Medico>();
 	}
 
 	public Long getId() {

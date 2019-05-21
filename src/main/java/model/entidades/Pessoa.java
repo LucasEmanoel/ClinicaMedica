@@ -2,17 +2,15 @@ package model.entidades;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity(name = "Pessoa")
@@ -51,10 +49,12 @@ public abstract class Pessoa implements Serializable {
 
 	@Column(name = "pessoa_tel2", length = 32)
 	private String telefone2;
-
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	
+	@ManyToOne
 	private Endereco endereco;
-
+	
+	@ManyToOne
+	private Clinica clinica;
 	
 	public Long getId() {
 		return id;
@@ -128,6 +128,14 @@ public abstract class Pessoa implements Serializable {
 		this.telefone2 = telefone2;
 	}
 
+	public Clinica getClinica() {
+		return clinica;
+	}
+
+	public void setClinica(Clinica clinica) {
+		this.clinica = clinica;
+	}
+	
 	public Endereco getEndereco() {
 		return endereco;
 	}

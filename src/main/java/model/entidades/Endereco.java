@@ -28,16 +28,8 @@ public class Endereco implements Serializable {
 
 	@Column(name = "cep", length = 128)
 	private String cep;
-
-	public Endereco(String rua, String bairro, String cep) {
-		super();
-		this.rua = rua;
-		this.bairro = bairro;
-		this.cep = cep;
-	}
-
+	
 	public Endereco() {
-
 	}
 
 	public Long getId() {

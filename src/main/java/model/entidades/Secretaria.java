@@ -17,6 +17,7 @@ public class Secretaria extends Funcionario implements Serializable {
 
 	public Secretaria() {
 		this.setEndereco(new Endereco());
+		this.setClinica(new Clinica());
 	}
 
 	public String getQualificacao() {

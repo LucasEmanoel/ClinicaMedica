@@ -1,16 +1,12 @@
 package model.entidades;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity(name = "Ambulatorio")
@@ -30,13 +26,8 @@ public class Ambulatorio implements Serializable {
 	@Column(name = "ambulatorio_andar", nullable = false)
 	private Integer andar;
 
-	@OneToMany(mappedBy = "ambulatorio", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private List<Consulta> consultas;
-
 	public Ambulatorio() {
-		this.consultas = null;
 	}
-
 
 	public Long getId() {
 		return id;
@@ -60,14 +51,6 @@ public class Ambulatorio implements Serializable {
 
 	public void setAndar(Integer andar) {
 		this.andar = andar;
-	}
-
-	public List<Consulta> getConsultas() {
-		return consultas;
-	}
-
-	public void setConsultas(List<Consulta> consultas) {
-		this.consultas = consultas;
 	}
 
 	@Override

@@ -16,7 +16,7 @@ public class ClienteModel {
 		Cliente cli = (Cliente) newDao.encontrarPorCpf(obj.getCpf());
 
 		if (obj.getNome() != null && obj.getCpf() != null && obj.getRg() != null && obj.getIdade() > 0
-				&& obj.getEmail() != null && obj.getSenha() != null && obj.getEndereco() != null
+				&& obj.getEmail() != null && obj.getSenha() != null
 				&& !(obj.equals(cli))) {
 			dao.salvar(obj);
 		} else {

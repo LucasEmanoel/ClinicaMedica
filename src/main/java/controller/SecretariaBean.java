@@ -30,8 +30,6 @@ public class SecretariaBean  implements Serializable{
 		try {
 			
 			sm.registrarSecretaria(this.secretaria);
-			selecionada.getFuncionarios().add(this.secretaria);
-			new ClinicaModel().atualizarClinica(this.selecionada);
 			
 			return "SecretariaView?faces-redirect=true";
 

@@ -24,7 +24,7 @@
 				draggable="true" header="Funcionarios: " widgetVar="funcionarios"
 				modal="false" resizable="false" style="z-index:99;">
 				<p:dataTable id="table-funcionarios" var="fun"
-					value="#{clinicaBean.clinica.funcionarios}">
+					value="#{clinicaBean.funcionarios}">
 
 					<p:column headerText="Nome">
 						<h:outputText value="#{fun.nome}" />
@@ -34,8 +34,9 @@
 						<h:outputText value="#{fun.cpf}" />
 					</p:column>
 
-					<p:column style="width:32px">
+					<p:column headerText="Editar">
 						<p:commandButton oncomplete="PF('detalhesDialog').show()" icon="pi pi-search">
+							<f:setPropertyActionListener value="#{fun}" target="#{clinicaBean.selecionado}" />
 						</p:commandButton>
 					</p:column>
 
@@ -53,6 +54,10 @@
 							<h:outputText value="#{clinicaBean.selecionado.nome}"
 								style="font-weight:bold" />
 						</f:facet>
+						
+						<p:column headerText="Cpf">
+							<h:outputText value="#{clinicaBean.selecionado.nome}" />
+						</p:column>
 					</h:panelGrid>
 				</p:outputPanel>
 			</p:dialog>

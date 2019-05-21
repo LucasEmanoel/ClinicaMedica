@@ -12,7 +12,7 @@ public abstract class Funcionario extends Pessoa implements Serializable {
 
 	@Column(name = "funcionario_salario")
 	private Double salario;
-
+	
 	public Double getSalario() {
 		return salario;
 	}

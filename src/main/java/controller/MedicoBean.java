@@ -29,8 +29,6 @@ public class MedicoBean implements Serializable{
 		try {
 			
 			mm.registrarMedico(this.medico);
-			selecionada.getFuncionarios().add(this.medico);
-			new ClinicaModel().atualizarClinica(this.selecionada);
 			return "MedicoView?faces-redirect=true";
 
 		} catch (Exception e) {

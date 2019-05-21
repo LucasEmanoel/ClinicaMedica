@@ -1,8 +1,6 @@
 package model.entidades;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,9 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -49,15 +44,8 @@ public class Clinica implements Serializable {
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Endereco endereco;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name = "clinica_funcionario", joinColumns = { 
-			@JoinColumn(name = "clinica_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "funcionario_id") })
-	private List<Funcionario> funcionarios;
-
 	public Clinica() {
 		this.endereco = new Endereco();
-		this.funcionarios = new ArrayList<Funcionario>();
 	}
 
 	public Long getId() {
@@ -124,13 +112,6 @@ public class Clinica implements Serializable {
 		this.endereco = endereco;
 	}
 
-	public List<Funcionario> getFuncionarios() {
-		return funcionarios;
-	}
-
-	public void setFuncionarios(List<Funcionario> funcionarios) {
-		this.funcionarios = funcionarios;
-	}
 
 	@Override
 	public int hashCode() {
