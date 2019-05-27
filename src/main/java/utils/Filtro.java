@@ -14,9 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(filterName = "FiltroConexao", urlPatterns = { "/*" })
+@WebFilter(filterName = "FiltroConexao", urlPatterns = { "/users/*" })
 public class Filtro implements Filter {
-
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {
 
@@ -24,7 +23,7 @@ public class Filtro implements Filter {
 		HttpServletResponse resposta = (HttpServletResponse) resp;
 		HttpSession sessao = requisicao.getSession(false);
 
-		String loginURI = requisicao.getContextPath() + "/index.xhtml";
+		String loginURI = requisicao.getContextPath() + "/LoginView.xhtml";
 
 		boolean logado = sessao != null && sessao.getAttribute("user") != null;
 		boolean paginaLogin = requisicao.getRequestURI().equals(loginURI);

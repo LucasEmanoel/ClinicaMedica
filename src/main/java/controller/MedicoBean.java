@@ -6,7 +6,6 @@ import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 
-import model.ClinicaModel;
 import model.MedicoModel;
 import model.entidades.Clinica;
 import model.entidades.Medico;
@@ -16,10 +15,13 @@ import model.entidades.Medico;
 public class MedicoBean implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
+	
+	private MedicoModel mm;
 	private Medico medico = new Medico();
+	
 	private List<Clinica> clinicas;
 	private Clinica selecionada;
-	private MedicoModel mm;
+
 	
 	public MedicoBean() {
 		mm = new MedicoModel();

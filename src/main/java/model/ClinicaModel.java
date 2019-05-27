@@ -6,7 +6,7 @@ import model.dao.ClinicaDao;
 import model.dao.Dao;
 import model.dao.PessoaDao;
 import model.entidades.Clinica;
-import model.entidades.Pessoa;
+import model.entidades.Funcionario;
 import model.exceptions.ClinicaMedicaException;
 
 public class ClinicaModel {
@@ -61,8 +61,8 @@ public class ClinicaModel {
 		return newDao.encontrarTodos();
 		
 	}
-	public List<Pessoa> encontrarTodosFuncionarios(Clinica obj){
+	public List<Funcionario> encontrarTodosFuncionarios(Clinica obj){
 		PessoaDao newDao = new PessoaDao();
-		return newDao.encontrarFuncionariosClinica(1L);
+		return newDao.encontrarFuncionariosClinica(obj.getId());
 	}
 }

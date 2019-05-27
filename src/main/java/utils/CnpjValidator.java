@@ -1,12 +1,15 @@
 package utils;
 
+import java.util.ResourceBundle;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.validator.FacesValidator;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
-import java.util.ResourceBundle;
 
+@FacesValidator("cnpjValidator")
 public class CnpjValidator implements Validator {
 	
     @Override

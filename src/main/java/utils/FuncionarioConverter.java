@@ -8,8 +8,8 @@ import javax.faces.convert.FacesConverter;
 import model.dao.PessoaDao;
 import model.entidades.Pessoa;
 
-@FacesConverter("medicoConverter")
-public class MedicoConverter implements Converter {
+@FacesConverter("funcionarioConverter")
+public class FuncionarioConverter implements Converter {
     
     private PessoaDao dao = new PessoaDao();
     

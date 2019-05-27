@@ -23,7 +23,7 @@
 					<h:panelGrid id="grid" columns="2">
 						<p:message for="cnpj" />
 						<p:inputText id="cnpj" value="#{clinicaBean.clinica.cnpj}" placeholder="Cnpj" required="true">
-							<!-- criar validação -->
+							<f:validator validatorId="cnpjValidator"/>
 						</p:inputText>
 						
 						<p:message for="nome" />

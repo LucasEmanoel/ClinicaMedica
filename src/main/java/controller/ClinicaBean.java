@@ -9,17 +9,17 @@ import javax.faces.bean.ManagedBean;
 import model.ClinicaModel;
 import model.entidades.Clinica;
 import model.entidades.Funcionario;
-import model.entidades.Pessoa;
 
 @ManagedBean
 @SessionScoped
 public class ClinicaBean  implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
+	
 	private ClinicaModel cm;
 	private Clinica clinica = new Clinica();
 	
-	private List<Pessoa> funcionarios;
+	private List<Funcionario> funcionarios;
 	private Funcionario selecionado;
 	
 
@@ -89,11 +89,11 @@ public class ClinicaBean  implements Serializable{
 		this.selecionado = selecionado;
 	}
 
-	public List<Pessoa> getFuncionarios() {
+	public List<Funcionario> getFuncionarios() {
 		return funcionarios;
 	}
 
-	public void setFuncionarios(List<Pessoa> funcionarios) {
+	public void setFuncionarios(List<Funcionario> funcionarios) {
 		this.funcionarios = funcionarios;
 	}
 

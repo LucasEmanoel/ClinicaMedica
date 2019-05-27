@@ -1,6 +1,6 @@
 package model.dao;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -51,13 +51,13 @@ public class ConsultaDao extends DaoImpl<Consulta> implements ConsultaDaoInterfa
 		}
 	}
 
-	public boolean verificarConsulta(Medico m, Date d) {
+	public boolean verificarConsulta(Medico m, Timestamp d) {
 		EntityManager manager = JPAManager.getInstance().getEntityManager();
 
-		String consulta = "SELECT C FROM Consulta AS C WHERE C.data = :data && C.medico = :cpf";
+		String consulta = "SELECT C FROM Consulta AS C WHERE C.horario = :horario AND C.medico.cpf = :cpf";
 
 		TypedQuery<Consulta> query = manager.createQuery(consulta, Consulta.class);
-		query.setParameter("data", d);
+		query.setParameter("horario", d);
 		query.setParameter("cpf", m.getCpf());
 
 		try {

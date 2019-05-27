@@ -1,7 +1,7 @@
 package model;
 
 
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 import model.dao.ConsultaDao;
@@ -17,9 +17,9 @@ public class ConsultaModel {
 		
 		ConsultaDao newDao = (ConsultaDao) dao;
 		Consulta aux = (Consulta) newDao.findConsultaPorCpfCliente(obj.getCliente().getCpf());
-		boolean consultaDisponivel = newDao.verificarConsulta(obj.getMedico(), obj.getData());
+		boolean consultaDisponivel = newDao.verificarConsulta(obj.getMedico(), obj.getHorario());
 
-		if (obj.getData() != null && obj.getHorario() != null && obj.getCliente() != null && obj.getMedico() != null
+		if (obj.getHorario() != null && obj.getHorario() != null && obj.getCliente() != null && obj.getMedico() != null
 				&& obj.getPagamento() != null && obj.getDescricao() != null && consultaDisponivel == true
 				&& !(obj.equals(aux))) {
 			dao.salvar(obj);
@@ -79,7 +79,7 @@ public class ConsultaModel {
 		}
 	}
 
-	public boolean verificarDisponibilidade(Medico med, Date data) throws Exception {
+	public boolean verificarDisponibilidade(Medico med, Timestamp data) throws Exception {
 		ConsultaDao newDao = (ConsultaDao) dao;
 		if (med != null && data != null) {
 			return newDao.verificarConsulta(med, data);

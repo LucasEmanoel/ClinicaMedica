@@ -20,14 +20,15 @@ public class ConsultaBean implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
+	private ConsultaModel cm;
 	private Consulta consulta = new Consulta();
+	private Consulta selecionada;
+	
 	private SimpleDateFormat sdf;
 	private List<Consulta> consultas;
 	private List<Consulta> consultasEmAtendimento;
 	private List<Consulta> consultasConcluidas;
-	private Consulta selecionada;
-	private ConsultaModel cm;
-
+	
 	public ConsultaBean() {
 		sdf = new SimpleDateFormat("dd/MM/yyyy");
 		consultasEmAtendimento = new ArrayList<Consulta>();
@@ -90,6 +91,31 @@ public class ConsultaBean implements Serializable{
 
 		consultasConcluidas.add(con);
 		consultasEmAtendimento.remove(con);
+	}
+
+	
+	public Consulta getConsulta() {
+		return consulta;
+	}
+
+	public void setConsulta(Consulta consulta) {
+		this.consulta = consulta;
+	}
+
+	public SimpleDateFormat getSdf() {
+		return sdf;
+	}
+
+	public void setSdf(SimpleDateFormat sdf) {
+		this.sdf = sdf;
+	}
+
+	public ConsultaModel getCm() {
+		return cm;
+	}
+
+	public void setCm(ConsultaModel cm) {
+		this.cm = cm;
 	}
 
 	public List<Consulta> getConsultas() {

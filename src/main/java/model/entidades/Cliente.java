@@ -12,6 +12,5 @@ public class Cliente extends Pessoa implements Serializable {
 
 	public Cliente() {
 		this.setEndereco(new Endereco());
-		this.setClinica(new Clinica());
 	}
 }

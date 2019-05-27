@@ -31,7 +31,7 @@
 						
 						<p:message for="cpf" />
 						<p:inputText id="cpf" value="#{clienteBean.user.cpf}" placeholder="Cpf" required="true" >
-							<!-- Criar validador -->
+							<f:validator validatorId="cpfValidator"/>
 						</p:inputText>
 						
 						<p:message for="rg" />

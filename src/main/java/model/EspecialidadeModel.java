@@ -11,7 +11,7 @@ public class EspecialidadeModel {
 	public void registrarEspecialidade(Especialidade obj) throws Exception {
 
 		EspecialidadeDao newDao = (EspecialidadeDao) dao;
-		Especialidade aux = (Especialidade) newDao.encontarPorRqe(obj.getRqe());
+		Especialidade aux = newDao.encontarPorRqe(obj.getRqe());
 
 		if (obj.getEspecializacao() != null && obj.getRqe() != null && obj.getMedico() != null && !(obj.equals(aux))) {
 			dao.salvar(obj);
@@ -23,7 +23,7 @@ public class EspecialidadeModel {
 	public void removerEspecialidade(Especialidade obj) throws Exception {
 
 		EspecialidadeDao newDao = (EspecialidadeDao) dao;
-		Especialidade aux = (Especialidade) newDao.encontarPorRqe(obj.getRqe());
+		Especialidade aux = newDao.encontarPorRqe(obj.getRqe());
 
 		if (obj.equals(aux)) {
 			dao.deletar(obj);
@@ -35,7 +35,7 @@ public class EspecialidadeModel {
 	public void atualizarEspecialidade(Especialidade obj) throws Exception {
 
 		EspecialidadeDao newDao = (EspecialidadeDao) dao;
-		Especialidade aux = (Especialidade) newDao.encontarPorRqe(obj.getRqe());
+		Especialidade aux = newDao.encontarPorRqe(obj.getRqe());
 
 		if (obj.equals(aux)) {
 			dao.atualizar(obj);

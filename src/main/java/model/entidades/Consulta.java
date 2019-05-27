@@ -1,8 +1,8 @@
 package model.entidades;
 
 import java.io.Serializable;
-import java.sql.Date;
-import java.sql.Time;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -50,27 +50,16 @@ public class Consulta implements Serializable {
 	@Column(name = "consulta_descricao", length = 128)
 	private String descricao;
 
-	@Column(name = "consulta_data", nullable = false)
-	private Date data;
-
 	@Column(name = "consulta_horario", nullable = false)
-	private Time horario;
-
-	public Consulta(String descricao, Date data, Time horario) {
-		super();
-		this.descricao = descricao;
-		this.data = data;
-		this.horario = horario;
-	}
+	private Timestamp horario;
 
 	public Consulta() {
-		this.ambulatorio = null;
-		this.cliente = null;
-		this.data = null;
+		this.ambulatorio = new Ambulatorio();
+		this.cliente = new Cliente();
 		this.horario = null;
-		this.medicamentos = null;
-		this.medico = null;
-		this.pagamento = null;
+		this.medicamentos = new ArrayList<Medicamento>();
+		this.medico = new Medico();
+		this.pagamento = new Pagamento();
 	}
 
 	public Long getId() {
@@ -128,20 +117,12 @@ public class Consulta implements Serializable {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-
-	public Date getData() {
-		return data;
-	}
-
-	public void setData(Date data) {
-		this.data = data;
-	}
-
-	public Time getHorario() {
+	
+	public Timestamp getHorario() {
 		return horario;
 	}
 
-	public void setHorario(Time horario) {
+	public void setHorario(Timestamp horario) {
 		this.horario = horario;
 	}
 

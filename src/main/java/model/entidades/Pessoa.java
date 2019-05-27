@@ -2,6 +2,7 @@ package model.entidades;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
@@ -50,11 +51,8 @@ public abstract class Pessoa implements Serializable {
 	@Column(name = "pessoa_tel2", length = 32)
 	private String telefone2;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Endereco endereco;
-	
-	@ManyToOne
-	private Clinica clinica;
 	
 	public Long getId() {
 		return id;
@@ -126,14 +124,6 @@ public abstract class Pessoa implements Serializable {
 
 	public void setTelefone2(String telefone2) {
 		this.telefone2 = telefone2;
-	}
-
-	public Clinica getClinica() {
-		return clinica;
-	}
-
-	public void setClinica(Clinica clinica) {
-		this.clinica = clinica;
 	}
 	
 	public Endereco getEndereco() {

@@ -47,6 +47,7 @@
 
 					<p:column style="width:32px">
 						<p:commandButton oncomplete="PF('detalhesDialog').show()" value="Marcar">
+							<f:setPropertyActionListener value="" target=""></f:setPropertyActionListener>
 						</p:commandButton>
 					</p:column>
 
@@ -57,14 +58,21 @@
 				resizable="false" draggable="true" showEffect="fade"
 				hideEffect="fade" modal="true">
 				<h:panelGrid columns="2">
-				
-					<h:inputText>cliente</h:inputText>
-					<h:inputText>medico</h:inputText>
-					<h:inputText>ambulatorio</h:inputText>
-					<h:inputText>pagamento</h:inputText>
-					<h:inputText>descricao</h:inputText>
-					<h:inputText>data</h:inputText>
-					<h:inputText>horario</h:inputText>
+					
+					<h:inputText>cliente</h:inputText><!-- Pegar o user que ta na sessao nao sei fazer ainda -->
+					
+					<h:selectOneMenu value="#{clienteBean.con.medico}" converter="pessoaConverter" id="somMedico">
+							<f:selectItems value="#{clienteBean.medicos}" var="c" itemLabel="#{c.nome}" itemValue="#{c}" />
+					</h:selectOneMenu>
+					
+					<h:inputText id="descricao" value="#{clienteBean.con.descricao}" placeholder="Descrição" required="true">
+						
+					</h:inputText>
+					
+					<p:inputText placeholder="Data">
+						<f:validateRegex pattern="^\d{1,2}\/\d{1,2}\/\d{4}$" />
+						<f:convertDateTime pattern="MM/dd/yyyy" />
+					</p:inputText>
 				
 				</h:panelGrid>				
 			</p:dialog>

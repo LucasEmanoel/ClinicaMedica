@@ -6,7 +6,6 @@ import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 
-import model.ClinicaModel;
 import model.SecretariaModel;
 import model.entidades.Clinica;
 import model.entidades.Secretaria;
@@ -16,10 +15,13 @@ import model.entidades.Secretaria;
 public class SecretariaBean  implements Serializable{
 
 	private static final long serialVersionUID = 1L;
+	
+	private SecretariaModel sm;
 	private Secretaria secretaria = new Secretaria();
+	
 	private List<Clinica> clinicas;
 	private Clinica selecionada;
-	private SecretariaModel sm;
+	
 	
 	public SecretariaBean() {
 		this.sm = new SecretariaModel();
@@ -28,9 +30,7 @@ public class SecretariaBean  implements Serializable{
 
 	public String salvar() {
 		try {
-			
 			sm.registrarSecretaria(this.secretaria);
-			
 			return "SecretariaView?faces-redirect=true";
 
 		} catch (Exception e) {
