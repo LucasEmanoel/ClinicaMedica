@@ -21,12 +21,12 @@
 			<div class="links-top">
 				<p:panel class="panel">
 
-					<h:commandLink value="Marcar Consulta" 
+					<p:commandLink value="Marcar Consulta" 
 					onclick="PF('marcar').show(); return false;"/>
 
-					<h:commandLink value="Visulizar Históricos" action="HistoricoView" />
+					<p:commandLink value="Visulizar Históricos" action="users/HistoricoView?faces-redirect=true" />
 
-					<h:commandLink value="Perfil" />
+					<p:commandLink value="Perfil" />
 
 				</p:panel>
 					
@@ -45,7 +45,7 @@
 						<h:outputText value="#{cli.endereco.cep}" />
 					</p:column>
 
-					<p:column style="width:32px">
+					<p:column style="width:85px">
 						<p:commandButton oncomplete="PF('detalhesDialog').show()" value="Marcar">
 							<f:setPropertyActionListener value="" target=""></f:setPropertyActionListener>
 						</p:commandButton>

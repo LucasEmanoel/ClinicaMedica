@@ -5,7 +5,9 @@ import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
+import model.ClinicaModel;
 import model.SecretariaModel;
 import model.entidades.Clinica;
 import model.entidades.Secretaria;
@@ -18,6 +20,7 @@ public class SecretariaBean  implements Serializable{
 	
 	private SecretariaModel sm;
 	private Secretaria secretaria = new Secretaria();
+	private Secretaria userSessao;
 	
 	private List<Clinica> clinicas;
 	private Clinica selecionada;
@@ -25,7 +28,8 @@ public class SecretariaBean  implements Serializable{
 	
 	public SecretariaBean() {
 		this.sm = new SecretariaModel();
-		this.clinicas = new ClinicaBean().retornaTodos();
+		this.setUserSessao((Secretaria) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("perfil"));
+		this.retornaTodasClinicas();
 	}
 
 	public String salvar() {
@@ -62,6 +66,15 @@ public class SecretariaBean  implements Serializable{
 		}
 		return null;
 	}
+	
+	public void retornaTodasClinicas() {
+		try {
+			this.clinicas = new ClinicaModel().encontrarTodos();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public Secretaria getSecretaria() {
 		return secretaria;
 	}
@@ -92,6 +105,14 @@ public class SecretariaBean  implements Serializable{
 
 	public void setSm(SecretariaModel sm) {
 		this.sm = sm;
+	}
+
+	public Secretaria getUserSessao() {
+		return userSessao;
+	}
+
+	public void setUserSessao(Secretaria userSessao) {
+		this.userSessao = userSessao;
 	}
 	
 }

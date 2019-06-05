@@ -1,8 +1,8 @@
 package model.entidades;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -50,13 +50,13 @@ public class Consulta implements Serializable {
 	@Column(name = "consulta_descricao", length = 128)
 	private String descricao;
 
-	@Column(name = "consulta_horario", nullable = false)
-	private Timestamp horario;
+	@Column(name = "consulta_data", nullable = false)
+	private Calendar data;
 
 	public Consulta() {
 		this.ambulatorio = new Ambulatorio();
 		this.cliente = new Cliente();
-		this.horario = null;
+		this.data = null;
 		this.medicamentos = new ArrayList<Medicamento>();
 		this.medico = new Medico();
 		this.pagamento = new Pagamento();
@@ -118,12 +118,12 @@ public class Consulta implements Serializable {
 		this.descricao = descricao;
 	}
 	
-	public Timestamp getHorario() {
-		return horario;
+	public Calendar getHorario() {
+		return data;
 	}
 
-	public void setHorario(Timestamp horario) {
-		this.horario = horario;
+	public void setHorario(Calendar horario) {
+		this.data = horario;
 	}
 
 	@Override
@@ -132,7 +132,7 @@ public class Consulta implements Serializable {
 		int result = 1;
 		result = prime * result + ((ambulatorio == null) ? 0 : ambulatorio.hashCode());
 		result = prime * result + ((cliente == null) ? 0 : cliente.hashCode());
-		result = prime * result + ((horario == null) ? 0 : horario.hashCode());
+		result = prime * result + ((data == null) ? 0 : data.hashCode());
 		result = prime * result + ((medico == null) ? 0 : medico.hashCode());
 		return result;
 	}
@@ -156,10 +156,10 @@ public class Consulta implements Serializable {
 				return false;
 		} else if (!cliente.equals(other.cliente))
 			return false;
-		if (horario == null) {
-			if (other.horario != null)
+		if (data == null) {
+			if (other.data != null)
 				return false;
-		} else if (!horario.equals(other.horario))
+		} else if (!data.equals(other.data))
 			return false;
 		if (medico == null) {
 			if (other.medico != null)

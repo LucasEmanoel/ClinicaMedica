@@ -5,7 +5,9 @@ import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
+import model.ClinicaModel;
 import model.MedicoModel;
 import model.entidades.Clinica;
 import model.entidades.Medico;
@@ -18,6 +20,7 @@ public class MedicoBean implements Serializable{
 	
 	private MedicoModel mm;
 	private Medico medico = new Medico();
+	private Medico userSessao;
 	
 	private List<Clinica> clinicas;
 	private Clinica selecionada;
@@ -25,7 +28,8 @@ public class MedicoBean implements Serializable{
 	
 	public MedicoBean() {
 		mm = new MedicoModel();
-		this.clinicas = new ClinicaBean().retornaTodos();
+		this.setUserSessao((Medico) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("perfil"));
+		this.retornaTodasClinicas();
 	}
 	public String salvar() {
 		try {
@@ -61,7 +65,14 @@ public class MedicoBean implements Serializable{
 		}
 		return null;
 	}
-
+	
+	public void retornaTodasClinicas() {
+		try {
+			this.clinicas = new ClinicaModel().encontrarTodos();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	public Medico getMedico() {
 		return medico;
 	}
@@ -86,6 +97,12 @@ public class MedicoBean implements Serializable{
 	}
 	public void setMm(MedicoModel mm) {
 		this.mm = mm;
+	}
+	public Medico getUserSessao() {
+		return userSessao;
+	}
+	public void setUserSessao(Medico userSessao) {
+		this.userSessao = userSessao;
 	}
 	
 }

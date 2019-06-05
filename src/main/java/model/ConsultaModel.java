@@ -1,7 +1,7 @@
 package model;
 
 
-import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.List;
 
 import model.dao.ConsultaDao;
@@ -79,7 +79,7 @@ public class ConsultaModel {
 		}
 	}
 
-	public boolean verificarDisponibilidade(Medico med, Timestamp data) throws Exception {
+	public boolean verificarDisponibilidade(Medico med, Calendar data) throws Exception {
 		ConsultaDao newDao = (ConsultaDao) dao;
 		if (med != null && data != null) {
 			return newDao.verificarConsulta(med, data);

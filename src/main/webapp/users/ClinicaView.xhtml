@@ -11,55 +11,48 @@
 	</ui:define>
 
 	<ui:define name="content">
-		<h:form>
+		<h:form id="form">
 			<div class="links-top">
 				<p:panel class="panel">
-					<h:commandLink value="Gerenciar Funcionarios"
+					<p:commandLink value="Gerenciar Funcionarios"
 						onclick="PF('funcionarios').show(); return false;" />
-					<h:commandLink value="Perfil" />
+					<p:commandLink value="Perfil" />
 				</p:panel>
 			</div>
 
 			<p:dialog styleClass="dialog" width="525" height="150"
 				draggable="true" header="Funcionarios: " widgetVar="funcionarios"
 				modal="false" resizable="false" style="z-index:99;">
-				<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"
-					columnClasses="label, value">
-
-					<p:outputLabel for="advanced" value="pesquisa:" />
-					
-					<p:selectOneListbox id="advanced" value="#{clinicaBean.selecionado}"
-						converter="medicoConverter" var="fun" filter="true"
-						filterMatchMode="contains">
-						<f:selectItems value="#{clinicaBean.funcionarios}" var="funcionarios"
-							itemLabel="#{funcionarios.nome}" itemValue="#{funcionarios}" />
-
-						<p:column>
-							<h:outputText value="#{fun.nome}" />
-						</p:column>
-					</p:selectOneListbox>
-				</h:panelGrid>
-
-				<p:separator />
-
-				<p:commandButton value="Editar" update="display" oncomplete="PF('dlg').show()" icon="pi pi-check">
-				<p:commandButton value="Deletar" update="display" oncomplete="PF('dlg').show()" icon="pi pi-check" />
-					
-				</p:commandButton>
-					
-
-				<p:dialog header="Selected Values" modal="true" showEffect="fade"
-					widgetVar="dlg" resizable="false">
-					<p:panelGrid columns="2" id="display" columnClasses="label,output">
-						<h:outputText value="Basic:" />
-						<h:outputText value="#{clinicaBean.selecionado.nome}" />
-
-						<h:outputText value="Advanced:" />
-						<h:outputText value="#{clinicaBean.selecionado.nome}" />
-						
-						<p:commandButton value="Salvar" update="display" oncomplete="" icon="">
-					</p:panelGrid>
-				</p:dialog>
+				
+					<p:dataTable var="fun" value="#{clinicaBean.funcionarios}">
+						<p:column headerText="Id">
+					        <h:outputText value="#{fun.id}" />
+					    </p:column>
+					    
+					    <p:column headerText="Nome">
+					        <h:outputText value="#{fun.nome}" />
+					    </p:column>
+					    
+					    <p:column headerText="Idade">
+					        <h:outputText value="#{fun.idade}" />
+					    </p:column>
+					 
+					    <p:column headerText="Salario">
+					        <h:outputText value="#{fun.salario}" />
+					    </p:column>
+					    
+					    <p:column headerText="Editar">
+					        <p:commandButton oncomplete="#{clinicaBean.atualizarFuncionario}" icon="fas fa-edit">
+					        	<f:setPropertyActionListener value="fun" target="#{clinicaBean.selecionado}"></f:setPropertyActionListener>
+							</p:commandButton>
+					    </p:column>
+					    
+					    <p:column headerText="Deletar">
+					        <p:commandButton oncomplete="#{clinicaBean.deletarFuncionario}" icon="fas fa-trash">
+					        	<f:setPropertyActionListener value="fun" target="#{clinicaBean.selecionado}"></f:setPropertyActionListener>
+							</p:commandButton>
+					    </p:column>
+				</p:dataTable>
 			</p:dialog>
 		</h:form>
 	</ui:define>

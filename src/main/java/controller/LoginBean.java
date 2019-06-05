@@ -31,16 +31,29 @@ public class LoginBean implements Serializable{
 	
 	public String logar() {
 		try {
-			Object comparador = um.logar(this.email, this.senha);
+			Object user = um.logar(this.email, this.senha);
+			FacesContext con = FacesContext.getCurrentInstance();
 			
-			if(comparador instanceof Cliente) {
-				return "users/ClienteView?faces-redirect=true";
-			}else if(comparador instanceof Medico) {
+			if(user instanceof Cliente) {
+				
+				con.getExternalContext().getSessionMap().put("perfil", (Cliente) user);
+				return "users/ClienteView?faces-redirect=true"; 
+				
+			}else if(user instanceof Medico) {
+				
+				con.getExternalContext().getSessionMap().put("perfil", (Medico) user);
 				return "users/MedicoView?faces-redirect=true";
-			}else if(comparador instanceof Secretaria) {
+				
+			}else if(user instanceof Secretaria) {
+				
+				con.getExternalContext().getSessionMap().put("perfil", (Secretaria) user);
 				return "users/SecretariaView?faces-redirect=true";
-			}else if(comparador instanceof Clinica) {
+				
+			}else if(user instanceof Clinica) {
+				
+				con.getExternalContext().getSessionMap().put("perfil", (Clinica) user);
 				return "users/ClinicaView?faces-redirect=true";
+				
 			}else {
 		       FacesContext.getCurrentInstance().addMessage(
 		    		   null,
@@ -51,18 +64,24 @@ public class LoginBean implements Serializable{
 		}
 		return null;
 	}
+	public String deslogar() {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		return "inicio?faces-redirect=true";
+	}
 	
 	public String getEmail() {
 		return email;
 	}
+	
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
 	public String getSenha() {
 		return senha;
 	}
+	
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-	
+	}	
 }

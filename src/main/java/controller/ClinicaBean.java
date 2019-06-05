@@ -5,8 +5,10 @@ import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 import model.ClinicaModel;
+import model.FuncionarioModel;
 import model.entidades.Clinica;
 import model.entidades.Funcionario;
 
@@ -18,14 +20,16 @@ public class ClinicaBean  implements Serializable{
 	
 	private ClinicaModel cm;
 	private Clinica clinica = new Clinica();
+	private Clinica userSessao;
 	
 	private List<Funcionario> funcionarios;
 	private Funcionario selecionado;
 	
 
 	public ClinicaBean() {
+		this.setUserSessao((Clinica) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("perfil"));
 		cm = new ClinicaModel();
-		funcionarios = cm.encontrarTodosFuncionarios(this.clinica);
+		this.funcionarios = cm.encontrarTodosFuncionarios(this.userSessao);
 	}
 
 	public String salvar() {
@@ -63,16 +67,28 @@ public class ClinicaBean  implements Serializable{
 		}
 		return null;
 	}
-	
-	public List<Clinica> retornaTodos() {
+	public void deletarFuncionario() {
+		
+		FuncionarioModel fm = new FuncionarioModel();
+		
 		try {
-			return cm.encontrarTodos();
+			fm.deletarFuncionario(this.selecionado);
+			
 		} catch (Exception e) {
-			e.printStackTrace();
+			
 		}
-		return null;
 	}
-
+	public void atualizarFuncionario() {
+		
+		FuncionarioModel fm = new FuncionarioModel();
+		
+		try {
+			fm.atualizarFuncionario(this.selecionado);
+			
+		} catch (Exception e) {
+			
+		}
+	}
 	public Clinica getClinica() {
 		return clinica;
 	}
@@ -104,6 +120,12 @@ public class ClinicaBean  implements Serializable{
 	public void setCm(ClinicaModel cm) {
 		this.cm = cm;
 	}
-	
 
+	public Clinica getUserSessao() {
+		return userSessao;
+	}
+
+	public void setUserSessao(Clinica userSessao) {
+		this.userSessao = userSessao;
+	}
 }

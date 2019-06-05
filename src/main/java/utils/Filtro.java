@@ -25,7 +25,7 @@ public class Filtro implements Filter {
 
 		String loginURI = requisicao.getContextPath() + "/LoginView.xhtml";
 
-		boolean logado = sessao != null && sessao.getAttribute("user") != null;
+		boolean logado = sessao != null && sessao.getAttribute("perfil") != null;
 		boolean paginaLogin = requisicao.getRequestURI().equals(loginURI);
 		boolean requisicaoRecurso = requisicao.getRequestURI()
 				.startsWith(requisicao.getContextPath() + ResourceHandler.RESOURCE_IDENTIFIER);
@@ -35,7 +35,6 @@ public class Filtro implements Filter {
 		} else {
 			resposta.sendRedirect(loginURI);
 		}
-
 	}
 
 	@Override

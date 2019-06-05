@@ -5,8 +5,10 @@ import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 import model.ClienteModel;
+import model.ClinicaModel;
 import model.MedicoModel;
 import model.entidades.Cliente;
 import model.entidades.Clinica;
@@ -21,6 +23,7 @@ public class ClienteBean implements Serializable{
 	
 	private ClienteModel cm;
 	private Cliente user = new Cliente();
+	private Cliente userSessao;
 	
 	private List<Medico> medicos;
 	private List<Clinica> clinicas;
@@ -28,16 +31,14 @@ public class ClienteBean implements Serializable{
 	
 	private Consulta con = new Consulta();
 	
-	
 	public ClienteBean() {
 		this.cm = new ClienteModel();
-		this.clinicas = new ClinicaBean().retornaTodos();
+		this.setUserSessao((Cliente) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("perfil"));
+		this.retornaTodasClinicas();
 	}
 	
-	
 	public String salvar(){
-		try {
-			
+		try {	
 			cm.registrarCliente(this.user);
 			return "ClienteView?faces-redirect=true";
 			
@@ -69,6 +70,13 @@ public class ClienteBean implements Serializable{
 			e.printStackTrace();
 		}
 		return null;
+	}
+	public void retornaTodasClinicas() {
+		try {
+			this.clinicas = new ClinicaModel().encontrarTodos();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	public void retornaMedicos() {
 		try {
@@ -134,6 +142,14 @@ public class ClienteBean implements Serializable{
 
 	public void setMedicos(List<Medico> medicos) {
 		this.medicos = medicos;
+	}
+
+	public Cliente getUserSessao() {
+		return userSessao;
+	}
+
+	public void setUserSessao(Cliente userSessao) {
+		this.userSessao = userSessao;
 	}
 	
 	

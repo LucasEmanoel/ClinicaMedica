@@ -41,7 +41,7 @@ public class Clinica implements Serializable {
 	@Column(name = "clinica_tel2", length = 32)
 	private String telefone2;
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Endereco endereco;
 
 	public Clinica() {
