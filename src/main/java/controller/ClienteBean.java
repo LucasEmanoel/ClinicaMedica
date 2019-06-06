@@ -22,7 +22,6 @@ public class ClienteBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private ClienteModel cm;
-	private Cliente user = new Cliente();
 	private Cliente userSessao;
 	
 	private List<Medico> medicos;
@@ -36,41 +35,8 @@ public class ClienteBean implements Serializable{
 		this.setUserSessao((Cliente) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("perfil"));
 		this.retornaTodasClinicas();
 	}
+
 	
-	public String salvar(){
-		try {	
-			cm.registrarCliente(this.user);
-			return "ClienteView?faces-redirect=true";
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
-	public String atualizar() {
-		try {
-			if (cm.atualizarCliente(this.user)) {
-				return "ClienteView?faces-redirect=true";
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
-	public String deletar() {
-		try {
-			if (cm.removerCliente(this.user)) {
-				return "inicio?faces-redirect=true";
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
 	public void retornaTodasClinicas() {
 		try {
 			this.clinicas = new ClinicaModel().encontrarTodos();
@@ -85,14 +51,6 @@ public class ClienteBean implements Serializable{
 			e.printStackTrace();
 		}
 	}
-	public Cliente getUser() {
-		return user;
-	}
-
-	public void setUser(Cliente user) {
-		this.user = user;
-	}
-
 
 	public ClienteModel getCm() {
 		return cm;
@@ -103,42 +61,33 @@ public class ClienteBean implements Serializable{
 		this.cm = cm;
 	}
 
-	
-
 	public Consulta getCon() {
 		return con;
 	}
-
 
 	public void setCon(Consulta con) {
 		this.con = con;
 	}
 
-
 	public Clinica getSelecionada() {
 		return selecionada;
 	}
-
 
 	public void setSelecionada(Clinica selecionada) {
 		this.selecionada = selecionada;
 	}
 
-
 	public List<Clinica> getClinicas() {
 		return clinicas;
 	}
-
 
 	public void setClinicas(List<Clinica> clinicas) {
 		this.clinicas = clinicas;
 	}
 
-
 	public List<Medico> getMedicos() {
 		return medicos;
 	}
-
 
 	public void setMedicos(List<Medico> medicos) {
 		this.medicos = medicos;
@@ -151,7 +100,4 @@ public class ClienteBean implements Serializable{
 	public void setUserSessao(Cliente userSessao) {
 		this.userSessao = userSessao;
 	}
-	
-	
-		
 }

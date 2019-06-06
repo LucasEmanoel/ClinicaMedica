@@ -19,7 +19,6 @@ public class SecretariaBean  implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private SecretariaModel sm;
-	private Secretaria secretaria = new Secretaria();
 	private Secretaria userSessao;
 	
 	private List<Clinica> clinicas;
@@ -32,55 +31,12 @@ public class SecretariaBean  implements Serializable{
 		this.retornaTodasClinicas();
 	}
 
-	public String salvar() {
-		try {
-			sm.registrarSecretaria(this.secretaria);
-			return "SecretariaView?faces-redirect=true";
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
-	public String atualizar() {
-		try {
-			
-			sm.atualizarSecretaria(this.secretaria);
-			return "SecretariaView?faces-redirect=true";
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
-	public String deletar() {
-		try {
-			
-			sm.removerSecretaria(this.secretaria);
-			return "SecretariaView?faces-redirect=true";
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
 	public void retornaTodasClinicas() {
 		try {
 			this.clinicas = new ClinicaModel().encontrarTodos();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public Secretaria getSecretaria() {
-		return secretaria;
-	}
-
-	public void setSecretaria(Secretaria secretaria) {
-		this.secretaria = secretaria;
 	}
 
 	public List<Clinica> getClinicas() {

@@ -19,7 +19,6 @@ public class ClinicaBean  implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private ClinicaModel cm;
-	private Clinica clinica = new Clinica();
 	private Clinica userSessao;
 	
 	private List<Funcionario> funcionarios;
@@ -27,46 +26,15 @@ public class ClinicaBean  implements Serializable{
 	
 
 	public ClinicaBean() {
+		
 		this.setUserSessao((Clinica) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("perfil"));
 		cm = new ClinicaModel();
-		this.funcionarios = cm.encontrarTodosFuncionarios(this.userSessao);
-	}
-
-	public String salvar() {
-		try {
-			
-			cm.registrarClinica(this.clinica);
-			return "ClinicaView?faces-redirect=true";
-
-		} catch (Exception e) {
-			e.printStackTrace();
+		
+		if(this.userSessao != null) {
+			this.funcionarios = cm.encontrarTodosFuncionarios(this.userSessao);
 		}
-		return null;
 	}
 	
-	public String atualizar() {
-		try {
-			
-			cm.atualizarClinica(this.clinica);
-			return "ClinicaView?faces-redirect=true";
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
-	public String deletar() {
-		try {
-			
-			cm.removerClinica(this.clinica);
-			return "inicio?faces-redirect=true";
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
 	public void deletarFuncionario() {
 		
 		FuncionarioModel fm = new FuncionarioModel();
@@ -88,13 +56,6 @@ public class ClinicaBean  implements Serializable{
 		} catch (Exception e) {
 			
 		}
-	}
-	public Clinica getClinica() {
-		return clinica;
-	}
-
-	public void setClinica(Clinica clinica) {
-		this.clinica = clinica;
 	}
 
 	public Funcionario getSelecionado() {
