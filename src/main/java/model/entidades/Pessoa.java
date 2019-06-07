@@ -6,11 +6,13 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -53,6 +55,11 @@ public abstract class Pessoa implements Serializable {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Endereco endereco;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="idPerfil")
+    private Perfil perfil;
+	
 	
 	public Long getId() {
 		return id;

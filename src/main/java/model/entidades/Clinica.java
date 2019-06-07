@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -44,6 +46,10 @@ public class Clinica implements Serializable {
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Endereco endereco;
 
+	@ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="idPerfil")
+    private Perfil perfil;
+	
 	public Clinica() {
 		this.endereco = new Endereco();
 	}

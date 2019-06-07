@@ -17,54 +17,68 @@ import model.entidades.Secretaria;
 @ManagedBean
 @ViewScoped
 public class RegistroBean {
-	
+
 	private Clinica clinica = new Clinica();
 	private Cliente cliente = new Cliente();
 	private Secretaria secretaria = new Secretaria();
 	private Medico medico = new Medico();
 	private List<Clinica> clinicas;
-	
+
 	public RegistroBean() {
 		this.retornaTodasClinicas();
 	}
-	
-	public String salvar() {
-		if(this.clinica != null) {
-			try {
-				new ClinicaModel().registrarClinica(this.clinica);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if(this.cliente != null) {
-			try {
-				new ClienteModel().registrarCliente(this.cliente);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if(this.secretaria != null) {
-			try {
-				new SecretariaModel().registrarSecretaria(this.secretaria);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else if(this.medico != null) {
-			try {
-				new MedicoModel().registrarMedico(this.medico);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return "LoginView?faces-redirect=true";
-	}
-	
-	public void retornaTodasClinicas() {
+
+	public String salvarClinica() {
 		try {
-			this.setClinicas(new ClinicaModel().encontrarTodos());
+			new ClinicaModel().registrarClinica(this.clinica);
+			return "LoginView?faces-redirect=true";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public String salvarCliente() {
+		try {
+			new ClienteModel().registrarCliente(this.cliente);
+			return "LoginView?faces-redirect=true";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public String salvarSecretaria() {
+		try {
+			new SecretariaModel().registrarSecretaria(this.secretaria);
+			return "LoginView?faces-redirect=true";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+
+	public String salvarMedico() {
+		try {
+			new MedicoModel().registrarMedico(this.medico);
+			return "LoginView?faces-redirect=true";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public void retornaTodasClinicas() {
+		ClinicaModel cm = new ClinicaModel(); 
+		
+		try {
+			this.setClinicas(cm.encontrarTodos());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public Clinica getClinica() {
 		return clinica;
 	}
@@ -89,7 +103,6 @@ public class RegistroBean {
 		this.secretaria = secretaria;
 	}
 
-
 	public Medico getMedico() {
 		return medico;
 	}
@@ -99,6 +112,10 @@ public class RegistroBean {
 	}
 
 	public List<Clinica> registroBean() {
+		return clinicas;
+	}
+
+	public List<Clinica> getClinicas() {
 		return clinicas;
 	}
 

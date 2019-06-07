@@ -8,8 +8,18 @@
 
 	<ui:define name="css">
 		<h:outputStylesheet library="css" name="cssTelasUsuarios.css" />
-	</ui:define>
 
+		<style type="text/css">
+			.value {
+				vertical-align: top
+			}
+	
+			.output {
+				font-weight: bold
+			}
+		</style>
+
+	</ui:define>
 	<ui:define name="content">
 		<h:form id="form">
 			<div class="links-top">
@@ -23,38 +33,30 @@
 			<p:dialog styleClass="dialog" width="525" height="150"
 				draggable="true" header="Funcionarios: " widgetVar="funcionarios"
 				modal="false" resizable="false" style="z-index:99;">
-				
-					<p:dataTable var="fun" value="#{clinicaBean.funcionarios}">
-						<p:column headerText="Id">
-					        <h:outputText value="#{fun.id}" />
-					    </p:column>
-					    
-					    <p:column headerText="Nome">
-					        <h:outputText value="#{fun.nome}" />
-					    </p:column>
-					    
-					    <p:column headerText="Idade">
-					        <h:outputText value="#{fun.idade}" />
-					    </p:column>
-					 
-					    <p:column headerText="Salario">
-					        <h:outputText value="#{fun.salario}" />
-					    </p:column>
-					    
-					    <p:column headerText="Editar">
-					        <p:commandButton oncomplete="#{clinicaBean.atualizarFuncionario}" icon="fas fa-edit">
-					        	<f:setPropertyActionListener value="fun" target="#{clinicaBean.selecionado}"></f:setPropertyActionListener>
-							</p:commandButton>
-					    </p:column>
-					    
-					    <p:column headerText="Deletar">
-					        <p:commandButton oncomplete="#{clinicaBean.deletarFuncionario}" icon="fas fa-trash">
-					        	<f:setPropertyActionListener value="fun" target="#{clinicaBean.selecionado}"></f:setPropertyActionListener>
-							</p:commandButton>
-					    </p:column>
-				</p:dataTable>
-			</p:dialog>
+
+				 <h:panelGrid columns="1" style="margin-bottom:10px" cellpadding="5"
+					columnClasses="value">
+
+					<p:outputLabel for="advanced" value="Advanced:" />
+					
+					<p:selectOneListbox id="advanced" value="#{clinicaBean.selecionado}"
+						converter="funcionarioConverter" var="f" filter="true"
+						filterMatchMode="contains">
+						<f:selectItems value="#{clinicaBean.funcionarios}" var="func"
+							itemLabel="#{func.nome}" itemValue="#{func}" />
+
+						<p:column>
+							<h:outputText value="#{f.nome}" />
+						</p:column>
+					</p:selectOneListbox>
+				</h:panelGrid>
+
+				<p:separator />
+
+				<p:commandButton value="Submit" update="form"
+					oncomplete="PF('dlg').show()" icon="pi pi-check" />
+					
+			</p:dialog> 
 		</h:form>
 	</ui:define>
-
 </ui:composition>
