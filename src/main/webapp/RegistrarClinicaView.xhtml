@@ -32,6 +32,10 @@
 							<f:validateRegex pattern="^[a-zA-Z]+$" />
 						</p:inputText>
 						
+						<p:message for="idade" />
+						<p:inputText id="idade" value="#{registroBean.clinica.idade}" placeholder="Tempo Mercado(anos)" >
+						</p:inputText>
+						
 						<p:message for="rua" />
 						<p:inputText id="rua" value="#{registroBean.clinica.endereco.rua}" placeholder="Rua" >
 							<f:validateLength maximum="128" />

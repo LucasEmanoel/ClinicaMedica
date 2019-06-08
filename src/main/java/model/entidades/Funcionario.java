@@ -9,16 +9,18 @@ import javax.persistence.ManyToOne;
 
 @Entity(name = "Funcionario")
 @DiscriminatorValue(value = "FUNCIONARIO")
-public class Funcionario extends Pessoa implements Serializable {
+public class Funcionario extends PessoaFisica implements Serializable {
 
 	private static final long serialVersionUID = -731396741330887156L;
 
+	
 	@Column(name = "funcionario_salario")
 	private Double salario;
 	
 	@ManyToOne
 	private Clinica clinica;
 
+	
 	public Double getSalario() {
 		return salario;
 	}

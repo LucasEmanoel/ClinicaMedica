@@ -4,9 +4,10 @@ import java.util.List;
 
 import model.dao.ClinicaDao;
 import model.dao.Dao;
-import model.dao.PessoaDao;
+import model.dao.FuncionarioDao;
 import model.entidades.Clinica;
 import model.entidades.Funcionario;
+import model.entidades.Medico;
 import model.exceptions.ClinicaMedicaException;
 
 public class ClinicaModel {
@@ -61,8 +62,19 @@ public class ClinicaModel {
 		return newDao.encontrarTodos();
 		
 	}
+	
 	public List<Funcionario> encontrarTodosFuncionarios(Clinica obj){
-		PessoaDao newDao = new PessoaDao();
+		FuncionarioDao newDao = new FuncionarioDao();
 		return newDao.encontrarFuncionariosClinica(obj.getId());
+	}
+	
+	public List<Medico> encontrarMedicoPorClinica(Clinica clinica) throws Exception {
+		FuncionarioDao newDao = new FuncionarioDao();
+		if (clinica != null) {
+
+			return newDao.encontrarMedicosClinica(clinica.getId());
+		} else {
+			throw new ClinicaMedicaException("Erro ao encontrar medico.");
+		}
 	}
 }

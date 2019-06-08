@@ -1,10 +1,8 @@
 package model;
 
-import java.util.List;
 
 import model.dao.Dao;
 import model.dao.PessoaDao;
-import model.entidades.Clinica;
 import model.entidades.Medico;
 import model.entidades.Pessoa;
 import model.exceptions.ClinicaMedicaException;
@@ -54,15 +52,6 @@ public class MedicoModel {
 		if (id != null) {
 
 			return (Medico) dao.encontrar(Pessoa.class, id);
-		} else {
-			throw new ClinicaMedicaException("Erro ao encontrar medico.");
-		}
-	}
-	public List<Medico> encontrarMedicoPorClinica(Clinica clinica) throws Exception {
-		PessoaDao newDao = (PessoaDao) dao;
-		if (clinica != null) {
-
-			return newDao.encontrarMedicoClinica(clinica.getId());
 		} else {
 			throw new ClinicaMedicaException("Erro ao encontrar medico.");
 		}

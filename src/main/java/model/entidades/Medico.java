@@ -25,7 +25,7 @@ public class Medico extends Funcionario implements Serializable {
 	private Integer meta;
 
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, targetEntity = Especialidade.class)
-	@JoinTable(name = "medico_especialidade", joinColumns = @JoinColumn(name = "pessoa_id", referencedColumnName = "pessoa_id"),
+	@JoinTable(name = "medico_especialidade", joinColumns = @JoinColumn(name = "id", referencedColumnName = "id"),
 				inverseJoinColumns = @JoinColumn(name = "especialidade_id", referencedColumnName = "especialidade_id"))
 	private List<Especialidade> especialidades;
 
@@ -33,6 +33,7 @@ public class Medico extends Funcionario implements Serializable {
 		this.setEndereco(new Endereco());
 		this.especialidades = new ArrayList<Especialidade>();
 		this.setClinica(new Clinica());
+		this.setPerfil(new Perfil());
 	}
 
 	public Long getCrm() {

@@ -30,6 +30,7 @@ public class RegistroBean {
 
 	public String salvarClinica() {
 		try {
+			this.clinica.getPerfil().setDescricao("clinica");;
 			new ClinicaModel().registrarClinica(this.clinica);
 			return "LoginView?faces-redirect=true";
 		} catch (Exception e) {
@@ -40,6 +41,7 @@ public class RegistroBean {
 
 	public String salvarCliente() {
 		try {
+			this.cliente.getPerfil().setDescricao("cliente");
 			new ClienteModel().registrarCliente(this.cliente);
 			return "LoginView?faces-redirect=true";
 		} catch (Exception e) {
@@ -50,6 +52,7 @@ public class RegistroBean {
 
 	public String salvarSecretaria() {
 		try {
+			this.secretaria.getPerfil().setDescricao("secretaria");
 			new SecretariaModel().registrarSecretaria(this.secretaria);
 			return "LoginView?faces-redirect=true";
 		} catch (Exception e) {
@@ -61,6 +64,7 @@ public class RegistroBean {
 
 	public String salvarMedico() {
 		try {
+			this.medico.getPerfil().setDescricao("medico");
 			new MedicoModel().registrarMedico(this.medico);
 			return "LoginView?faces-redirect=true";
 		} catch (Exception e) {

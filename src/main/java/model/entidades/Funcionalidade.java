@@ -32,6 +32,7 @@ public class Funcionalidade implements Serializable{
 	
 	
 	public Funcionalidade() {
+		this.setPerfis(new HashSet<>());
 	}
 
 	public String getValor() {
@@ -48,6 +49,23 @@ public class Funcionalidade implements Serializable{
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Set<Perfil> getPerfis() {
+		return perfis;
+	}
+
+	public void setPerfis(Set<Perfil> perfis) {
+		this.perfis = perfis;
 	}
 
 	@Override

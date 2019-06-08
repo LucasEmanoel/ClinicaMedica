@@ -8,7 +8,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import model.ClinicaModel;
-import model.FuncionarioModel;
 import model.entidades.Clinica;
 import model.entidades.Funcionario;
 
@@ -32,29 +31,6 @@ public class ClinicaBean  implements Serializable{
 		
 		if(this.userSessao != null) {
 			this.funcionarios = cm.encontrarTodosFuncionarios(this.userSessao);
-		}
-	}
-	
-	public void deletarFuncionario() {
-		
-		FuncionarioModel fm = new FuncionarioModel();
-		
-		try {
-			fm.deletarFuncionario(this.selecionado);
-			
-		} catch (Exception e) {
-			
-		}
-	}
-	public void atualizarFuncionario() {
-		
-		FuncionarioModel fm = new FuncionarioModel();
-		
-		try {
-			fm.atualizarFuncionario(this.selecionado);
-			
-		} catch (Exception e) {
-			
 		}
 	}
 

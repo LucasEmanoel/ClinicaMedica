@@ -33,6 +33,7 @@ public class Perfil implements Serializable{
 	Set<Funcionalidade> funcionalidades = new HashSet<>();
 
 	public Perfil() {
+		this.setFuncionalidades(new HashSet<>());
 	}
 
 	public String getDescricao() {
@@ -41,6 +42,22 @@ public class Perfil implements Serializable{
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Set<Funcionalidade> getFuncionalidades() {
+		return funcionalidades;
+	}
+
+	public void setFuncionalidades(Set<Funcionalidade> funcionalidades) {
+		this.funcionalidades = funcionalidades;
 	}
 
 	@Override

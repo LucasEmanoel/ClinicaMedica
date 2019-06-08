@@ -9,7 +9,6 @@ import javax.faces.context.FacesContext;
 
 import model.ClienteModel;
 import model.ClinicaModel;
-import model.MedicoModel;
 import model.entidades.Cliente;
 import model.entidades.Clinica;
 import model.entidades.Consulta;
@@ -46,7 +45,7 @@ public class ClienteBean implements Serializable{
 	}
 	public void retornaMedicos() {
 		try {
-			this.medicos = new MedicoModel().encontrarMedicoPorClinica(this.selecionada);
+			this.medicos = new ClinicaModel().encontrarMedicoPorClinica(this.selecionada);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
