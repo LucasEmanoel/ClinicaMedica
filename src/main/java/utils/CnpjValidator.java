@@ -13,13 +13,17 @@ import javax.faces.validator.ValidatorException;
 public class CnpjValidator implements Validator {
 	
     @Override
-    public void validate(FacesContext arg0, UIComponent arg1, Object valorTela) throws ValidatorException {
-         if (!validaCNPJ(String.valueOf(valorTela))) {
-              FacesMessage message = new FacesMessage();
-              message.setSeverity(FacesMessage.SEVERITY_ERROR);
-              message.setSummary(ResourceBundle.getBundle(FacesContext.getCurrentInstance().getApplication().getMessageBundle()).getString("erro.validacao.cnpj"));
-              throw new ValidatorException(message);
+    public void validate(FacesContext arg0, UIComponent arg1, Object valorTela) throws ValidatorException 
+    {
+    
+    	if (!validaCNPJ(String.valueOf(valorTela))) {
+    		FacesMessage message = new FacesMessage();
+            message.setSeverity(FacesMessage.SEVERITY_ERROR);
+            message.setSummary(ResourceBundle.getBundle(FacesContext.getCurrentInstance().getApplication().getMessageBundle()).getString("erro.validacao.cnpj"));
+            
+            throw new ValidatorException(message);
          }
+    	
     }
 
     /**
@@ -27,11 +31,12 @@ public class CnpjValidator implements Validator {
     *
     * @param cnpj String valor com 14 dígitos
    */
-    public static boolean validaCNPJ(String cnpj) {
-         if(cnpj == null || cnpj.length() != 14)
-              return false;
+    public static boolean validaCNPJ(String cnpj) 
+    {
+    	if(cnpj == null || cnpj.length() != 14)
+    		return false;
 
-         try {
+        try {
               Long.parseLong(cnpj);
          } catch (NumberFormatException e) { 
               return false;

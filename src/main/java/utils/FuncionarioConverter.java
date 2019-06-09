@@ -15,13 +15,14 @@ public class FuncionarioConverter implements Converter {
     private PessoaDao dao = new PessoaDao();
     
     @Override
-    public Object getAsObject(FacesContext fc, UIComponent uic, String string) {
+    public Object getAsObject(FacesContext fc, UIComponent uic, String string) 
+    {
         Funcionario funcionario;
         funcionario = null;
+    
         try{
             Long idMedico = Long.parseLong(string);
             funcionario = (Funcionario) this.dao.encontrar(Pessoa.class, idMedico);
-            
         }
         catch(Exception e){
             System.out.println(e.getClass() + "   " +e.getMessage());
@@ -31,7 +32,8 @@ public class FuncionarioConverter implements Converter {
     }
 
     @Override
-    public String getAsString(FacesContext fc, UIComponent uic, Object o) {
+    public String getAsString(FacesContext fc, UIComponent uic, Object o) 
+    {
     	Funcionario funcionario = (Funcionario) o;
         return funcionario.getId()+ "";
     }

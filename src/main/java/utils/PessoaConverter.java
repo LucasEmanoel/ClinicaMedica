@@ -14,9 +14,11 @@ public class PessoaConverter implements Converter {
 	private PessoaDao dao = new PessoaDao();
 
 	@Override
-	public Object getAsObject(FacesContext fc, UIComponent uic, String string) {
+	public Object getAsObject(FacesContext fc, UIComponent uic, String string) 
+	{
 		Pessoa pessoa;
 		pessoa = null;
+
 		try {
 			Long idPessoa = Long.parseLong(string);
 			pessoa = this.dao.encontrar(Pessoa.class, idPessoa);
@@ -25,11 +27,13 @@ public class PessoaConverter implements Converter {
 			System.out.println(e.getClass() + "   " + e.getMessage());
 
 		}
+		
 		return pessoa;
 	}
 
 	@Override
-	public String getAsString(FacesContext fc, UIComponent uic, Object o) {
+	public String getAsString(FacesContext fc, UIComponent uic, Object o) 
+	{
 		Pessoa pessoa = (Pessoa) o;
 		return pessoa.getId() + "";
 	}

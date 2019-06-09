@@ -15,10 +15,14 @@ public class ClinicaConverter implements Converter {
     private ClinicaDao dao = new ClinicaDao();
     
     @Override
-    public Object getAsObject(FacesContext fc, UIComponent uic, String string) {
+    public Object getAsObject(FacesContext fc, UIComponent uic, String string) 
+    {
+    	
         Clinica clinica;
         clinica = null;
-        try{
+        
+        try {
+        	
             Long idClinica = Long.parseLong(string);
             clinica = this.dao.encontrar(Clinica.class, idClinica);
             
@@ -31,8 +35,9 @@ public class ClinicaConverter implements Converter {
     }
 
     @Override
-    public String getAsString(FacesContext fc, UIComponent uic, Object o) {
-        Clinica clinica = (Clinica) o;
+    public String getAsString(FacesContext fc, UIComponent uic, Object o) 
+    {
+    	Clinica clinica = (Clinica) o;
         return clinica.getId()+ "";
     }
 }

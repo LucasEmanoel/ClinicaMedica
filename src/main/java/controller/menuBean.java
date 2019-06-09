@@ -79,7 +79,7 @@ public class menuBean {
         	
         	item = new DefaultMenuItem();
             item.setValue("Gerenciar Funcionarios");
-            item.setUrl("PF('funcionarios').show(); return false;");
+            item.setUrl("GerenciarFuncionarios.xhtml");
             
             menuModel.addElement(item);
             
@@ -95,7 +95,7 @@ public class menuBean {
         	
         	item = new DefaultMenuItem();
             item.setValue("Marcar Consulta");
-            item.setUrl("PF('marcar').show(); return false;");
+            item.setUrl("ConsultaView.xhtml");
             
             menuModel.addElement(item);
             

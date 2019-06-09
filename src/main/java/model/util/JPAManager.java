@@ -10,11 +10,14 @@ public class JPAManager {
 	private static JPAManager manager;
 	private SessionFactory sessionFactory;
 
-	private JPAManager() {
+	private JPAManager() 
+	{
 		sessionFactory = (SessionFactory) Persistence.createEntityManagerFactory("clinicaMedica");
 	}
 
-	public static JPAManager getInstance() {
+	public static JPAManager getInstance() 
+	{
+		
 		if (manager == null) {
 			manager = new JPAManager();
 		}
@@ -22,7 +25,8 @@ public class JPAManager {
 		return manager;
 	}
 
-	public EntityManager getEntityManager() {
+	public EntityManager getEntityManager() 
+	{
 		return sessionFactory.createEntityManager();
 	}
 }

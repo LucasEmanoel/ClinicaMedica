@@ -59,13 +59,10 @@
 					</h:selectOneMenu>
 					
 					<h:inputText id="descricao" value="#{clienteBean.con.descricao}" placeholder="Descrição" required="true">
-						
 					</h:inputText>
 					
-					<p:inputText placeholder="Data">
-						<f:validateRegex pattern="^\d{1,2}\/\d{1,2}\/\d{4}$" />
-						<f:convertDateTime pattern="MM/dd/yyyy" />
-					</p:inputText>
+					<p:outputLabel for="data" value="Data: " />
+        			<p:inputMask id="data" value="#{clienteBean.con.data}" mask="99/99/9999"/>
 				
 				</h:panelGrid>				
 			</p:dialog>

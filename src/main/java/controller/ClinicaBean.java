@@ -8,8 +8,12 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import model.ClinicaModel;
+import model.MedicoModel;
+import model.SecretariaModel;
 import model.entidades.Clinica;
 import model.entidades.Funcionario;
+import model.entidades.Medico;
+import model.entidades.Secretaria;
 
 @ManagedBean
 @SessionScoped
@@ -34,6 +38,27 @@ public class ClinicaBean  implements Serializable{
 		}
 	}
 
+	public void deletarFuncionario() {
+		
+		MedicoModel md = new MedicoModel();
+		SecretariaModel sm = new SecretariaModel();
+		
+		try {
+			if(this.selecionado instanceof Medico) {
+				Medico m = (Medico) this.selecionado;
+			
+				md.removerMedico(m);
+			
+			} else {
+				Secretaria a = (Secretaria) this.selecionado;
+				
+				sm.removerSecretaria(a);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public Funcionario getSelecionado() {
 		return selecionado;
 	}

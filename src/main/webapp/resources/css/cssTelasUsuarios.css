@@ -25,12 +25,4 @@
 	font-weight: bold;
 	background-color: aquamarine;
 }
-.links-top .panel a:Link:hover{
-	text-decoration: none;
-	background-color: #D20005;
-	border: 12px solid #D20005;
-	border-radius: 5px;
-	color: white;
-	font-weight: bold;
-}
 

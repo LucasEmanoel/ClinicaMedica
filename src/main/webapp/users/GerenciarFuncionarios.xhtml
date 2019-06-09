@@ -12,24 +12,28 @@
 
 	<ui:define name="content">
 		<h:form id="form">
-			<p:dataView var="fun" value="#{clinicaBean.funcionarios}" rows="12"
+			<p:dataView 
+				var="fun" value="#{clinicaBean.funcionarios}" rows="12"
 				paginator="true" rowsPerPageTemplate="6,12,16"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				gridIcon="pi pi-th-large" listIcon="pi pi-bars">
+				gridIcon="fas fa-th-large" listIcon="fas fa-list" >
 
 				<p:dataViewGridItem>
-					<p:panel header="#{fun.id}" style="text-align:center">
+					<p:panel header="#{fun.nome}" style="text-align:center">
 						<h:panelGrid columns="1" style="width:100%">
+							
+							<!--  <p:graphicImage name="demo/images/car/#{car.brand}.gif"/> -->
+							
+							<h:outputText value="#{fun.cpf}" />
 
-							<h:outputText value="#{fun.nome}" />
-
-							<p:commandLink update=":form:carDetail"
-								oncomplete="PF('carDialog').show()" title="View Detail">
-								<h:outputText styleClass="ui-icon pi pi-search"
+							<p:commandLink update=":form:funcionarioDetalhes" style="margin-left: 50%;"
+								oncomplete="PF('funcionarioDialog').show()" title="Visualizar Detalhes">
+								<h:outputText styleClass="fas fa-search"
 									style="margin:0 auto;" />
 								<f:setPropertyActionListener value="#{fun}"
 									target="#{clinicaBean.selecionado}" />
 							</p:commandLink>
+							
 						</h:panelGrid>
 					</p:panel>
 				</p:dataViewGridItem>
@@ -39,51 +43,79 @@
 						columnClasses="logo,detail">
 						<p:outputPanel>
 							<h:panelGrid columns="2" cellpadding="5">
+								<h:outputText value="Nome:" />
+								<h:outputText value="#{fun.nome}" style="font-weight: bold" />
+								
 								<h:outputText value="Cpf:" />
 								<h:outputText value="#{fun.cpf}" style="font-weight: bold" />
 
-								<h:outputText value="Year:" />
-								<h:outputText value="#{func.idade}" style="font-weight: bold" />
-
-								<h:outputText value="Color:" />
+								<h:outputText value="Salario:" />
 								<h:outputText value="#{fun.salario}" style="font-weight: bold" />
 							</h:panelGrid>
 						</p:outputPanel>
 
-						<p:commandLink update=":form:carDetail"
-							oncomplete="PF('carDialog').show()" title="View Detail">
-							<h:outputText styleClass="ui-icon pi pi-search"
+						<p:commandLink update=":form:funcionarioDetalhes"
+							oncomplete="PF('funcionarioDialog').show()" title="View Detail">
+							<h:outputText styleClass="fas fa-search"
 								style="margin:0 auto;" />
-							<f:setPropertyActionListener value="#{fun}"
+							<f:setPropertyActionListener value="#{fun}" 
 								target="#{clinicaBean.selecionado}" />
 						</p:commandLink>
+						
 					</h:panelGrid>
 				</p:dataViewListItem>
 			</p:dataView>
 
-			<p:dialog header="Car Info" widgetVar="carDialog" modal="true"
+			<p:dialog header="Detalhes do Funcionario" widgetVar="funcionarioDialog" modal="true"
 				showEffect="fade" hideEffect="fade" resizable="false">
-				<p:outputPanel id="carDetail" style="text-align:center;">
+				<p:outputPanel id="funcionarioDetalhes" style="text-align:center;">
 					<p:panelGrid columns="2"
 						rendered="#{not empty clinicaBean.selecionado}"
 						columnClasses="label,value">
-						<f:facet name="header">
-						</f:facet>
-
+						
+						<h:outputText value="Nome:" />
+						<h:outputText value="#{clinicaBean.selecionado.nome}"/>
+						
+						<h:outputText value="Idade:" />
+						<h:outputText value="#{clinicaBean.selecionado.idade}"/>
+						
 						<h:outputText value="Cpf:" />
 						<h:outputText value="#{clinicaBean.selecionado.cpf}" />
-
-						<h:outputText value="Year" />
-						<h:outputText value="#{clinicaBean.selecionado.idade}" />
+						
+						<h:outputText value="Rg:" />
+						<h:outputText value="#{clinicaBean.selecionado.rg}" />
 
 						<h:outputText value="Salario:" />
 						<h:outputText value="#{clinicaBean.selecionado.salario}"/>
 
-						<h:outputText value="Price" />
+						<h:outputText value="Email" />
 						<h:outputText value="#{clinicaBean.selecionado.email}" />
+						
+						<h:outputText value="Telefone" />
+						<h:outputText value="#{clinicaBean.selecionado.telefone1}" />
+						
+						<h:outputText value="Telefone 2" />
+						<h:outputText value="#{clinicaBean.selecionado.telefone2}" />
+						
+						<h:outputText value="Rua" />
+						<h:outputText value="#{clinicaBean.selecionado.endereco.rua}" />
+						
+						<h:outputText value="Bairro" />
+						<h:outputText value="#{clinicaBean.selecionado.endereco.bairro}" />
+						
+						<h:outputText value="Cep" />
+						<h:outputText value="#{clinicaBean.selecionado.endereco.cep}" />
+						
 					</p:panelGrid>
+						
+					<p:commandLink update=":form" style="margin-left: 25%; pading:5px;"
+						oncomplete="#{clinicaBean.deletarFuncionario()}" title="Deletar">
+						<h:outputText styleClass="fas fa-trash" style="margin:0 auto;" />
+					</p:commandLink>
 				</p:outputPanel>
+			
 			</p:dialog>
+			
 		</h:form>
 	</ui:define>
 </ui:composition>

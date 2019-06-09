@@ -118,12 +118,12 @@ public class Consulta implements Serializable {
 		this.descricao = descricao;
 	}
 	
-	public Calendar getHorario() {
+	public Calendar getData() {
 		return data;
 	}
 
-	public void setHorario(Calendar horario) {
-		this.data = horario;
+	public void setData(Calendar data) {
+		this.data = data;
 	}
 
 	@Override
