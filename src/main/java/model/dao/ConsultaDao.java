@@ -15,7 +15,7 @@ public class ConsultaDao extends DaoImpl<Consulta> implements ConsultaDaoInterfa
 	public List<Consulta> findConsultaPorCpfCliente(String cpf) {
 		EntityManager manager = JPAManager.getInstance().getEntityManager();
 
-		String consulta = "SELECT C FROM Consulta AS C WHERE C.cliente = :cpf";
+		String consulta = "SELECT C FROM Consulta AS C WHERE C.cliente.cpf = :cpf";
 
 		TypedQuery<Consulta> query = manager.createQuery(consulta, Consulta.class);
 		query.setParameter("cpf", cpf);
@@ -50,6 +50,24 @@ public class ConsultaDao extends DaoImpl<Consulta> implements ConsultaDaoInterfa
 			manager.close();
 		}
 	}
+	
+	public List<Consulta> findTodasConsultas() {
+		EntityManager manager = JPAManager.getInstance().getEntityManager();
+
+		String consulta = "SELECT C FROM Consulta";
+
+		TypedQuery<Consulta> query = manager.createQuery(consulta, Consulta.class);
+
+		try {
+
+			return query.getResultList();
+
+		} catch (Exception e) {
+			return null;
+		} finally {
+			manager.close();
+		}
+	}
 
 	public boolean verificarConsulta(Medico m, Calendar d) {
 		EntityManager manager = JPAManager.getInstance().getEntityManager();
@@ -72,6 +90,25 @@ public class ConsultaDao extends DaoImpl<Consulta> implements ConsultaDaoInterfa
 		}
 		return false;
 
+	}
+
+	public List<Consulta> findConsultaPorCrmMedico(Long crm) {
+		EntityManager manager = JPAManager.getInstance().getEntityManager();
+
+		String consulta = "SELECT C FROM Consulta AS C WHERE C.medico.crm = :crm";
+
+		TypedQuery<Consulta> query = manager.createQuery(consulta, Consulta.class);
+		query.setParameter("crm", crm);
+
+		try {
+
+			return query.getResultList();
+
+		} catch (Exception e) {
+			return null;
+		} finally {
+			manager.close();
+		}
 	}
 
 }

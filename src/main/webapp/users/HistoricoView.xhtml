@@ -8,39 +8,64 @@
 
 	<ui:define name="css">
 		<h:outputStylesheet library="css" name="cssTelaHistorico.css" />
-		<link rel="stylesheet"
-			href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
 	</ui:define>
 
 	<ui:define name="content">
-		<h1>Historicos</h1>
-		<div class="container-historico">
-				
-				<p:dataTable id="table-consultas" var="consulta"
-					value="#{consultaView.consultas}">
+		<h:form id="form">
+		    <p:dataGrid var="consulta" value="#{historicoBean.consultas}" columns="3" layout="grid"
+		        rows="12" paginator="true" id="consultas"
+		        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+		        rowsPerPageTemplate="6,12,16">
+		         
+		        <f:facet name="header">
+		            Lista de Consultas
+		        </f:facet>
+		 
+		        <p:panel header="#{consulta.id}" style="text-align:center">
+		            <h:panelGrid columns="1" style="width:100%">
+		                <!-- <p:graphicImage name="demo/images/car/#{car.brand}.gif"/>  -->
+		 
+		 				<h:outputText value="Cliente:" />
+		                <h:outputText value="#{consulta.cliente.nome}" />
+		 
+		                <p:commandLink update=":form:consultaDetail" oncomplete="PF('consultaDialog').show()" title="View Detail">
+		                    <h:outputText styleClass="fas fa-search" style="margin:0 auto;"/>
+		                    <f:setPropertyActionListener value="#{consulta}" target="#{historicoBean.selecionada}" />
+		                </p:commandLink>
+		            </h:panelGrid>
+		        </p:panel>
+		 
+		    </p:dataGrid>
+		 
+		    <p:dialog header="Detalhes da Consulta" widgetVar="consultaDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+		        <p:outputPanel id="consultaDetail" style="text-align:center;">
+		            <p:panelGrid columns="2" rendered="#{not empty historicoBean.selecionada}" columnClasses="label,value">
+		                <!-- <f:facet name="header">
+		                    <p:graphicImage name="demo/images/car/#{dataGridView.selectedCar.brand}-big.gif"/> 
+		                </f:facet> -->
 
-					<p:column headerText="Nome">
-						<h:outputText value="#{consulta.cliente.nome}" />
-					</p:column>
-
-					<p:column style="width:32px">
-						<p:commandButton update=":consulta-form:display"
-							oncomplete="PF('consultaDialog').show()" icon="fas fa-save">
-							<f:setPropertyActionListener value="#{consulta}"
-								target="#{consultaView.selecionada}" />
-						</p:commandButton>
-					</p:column>
-
-					<p:column style="width:32px">
-						<p:commandButton update=":consulta-form:display"
-							oncomplete="PF('consultaDialog').show()" icon="fas fa-trash">
-							<f:setPropertyActionListener value="#{consulta}"
-								target="#{consultaView.selecionada}" />
-						</p:commandButton>
-					</p:column>
-				</p:dataTable>
-
-		</div>
+		                <h:outputText value="Cliente:" />
+		                <h:outputText value="#{historicoBean.selecionada.cliente.nome}" />
+		                
+		                <h:outputText value="Nº Ambulatorio:" />
+		                <h:outputText value="#{historicoBean.selecionada.ambulatorio.numero}" />
+		 
+		 				<h:outputText value="Medico:" />
+		                <h:outputText value="#{historicoBean.selecionada.medico.nome}" />
+		 
+		 				<h:outputText value="Valor Pagamento:" />
+		                <h:outputText value="#{historicoBean.selecionada.pagamento.valor} R$" />
+		 	
+		                <h:outputText value="Data: " />
+		                <h:outputText value="#{historicoBean.selecionada.data}" />
+		 
+		                <h:outputText value="Descricao:" />
+		                <h:outputText value="#{historicoBean.selecionada.descricao}"/>
+		            
+		            </p:panelGrid>
+		        </p:outputPanel>
+		    </p:dialog>
+		</h:form>
 	</ui:define>
 
 </ui:composition>

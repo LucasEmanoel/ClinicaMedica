@@ -108,11 +108,12 @@
 						
 					</p:panelGrid>
 						
-					<p:commandLink update=":form" style="margin-left: 25%; pading:5px;"
-						oncomplete="#{clinicaBean.deletarFuncionario()}" title="Deletar">
-						<h:outputText styleClass="fas fa-trash" style="margin:0 auto;" />
-					</p:commandLink>
 				</p:outputPanel>
+				
+				<p:commandLink update=":form" oncomplete="#{clinicaBean.deletarFuncionario()}" title="Deletar" 
+					style="position: absolute; margin: 10px auto">
+					<h:outputText styleClass="fas fa-trash fa-2x" style="margin:0 auto;" />
+				</p:commandLink>
 			
 			</p:dialog>
 			

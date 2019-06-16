@@ -16,13 +16,10 @@
 	padding-top: 28px;
 }
 
-.links-top .panel a:link {
-	margin: 20px;
-	background-color: aquamarine;
-	border: 12px solid aquamarine;
+.links-top .panel a{
+	text-decoration: none;
 	border-radius: 5px;
-	color: white;
+	color: #000;
 	font-weight: bold;
-	background-color: aquamarine;
+	margin: 0 10px;
 }
-

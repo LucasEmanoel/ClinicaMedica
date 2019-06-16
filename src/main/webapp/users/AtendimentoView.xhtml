@@ -8,8 +8,6 @@
 
 	<ui:define name="css">
 		<h:outputStylesheet library="css" name="cssAtendimento.css"/>
-		<link rel="stylesheet"
-			href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
 	</ui:define>
 
 	<ui:define name="content">
@@ -24,7 +22,7 @@
 			<div class="container-toDo">
 				<p:fieldset id="consultas" legend="Consultas" style="margin-top:20px;">
 					<p:dataTable id="table-consultas" var="consulta"
-						value="#{consultaView.consultas}">
+						value="#{atendimentoBean.consultas}">
 
 						<p:column style="width:20px">
 							<h:outputText id="dragIcon" styleClass="far fa-hand-rock" />
@@ -46,11 +44,11 @@
 				<p:fieldset id="progressConsultas" legend="Atendendo" style="margin-top:20px">
 					<p:outputPanel id="dropArea">
 						<h:outputText value="!!!Arraste aqui para atender!!!"
-							rendered="#{empty consultaView.consultasEmAtendimento}"
+							rendered="#{empty atendimentoBean.consultasEmAtendimento}"
 							style="font-size:24px;" />
 						<p:dataTable id="table-consultas2" var="consulta"
-							value="#{consultaView.consultasEmAtendimento}"
-							rendered="#{not empty consultaView.consultasEmAtendimento}">
+							value="#{atendimentoBean.consultasEmAtendimento}"
+							rendered="#{not empty atendimentoBean.consultasEmAtendimento}">
 
 							<p:column style="width:20px">
 								<h:outputText id="dragIcon" styleClass="ui-icon pi pi-plus" />
@@ -65,7 +63,7 @@
 								<p:commandButton update=":consulta-form:display"
 									oncomplete="PF('consultaDialog').show()" icon="fas fa-clipboard-check">
 									<f:setPropertyActionListener value="#{consulta}"
-										target="#{consultaView.selecionada}" />
+										target="#{atendimentoBean.selecionada}" />
 								</p:commandButton>
 							</p:column>
 							
@@ -73,7 +71,7 @@
 								<p:commandButton update=":consulta-form:display"
 									oncomplete="PF('consultaDialog').show()" icon="fas fa-search-plus">
 									<f:setPropertyActionListener value="#{consulta}"
-										target="#{consultaView.selecionada}" />
+										target="#{atendimentoBean.selecionada}" />
 								</p:commandButton>
 							</p:column>
 
@@ -85,7 +83,7 @@
 			<p:droppable for="progressConsultas" tolerance="touch"
 				activeStyleClass="ui-state-highlight" datasource="table-consultas"
 				onDrop="handleDrop">
-				<p:ajax listener="#{consultaView.onConsultaAtendimento}"
+				<p:ajax listener="#{atendimentoBean.onConsultaAtendimento}"
 					update="dropArea table-consultas" />
 			</p:droppable>
 
@@ -94,11 +92,11 @@
 					style="margin-top:20px">
 					<p:outputPanel id="dropArea2">
 						<h:outputText value="!!!Arraste aqui para concluir!!!"
-							rendered="#{empty consultaView.consultasConcluidas}"
+							rendered="#{empty atendimentoBean.consultasConcluidas}"
 							style="font-size:24px;" />
 						<p:dataTable id="table-consultas3" var="consulta"
-							value="#{consultaView.consultasConcluidas}"
-							rendered="#{not empty consultaView.consultasConcluidas}">
+							value="#{atendimentoBean.consultasConcluidas}"
+							rendered="#{not empty atendimentoBean.consultasConcluidas}">
 
 							<p:column headerText="Nome">
 								<h:outputText value="#{consulta.cliente.nome}" />
@@ -108,7 +106,7 @@
 								<p:commandButton update=":consulta-form:display"
 									oncomplete="PF('consultaDialog').show()" icon="fas fa-search-plus">
 									<f:setPropertyActionListener value="#{consulta}"
-										target="#{consultaView.selecionada}" />
+										target="#{atendimentoBean.selecionada}" />
 								</p:commandButton>
 							</p:column>
 
@@ -120,7 +118,7 @@
 			<p:droppable for="doneConsultas" tolerance="touch"
 				activeStyleClass="ui-state-highlight" datasource="table-consultas2"
 				onDrop="handleDrop">
-				<p:ajax listener="#{consultaView.onConsultaConcluida}"
+				<p:ajax listener="#{atendimentoBean.onConsultaConcluida}"
 					update="dropArea2 dropArea" />
 			</p:droppable>
 
@@ -130,31 +128,31 @@
 				hideEffect="fade" modal="true">
 
 				<p:outputPanel id="display">
-					<h:panelGrid columns="2" cellpadding="4" rendered="#{not empty consultaView.selecionada}">
+					<h:panelGrid columns="2" cellpadding="4" rendered="#{not empty atendimentoBean.selecionada}">
 						<f:facet name="header">
 							<h:outputText value="Consultado : " />
-							<h:outputText value="#{consultaView.selecionada.cliente.nome}"
+							<h:outputText value="#{atendimentoBean.selecionada.cliente.nome}"
 								style="font-weight:bold" />
 						</f:facet>
 
 						<h:outputText value="Descricao:" />
-						<h:outputText value="#{consultaView.selecionada.descricao}"
+						<h:outputText value="#{atendimentoBean.selecionada.descricao}"
 							style="font-weight:bold" />
 
 						<h:outputText value="Data:" />
-						<h:outputText value="#{consultaView.selecionada.data}"
+						<h:outputText value="#{atendimentoBean.selecionada.data}"
 							style="font-weight:bold" />
 
 						<h:outputText value="Local:" />
-						<h:outputText value="#{consultaView.selecionada.ambulatorio}"
+						<h:outputText value="#{atendimentoBean.selecionada.ambulatorio}"
 							style="font-weight:bold" />
 
 						<h:outputText value="Medico:" />
-						<h:outputText value="#{consultaView.selecionada.medico}"
+						<h:outputText value="#{atendimentoBean.selecionada.medico}"
 							style="font-weight:bold" />
 							
 						<h:outputText value="Medicamento:" />
-						<h:outputText value="#{consultaView.selecionada.medicamentos}"
+						<h:outputText value="#{atendimentoBean.selecionada.medicamentos}"
 							style="font-weight:bold" />
 						
 					</h:panelGrid>
@@ -163,6 +161,4 @@
 
 		</h:form>
 	</ui:define>
-
-
 </ui:composition>

@@ -69,6 +69,15 @@ public class ConsultaModel {
 			throw new ClinicaMedicaException("Erro ao encontrar consultas por cliente!!");
 		}
 	}
+	
+	public List<Consulta> findConsultaPorCrmMedico(Long crm) throws Exception {
+		ConsultaDao newDao = (ConsultaDao) dao;
+		if (crm != null) {
+			return newDao.findConsultaPorCrmMedico(crm);
+		} else {
+			throw new ClinicaMedicaException("Erro ao encontrar consultas por cliente!!");
+		}
+	}
 
 	public List<Consulta> findConsultaPorData(String string) throws Exception {
 		ConsultaDao newDao = (ConsultaDao) dao;
@@ -87,5 +96,10 @@ public class ConsultaModel {
 			throw new ClinicaMedicaException("Erro ao verificar disponibilidade!!");
 		}
 
+	}
+	
+	public List<Consulta> findTodasConsultas(){
+		ConsultaDao newDao = (ConsultaDao) dao;
+		return newDao.findTodasConsultas();
 	}
 }

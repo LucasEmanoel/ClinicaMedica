@@ -13,6 +13,73 @@
 	</ui:define>
 
 	<ui:define name="content">
-	</ui:define>
+		<h:form id="form">
+			<p:dataGrid var="cli" value="#{consultaBean.clinicas}" columns="3"
+				layout="grid" rows="12" paginator="true" id="cars"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="6,12,16">
 
+				<f:facet name="header">
+	            	Clinicas Disponiveis 
+	        	</f:facet>
+
+				<p:panel header="#{cli.nome}" style="text-align:center">
+					<h:panelGrid columns="2" style="width:100%">
+						<!-- <p:graphicImage name="demo/images/car/#{car.brand}.gif"/>  -->
+
+						<h:outputText value="Tempo de mercado(anos):" />
+						<h:outputText value="#{cli.idade}" />
+						
+						<p:commandButton update=":form:detalhesConsulta" title="selecionar">
+							<f:setPropertyActionListener value="#{cli}" target="#{consultaBean.selecionada}" />  
+						</p:commandButton>
+						
+						<p:commandButton update=":form:detalhesConsulta"
+							actionListener="#{consultaBean.retornaMedicosPorClinica()}" title="pegar medicos">
+						</p:commandButton>
+						
+						<p:commandButton update=":form:detalhesConsulta"
+							oncomplete="PF('detalhesConsulta').show()" title="Dialog">
+						</p:commandButton>
+					</h:panelGrid>
+				</p:panel>
+			</p:dataGrid>
+			
+			<p:dialog header="Marcador de Consulta" widgetVar="detalhesConsulta"
+				resizable="false" draggable="true" showEffect="fade"
+				hideEffect="fade" modal="true">
+				<h:panelGrid id="detalhesConsulta" columns="2">
+					
+					<p:outputLabel value="Medico: "></p:outputLabel>
+					<h:selectOneMenu value="#{consultaBean.con.medico}" converter="medicoConverter" id="somMedico">
+						<f:selectItems value="#{consultaBean.medicos}" var="c" itemLabel="#{c.nome}" itemValue="#{c}" />
+					</h:selectOneMenu>
+							
+					<p:outputLabel for="descricao" value="Descricao: " />
+					<h:inputText id="descricao" value="#{consultaBean.con.descricao}" required="true" style="height: 60px; ">
+					</h:inputText>
+							
+					<p:outputLabel for="data" value="Data: " />
+		        	<p:inputMask id="data" value="#{consultaBean.con.data}" mask="99/99/9999"/>
+					
+					<p:outputLabel for="pagamento" value="Pagamento: " />
+					<h:inputText id="pagamento" value="#{consultaBean.con.pagamento.valor}"  required="true">
+					</h:inputText>
+					
+					<p:outputLabel for="ambulatorio1" value="Ambulatorio(numero): " />
+					<h:inputText id="ambulatorio1" value="#{consultaBean.con.ambulatorio.numero}" required="true">
+					</h:inputText>
+					
+					<p:outputLabel for="ambulatorio2" value="Ambulatorio(andar): " />
+					<h:inputText id="ambulatorio2" value="#{consultaBean.con.ambulatorio.andar}"  required="true">
+					</h:inputText>
+					
+				</h:panelGrid>
+				<p:separator></p:separator>				
+				<p:commandButton update=":form"
+						actionListener="#{consultaBean.marcarConsulta()}" title="Marcar">
+				</p:commandButton>
+			</p:dialog>
+		</h:form>
+	</ui:define>
 </ui:composition>

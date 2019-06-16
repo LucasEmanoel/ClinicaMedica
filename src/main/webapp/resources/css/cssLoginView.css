@@ -1,32 +1,35 @@
 .panel {
 	position: absolute;
-	width: 300px;
-	background: #f1f2f6;
+	background: rgba(224, 219, 219, 0.4);
 	text-align: center;
-	border-color: #74b9ff;
+	border: none;
 	left: 50%;
 	top: 50%;
-	transform: translate(-50%, -50%)
+	transform: translate(-50%, -50%);
+	display: flex;
+
 }
+
 .panel-register {
 	position: absolute;
-	font-size: 12px;
+	font-size: 16px;
 	text-align: center;
 	width: 300px;
-	background: #f1f2f6;
-	left: 50%;
-	top: 80%;
-	border-color: #74b9ff;
+	background: none;
+	left: 10%;
+	top: 93%;
+	border: none;
 	transform: translate(-50%, -50%)
 }
+
 .box-dados {
-	margin-left: 8.5%;
 	border-radius: 10px;
 }
 
 .input {
 	border-radius: 22px;
 }
+
 .input:hover , .input:focus{
 	border-color: green;
 	transform: scaleX(1.15);
@@ -39,6 +42,7 @@
 	width: 150px;
 	margin-left: 40px;	
 }
+
 .bt-salvar:hover {
 	background: green;
 }

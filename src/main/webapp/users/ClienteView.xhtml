@@ -24,48 +24,6 @@
 				</p:panel>
 					
 			</div>
-			<p:dialog styleClass="dialog" width="525" height="150"
-				draggable="false" header="Clinicas: " widgetVar="marcar"
-				modal="false" resizable="false" style="z-index:99;">
-				<p:dataTable id="table-clinicas" var="cli"
-					value="#{clienteBean.clinicas}">
-
-					<p:column headerText="Nome">
-						<h:outputText value="#{cli.nome}" />
-					</p:column>
-
-					<p:column headerText="Endereco-CEP">
-						<h:outputText value="#{cli.endereco.cep}" />
-					</p:column>
-
-					<p:column style="width:85px">
-						<p:commandButton oncomplete="PF('detalhesDialog').show()" value="Marcar">
-							<f:setPropertyActionListener value="" target=""></f:setPropertyActionListener>
-						</p:commandButton>
-					</p:column>
-
-				</p:dataTable>
-			</p:dialog>
-			
-			<p:dialog header="Clinica Detalhes" widgetVar="detalhesDialog"
-				resizable="false" draggable="true" showEffect="fade"
-				hideEffect="fade" modal="true">
-				<h:panelGrid columns="2">
-					
-					<h:inputText>cliente</h:inputText><!-- Pegar o user que ta na sessao nao sei fazer ainda -->
-					
-					<h:selectOneMenu value="#{clienteBean.con.medico}" converter="pessoaConverter" id="somMedico">
-							<f:selectItems value="#{clienteBean.medicos}" var="c" itemLabel="#{c.nome}" itemValue="#{c}" />
-					</h:selectOneMenu>
-					
-					<h:inputText id="descricao" value="#{clienteBean.con.descricao}" placeholder="Descrição" required="true">
-					</h:inputText>
-					
-					<p:outputLabel for="data" value="Data: " />
-        			<p:inputMask id="data" value="#{clienteBean.con.data}" mask="99/99/9999"/>
-				
-				</h:panelGrid>				
-			</p:dialog>
 		</h:form>
 	</ui:define>
 

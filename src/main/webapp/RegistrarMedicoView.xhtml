@@ -49,8 +49,8 @@
 							<f:validateDoubleRange maximum="99999.99" />
 						</p:inputText>
 
-						<p:outputLabel value="Clinica" />
-						<h:selectOneMenu value="#{registroBean.medico.clinica}" converter="clinicaConverter" id="somClinica">
+						<p:outputLabel style="margin-left: 101.5%;" value="Clinica:" />
+						<h:selectOneMenu style="margin-left: 50%;" value="#{registroBean.medico.clinica}" converter="clinicaConverter" id="somClinica">
 							<f:selectItems value="#{registroBean.clinicas}" var="c" itemLabel="#{c.nome}" itemValue="#{c}" />
 						</h:selectOneMenu>
 

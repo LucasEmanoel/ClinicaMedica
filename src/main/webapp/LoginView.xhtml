@@ -10,9 +10,11 @@
 </h:head>
 <h:body
 	style="	
-font-family: sans-serif;
-background: url('resources/img/fundo-login.jpg') no-repeat; 
-background-size: cover;">
+		font-family: sans-serif;
+		background: url('resources/img/fundo-login.jpg') no-repeat; 
+		background-size: cover;"
+		>
+ 	
 	<h:form>
 		<p:messages id="messages" showDetail="true" closable="true">
 			<p:autoUpdate />
@@ -22,7 +24,7 @@ background-size: cover;">
 			<h1>LOGIN</h1>
 			<h:panelGrid id="grid" class="box-dados" columns="1" cellpadding="3">
 
-				<h:outputLabel id="email" value="Email address" for="email" />
+				<h:outputLabel id="email" value="Email" for="email" />
 				<p:inputText class="input" value="#{loginBean.email}">
 					<f:validateLength maximum="64" />
 					<f:validateRegex

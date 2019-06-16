@@ -14,9 +14,9 @@ import org.primefaces.event.DragDropEvent;
 import model.ConsultaModel;
 import model.entidades.Consulta;
 
-@ManagedBean(name = "consultaView")
+@ManagedBean(name = "atendimentoBean")
 @ViewScoped
-public class ConsultaBean implements Serializable{
+public class AtendimentoBean implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -29,7 +29,7 @@ public class ConsultaBean implements Serializable{
 	private List<Consulta> consultasEmAtendimento;
 	private List<Consulta> consultasConcluidas;
 	
-	public ConsultaBean() {
+	public AtendimentoBean() {
 		sdf = new SimpleDateFormat("dd/MM/yyyy");
 		consultasEmAtendimento = new ArrayList<Consulta>();
 		consultasConcluidas = new ArrayList<Consulta>();

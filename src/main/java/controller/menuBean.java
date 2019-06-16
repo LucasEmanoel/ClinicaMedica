@@ -4,6 +4,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.model.menu.DefaultMenuItem;
 import org.primefaces.model.menu.DefaultMenuModel;
+import org.primefaces.model.menu.DefaultSubMenu;
 
 import model.entidades.Pessoa;
 
@@ -19,11 +20,11 @@ public class menuBean {
 
     public DefaultMenuModel retornaMenu() {
         DefaultMenuModel menuModel = new DefaultMenuModel();
-
+        
+        DefaultSubMenu subMenu = new DefaultSubMenu();
+        subMenu.setLabel("Históricos");
         DefaultMenuItem item = new DefaultMenuItem();
-        item.setValue("Página 1");
-        item.setUrl("pagina1.xhtml");
-       
+
     
         Pessoa user = (Pessoa) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("perfil");
         String tipoPerfil = user.getPerfil().getDescricao();
@@ -37,7 +38,13 @@ public class menuBean {
             menuModel.addElement(item);
             
             item = new DefaultMenuItem();
-            item.setValue("Visulizar Históricos");
+            item.setValue("Meus Atendimentos");
+            item.setUrl("HistoricoView.xhtml");
+            subMenu.addElement(item);
+            
+            
+            item = new DefaultMenuItem();
+            item.setValue("Todos Históricos");
             item.setUrl("HistoricoView.xhtml");
             
             menuModel.addElement(item);
@@ -61,9 +68,9 @@ public class menuBean {
             menuModel.addElement(item);
             
             item = new DefaultMenuItem();
-            item.setValue("Visulizar Históricos");
+            item.setValue("Todos Históricos");
             item.setUrl("HistoricoView.xhtml");
-            
+
             menuModel.addElement(item);
             
             item = new DefaultMenuItem();
@@ -99,11 +106,12 @@ public class menuBean {
             
             menuModel.addElement(item);
             
+            
             item = new DefaultMenuItem();
             item.setValue("Visulizar Históricos");
             item.setUrl("HistoricoView.xhtml");
-            
             menuModel.addElement(item);
+
             
         	item = new DefaultMenuItem();
             item.setValue("Perfil");

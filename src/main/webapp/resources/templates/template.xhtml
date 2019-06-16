@@ -14,26 +14,24 @@
 </h:head>
 
 <h:body>
-	<div id="tudo">
-		<div id="top">
-			<div class="container-logo">
+	<div id="top">
+		<div class="container-logo">
 			<a href="inicio.xhtml">
 				<img src="resources/img/Logo01.png" alt="Logo" />
 			</a>
-			</div>
-			<ui:insert name="top">
-			</ui:insert>
 		</div>
-
-		<div id="content" class="center_content">
-			<ui:insert name="content">Content</ui:insert>
-		</div>
-
-		<div id="bottom">
-			<ui:include src="/Rodape.xhtml">Bottom</ui:include>
-		</div>
-
+	
+		<ui:insert name="top">
+		</ui:insert>
 	</div>
-</h:body>
 
+	<div id="content" class="center_content">
+		<ui:insert name="content">Content</ui:insert>
+	</div>
+
+	<div id="bottom">
+		<ui:include src="/Rodape.xhtml">Bottom</ui:include>
+	</div>
+
+</h:body>
 </html>
