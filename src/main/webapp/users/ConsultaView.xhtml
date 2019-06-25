@@ -34,12 +34,12 @@
 							<f:setPropertyActionListener value="#{cli}" target="#{consultaBean.selecionada}" />  
 						</p:commandButton>
 						
-						<p:commandButton update=":form:detalhesConsulta"
-							actionListener="#{consultaBean.retornaMedicosPorClinica()}" title="pegar medicos">
+						<p:commandButton title="pegar medicos" action="#{consultaBean.retornaMedicosPorClinica}">
+							<f:ajax execute="@form" render=":form:detalhesConsulta"></f:ajax>
 						</p:commandButton>
 						
-						<p:commandButton update=":form:detalhesConsulta"
-							oncomplete="PF('detalhesConsulta').show()" title="Dialog">
+						<p:commandButton oncomplete="PF('detalhesConsulta').show()" title="Dialog">
+    						<f:ajax execute="@form" render=":form:detalhesConsulta" />
 						</p:commandButton>
 					</h:panelGrid>
 				</p:panel>

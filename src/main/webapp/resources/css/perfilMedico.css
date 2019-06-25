@@ -1,0 +1,186 @@
+body{
+    background-image: url("../Imagens/anotando.jpg");
+    background-repeat: no-repeat;
+    font-family: Montserrat,Roboto,'Open Sans', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+#cab img{
+    margin-left: 30px;
+    heigth: 50px;
+    width: 150px;
+}
+#cab{
+    height: 80px;
+    padding: 0;
+    margin: 0;
+    background-color: black;
+}
+.box1{
+    width: 730px;
+    height: 260px;
+    position: relative;
+    top: 30px;
+    left: 59px;
+
+
+}
+.box2{
+    width: 730px;
+    height: 74px;
+    position: relative;
+    top: 90px;
+    left: 59px;
+
+}
+.medico{
+    width: 730px;
+    height: 120px;
+    position: relative;
+    top: 60px;
+    left: 59px;
+}
+.box00{
+    width: 900px;
+    height: 710px;
+    position: relative;
+    top: 35px;
+    left: 190px;
+}
+.p2{
+    position: relative; 
+    top: -37px; 
+    left: 547px;
+}
+.p3{
+    position: relative;
+    top: -13px;
+}
+.p4{
+    position: relative;
+    top: -50px;
+    left: 250px;  
+}
+.p5{
+    position: relative;
+    top: -88px;
+    left: 540px;  
+}
+.p6{
+    position: relative;
+    top: -60px;   
+}
+.p7{
+   position: relative;
+   top: -30px;
+}
+.p8{
+   position: relative;
+    top: -67px; 
+    left: 280px;
+}
+.p02{
+    position: relative;
+    top: -37px;
+    left: 454px;
+}
+.p07{
+    position: relative;
+    top: 105px;
+    left: 700px;
+}
+.p06{
+    position: relative;
+    top: -37px;
+    left: 320px;
+}
+.p04{
+    position: relative;
+    top: -20px;
+}
+.p05{
+    position: relative;
+    top: -57px;
+    left: 270px;   
+}
+.btn1{
+    width:60px;
+    height: 30px;
+
+}
+.btn2{
+    width:60px;
+    height: 30px;    
+}
+.btn1, .btn2{
+    margin-left: 10px;
+}
+/*Contatos*/
+#contatos{
+    position: relative;
+    top: 80px;
+    background-color: darkslateblue;
+    height: 180px;
+    width: 1600px;
+    margin: 0;
+    padding-bottom: 0;
+}
+#contatos #msg a{
+    position: absolute;
+    left: 900px;
+    top: 90px;
+    font-size: 20px;
+    text-decoration: none;
+    color: aquamarine;
+    margin: 0;
+    padding-bottom: 0;
+}
+#contatos #c{
+    color: #D20005;
+    position: absolute;
+    top: -20px;
+    left: 1020px;
+    font-weight: lighter;
+    font-size: 30px;
+    padding-bottom: 0;   
+}
+#contatos #endereco{
+    position: absolute;
+    left: 20px;
+    top:70px;
+    font-size: 20px;
+    color: aquamarine;
+    margin: 0;
+    padding-bottom: 0;
+}
+#contatos #e{
+    color: #D20005;
+    position: relative;
+    left: 100px;
+    top: 20px;
+    font-weight: lighter;
+    font-size: 30px;
+    padding-bottom: 0;
+    margin: 0;
+}
+#redes{
+    position: absolute;
+    top: -20px;
+    left: 600px;
+    padding-bottom: 0;
+    margin: 0;
+}
+#redes h4{
+    color: #D20005;
+    position: relative;
+    font-weight: lighter;
+    font-size: 30px;
+    padding-bottom: 0;
+
+}
+#redes a{
+    text-decoration: none;
+    padding-left: 10px;
+    padding-bottom: 0;
+    margin: 0;
+}

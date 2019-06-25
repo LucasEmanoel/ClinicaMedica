@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="./css/perfilMedico.css"/>
+    </h:head>
+    <h:body>
+
+        <fieldset class="box00">
+            <legend>Perfil do Médico</legend>
+
+            <fieldset class="box1">
+
+                <legend>Dados Pessoais</legend>
+                <p class="p1" title="Nome">Nome: <input class="ipt1" style="width: 450px;" type="text" value="#{medicoBean.userSessao.nome}"/></p>
+                <p class="p2" title="CPF">CPF: <input class="ipt2" style="width: 120px;" type="text" value="#{medicoBean.userSessao.cpf}"/></p>
+                <p class="p3" title="RG">RG: <input class="ipt3" style="width: 120px;" type="text" value="#{medicoBean.userSessao.rg}"/></p>
+                <p class="p4" title="Idade">Idade: <input class="ipt4" style="width: 140px;"  maxlength="3" type="text" value="#{medicoBean.userSessao.idade}"/></p>
+                <p class="p5" title="Telefone">Telefone: <input class="ipt5" style="width: 100px;" type="text" maxlength="11" value="#{medicoBean.userSessao.telefone}"/></p>
+                <p class="p6" title="Rua">Rua: <input class="ipt6" style="width: 500px;" type="text" value="#{medicoBean.userSessao.endereco.rua}" /></p>
+                <p class="p7" title="CEP">CEP: <input class="ipt7" style="width: 150px;" type="text" value="#{medicoBean.userSessao.endereco.cep}" /></p>
+                <p class="p8" title="Bairro">Bairro: <input class="ipt8" style="width: 330px;" type="text" value="#{medicoBean.userSessao.endereco.bairro}" /></p>
+            </fieldset>
+
+            <fieldset class="medico">
+                <legend>Dados do Profissional</legend>
+                <p class="p03" title="CRM">CRM: <input class="ipt03" style="width: 120px;" type="text" value="#{medicoBean.userSessao.crm}"/></p>
+                <p class="p06" title="Especialidade">Especialidade: <input class="ipt06" style="width: 237px;" type="text" value="#{medicoBean.userSessao.especialidade}"/></p>
+                <p class="p04" title="Sálario">Sálario: <input class="ipt04" style="width: 106px;" type="text" value="#{medicoBean.userSessao.salario}"/></p>
+                <p class="p05" title="Clínica">Clínica: <input class="ipt05" style="width: 340px;" type="text" value="#{medicoBean.userSessao.clinica}"/></p>
+
+
+            </fieldset>
+
+            <fieldset class="box2">
+                <legend>Dados de Usuário</legend>
+                <p class="p01" title="E-Mail">E-Mail: <input class="ipt01" style="width: 330px;" type="text" value="#{medicoBean.userSessao.login}"/></p>
+                <p class="p02" title="Senha">Senha: <input class="ipt02" style="width: 200px;" type="text" value="#{medicoBean.userSessao.senha}"/></p> 
+            </fieldset>
+            <p class="p07"> <input class="btn1"  type="button" value="Salvar"/> 
+                <input class="btn2" type="button" value="Editar"/> </p> 
+
+        </fieldset>
+
+        <div id="contatos">
+            <h4 id="c">Contato</h4>
+            <div id="msg"><a href="faces/Contato.xhtml">ENTRE EM CONTATO CONOSCO,<br/>
+                    ENVIE UMA CRÍTICA OU SUGESTÃO</a>
+            </div>
+            <div id="redes">
+                <h4>Redes Socias</h4>
+                <a href="https://www.facebook.com/"><img src="resources/Imagens/facebook.png" width="40" height="40" alt="facebook"/>
+                </a>
+                <a href="https://www.twitter.com"><img src="resources/Imagens/twitter.png" width="40" height="40" alt="twitter"/>
+                </a>
+                <a href="https://www.instagram.com"><img src="resources/Imagens/instagram.png" width="40" height="40" alt="instagram"/>
+                </a>
+            </div>
+            <h4 id="e">Endereço</h4>
+            <p id="endereco">
+                Av. Santo Antônio, 385 - Santo Antônio<br/>
+                Garanhuns - PE, 55293-000<br/>
+                TELEFONE: (87) 3025-0098 | (87) 98107-3280
+            </p>
+        </div>
+    </h:body>
+</html>
+

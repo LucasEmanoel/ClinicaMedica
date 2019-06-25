@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.event.ActionEvent;
+import javax.faces.event.AjaxBehaviorEvent;
 
 import model.ClinicaModel;
 import model.ConsultaModel;
@@ -23,7 +23,7 @@ public class MarcarConsultaBean implements Serializable {
 	private List<Medico> medicos;
 	
 	private List<Clinica> clinicas;
-	Clinica selecionada;
+	private Clinica selecionada;
 	
 	public MarcarConsultaBean() {
 		this.retornaTodasClinicas();
@@ -37,7 +37,7 @@ public class MarcarConsultaBean implements Serializable {
 		}
 	}
 	
-	public void retornaMedicosPorClinica( ActionEvent event ) {
+	public void retornaMedicosPorClinica( AjaxBehaviorEvent event ) {
 		
 		try {
 			
@@ -50,7 +50,7 @@ public class MarcarConsultaBean implements Serializable {
 	
 	
 	public void marcarConsulta() {
-		System.out.println("pegando medicos");
+
 		ConsultaModel conModel = new ConsultaModel();
 		
 		try {
