@@ -1,6 +1,6 @@
 package controller;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.model.menu.DefaultMenuItem;
 import org.primefaces.model.menu.DefaultMenuModel;
@@ -9,7 +9,7 @@ import org.primefaces.model.menu.DefaultSubMenu;
 import model.entidades.Pessoa;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class menuBean {
 
     private DefaultMenuModel menuModel;
@@ -51,7 +51,7 @@ public class menuBean {
             
             item = new DefaultMenuItem();
             item.setValue("Perfil");
-            item.setUrl("#");
+            item.setUrl("PerfilMedicoView.xhtml");
             
             menuModel.addElement(item);
 
@@ -75,7 +75,7 @@ public class menuBean {
             
             item = new DefaultMenuItem();
             item.setValue("Perfil");
-            item.setUrl("#");
+            item.setUrl("PerfilSecretariaView.xhtml");
             
             menuModel.addElement(item);
 
@@ -92,7 +92,7 @@ public class menuBean {
             
             item = new DefaultMenuItem();
             item.setValue("Perfil");
-            item.setUrl("#");
+            item.setUrl("PerfilClinicaView.xhtml");
             
             menuModel.addElement(item);
             menuModel.generateUniqueIds();
@@ -115,7 +115,7 @@ public class menuBean {
             
         	item = new DefaultMenuItem();
             item.setValue("Perfil");
-            item.setUrl("#");
+            item.setUrl("PerfilClienteView.xhtml");
             
             menuModel.addElement(item);
             menuModel.generateUniqueIds();

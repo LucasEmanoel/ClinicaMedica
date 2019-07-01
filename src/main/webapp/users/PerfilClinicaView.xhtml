@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <h:outputStylesheet name="./css/perfilClinica.css"/>
+        <h:outputStylesheet library="css" name="perfilClinica.css"/>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
@@ -11,8 +11,9 @@
         <fieldset class="box00">
             <legend>Perfil da Clínica</legend>
             <fieldset class="box1">
+             	<p class="p1" title="CNPJ">Nome: <input class="ipt2" style="width: 200px;"  type="text" value="#{clinicaBean.userSessao.nome}"/></p>
                 <p class="p1" title="CNPJ">CNPJ: <input class="ipt2" style="width: 200px;"  type="text" value="#{clinicaBean.userSessao.cnpj}"/></p>
-                <p class="p2" title="Telefone">Telefone: <input class="ipt5" style="width: 120px;" type="text" maxlength="12" value="#{clinicaBean.userSessao.telefone}" /></p>
+                <p class="p2" title="Telefone">Telefone: <input class="ipt5" style="width: 120px;" type="text" maxlength="12" value="#{clinicaBean.userSessao.telefone1}" /></p>
                 <p class="p3" title="Rua">Rua: <input class="ipt6" style="width: 500px;" type="text" value="#{clinicaBean.userSessao.endereco.rua}" /></p>
                 <p class="p7" title="CEP">CEP: <input class="ipt7" style="width: 150px;" type="text" value="#{clinicaBean.userSessao.endereco.cep}" /></p>
                 <p class="p8" title="Bairro">Bairro: <input class="ipt8" style="width: 330px;" type="text" value="#{clinicaBean.userSessao.endereco.bairro}" /></p>

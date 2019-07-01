@@ -6,16 +6,19 @@
     height: 100px;
     z-index: 999;
 }
+
 .container-logo {
 	position: absolute;
 	float: left;
 	width: 20%;
 }
+
 .container-logo img{
 	padding:15px 0px 0px 10px;
 	width: 150px;
 	height: 80px;
 }
+
 .center_content {
     position: relative;
     background: none;
@@ -31,14 +34,3 @@
     bottom: 0;
 }
 
-#top a:link, #top a:visited {
-  color: white;
-  font-weight : bold;
-  text-decoration: none;
-}
-
-#top a:link:hover, #top a:visited:hover  {
-  color: black;
-  font-weight : bold;
-  text-decoration : underline;
-}

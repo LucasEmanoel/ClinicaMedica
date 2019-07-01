@@ -27,35 +27,21 @@ public class HistoricoBean {
 	}
 	
 	public void listarPorUser() {
-		Pessoa o = ((Pessoa) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("perfil"));
-		
-		if(o instanceof Medico || o instanceof Secretaria) {
-			this.consultas = this.listarTodasConsultas();
-		
-		} else {
-			this.consultas = this.consultaPorCliente((Cliente) o);
-	
-		}
-	}
-	
-	public List<Consulta> listarTodasConsultas() {
-		
+		Object o = FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("perfil");
 		try {
-			return cm.findTodasConsultas();
+			if(o.getClass().equals(Medico.class) || o.getClass().equals(Secretaria.class)) {
+				this.consultas = cm.findTodasConsultas();
+			
+			} else {
+				Cliente cli = (Cliente) o;
+				
+					this.consultas = this.cm.findConsultaPorCpfCliente(cli.getCpf());
+		
+			}
 		} catch (Exception e) {
-			return null;
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
-	}
-	
-	public List<Consulta> consultaPorCliente(Cliente cli) {
-		
-		try {
-			return cm.findConsultaPorCpfCliente(cli.getCpf());
-		} catch (Exception e) {
-			return null;
-		}
-		
 	}
 
 	public List<Consulta> getConsultas() {

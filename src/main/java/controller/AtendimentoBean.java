@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -11,6 +14,9 @@ import javax.faces.bean.ViewScoped;
 
 import org.primefaces.event.DragDropEvent;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Collections;
+
+import javafx.collections.transformation.SortedList;
 import model.ConsultaModel;
 import model.entidades.Consulta;
 
@@ -37,17 +43,6 @@ public class AtendimentoBean implements Serializable{
 		consultas = this.retornaTudoData();
 	}
 
-	public String salvar() {
-		try {
-			
-			cm.registrarConsulta(this.consulta);
-			return "ClienteView?faces-redirect=true";
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
 	public String atualizar() {
 		try {
 			
@@ -59,20 +54,14 @@ public class AtendimentoBean implements Serializable{
 		}
 		return null;
 	}
-	public String deletar() {
-		try {
-			
-			cm.removerConsulta(this.consulta);
-			return "ClienteView?faces-redirect=true";
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+	
 	public List<Consulta> retornaTudoData() {
 		try {
-			return cm.findConsultaPorData(sdf.format(new Date(System.currentTimeMillis())));
+			List<Consulta> list = (ArrayList<Consulta>) cm.findConsultaPorData(sdf.format(new Date(System.currentTimeMillis())));
+			
+			/* return Collections.sort(list); */
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -92,7 +81,6 @@ public class AtendimentoBean implements Serializable{
 		consultasConcluidas.add(con);
 		consultasEmAtendimento.remove(con);
 	}
-
 	
 	public Consulta getConsulta() {
 		return consulta;

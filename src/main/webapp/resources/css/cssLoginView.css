@@ -5,6 +5,7 @@
 	border: none;
 	left: 50%;
 	top: 50%;
+	height: 333px;
 	transform: translate(-50%, -50%);
 	display: flex;
 
@@ -16,7 +17,7 @@
 	text-align: center;
 	width: 300px;
 	background: none;
-	left: 10%;
+	left: 88%;
 	top: 93%;
 	border: none;
 	transform: translate(-50%, -50%)

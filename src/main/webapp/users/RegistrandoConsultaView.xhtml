@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/resources/templates/templateUsers.xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="css">
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form id="form">
+			<h:panelGrid id="detalhesConsulta" columns="2">
+
+				<p:outputLabel value="Medico: "></p:outputLabel>
+				<h:selectOneMenu value="#{consultaBean.con.medico}"
+					converter="medicoConverter" id="somMedico">
+					<f:selectItems value="#{consultaBean.medicos}" var="c"
+						itemLabel="#{c.nome}" itemValue="#{c}" />
+				</h:selectOneMenu>
+
+				<p:outputLabel for="descricao" value="Descricao: " />
+				<h:inputText id="descricao" value="#{consultaBean.con.descricao}"
+					required="true" style="height: 60px; ">
+				</h:inputText>
+
+				<p:outputLabel for="data" value="Data: " />
+				<p:inputMask id="data" value="#{consultaBean.con.data}"
+					mask="99/99/9999" />
+
+				<p:outputLabel for="pagamento" value="Pagamento: " />
+				<h:inputText id="pagamento"
+					value="#{consultaBean.con.pagamento.valor}" required="true">
+				</h:inputText>
+
+				<p:outputLabel for="ambulatorio1" value="Ambulatorio(numero): " />
+				<h:inputText id="ambulatorio1"
+					value="#{consultaBean.con.ambulatorio.numero}" required="true">
+				</h:inputText>
+
+				<p:outputLabel for="ambulatorio2" value="Ambulatorio(andar): " />
+				<h:inputText id="ambulatorio2"
+					value="#{consultaBean.con.ambulatorio.andar}" required="true">
+				</h:inputText>
+
+			</h:panelGrid>
+			<p:separator></p:separator>
+			<h:commandButton value="Marcar"
+				action="#{consultaBean.marcarConsulta}" title="Marcar">
+			</h:commandButton>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

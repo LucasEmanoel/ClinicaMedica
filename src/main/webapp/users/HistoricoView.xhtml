@@ -57,7 +57,7 @@
 		                <h:outputText value="#{historicoBean.selecionada.pagamento.valor} R$" />
 		 	
 		                <h:outputText value="Data: " />
-		                <h:outputText value="#{historicoBean.selecionada.data}" />
+		                <h:outputText value="#{historicoBean.selecionada.data}" converter="dataConverter"/>
 		 
 		                <h:outputText value="Descricao:" />
 		                <h:outputText value="#{historicoBean.selecionada.descricao}"/>

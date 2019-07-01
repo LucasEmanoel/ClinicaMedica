@@ -52,19 +52,4 @@
 	<session-config>
 		<session-timeout>30</session-timeout>
 	</session-config>
-
-	<!-- <filter>
-	     <filter-name>FiltroConexao</filter-name>
-	     <filter-class>utils.Filtro</filter-class>     
- 	</filter>
-	  
-	 <filter-mapping>
-	    <filter-name>FiltroConexao</filter-name>
-	    <url-pattern>/users/*</url-pattern>
-	</filter-mapping>
-       
-    <listener>
-          <listener-class>utils.SessionListener</listener-class>
-     </listener> -->
-
 </web-app>

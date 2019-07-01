@@ -54,7 +54,7 @@ public class ConsultaDao extends DaoImpl<Consulta> implements ConsultaDaoInterfa
 	public List<Consulta> findTodasConsultas() {
 		EntityManager manager = JPAManager.getInstance().getEntityManager();
 
-		String consulta = "SELECT C FROM Consulta";
+		String consulta = "SELECT C FROM Consulta AS C";
 
 		TypedQuery<Consulta> query = manager.createQuery(consulta, Consulta.class);
 

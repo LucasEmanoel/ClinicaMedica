@@ -21,7 +21,7 @@ import javax.persistence.Table;
 
 @Entity(name = "Consulta")
 @Table(name = "consulta")
-public class Consulta implements Serializable {
+public class Consulta implements Serializable, Comparable<Consulta> {
 
 	private static final long serialVersionUID = 3479343146492919231L;
 
@@ -167,6 +167,11 @@ public class Consulta implements Serializable {
 		} else if (!medico.equals(other.medico))
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(Consulta o) {
+		return this.getData().compareTo(o.getData());
 	}
 
 }

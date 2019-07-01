@@ -37,7 +37,7 @@ public class MarcarConsultaBean implements Serializable {
 		}
 	}
 	
-	public void retornaMedicosPorClinica( AjaxBehaviorEvent event ) {
+	public void retornaMedicosPorClinica() {
 		
 		try {
 			

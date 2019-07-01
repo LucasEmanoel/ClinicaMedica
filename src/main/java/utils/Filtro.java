@@ -1,4 +1,4 @@
-/*package utils;
+package utils;
 
 import java.io.IOException;
 
@@ -46,4 +46,4 @@ public class Filtro implements Filter {
 		// TODO Auto-generated method stub
 
 	}
-}*/
+}

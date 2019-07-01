@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <title>Facelet Title</title>
-        <h:outputStylesheet name="./css/perfilMedico.css"/>
+        <h:outputStylesheet library="css" name="perfilMedico.css"/>
     </h:head>
     <h:body>
 
@@ -18,7 +18,7 @@
                 <p class="p2" title="CPF">CPF: <input class="ipt2" style="width: 120px;" type="text" value="#{medicoBean.userSessao.cpf}"/></p>
                 <p class="p3" title="RG">RG: <input class="ipt3" style="width: 120px;" type="text" value="#{medicoBean.userSessao.rg}"/></p>
                 <p class="p4" title="Idade">Idade: <input class="ipt4" style="width: 140px;"  maxlength="3" type="text" value="#{medicoBean.userSessao.idade}"/></p>
-                <p class="p5" title="Telefone">Telefone: <input class="ipt5" style="width: 100px;" type="text" maxlength="11" value="#{medicoBean.userSessao.telefone}"/></p>
+                <p class="p5" title="Telefone">Telefone: <input class="ipt5" style="width: 100px;" type="text" maxlength="11" value="#{medicoBean.userSessao.telefone1}"/></p>
                 <p class="p6" title="Rua">Rua: <input class="ipt6" style="width: 500px;" type="text" value="#{medicoBean.userSessao.endereco.rua}" /></p>
                 <p class="p7" title="CEP">CEP: <input class="ipt7" style="width: 150px;" type="text" value="#{medicoBean.userSessao.endereco.cep}" /></p>
                 <p class="p8" title="Bairro">Bairro: <input class="ipt8" style="width: 330px;" type="text" value="#{medicoBean.userSessao.endereco.bairro}" /></p>
@@ -27,16 +27,15 @@
             <fieldset class="medico">
                 <legend>Dados do Profissional</legend>
                 <p class="p03" title="CRM">CRM: <input class="ipt03" style="width: 120px;" type="text" value="#{medicoBean.userSessao.crm}"/></p>
-                <p class="p06" title="Especialidade">Especialidade: <input class="ipt06" style="width: 237px;" type="text" value="#{medicoBean.userSessao.especialidade}"/></p>
                 <p class="p04" title="Sálario">Sálario: <input class="ipt04" style="width: 106px;" type="text" value="#{medicoBean.userSessao.salario}"/></p>
-                <p class="p05" title="Clínica">Clínica: <input class="ipt05" style="width: 340px;" type="text" value="#{medicoBean.userSessao.clinica}"/></p>
+                <p class="p05" title="Clínica">Clínica: <input class="ipt05" style="width: 340px;" type="text" value="#{medicoBean.userSessao.clinica.nome}"/></p>
 
 
             </fieldset>
 
             <fieldset class="box2">
                 <legend>Dados de Usuário</legend>
-                <p class="p01" title="E-Mail">E-Mail: <input class="ipt01" style="width: 330px;" type="text" value="#{medicoBean.userSessao.login}"/></p>
+                <p class="p01" title="E-Mail">E-Mail: <input class="ipt01" style="width: 330px;" type="text" value="#{medicoBean.userSessao.email}"/></p>
                 <p class="p02" title="Senha">Senha: <input class="ipt02" style="width: 200px;" type="text" value="#{medicoBean.userSessao.senha}"/></p> 
             </fieldset>
             <p class="p07"> <input class="btn1"  type="button" value="Salvar"/> 
