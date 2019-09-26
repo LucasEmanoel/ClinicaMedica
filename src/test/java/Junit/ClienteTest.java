@@ -1,71 +1,91 @@
 package Junit;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import model.dao.AmbulatorioDao;
 import model.dao.ClienteDao;
+import model.dao.ConsultaDao;
+import model.dao.MedicoDao;
+import model.entidades.Ambulatorio;
 import model.entidades.Cliente;
-import model.entidades.Endereco;
-import model.entidades.Perfil;
+import model.entidades.Consulta;
+import model.entidades.Medico;
 
 public class ClienteTest {
 
 	private ClienteDao cd;
-	private Cliente cliente;
+	private Cliente cli;
 	private Cliente consulta;
+	private ConsultaDao con;
+	private Consulta consultaMedica;
 
 	@Before
 	public void inicializa() {
 		this.cd = new ClienteDao();
-		this.cliente = new Cliente();
-		
-		this.cliente.setCpf("12345");
-		this.cliente.setId(2L);
-		this.cliente.setEmail("cliente@gmail.com");
-		this.cliente.setEndereco(new Endereco());
-		this.cliente.getEndereco().setId(2L);
-		this.cliente.getEndereco().setBairro("123");
-		this.cliente.getEndereco().setCep("123");
-		this.cliente.getEndereco().setRua("123");
-		this.cliente.setIdade(25);
-		this.cliente.setNome("Jeremy");
-		this.cliente.setPerfil(new Perfil());
-		this.cliente.getPerfil().setId(2L);
-		this.cliente.getPerfil().setDescricao("perfil Cliente");
-		this.cliente.setRg("123456");
-		this.cliente.setSenha("123456");
-		this.cliente.setTelefone1("123456");
-		this.cliente.setTelefone2("123456");
+		this.consulta = new Cliente();
+		this.cli = new Cliente();
+		this.con = new ConsultaDao();
+		this.consultaMedica = new Consulta();
+
+		cli.setCpf("2");
+		cli.setEmail("cliente@gmail.com");
+		cli.getEndereco().setBairro("2");
+		cli.getEndereco().setCep("2");
+		cli.getEndereco().setRua("2");
+		cli.setIdade(25);
+		cli.setNome("Jeremy");
+		cli.getPerfil().setDescricao("perfil Cliente");
+		cli.setRg("2");
+		cli.setSenha("2");
+		cli.setTelefone1("2");
+		cli.setTelefone2("2");
 	}
 
 	@Test
 	public void registerClientTest() {
 
-		cd.salvar(cliente);
-		
-		this.consulta = cd.encontrarPorCpf("12345");
+		cd.salvar(this.cli);
 
-		assertEquals(consulta, cliente);
+		consulta = cd.encontrarPorCpf("2");
+
+		assertEquals(consulta.getCpf(), "2");
 	}
 
 	@Test
-	public void editClientTest() {
-		this.cliente.setNome("cliente atualizado");
+	public void realizarConsulta() throws ParseException {
+		ClienteDao cm = new ClienteDao();
+		MedicoDao md = new MedicoDao();
+		AmbulatorioDao ambud = new AmbulatorioDao();
+		Ambulatorio ambu = new Ambulatorio();
+		Consulta busca = new Consulta();
 		
-		cd.atualizar(this.cliente);
-		consulta = cd.encontrarPorCpf("12345");
-		assertEquals(consulta, this.cliente);
-	}
+		Cliente cli = cm.encontrarPorCpf("2");
+		Medico med = md.encontrarPorCpf("3");
+		ambu = ambud.encontrarByNumero(2);
+		
+		
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = format.parse("2020-10-15");
+			
+		
+		consultaMedica.setAmbulatorio(ambu);
+		consultaMedica.setCliente(cli);
+		consultaMedica.setData(date);
+		consultaMedica.setDescricao("consulta de coracao");
+		consultaMedica.setMedico(med);
+		consultaMedica.getPagamento().setValor(150.00);
 
-	@Test
-	public void deleteClientTest() {
-		cd.deletar(this.cliente);
+		con.salvar(consultaMedica);
 		
-		consulta = cd.encontrarPorCpf("12345");
-		
-		assertNull(consulta);
+		busca = con.findConsultaPorPagamentoId(3L);
+		assertEquals(busca.getCliente().getCpf(), consultaMedica.getCliente().getCpf());
+
 	}
 }

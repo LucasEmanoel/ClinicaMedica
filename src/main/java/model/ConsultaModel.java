@@ -1,7 +1,7 @@
 package model;
 
 
-import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import model.dao.ConsultaDao;
@@ -88,7 +88,7 @@ public class ConsultaModel {
 		}
 	}
 
-	public boolean verificarDisponibilidade(Medico med, Calendar data) throws Exception {
+	public boolean verificarDisponibilidade(Medico med, Date data) throws Exception {
 		ConsultaDao newDao = (ConsultaDao) dao;
 		if (med != null && data != null) {
 			return newDao.verificarConsulta(med, data);

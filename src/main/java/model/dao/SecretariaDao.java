@@ -6,7 +6,7 @@ import javax.persistence.TypedQuery;
 import model.entidades.Secretaria;
 import model.util.JPAManager;
 
-public class SecratarioDao extends DaoImpl<Secretaria> implements SecretariaDaoInterface {
+public class SecretariaDao extends DaoImpl<Secretaria> implements SecretariaDaoInterface {
 
 	@Override
 	public Secretaria encontrarPorCpf(String cpf) {

@@ -8,73 +8,52 @@ import org.junit.Test;
 import model.dao.ClinicaDao;
 import model.dao.MedicoDao;
 import model.entidades.Clinica;
-import model.entidades.Endereco;
 import model.entidades.Medico;
-import model.entidades.Perfil;
 
 public class MedicoTest {
-
+	
+	private ClinicaDao cd;
+	private Clinica clinica;
 	private MedicoDao md;
 	private Medico medico;
 	private Medico consulta;
-	private ClinicaDao cd;
-	private Clinica clinica;
+	
 	
 	@Before
 	public void inicializa() {
 		this.md = new MedicoDao();
 		this.medico = new Medico();
+		this.consulta = new Medico();
 		this.cd = new ClinicaDao();
+		this.clinica = new Clinica();
 		
-		this.medico.setCpf("123456");
-		this.medico.setId(3L);
-		this.medico.setCrm(123456L);	
-		this.medico.setEmail("medico@gmail.com");
-		this.medico.setEndereco(new Endereco());
-		this.medico.getEndereco().setId(3L);
-		this.medico.getEndereco().setBairro("123");
-		this.medico.getEndereco().setCep("123");
-		this.medico.getEndereco().setRua("123");
-		this.medico.setIdade(45);
-		this.medico.setMeta(10);
-		this.medico.setNome("medico");
-		this.medico.setPerfil(new Perfil());
-		this.medico.getPerfil().setId(3L);
-		this.medico.getPerfil().setDescricao("perfil Medico");
-		this.medico.setRg("123");
-		this.medico.setSalario(10.000);
-		this.medico.setSenha("senha123");
-		this.medico.setTelefone1("123456789");
-		this.medico.setTelefone2("123456789");
+		clinica = cd.encontrarPorCnpj("123");
+		
+		medico.setCpf("3");
+		medico.setCrm(3L);
+		medico.setEmail("medico@gmail.com");
+		medico.getEndereco().setBairro("3");
+		medico.getEndereco().setCep("3");
+		medico.getEndereco().setRua("3");
+		medico.setClinica(clinica);
+		medico.setIdade(45);
+		medico.setMeta(3);
+		medico.setNome("medico");
+		medico.getPerfil().setDescricao("perfil Medico");
+		medico.setRg("3");
+		medico.setSalario(10.000);
+		medico.setSenha("3");
+		medico.setTelefone1("3");
+		medico.setTelefone2("3");
 	}
 
 	@Test
 	public void registerMedicoTest() throws Exception {
-		this.clinica = cd.encontrarPorCnpj("123456789");
-		this.medico.setClinica(this.clinica);
+		
 		md.salvar(this.medico);
 
-		this.consulta = md.encontrarPorCpf("123456");
+		consulta = md.encontrarPorCpf("3");
 
-		assertEquals(consulta, this.medico);
+		assertEquals(consulta.getCpf(), "3");
 	}
-
-	@Test
-	public void editMedicoTest() throws Exception {
-		this.medico.setNome("medico atualizado");
-
-		md.atualizar(this.medico);
-		this.consulta = md.encontrarPorCpf("123456");
-
-		assertEquals(consulta, this.medico);
-	}
-
-	@Test
-	public void deleteClinicaTest() throws Exception {
-		md.deletar(this.medico);
-		this.consulta = md.encontrarPorCpf("123456");
-
-		assertEquals(consulta, this.medico);
-	}
-
 }

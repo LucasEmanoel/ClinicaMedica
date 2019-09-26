@@ -2,7 +2,7 @@ package model.entidades;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -51,12 +51,13 @@ public class Consulta implements Serializable, Comparable<Consulta> {
 	private String descricao;
 
 	@Column(name = "consulta_data", nullable = false)
-	private Calendar data;
+	private Date data;
+	
 
 	public Consulta() {
 		this.ambulatorio = new Ambulatorio();
 		this.cliente = new Cliente();
-		this.data = null;
+		this.data = new Date();
 		this.medicamentos = new ArrayList<Medicamento>();
 		this.medico = new Medico();
 		this.pagamento = new Pagamento();
@@ -118,11 +119,11 @@ public class Consulta implements Serializable, Comparable<Consulta> {
 		this.descricao = descricao;
 	}
 	
-	public Calendar getData() {
+	public Date getData() {
 		return data;
 	}
 
-	public void setData(Calendar data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 
