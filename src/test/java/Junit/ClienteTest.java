@@ -1,6 +1,7 @@
 package Junit;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -57,9 +58,18 @@ public class ClienteTest {
 
 		assertEquals(consulta.getCpf(), "2");
 	}
-
+	
 	@Test
-	public void realizarConsulta() throws ParseException {
+	public void updateClientTest() {
+		consulta = cd.encontrarPorCpf("2");
+		consulta.setNome("Cliente Atualizado");
+		cd.atualizar(consulta);
+		
+		assertEquals(consulta.getNome(), "Cliente Atualizado");
+	}
+	
+	@Test
+	public void realizarConsultaTest() throws ParseException {
 		ClienteDao cm = new ClienteDao();
 		MedicoDao md = new MedicoDao();
 		AmbulatorioDao ambud = new AmbulatorioDao();
@@ -84,8 +94,18 @@ public class ClienteTest {
 
 		con.salvar(consultaMedica);
 		
-		busca = con.findConsultaPorPagamentoId(3L);
+		busca = con.findConsultaPorPagamentoId(1L);
 		assertEquals(busca.getCliente().getCpf(), consultaMedica.getCliente().getCpf());
 
 	}
+	
+	@Test
+	public void deleteClientTest() {
+		consulta = cd.encontrarPorCpf("2");
+		
+		cd.deletar(consulta);
+		
+		assertNull(consulta);
+	}
+
 }

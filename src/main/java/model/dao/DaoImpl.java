@@ -1,7 +1,9 @@
 package model.dao;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
+import model.entidades.Ambulatorio;
 import model.util.JPAManager;
 
 public class DaoImpl<T> implements Dao<T> {
@@ -35,7 +37,7 @@ public class DaoImpl<T> implements Dao<T> {
 			manager.close();
 		}
 	}
-
+	
 	public void deletar(T obj) {
 
 		EntityManager manager = JPAManager.getInstance().getEntityManager();

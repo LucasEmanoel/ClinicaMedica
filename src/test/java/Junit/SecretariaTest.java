@@ -1,6 +1,7 @@
 package Junit;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -53,5 +54,23 @@ public class SecretariaTest {
 		consulta = sd.encontrarPorCpf("4");
 
 		assertEquals(consulta.getCpf(), "4");
+	}
+	
+	@Test
+	public void updateSecretariaTest() {
+		consulta = sd.encontrarPorCpf("4");
+		consulta.setNome("Secretaria Atualizado");
+		sd.atualizar(consulta);
+		
+		assertEquals(consulta.getNome(), "Secretaria Atualizado");
+	}
+	
+	@Test
+	public void deleteSecretariaTest() {
+		consulta = sd.encontrarPorCpf("4");
+		
+		sd.deletar(consulta);
+		
+		assertNull(consulta);
 	}
 }

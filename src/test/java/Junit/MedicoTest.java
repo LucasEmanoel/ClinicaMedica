@@ -1,19 +1,27 @@
 package Junit;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import model.dao.ClinicaDao;
+import model.dao.ConsultaDao;
 import model.dao.MedicoDao;
 import model.entidades.Clinica;
+import model.entidades.Consulta;
 import model.entidades.Medico;
 
 public class MedicoTest {
 	
+	private List<Consulta> consultas;
 	private ClinicaDao cd;
 	private Clinica clinica;
+	private ConsultaDao conD;
 	private MedicoDao md;
 	private Medico medico;
 	private Medico consulta;
@@ -21,7 +29,9 @@ public class MedicoTest {
 	
 	@Before
 	public void inicializa() {
+		this.consultas = new ArrayList<Consulta>();
 		this.md = new MedicoDao();
+		this.conD = new ConsultaDao();
 		this.medico = new Medico();
 		this.consulta = new Medico();
 		this.cd = new ClinicaDao();
@@ -55,5 +65,36 @@ public class MedicoTest {
 		consulta = md.encontrarPorCpf("3");
 
 		assertEquals(consulta.getCpf(), "3");
+	}
+	
+	@Test
+	public void updateMedicoTest() {
+		consulta = md.encontrarPorCpf("3");
+		consulta.setNome("Medico Atualizado");
+		md.atualizar(consulta);
+		
+		assertEquals(consulta.getNome(), "Medico Atualizado");
+	}
+	
+	@Test
+	public void atenderPacienteTest() {
+		this.consultas = conD.findConsultaPorCrmMedico(this.medico.getCrm());
+		
+		Consulta teste = this.consultas.get(0);
+		teste.setStatus(true);
+		conD.atualizar(teste);
+		
+		Consulta busca = conD.encontrar(Consulta.class, teste.getId());
+		
+		assertEquals(busca.isStatus(), true);
+	}
+	
+	@Test
+	public void deleteMedicoTest() {
+		consulta = md.encontrarPorCpf("3");
+		
+		md.deletar(consulta);
+		
+		assertNull(consulta);
 	}
 }

@@ -53,6 +53,9 @@ public class Consulta implements Serializable, Comparable<Consulta> {
 	@Column(name = "consulta_data", nullable = false)
 	private Date data;
 	
+	@Column(name = "consulta_status")
+	private boolean status;
+	
 
 	public Consulta() {
 		this.ambulatorio = new Ambulatorio();
@@ -61,6 +64,8 @@ public class Consulta implements Serializable, Comparable<Consulta> {
 		this.medicamentos = new ArrayList<Medicamento>();
 		this.medico = new Medico();
 		this.pagamento = new Pagamento();
+		this.status = false;
+		
 	}
 
 	public Long getId() {
@@ -125,6 +130,15 @@ public class Consulta implements Serializable, Comparable<Consulta> {
 
 	public void setData(Date data) {
 		this.data = data;
+	}
+
+	
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 
 	@Override
