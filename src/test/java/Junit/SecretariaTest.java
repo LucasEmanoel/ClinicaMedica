@@ -4,73 +4,73 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import model.dao.ClinicaDao;
 import model.dao.SecretariaDao;
 import model.entidades.Clinica;
 import model.entidades.Secretaria;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SecretariaTest {
 	
 	private ClinicaDao cd;
-	private Clinica clinica;
 	private SecretariaDao sd;
 	private Secretaria secretaria;
-	private Secretaria consulta;
 	
 	@Before
 	public void inicializa() {
 		this.cd = new ClinicaDao();
-		this.clinica = new Clinica();
 		this.sd = new SecretariaDao();
+	}
+
+	@Test
+	public void _1registerSecretariaTest() throws Exception {
+		
+		Clinica clinica = cd.encontrarPorCnpj("123");
+		
 		this.secretaria = new Secretaria();
-		this.consulta = new Secretaria();
+		this.secretaria.setCpf("4");
+		this.secretaria.setQualificacao("varias");
+		this.secretaria.setClinica(clinica);
+		this.secretaria.setEmail("secretaria@gmail.com");
+		this.secretaria.getEndereco().setBairro("4");
+		this.secretaria.getEndereco().setCep("4");
+		this.secretaria.getEndereco().setRua("4");
+		this.secretaria.setIdade(45);
+		this.secretaria.setNome("secretaria");
+		this.secretaria.getPerfil().setDescricao("secretaria");
+		this.secretaria.setRg("4");
+		this.secretaria.setSalario(5.000);
+		this.secretaria.setSenha("4");
+		this.secretaria.setTelefone1("4");
+		this.secretaria.setTelefone2("4");
 		
-		this.clinica = cd.encontrarPorCnpj("123");
-		
-		secretaria.setCpf("4");
-		secretaria.setQualificacao("varias");
-		secretaria.setClinica(clinica);
-		secretaria.setEmail("secretaria@gmail.com");
-		secretaria.getEndereco().setBairro("4");
-		secretaria.getEndereco().setCep("4");
-		secretaria.getEndereco().setRua("4");
-		secretaria.setIdade(45);
-		secretaria.setNome("secretaria");
-		secretaria.getPerfil().setDescricao("perfil secretaria");
-		secretaria.setRg("4");
-		secretaria.setSalario(5.000);
-		secretaria.setSenha("4");
-		secretaria.setTelefone1("4");
-		secretaria.setTelefone2("4");
-	}
+		Secretaria resultado = sd.salvar(this.secretaria);
 
-	@Test
-	public void registerSecretariaTest() throws Exception {
-		
-		sd.salvar(secretaria);
 
-		consulta = sd.encontrarPorCpf("4");
-
-		assertEquals(consulta.getCpf(), "4");
+		assertEquals(resultado, this.secretaria);
 	}
 	
 	@Test
-	public void updateSecretariaTest() {
-		consulta = sd.encontrarPorCpf("4");
-		consulta.setNome("Secretaria Atualizado");
-		sd.atualizar(consulta);
+	public void _2updateSecretariaTest() {
 		
-		assertEquals(consulta.getNome(), "Secretaria Atualizado");
+		this.secretaria = sd.encontrarPorCpf("4");
+		this.secretaria.setNome("Secretaria Atualizado");
+		
+		Secretaria resultado = sd.atualizar(this.secretaria);
+		
+		assertEquals(resultado, this.secretaria);
 	}
 	
 	@Test
-	public void deleteSecretariaTest() {
-		consulta = sd.encontrarPorCpf("4");
+	public void _3deleteSecretariaTest() {
+		this.secretaria = sd.encontrarPorCpf("4");
 		
-		sd.deletar(consulta);
+		boolean resultado = sd.deletar(this.secretaria);
 		
-		assertNull(consulta);
+		assertNull(resultado);
 	}
 }

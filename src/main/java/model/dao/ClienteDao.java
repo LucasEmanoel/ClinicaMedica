@@ -27,5 +27,24 @@ public class ClienteDao extends DaoImpl<Cliente> implements ClienteDaoInterface{
 			manager.close();
 		}
 	}
+	@Override
+	public Cliente encontrarPorEmail(String email) {
+		EntityManager manager = JPAManager.getInstance().getEntityManager();
+
+		String consulta = "SELECT C FROM Cliente AS C WHERE C.email = :email";
+
+		TypedQuery<Cliente> query = manager.createQuery(consulta, Cliente.class);
+		query.setParameter("email", email);
+
+		try {
+
+			return query.getSingleResult();
+
+		} catch (Exception e) {
+			return null;
+		} finally {
+			manager.close();
+		}
+	}
 
 }

@@ -24,27 +24,27 @@
 
 			<div class="container-bt">
 				
-				<p:commandButton styleClass="button" value="Entrar" action="LoginView?faces-redirect=true" />
-				<p:commandButton styleClass="button" value="Cadastrar"
+				<p:commandButton styleClass="button-entrar" value="Entrar" action="LoginView?faces-redirect=true" />
+				<p:commandButton styleClass="button-cadastrar" value="Cadastrar"
 					onclick="PF('opcoesCadastro').show(); return false;" />
 			</div>
 
 			<p:dialog widgetVar="opcoesCadastro" styleClass="dialog" width="525"
 				height="150" draggable="false" header="Registrar como : "
 				modal="false" resizable="false">
-				<a href="RegistrarClienteView.xhtml"> <img
+				<a name="cliente" href="RegistrarClienteView.xhtml"> <img
 					src="resources/img/logo-user.png" alt="cliente" />
 				</a>
 
-				<a href="RegistrarMedicoView.xhtml"> <img
+				<a  name="medico" href="RegistrarMedicoView.xhtml"> <img
 					src="resources/img/logo-medico.png" alt="medico" />
 				</a>
 
-				<a href="RegistrarSecretariaView.xhtml"> <img
+				<a  name="secretaria" href="RegistrarSecretariaView.xhtml"> <img
 					src="resources/img/logo-secretaria2.png" alt="secretaria" />
 				</a>
 
-				<a href="RegistrarClinicaView.xhtml"> <img
+				<a  name="clinica" href="RegistrarClinicaView.xhtml"> <img
 					src="resources/img/logo-clinica.png" alt="clinica" />
 				</a>
 			</p:dialog>

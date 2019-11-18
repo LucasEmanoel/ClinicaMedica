@@ -2,6 +2,7 @@ package model.entidades;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -17,7 +18,7 @@ public class Funcionario extends PessoaFisica implements Serializable {
 	@Column(name = "funcionario_salario")
 	private Double salario;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.REMOVE)
 	private Clinica clinica;
 
 	

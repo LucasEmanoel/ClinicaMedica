@@ -1,44 +1,48 @@
 package model.dao;
 
 import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
 
-import model.entidades.Ambulatorio;
 import model.util.JPAManager;
 
 public class DaoImpl<T> implements Dao<T> {
 
-	public void salvar(T obj) {
+	public T salvar(T obj) {
 		EntityManager manager = JPAManager.getInstance().getEntityManager();
 		
 		try {
 			manager.getTransaction().begin();	
 			manager.persist(obj);
 			manager.getTransaction().commit();
+			return obj;
 		} catch (Exception e) {
+			
 			manager.getTransaction().rollback();
+			return null;
 		}finally {
 			manager.close();
 		}
+	
 		
 	}
 
-	public void atualizar(T obj) {
+	public T atualizar(T obj) {
 		EntityManager manager = JPAManager.getInstance().getEntityManager();
 		
 		try  {
 			manager.getTransaction().begin();		
 			manager.merge(obj);
 			manager.getTransaction().commit();
-			
+			return obj;
 		} catch (Exception e) {
 			manager.getTransaction().rollback();
+			return null;
 		} finally {
 			manager.close();
 		}
+
 	}
 	
-	public void deletar(T obj) {
+	public boolean deletar(T obj) {
 
 		EntityManager manager = JPAManager.getInstance().getEntityManager();
 		
@@ -46,12 +50,14 @@ public class DaoImpl<T> implements Dao<T> {
 			manager.getTransaction().begin();		
 			manager.remove(obj);
 			manager.getTransaction().commit();
-			
+			return true;
 		} catch (Exception e) {
 			manager.getTransaction().rollback();
+			return false;
 		} finally {
 			manager.close();
 		}
+
 	}
 
 	public T encontrar(Class<T> clazz, Long id) {

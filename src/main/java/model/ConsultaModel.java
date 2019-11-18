@@ -20,7 +20,7 @@ public class ConsultaModel {
 		boolean consultaDisponivel = newDao.verificarConsulta(obj.getMedico(), obj.getData());
 
 		if (obj.getData() != null && obj.getCliente() != null && obj.getMedico() != null
-				&& obj.getPagamento() != null && obj.getDescricao() != null && consultaDisponivel == true
+				&& obj.getDescricao() != null && consultaDisponivel == true
 				&& !(obj.equals(aux))) {
 			dao.salvar(obj);
 		} else {

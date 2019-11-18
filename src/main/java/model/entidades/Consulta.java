@@ -1,9 +1,7 @@
 package model.entidades;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,9 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -42,15 +37,15 @@ public class Consulta implements Serializable, Comparable<Consulta> {
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Pagamento pagamento;
 
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, targetEntity = Medicamento.class)
-	@JoinTable(name = "prescricao", joinColumns = @JoinColumn(name = "consulta_id", referencedColumnName = "consulta_id"),
-				inverseJoinColumns = @JoinColumn(name = "medicamento_id", referencedColumnName = "medicamento_id"))
-	private List<Medicamento> medicamentos;
+	//@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, targetEntity = Medicamento.class)
+	//@JoinTable(name = "prescricao", joinColumns = @JoinColumn(name = "consulta_id", referencedColumnName = "consulta_id"),
+	//			inverseJoinColumns = @JoinColumn(name = "medicamento_id", referencedColumnName = "medicamento_id"))
+	//private List<Medicamento> medicamentos;
 
 	@Column(name = "consulta_descricao", length = 128)
 	private String descricao;
 
-	@Column(name = "consulta_data", nullable = false)
+	@Column(name = "consulta_data")
 	private Date data;
 	
 	@Column(name = "consulta_status")
@@ -61,7 +56,7 @@ public class Consulta implements Serializable, Comparable<Consulta> {
 		this.ambulatorio = new Ambulatorio();
 		this.cliente = new Cliente();
 		this.data = new Date();
-		this.medicamentos = new ArrayList<Medicamento>();
+		//this.medicamentos = new ArrayList<Medicamento>();
 		this.medico = new Medico();
 		this.pagamento = new Pagamento();
 		this.status = false;
@@ -108,13 +103,13 @@ public class Consulta implements Serializable, Comparable<Consulta> {
 		this.pagamento = pagamento;
 	}
 
-	public List<Medicamento> getMedicamentos() {
-		return medicamentos;
-	}
+	//public List<Medicamento> getMedicamentos() {
+	//	return medicamentos;
+	//}
 
-	public void setMedicamentos(List<Medicamento> medicamentos) {
-		this.medicamentos = medicamentos;
-	}
+	//public void setMedicamentos(List<Medicamento> medicamentos) {
+	//	this.medicamentos = medicamentos;
+	//}
 
 	public String getDescricao() {
 		return descricao;
@@ -141,6 +136,8 @@ public class Consulta implements Serializable, Comparable<Consulta> {
 		this.status = status;
 	}
 
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -149,6 +146,7 @@ public class Consulta implements Serializable, Comparable<Consulta> {
 		result = prime * result + ((cliente == null) ? 0 : cliente.hashCode());
 		result = prime * result + ((data == null) ? 0 : data.hashCode());
 		result = prime * result + ((medico == null) ? 0 : medico.hashCode());
+		result = prime * result + (status ? 1231 : 1237);
 		return result;
 	}
 
@@ -180,6 +178,8 @@ public class Consulta implements Serializable, Comparable<Consulta> {
 			if (other.medico != null)
 				return false;
 		} else if (!medico.equals(other.medico))
+			return false;
+		if (status != other.status)
 			return false;
 		return true;
 	}

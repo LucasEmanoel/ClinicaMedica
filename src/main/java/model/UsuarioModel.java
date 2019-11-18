@@ -26,7 +26,7 @@ public class UsuarioModel {
 			}else if(clinica != null){
 				return clinica;
 			}else {
-				return null;
+				return "Email ou Senha inválidos!!";
 			}
 		} else {
 			throw new ClinicaMedicaException("erro ao logar.");

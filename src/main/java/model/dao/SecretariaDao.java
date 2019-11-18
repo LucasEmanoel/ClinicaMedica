@@ -27,5 +27,25 @@ public class SecretariaDao extends DaoImpl<Secretaria> implements SecretariaDaoI
 			manager.close();
 		}
 	}
+	
+	@Override
+	public Secretaria encontrarPorEmail(String email) {
+		EntityManager manager = JPAManager.getInstance().getEntityManager();
+
+		String consulta = "SELECT C FROM Secretaria AS C WHERE C.email = :email";
+
+		TypedQuery<Secretaria> query = manager.createQuery(consulta, Secretaria.class);
+		query.setParameter("email", email);
+
+		try {
+
+			return query.getSingleResult();
+
+		} catch (Exception e) {
+			return null;
+		} finally {
+			manager.close();
+		}
+	}
 
 }

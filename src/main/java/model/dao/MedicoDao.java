@@ -27,5 +27,24 @@ public class MedicoDao extends DaoImpl<Medico> implements MedicoDaoInterface {
 			manager.close();
 		}
 	}
+	
+	@Override
+	public Medico encontrarPorEmail(String email) {
+		EntityManager manager = JPAManager.getInstance().getEntityManager();
 
+		String consulta = "SELECT M FROM Medico AS M WHERE M.email = :email";
+
+		TypedQuery<Medico> query = manager.createQuery(consulta, Medico.class);
+		query.setParameter("email", email);
+
+		try {
+
+			return query.getSingleResult();
+
+		} catch (Exception e) {
+			return null;
+		} finally {
+			manager.close();
+		}
+	}
 }

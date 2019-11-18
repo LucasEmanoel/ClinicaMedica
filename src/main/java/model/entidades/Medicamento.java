@@ -32,19 +32,14 @@ public class Medicamento implements Serializable {
 	@Column(name = "medicamento_quantidade")
 	private Integer quantidade;
 
-	@ManyToMany(cascade = { CascadeType.PERSIST,
-			CascadeType.MERGE }, mappedBy = "medicamentos", targetEntity = Consulta.class)
-	private List<Consulta> prontuarios;
+	//@ManyToMany(cascade = { CascadeType.PERSIST,
+	//		CascadeType.MERGE }, mappedBy = "medicamentos", targetEntity = Consulta.class)
+	//private List<Consulta> prontuarios;
 
-	public Medicamento(Long cod, String descricao) {
-		super();
-		this.cod = cod;
-		this.descricao = descricao;
-	}
 
-	public Medicamento() {
-		this.prontuarios = null;
-	}
+	//public Medicamento() {
+	//	this.prontuarios = null;
+	//}
 
 	public Long getId() {
 		return id;
@@ -62,13 +57,13 @@ public class Medicamento implements Serializable {
 		this.cod = cod;
 	}
 
-	public List<Consulta> getProntuarios() {
-		return prontuarios;
-	}
+	//public List<Consulta> getProntuarios() {
+	//	return prontuarios;
+	//}
 
-	public void setProntuarios(List<Consulta> prontuarios) {
-		this.prontuarios = prontuarios;
-	}
+	//public void setProntuarios(List<Consulta> prontuarios) {
+	//	this.prontuarios = prontuarios;
+	//}
 
 	public String getDescricao() {
 		return descricao;
