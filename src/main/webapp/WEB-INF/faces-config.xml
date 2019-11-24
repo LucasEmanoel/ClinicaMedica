@@ -8,5 +8,4 @@
 		<validator-id>validator.CnpjValidator</validator-id>
 		<validator-class>br.com.validator.CnpjValidator</validator-class>
 	</validator> -->
-
 </faces-config>

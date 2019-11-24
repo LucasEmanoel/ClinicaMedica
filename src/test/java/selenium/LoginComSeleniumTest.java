@@ -19,7 +19,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 public class LoginComSeleniumTest {
 
 	private static ChromeDriverService service;
-	private WebDriver driver;
+	private static WebDriver driver;
 
 	@BeforeClass
 	public static void createAndStartService() throws IOException {
@@ -28,22 +28,15 @@ public class LoginComSeleniumTest {
 				.usingAnyFreePort()
 				.build();
 		service.start();
+		driver = new RemoteWebDriver(service.getUrl(), new ChromeOptions());
 	}
 
 	@AfterClass
 	public static void stopService() {
+		driver.quit();
 		service.stop();
 	}
 
-	@Before
-	public void createDriver() {
-		driver = new RemoteWebDriver(service.getUrl(), new ChromeOptions());
-	}
-
-	@After
-	public void quitDriver() {
-		driver.quit();
-	}
 	
 	@Test
 	public void loginErradoTest() throws InterruptedException {

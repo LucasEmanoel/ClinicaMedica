@@ -40,7 +40,7 @@ public class LoginTest {
 		String email = null;
 		String senha = null;
 		
-		Object user = um.logar(email, senha);
+		um.logar(email, senha);
 		
 	}
 	

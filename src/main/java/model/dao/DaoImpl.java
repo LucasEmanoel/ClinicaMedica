@@ -48,7 +48,7 @@ public class DaoImpl<T> implements Dao<T> {
 		
 		try  {
 			manager.getTransaction().begin();		
-			manager.remove(obj);
+			manager.remove(manager.merge(obj));
 			manager.getTransaction().commit();
 			return true;
 		} catch (Exception e) {

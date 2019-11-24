@@ -31,6 +31,16 @@ public class MedicoBean implements Serializable{
 		this.retornaTodasClinicas();
 	}
 	
+	public String atualizarMedico() throws Exception {
+		this.mm.atualizarMedico(this.userSessao);
+		return "users/PerfilMedicoView?faces-redirect=true";
+	}
+	
+	public String deletarMedico() throws Exception {
+		this.mm.removerMedico(this.userSessao);
+		return "LoginView?faces-redirect=true";
+	}
+	
 	public void retornaTodasClinicas() {
 		try {
 			this.clinicas = new ClinicaModel().encontrarTodos();

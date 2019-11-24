@@ -38,6 +38,16 @@ public class ClinicaBean  implements Serializable{
 		}
 	}
 
+	public String atualizarClinica() throws Exception {
+		this.cm.atualizarClinica(this.userSessao);
+		return "users/PerfilClinicaView?faces-redirect=true";
+			
+	}
+	public String deletarClinica() throws Exception {
+		this.cm.removerClinica(this.userSessao);
+		return "LoginView?faces-redirect=true";
+	}
+	
 	public void deletarFuncionario() {
 		
 		MedicoModel md = new MedicoModel();

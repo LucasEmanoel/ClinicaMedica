@@ -1,57 +1,97 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <h:outputStylesheet library="css" name="perfilCliente.css"/>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	template="/resources/templates/templateUsers.xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
-        <fieldset class="box00">
-            <legend>Perfil do Cliente</legend>
-            <fieldset class="box1">
-                
-                <legend>Dados Pessoais</legend>
-                <p class="p1" title="Nome">Nome: <input class="ipt1" style="width: 450px;" type="text" value="#{clienteBean.userSessao.nome}"/></p>
-                <p class="p2" title="CPF">CPF: <input class="ipt2" style="width: 120px;" maxlength="14" type="text" value="#{clienteBean.userSessao.cpf}"/></p>
-                <p class="p3" title="RG">RG: <input class="ipt3" style="width: 120px;" type="text" value="#{clienteBean.userSessao.rg}"/></p>
-                <p class="p4" title="Idade">Idade: <input class="ipt4" style="width: 140px;"  maxlength="3" type="text" value="#{clienteBean.userSessao.idade}" /></p>
-                <p class="p5" title="Telefone">Telefone: <input class="ipt5" style="width: 120px;" type="text" maxlength="12" value="#{clienteBean.userSessao.telefone1}" /></p>
-                <p class="p6" title="Rua">Rua: <input class="ipt6" style="width: 500px;" type="text" value="#{clienteBean.userSessao.endereco.rua}" /></p>
-                <p class="p7" title="CEP">CEP: <input class="ipt7" style="width: 150px;" type="text" value="#{clienteBean.userSessao.endereco.cep}" /></p>
-                <p class="p8" title="Bairro">Bairro: <input class="ipt8" style="width: 330px;" type="text" value="#{clienteBean.userSessao.endereco.bairro}" /></p>
-            </fieldset>
-            <fieldset class="box2">
-                <legend>Dados de Usuário</legend>
-                <p class="p01" title="E-Mail">E-Mail: <input class="ipt01" style="width: 330px;" type="text" value="#{clienteBean.userSessao.email}" /></p>
-                <p class="p02" title="Senha">Senha: <input class="ipt02" style="width: 200px;" type="text" value="#{clienteBean.userSessao.senha}" /></p> 
-            </fieldset>
-            <p class="p07"> <input class="btn1"  type="button" value="Salvar" /> 
-                <input class="btn2" type="button" value="Editar" /> </p> 
-        </fieldset>
+	<ui:define name="css">
+		<h:outputStylesheet library="css" name="cssTelasUsuarios.css" />
+	</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<p:growl id="msgs" showDetail="true" />
 
-        <div id="contatos">
-            <h4 id="c">Contato</h4>
-            <div id="msg"><a href="faces/Contato.xhtml">ENTRE EM CONTATO CONOSCO,<br/>
-                    ENVIE UMA CRÍTICA OU SUGESTÃO</a>
-            </div>
-            <div id="redes">
-                <h4>Redes Socias</h4>
-                <a href="https://www.facebook.com/"><img src="resources/Imagens/facebook.png" width="40" height="40" alt="facebook"/>
-                </a>
-                <a href="https://www.twitter.com"><img src="resources/Imagens/twitter.png" width="40" height="40" alt="twitter"/>
-                </a>
-                <a href="https://www.instagram.com"><img src="resources/Imagens/instagram.png" width="40" height="40" alt="instagram"/>
-                </a>
-            </div>
-            <h4 id="e">Endereço</h4>
-            <p id="endereco">
-                Av. Santo Antônio, 385 - Santo Antônio<br/>
-                Garanhuns - PE, 55293-000<br/>
-                TELEFONE: (87) 3025-0098 | (87) 98107-3280
-            </p>
-        </div>
-    </h:body>
-</html>
+
+			<p:panel id="custom"
+				header="#{clienteBean.userSessao.nome}, #{clienteBean.userSessao.idade} anos"
+				style="margin-bottom:20px">
+				<h:panelGrid columns="2" cellpadding="5" style="text-align: center;">
+				<h:outputLabel for="nome" value="Nome:" />
+					<p:inputText id="nome" value="#{clienteBean.userSessao.nome}"
+						placeholder="Nome" required="true">
+						<f:validateLength maximum="64" />
+						<f:validateRegex pattern="^[a-zA-Z]+$" />
+					</p:inputText>
+
+					<h:outputLabel for="cpf" value="Cpf:" />
+					<p:inputText id="cpf" value="#{clienteBean.userSessao.cpf}"
+						placeholder="Cpf" required="true">
+						<f:validator validatorId="cpfValidator" />
+					</p:inputText>
+
+					<h:outputLabel for="rg" value="RG:" />
+					<p:inputText id="rg" value="#{clienteBean.userSessao.rg}"
+						placeholder="Rg" required="true">
+
+					</p:inputText>
+
+					<h:outputLabel for="idade" value="Idade:" />
+					<p:inputText id="idade" value="#{clienteBean.userSessao.idade}"
+						placeholder="Idade" required="true">
+						<f:validateLongRange maximum="150" />
+					</p:inputText>
+
+					<h:outputLabel for="rua" value="Rua:" />
+					<p:inputText id="rua"
+						value="#{clienteBean.userSessao.endereco.rua}" placeholder="Rua">
+						<f:validateLength maximum="128" />
+						<f:validateRegex pattern="^[a-zA-Z0-9]+$" />
+					</p:inputText>
+
+					<h:outputLabel for="bairro" value="Bairro:" />
+					<p:inputText id="bairro"
+						value="#{clienteBean.userSessao.endereco.bairro}"
+						placeholder="Bairro">
+						<f:validateLength maximum="128" />
+						<f:validateRegex pattern="^[a-zA-Z0-9]+$" />
+					</p:inputText>
+
+					<h:outputLabel for="cep" value="Cep:" />
+					<p:inputText id="cep"
+						value="#{clienteBean.userSessao.endereco.cep}" placeholder="Cep">
+						<f:validateLength maximum="128" />
+						<f:validateRegex pattern="^[a-zA-Z0-9]+$" />
+					</p:inputText>
+
+					<h:outputLabel for="tel1" value="Telefone:" />
+					<p:inputText id="tel1" value="#{clienteBean.userSessao.telefone1}"
+						placeholder="Telefone">
+						<f:validateLength maximum="32" />
+					</p:inputText>
+
+					<h:outputLabel for="tel2" value="Telefone(opcional):" />
+					<p:inputText id="tel2" value="#{clienteBean.userSessao.telefone2}"
+						placeholder="Telefone(Optional)">
+						<f:validateLength maximum="32" />
+					</p:inputText>
+				</h:panelGrid>
+
+				<f:facet name="actions">
+				    <p:commandButton  immediate="true" action="#{clienteBean.atualizarCliente}" id="iconOnly" 
+				    update="custom" ajax="false" style="margin-right:20px;" icon="fas fa-save" />
+				    
+					<p:commandButton   immediate="true" action="#{clienteBean.deletarCliente}" ajax="false" id="iconOnly2" 
+				    style="margin-right:20px;" icon="fas fa-trash" />
+				    
+				</f:facet>
+			</p:panel>
+
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+
 

@@ -1,10 +1,11 @@
 package selenium;
 
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.File;
 import java.io.IOException;
 
-import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -14,13 +15,21 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.Select;
+
+import pages.LoginPage;
+import pages.PerfilPage;
+import pages.RegisterClinicaPage;
+import pages.RegisterMedicoPage;
 
 public class MedicoTest {
 
 	private static ChromeDriverService service;
-	private WebDriver driver;
-
+	private static WebDriver driver;
+	private RegisterClinicaPage registerCli;
+	private RegisterMedicoPage register;
+	private LoginPage login;
+	private PerfilPage perfil;
+	
 	@BeforeClass
 	public static void createAndStartService() throws IOException {
 		service = new ChromeDriverService.Builder()
@@ -28,51 +37,68 @@ public class MedicoTest {
 				.usingAnyFreePort()
 				.build();
 		service.start();
+		driver = new RemoteWebDriver(service.getUrl(), new ChromeOptions());
 	}
 
 	@AfterClass
 	public static void stopService() {
+		driver.quit();
 		service.stop();
 	}
 
 	@Before
-	public void createDriver() {
-		driver = new RemoteWebDriver(service.getUrl(), new ChromeOptions());
+	public void initialize() {
+		this.register = new RegisterMedicoPage(driver);
+		this.login = new LoginPage(driver);
+		this.perfil =  new PerfilPage(driver);
+		this.registerCli = new RegisterClinicaPage(driver);
+		
 	}
 
-	@After
-	public void quitDriver() {
-		driver.quit();
-	}
-	
 	@Test
 	public void registerMedicoTest() throws InterruptedException {
 		driver.get("http://localhost:8080/ClinicaMedica/inicio.xhtml");
 		driver.findElement(By.name("j_idt10:j_idt13")).click();
+		driver.findElement(By.name("clinica")).click();
+		this.registerCli.registrarClinica("21981767000119", "clinicaMedico", "clinicaMedico@gmail.com", "152", "12", "211", "5", "15","15", "541");
+		Thread.sleep(1000);
+		
+		driver.get("http://localhost:8080/ClinicaMedica/inicio.xhtml");
+		driver.findElement(By.name("j_idt10:j_idt13")).click();
 		driver.findElement(By.name("medico")).click();
 		
-		driver.findElement(By.id("j_idt11:nome")).sendKeys("medicoSelenium");
-		driver.findElement(By.id("j_idt11:cpf")).sendKeys("18469257030");
-		driver.findElement(By.id("j_idt11:rg")).sendKeys("515153");
-		driver.findElement(By.id("j_idt11:crm")).sendKeys("151522");
-		driver.findElement(By.id("j_idt11:sal")).sendKeys("10.000");
-
-		Select clinicas = new Select(driver.findElement(By.id("j_idt11:somClinica")));
-		clinicas.selectByVisibleText("clinicaSelenium");
-		
-		driver.findElement(By.id("j_idt11:idade")).sendKeys("30");
-		driver.findElement(By.id("j_idt11:rua")).sendKeys("10");
-		driver.findElement(By.id("j_idt11:bairro")).sendKeys("10");
-		driver.findElement(By.id("j_idt11:cep")).sendKeys("10");
-		driver.findElement(By.id("j_idt11:tel1")).sendKeys("10");
-		driver.findElement(By.id("j_idt11:tel2")).sendKeys("10");
-		driver.findElement(By.id("j_idt11:email")).sendKeys("medicoSelenium@gmail.com");
-		driver.findElement(By.id("j_idt11:senha")).sendKeys("5");
-		
+		this.register.registrarMedico(
+				"medicoSelenium", "153", "64859690044", "10.000", "154", "54",
+				"654", "654", "12", "126", "16545", "medicoSelenium@gmail.com", "5","clinicaMedico");
+		Thread.sleep(1000);
 		driver.findElement(By.id("j_idt11:j_idt30")).click();
-		Thread.sleep(10000);
+		Thread.sleep(1000);
+		this.login.logar("medicoSelenium@gmail.com", "5");
+		Thread.sleep(5000);
 		
+		driver.findElement(By.linkText("Perfil")).click();
+		Thread.sleep(5000);
+		assertTrue(driver.getPageSource().contains("medicoSelenium"));
+	
+		this.perfil.editar("medicoSeleniumZ");
+		Thread.sleep(1000);
+		assertTrue(driver.getPageSource().contains("medicoSeleniumZ"));
+		
+		this.perfil.deletar();
+		Thread.sleep(1000);
+		driver.get("http://localhost:8080/ClinicaMedica/LoginView.xhtml");
+		Thread.sleep(1000);
+		this.login.logar("medicoSelenium@gmail.com", "5");
+		Thread.sleep(1000);
+		assertTrue(driver.findElement(By.id("j_idt6:messages")).isDisplayed());
+		Thread.sleep(1000);
+		this.login.logar("clinicaMedico@gmail.com", "5");
+		Thread.sleep(1000);
+		driver.findElement(By.linkText("Perfil")).click();
+		this.perfil.deletar();
+		driver.get("http://localhost:8080/ClinicaMedica/LoginView.xhtml");
+		Thread.sleep(1000);
+		this.login.logar("clinicaMedico@gmail.com", "5");
+		assertTrue(driver.findElement(By.id("j_idt6:messages")).isDisplayed());
 	}
-
-
 }

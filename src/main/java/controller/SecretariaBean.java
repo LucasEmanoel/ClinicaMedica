@@ -14,20 +14,20 @@ import model.entidades.Secretaria;
 
 @ManagedBean
 @SessionScoped
-public class SecretariaBean  implements Serializable{
+public class SecretariaBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private SecretariaModel sm;
 	private Secretaria userSessao;
-	
+
 	private List<Clinica> clinicas;
 	private Clinica selecionada;
-	
-	
+
 	public SecretariaBean() {
 		this.sm = new SecretariaModel();
-		this.setUserSessao((Secretaria) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("perfil"));
+		this.setUserSessao(
+				(Secretaria) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("perfil"));
 		this.retornaTodasClinicas();
 	}
 
@@ -37,6 +37,16 @@ public class SecretariaBean  implements Serializable{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public String deletarSecretaria() throws Exception {
+		this.sm.removerSecretaria(this.userSessao);
+		return "LoginView?faces-redirect=true";
+	}
+	
+	public String atualizarSecretaria() throws Exception {
+		this.sm.atualizarSecretaria(this.userSessao);
+		return "users/PerfilSecretariaView?faces-redirect=true";
 	}
 
 	public List<Clinica> getClinicas() {
@@ -70,5 +80,5 @@ public class SecretariaBean  implements Serializable{
 	public void setUserSessao(Secretaria userSessao) {
 		this.userSessao = userSessao;
 	}
-	
+
 }

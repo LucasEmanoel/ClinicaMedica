@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
@@ -68,7 +69,7 @@ public class MedicoTest {
 		assertEquals(resultado, this.medico);
 	}
 	
-	
+	@Ignore
 	@Test
 	public void _3deleteMedicoTest() {
 		this.medico = md.encontrarPorCpf("3");

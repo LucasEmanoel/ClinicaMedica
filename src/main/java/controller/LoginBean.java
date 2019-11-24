@@ -83,7 +83,7 @@ public class LoginBean implements Serializable{
 	}
 	public String deslogar() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		return "inicio?faces-redirect=true";
+		return "inicio.xhtml?faces-redirect=true";
 	}
 	
 	public String getEmail() {

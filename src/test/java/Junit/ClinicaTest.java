@@ -1,11 +1,11 @@
 package Junit;
 
 import static org.junit.Assert.assertEquals;
-
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
@@ -55,6 +55,7 @@ public class ClinicaTest {
 		assertEquals(resultado, this.cli);
 	}
 	
+	@Ignore
 	@Test
 	public void _3deleteClinicaTest() {
 		this.cli = cd.encontrarPorCnpj("123");
