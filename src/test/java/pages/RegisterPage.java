@@ -23,6 +23,7 @@ public class RegisterPage {
 	By senhaInput = By.id("j_idt11:senha");
 	By registerClienteBtn = By.id("j_idt11:j_idt26");
 	By registerClinicaBtn = By.id("j_idt11:j_idt25");
+	By registerMedicoSecretariaBtn = By.id("j_idt11:j_idt30");
 	By selectClinica = By.id("j_idt11:somClinica");
 
 	public RegisterPage(WebDriver driver) {

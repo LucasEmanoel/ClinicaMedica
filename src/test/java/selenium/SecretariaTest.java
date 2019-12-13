@@ -74,7 +74,7 @@ public class SecretariaTest {
 				"secretariaSel", "33934914071", "121", "nada", "50.000", "23", "15", "51", "211",
 				"54431", "53135", "secretariaSelenium@gmail.com", "5", "clinicaSecretaria");
 		Thread.sleep(1000);
-		driver.findElement(By.id("j_idt11:j_idt30")).click();
+		driver.findElement(By.id("")).click();
 		Thread.sleep(1000);
 		this.login.logar("secretariaSelenium@gmail.com", "5");
 		Thread.sleep(1000);

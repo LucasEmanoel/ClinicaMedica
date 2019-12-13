@@ -71,8 +71,6 @@ public class MedicoTest {
 				"medicoSelenium", "153", "64859690044", "10.000", "154", "54",
 				"654", "654", "12", "126", "16545", "medicoSelenium@gmail.com", "5","clinicaMedico");
 		Thread.sleep(1000);
-		driver.findElement(By.id("j_idt11:j_idt30")).click();
-		Thread.sleep(1000);
 		this.login.logar("medicoSelenium@gmail.com", "5");
 		Thread.sleep(5000);
 		

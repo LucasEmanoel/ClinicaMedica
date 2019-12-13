@@ -29,5 +29,6 @@ public class RegisterMedicoPage extends RegisterPage {
 		this.getDriver().findElement(this.emailInput).sendKeys(email);
 		this.getDriver().findElement(this.senhaInput).sendKeys(senha);
 		
+		this.getDriver().findElement(this.registerMedicoSecretariaBtn).click();
 	}
 }
